@@ -215,31 +215,54 @@ class Appointment {
 }
 
 class Recording {
-  Recording({required this.file, required this.ms, required this.at});
+  Recording({
+    required this.file,
+    required this.ms,
+    required this.at,
+    this.frame,
+  });
 
   /// File name inside the app's recordings folder.
   final String file;
   final int ms;
   final int at;
 
-  Map<String, dynamic> toJson() => {'file': file, 'ms': ms, 'at': at};
+  /// Background picture: `builtin:<id>` or a file in the media folder.
+  String? frame;
 
-  factory Recording.fromJson(Map<String, dynamic> j) =>
-      Recording(file: j['file'], ms: j['ms'] ?? 0, at: j['at'] ?? 0);
+  Map<String, dynamic> toJson() => {
+    'file': file,
+    'ms': ms,
+    'at': at,
+    'frame': frame,
+  };
+
+  factory Recording.fromJson(Map<String, dynamic> j) => Recording(
+    file: j['file'],
+    ms: j['ms'] ?? 0,
+    at: j['at'] ?? 0,
+    frame: j['frame'],
+  );
 }
 
 class JournalEntry {
-  JournalEntry({this.text = '', List<Recording>? recordings})
+  JournalEntry({this.text = '', List<Recording>? recordings, this.frame})
     : recordings = recordings ?? [];
 
   String text;
   List<Recording> recordings;
 
-  bool get isEmpty => text.trim().isEmpty && recordings.isEmpty;
+  /// Background picture behind the written note: `builtin:<id>` or a file
+  /// in the media folder.
+  String? frame;
+
+  bool get isEmpty =>
+      text.trim().isEmpty && recordings.isEmpty && frame == null;
 
   Map<String, dynamic> toJson() => {
     'text': text,
     'recordings': recordings.map((r) => r.toJson()).toList(),
+    'frame': frame,
   };
 
   factory JournalEntry.fromJson(Map<String, dynamic> j) => JournalEntry(
@@ -247,6 +270,7 @@ class JournalEntry {
     recordings: ((j['recordings'] as List?) ?? [])
         .map((e) => Recording.fromJson(Map<String, dynamic>.from(e)))
         .toList(),
+    frame: j['frame'],
   );
 }
 

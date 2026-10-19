@@ -150,6 +150,17 @@ void seedDemo(AppData d) {
   ]);
 
   d.journal[dkey(t)] = JournalEntry(
+    frame: 'url:demo_themes/sat.jpg',
+    recordings: [
+      Recording(
+        file: 'demo.m4a',
+        ms: 84000,
+        at: t
+            .add(const Duration(hours: 20, minutes: 10))
+            .millisecondsSinceEpoch,
+        frame: 'builtin:roses',
+      ),
+    ],
     text: 'النهارده خلصت التقرير بدري، ومشيت بعد العصر. حاسس إن الأسبوع ده أحسن من اللي فات، بس لازم أنام بدري عشان الفجر.',
   );
   d.journal[dkey(addDays(t, -1))] = JournalEntry(text: 'يوم هادي.');

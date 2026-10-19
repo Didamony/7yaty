@@ -13,6 +13,7 @@ import '../core/i18n.dart';
 import '../data/models.dart';
 import '../data/store.dart';
 import '../services/files.dart';
+import 'frames.dart';
 import 'widgets.dart';
 
 const _speechLocales = {
@@ -241,6 +242,36 @@ class _JournalPageState extends State<JournalPage> {
     setState(() => _playing = r.file);
   }
 
+  /// A card, or the note on its picture when it has a frame.
+  Widget _framed(String? frame, Widget child) => frame == null
+      ? SectionCard(child: child)
+      : FramedCard(frame: frame, child: child);
+
+  Future<void> _pickNoteFrame() async {
+    final key = dkey(_day);
+    final f = await pickFrame(
+      context,
+      current: _store.data.journal[key]?.frame,
+    );
+    if (f == null) return;
+    String? old;
+    await _store.update((d) {
+      final e = d.journal.putIfAbsent(key, JournalEntry.new);
+      old = e.frame;
+      e.frame = f.isEmpty ? null : f;
+      if (e.isEmpty) d.journal.remove(key);
+    });
+    if (old != f) await dropFrameFile(old);
+  }
+
+  Future<void> _pickRecordingFrame(Recording r) async {
+    final f = await pickFrame(context, current: r.frame);
+    if (f == null) return;
+    final old = r.frame;
+    await _store.update((_) => r.frame = f.isEmpty ? null : f);
+    if (old != f) await dropFrameFile(old);
+  }
+
   Future<void> _deleteRecording(Recording r) async {
     if (!await confirm(context, tr('تمسح الريكورد ده؟'), ok: tr('امسحه'))) {
       return;
@@ -307,12 +338,22 @@ class _JournalPageState extends State<JournalPage> {
           child: ListView(
             padding: const EdgeInsets.all(16),
             children: [
-              SectionCard(
-                child: Column(
+              _framed(
+                entry?.frame,
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    GoldLabel(tr('مكتوب')),
-                    const SizedBox(height: 6),
+                    Row(
+                      children: [
+                        Expanded(child: GoldLabel(tr('مكتوب'))),
+                        IconButton(
+                          tooltip: tr('خلفية'),
+                          visualDensity: VisualDensity.compact,
+                          onPressed: _pickNoteFrame,
+                          icon: Icon(Icons.wallpaper, color: p.goldText),
+                        ),
+                      ],
+                    ),
                     TextField(
                       controller: _text,
                       onChanged: _onTextChanged,
@@ -385,49 +426,50 @@ class _JournalPageState extends State<JournalPage> {
               ),
               if (entry != null && entry.recordings.isNotEmpty) ...[
                 const SizedBox(height: 12),
-                SectionCard(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      GoldLabel(tr('ريكوردات اليوم')),
-                      for (final r in entry.recordings)
-                        Row(
-                          children: [
-                            IconButton.filled(
-                              tooltip: _playing == r.file
-                                  ? tr('إيقاف')
-                                  : tr('تشغيل'),
-                              onPressed: () => _play(r),
-                              icon: Icon(
-                                _playing == r.file
-                                    ? Icons.stop
-                                    : Icons.play_arrow,
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    fmtTime(
-                                      DateTime.fromMillisecondsSinceEpoch(r.at),
-                                    ),
-                                  ),
-                                  Muted(_clock(r.ms)),
-                                ],
-                              ),
-                            ),
-                            IconButton(
-                              tooltip: tr('امسح'),
-                              onPressed: () => _deleteRecording(r),
-                              icon: Icon(Icons.delete_outline, color: p.muted),
-                            ),
-                          ],
+                GoldLabel(tr('ريكوردات اليوم')),
+                for (final r in entry.recordings) ...[
+                  const SizedBox(height: 8),
+                  _framed(
+                    r.frame,
+                    Row(
+                      children: [
+                        IconButton.filled(
+                          tooltip: _playing == r.file
+                              ? tr('إيقاف')
+                              : tr('تشغيل'),
+                          onPressed: () => _play(r),
+                          icon: Icon(
+                            _playing == r.file ? Icons.stop : Icons.play_arrow,
+                          ),
                         ),
-                    ],
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                fmtTime(
+                                  DateTime.fromMillisecondsSinceEpoch(r.at),
+                                ),
+                              ),
+                              Muted(_clock(r.ms)),
+                            ],
+                          ),
+                        ),
+                        IconButton(
+                          tooltip: tr('خلفية'),
+                          onPressed: () => _pickRecordingFrame(r),
+                          icon: Icon(Icons.wallpaper, color: p.goldText),
+                        ),
+                        IconButton(
+                          tooltip: tr('امسح'),
+                          onPressed: () => _deleteRecording(r),
+                          icon: Icon(Icons.delete_outline, color: p.muted),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
+                ],
               ],
               if (past.isNotEmpty) ...[
                 const SizedBox(height: 12),
