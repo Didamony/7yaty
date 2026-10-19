@@ -19,6 +19,7 @@ class OrnateHeader extends StatelessWidget {
     this.actions = const [],
     this.bottom,
     this.leading,
+    this.logo = false,
   });
 
   final String title;
@@ -26,6 +27,9 @@ class OrnateHeader extends StatelessWidget {
   final List<Widget> actions;
   final Widget? bottom;
   final Widget? leading;
+
+  /// Shows the calligraphic «حياتي» logo instead of [title].
+  final bool logo;
 
   @override
   Widget build(BuildContext context) {
@@ -61,16 +65,27 @@ class OrnateHeader extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              title,
-                              style: const TextStyle(
-                                fontFamily: kDisplay,
-                                fontSize: 30,
-                                fontWeight: FontWeight.w700,
-                                color: Color(0xFFF6F1E7),
-                                height: 1.2,
+                            if (logo)
+                              Semantics(
+                                header: true,
+                                label: title,
+                                child: Image.asset(
+                                  'assets/logo/logo_word.png',
+                                  height: 62,
+                                  excludeFromSemantics: true,
+                                ),
+                              )
+                            else
+                              Text(
+                                title,
+                                style: const TextStyle(
+                                  fontFamily: kDisplay,
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xFFF6F1E7),
+                                  height: 1.2,
+                                ),
                               ),
-                            ),
                             if (subtitle != null)
                               Text(
                                 subtitle!,

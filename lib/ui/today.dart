@@ -74,6 +74,7 @@ class _TodayPageState extends State<TodayPage> {
       children: [
         OrnateHeader(
           title: tr('حياتي'),
+          logo: true,
           subtitle: fmtDateLong(_day),
           actions: [
             HeaderIconButton(

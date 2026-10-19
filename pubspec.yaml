@@ -81,6 +81,7 @@ flutter:
 
   assets:
     - assets/quran/quran.json
+    - assets/logo/logo_word.png
 
   fonts:
     - family: Plex
