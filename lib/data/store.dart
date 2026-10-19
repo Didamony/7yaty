@@ -32,6 +32,7 @@ class AppData {
   Map<String, JournalEntry> journal = {};
   List<Book> books = [];
   Settings settings = Settings();
+  Worship worship = Worship();
   int updatedAt = 0;
 
   Map<String, dynamic> toJson() => {
@@ -43,6 +44,7 @@ class AppData {
     'journal': journal.map((k, v) => MapEntry(k, v.toJson())),
     'books': books.map((b) => b.toJson()).toList(),
     'settings': settings.toJson(),
+    'worship': worship.toJson(),
     'updatedAt': updatedAt,
   };
 
@@ -62,6 +64,9 @@ class AppData {
         ),
       )
       ..books = list('books').map(Book.fromJson).toList()
+      ..worship = Worship.fromJson(
+        Map<String, dynamic>.from(j['worship'] ?? {}),
+      )
       ..settings = Settings.fromJson(
         Map<String, dynamic>.from(j['settings'] ?? {}),
       )

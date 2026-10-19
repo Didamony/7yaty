@@ -8,6 +8,7 @@ import 'appointments.dart';
 import 'goals.dart';
 import 'journal.dart';
 import 'today.dart';
+import 'worship_page.dart';
 
 class Shell extends StatefulWidget {
   const Shell({super.key});
@@ -44,6 +45,7 @@ class _ShellState extends State<Shell> {
         children: [
           TodayPage(onOpenGoals: () => go(1)),
           const GoalsPage(),
+          const WorshipPage(),
           const AppointmentsPage(),
           const JournalPage(),
         ],
@@ -83,6 +85,10 @@ class _ShellState extends State<Shell> {
               NavigationDestination(
                 icon: const Icon(Icons.track_changes),
                 label: tr('أهدافي'),
+              ),
+              NavigationDestination(
+                icon: const Icon(Icons.mosque_outlined),
+                label: tr('عباداتي'),
               ),
               NavigationDestination(
                 icon: const Icon(Icons.schedule),

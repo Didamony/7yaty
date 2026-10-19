@@ -460,3 +460,77 @@ class Settings {
     lastSync: j['lastSync'],
   );
 }
+
+/// Quran, adhkar and tasbih state.
+class Worship {
+  Worship({
+    this.lastSurah = 0,
+    this.markSurah,
+    this.markAyah,
+    this.fontSize = 26,
+    this.tasbihStyle = 'wood',
+    this.dhikr = 0,
+    this.target = 33,
+    this.vibrate = true,
+    List<String>? customDhikr,
+    Map<String, int>? totals,
+    Map<String, List<String>>? adhkarDone,
+    this.adhkarReminders = true,
+  }) : customDhikr = customDhikr ?? [],
+       totals = totals ?? {},
+       adhkarDone = adhkarDone ?? {};
+
+  /// Last surah opened (1-based, 0 = none) and the reader's own bookmark.
+  int lastSurah;
+  int? markSurah;
+  int? markAyah;
+  double fontSize;
+
+  /// wood | amber | pearl | emerald | digital
+  String tasbihStyle;
+  int dhikr;
+
+  /// Count per round; 0 = open count, -1 = after-prayer 33/33/34.
+  int target;
+  bool vibrate;
+  List<String> customDhikr;
+
+  /// Lifetime count per dhikr text.
+  Map<String, int> totals;
+
+  /// Adhkar categories finished, per day.
+  Map<String, List<String>> adhkarDone;
+  bool adhkarReminders;
+
+  Map<String, dynamic> toJson() => {
+    'lastSurah': lastSurah,
+    'markSurah': markSurah,
+    'markAyah': markAyah,
+    'fontSize': fontSize,
+    'tasbihStyle': tasbihStyle,
+    'dhikr': dhikr,
+    'target': target,
+    'vibrate': vibrate,
+    'customDhikr': customDhikr,
+    'totals': totals,
+    'adhkarDone': adhkarDone,
+    'adhkarReminders': adhkarReminders,
+  };
+
+  factory Worship.fromJson(Map<String, dynamic> j) => Worship(
+    lastSurah: j['lastSurah'] ?? 0,
+    markSurah: j['markSurah'],
+    markAyah: j['markAyah'],
+    fontSize: (j['fontSize'] ?? 26).toDouble(),
+    tasbihStyle: j['tasbihStyle'] ?? 'wood',
+    dhikr: j['dhikr'] ?? 0,
+    target: j['target'] ?? 33,
+    vibrate: j['vibrate'] ?? true,
+    customDhikr: (j['customDhikr'] as List?)?.cast<String>(),
+    totals: (j['totals'] as Map?)?.cast<String, int>(),
+    adhkarDone: (j['adhkarDone'] as Map?)?.map(
+      (k, v) => MapEntry(k as String, (v as List).cast<String>()),
+    ),
+    adhkarReminders: j['adhkarReminders'] ?? true,
+  );
+}

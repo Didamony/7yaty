@@ -130,6 +130,14 @@ class SettingsPage extends StatelessWidget {
                     title: Text(tr('تنبيه عند دخول الوقت')),
                     subtitle: Muted(tr('بالإضافة للتنبيه المسبق')),
                   ),
+                  SwitchListTile(
+                    contentPadding: EdgeInsets.zero,
+                    value: store.data.worship.adhkarReminders,
+                    onChanged: (v) =>
+                        store.update((d) => d.worship.adhkarReminders = v),
+                    title: Text(tr('تذكير بأذكار الصباح والمساء')),
+                    subtitle: Muted(tr('بعد الفجر وبعد العصر بنص ساعة')),
+                  ),
                   if (!Notifier.instance.supported)
                     HintBox(
                       tr(

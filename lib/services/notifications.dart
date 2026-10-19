@@ -190,6 +190,24 @@ class Notifier {
         }
       }
 
+      // Morning and evening adhkar, half an hour after Fajr and Asr.
+      if (data.worship.adhkarReminders) {
+        await at(
+          times[Prayer.fajr]!.add(const Duration(minutes: 30)),
+          'adhkar|morning|${dkey(day)}',
+          tr('أذكار الصباح'),
+          tr('افتح حياتي واقرأ أذكار الصباح'),
+          _Channel.adhkar,
+        );
+        await at(
+          times[Prayer.asr]!.add(const Duration(minutes: 30)),
+          'adhkar|evening|${dkey(day)}',
+          tr('أذكار المساء'),
+          tr('افتح حياتي واقرأ أذكار المساء'),
+          _Channel.adhkar,
+        );
+      }
+
       // Goals: at their own time, and in the evening review.
       final review = day.add(Duration(minutes: s.reviewMin));
       for (final g in data.goalsOn(day)) {
@@ -278,7 +296,8 @@ enum _Channel {
   prayer('hayati_prayer', 'مواعيد الصلاة'),
   goals('hayati_goals', 'أهدافي'),
   review('hayati_review', 'مراجعة المساء'),
-  appointments('hayati_appointments', 'مواعيدي');
+  appointments('hayati_appointments', 'مواعيدي'),
+  adhkar('hayati_adhkar', 'الأذكار');
 
   const _Channel(this.id, this.name);
 
