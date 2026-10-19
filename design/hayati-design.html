@@ -1,10 +1,56 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>حياتي — التصميم</title>
-<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
-<style>body{margin:0;background:#d8d2c4;font-family:'IBM Plex Sans Arabic',sans-serif}
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>حياتي — التصميم</title><link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet"><style>body{margin:0;background:#d8d2c4;font-family:'IBM Plex Sans Arabic',sans-serif}
 .wrap{display:flex;flex-wrap:wrap;gap:32px;justify-content:center;padding:24px 8px}
-.screen{border-radius:28px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.25);width:390px;max-width:100%}
-.screen>div{max-width:100%}</style></head><body><div class="wrap"><section id="Main" class="screen">
+figure{margin:0;text-align:center}figcaption{margin-top:10px;font-size:16px;font-weight:600;color:#1F2A2E;max-width:390px}
+.screen{border-radius:28px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.25);width:390px;max-width:100%;text-align:right}
+.screen>div{max-width:100%}
+.scr{--bg:#F6F1E7;--card:#FFFDF8;--line:#E4DCCB;--ink:#1F2A2E;--mu:#5A6466;--teal:#0F5257;--on:#F6F1E7;--goldtx:#8A6A1F;--chip:#C9BFA9;--hdr:#0F5257;
+ width:390px;height:844px;box-sizing:border-box;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;overflow:hidden;font-family:'IBM Plex Sans Arabic',sans-serif}
+.scr.dark{--bg:#0E1A1C;--card:#16282B;--line:#2A4044;--ink:#EDE6D6;--mu:#A9B4B0;--teal:#D4B26A;--on:#0E1A1C;--goldtx:#D4B26A;--chip:#3A5458;--hdr:#12282B}
+.hdr{flex:none;background:var(--hdr) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Cg fill='none' stroke='%23D4B26A' stroke-opacity='.35'%3E%3Crect x='12' y='12' width='20' height='20'/%3E%3Crect x='12' y='12' width='20' height='20' transform='rotate(45 22 22)'/%3E%3Ccircle cx='22' cy='22' r='4'/%3E%3Cpath d='M0 0L12 12M44 0L32 12M0 44L12 32M44 44L32 32'/%3E%3C/g%3E%3C/svg%3E");color:#F6F1E7;padding:24px 20px 18px;border-bottom:3px solid #B08D3C}
+.dark .hdr{border-color:#D4B26A}
+.hdr h1{margin:0;font-family:'Reem Kufi',serif;font-size:28px;font-weight:700}
+.main{flex:1;padding:16px;display:flex;flex-direction:column;gap:12px;overflow:hidden}
+.row{display:flex;align-items:center;gap:10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.card.tight{padding:10px 12px;gap:8px}
+.lbl{font-size:13px;font-weight:600;color:var(--goldtx)}
+.h2{margin:0;font-size:17px;font-weight:600}
+.muted{color:var(--mu);font-size:12px}.hint{font-size:12px;color:var(--mu);background:rgba(176,141,60,.12);border-radius:8px;padding:6px 8px;line-height:1.6}
+.link{color:var(--teal);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.chip{min-height:36px;padding:0 12px;border-radius:999px;border:1px solid var(--chip);background:transparent;font:inherit;font-size:13px;color:var(--ink)}
+.chip.on{background:var(--teal);color:var(--on);border-color:var(--teal);font-weight:600}
+.sep{width:1px;height:24px;background:var(--line)}
+.btn{min-height:48px;border-radius:12px;border:none;background:var(--teal);color:var(--on);font:inherit;font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn.ghost{background:transparent;border:1px solid var(--teal);color:var(--teal)}
+.btn.sm{min-height:40px;padding:0 16px;font-size:14px}.btn.tall{min-height:64px;flex-direction:column;gap:4px;font-size:14px}
+.icon-btn{width:44px;height:44px;border-radius:22px;border:1px solid rgba(246,241,231,.4);background:rgba(0,0,0,.15);color:#F6F1E7;display:flex;align-items:center;justify-content:center}
+.field{display:flex;flex-direction:column;gap:6px}
+.field input{min-height:48px;border-radius:12px;border:1px solid var(--chip);background:var(--card);font:inherit;font-size:16px;padding:0 12px;color:var(--ink)}
+.cb{width:22px;height:22px;accent-color:#0F5257}
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.d{height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff}
+.d.ok{background:#2E7D4F}.d.grace{background:#B08D3C;color:#1F2A2E;font-weight:600}.d.today{border:2px dashed #0F5257;color:#0F5257}
+.badge{min-width:32px;height:32px;border-radius:16px;background:#B3261E;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600}
+.qada{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;background:#FBF3E4;border:1px solid #E6D3A8}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.rec{display:flex;align-items:center;gap:10px}
+.play{width:40px;height:40px;border-radius:20px;border:none;background:var(--teal);color:var(--on);display:flex;align-items:center;justify-content:center;flex:none}
+.wave{flex:1;display:flex;align-items:center;gap:3px;height:28px}.wave i{display:block;width:4px;border-radius:2px;background:#5CC0B5}
+.prev{min-height:40px;border-top:1px solid var(--line);font-size:14px}
+.cover{width:96px;flex:none;border-radius:8px 14px 14px 8px;background:#0F5257;border:2px solid #B08D3C;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:10px;box-sizing:border-box;color:#F6F1E7;font-family:'Reem Kufi',serif;font-size:13px;text-align:center}
+.bar{height:8px;border-radius:4px;background:var(--line);overflow:hidden}.bar div{height:100%;background:#0F5257}
+.plan{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.plan div{background:rgba(15,82,87,.08);border-radius:12px;padding:10px 4px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.plan b{font-size:20px;color:#0F5257}.plan span{font-size:11px;color:var(--mu)}
+.dashed{min-height:52px;border-radius:14px;border:2px dashed var(--chip);background:transparent;color:var(--teal);font:inherit;font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:center;gap:8px}
+.lock{background:#0F5257 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44'%3E%3Cg fill='none' stroke='%23D4B26A' stroke-opacity='.35'%3E%3Crect x='12' y='12' width='20' height='20'/%3E%3Crect x='12' y='12' width='20' height='20' transform='rotate(45 22 22)'/%3E%3Ccircle cx='22' cy='22' r='4'/%3E%3Cpath d='M0 0L12 12M44 0L32 12M0 44L12 32M44 44L32 32'/%3E%3C/g%3E%3C/svg%3E")}
+.notif{background:rgba(255,253,248,.96);color:#1F2A2E;border-radius:20px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.muted2{font-size:12px;color:#5A6466}.appic{width:18px;height:18px;border-radius:5px;background:#0F5257;border:1.5px solid #B08D3C}
+.acts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:6px}
+.acts button{min-height:40px;border-radius:10px;border:none;background:#E9E3D6;font:inherit;font-size:13px;font-weight:600;color:#0F5257}
+.acts button:first-child{background:#2E7D4F;color:#fff}
+</style></head><body><div class="wrap"><figure><section id="Main" class="screen">
 
 <div dir="rtl" style="width: 390px; height: 844px; box-sizing: border-box; background: #F6F1E7; color: #1F2A2E; font-family: 'IBM Plex Sans Arabic', sans-serif; display: flex; flex-direction: column; overflow: hidden; position: relative">
 
@@ -27,9 +73,9 @@
         <h1 style="margin: 0; font-family: 'Reem Kufi', serif; font-size: 34px; font-weight: 700; line-height: 1.1">حياتي</h1>
         <p style="margin: 0; font-size: 14px; opacity: 0.9">الاثنين، ١٩ أكتوبر ٢٠٢٦</p>
       </div>
-      <button aria-label="الوضع الداكن" style="width: 44px; height: 44px; border-radius: 22px; border: 1px solid rgba(246,241,231,0.4); background: rgba(0,0,0,0.15); color: #F6F1E7; display: flex; align-items: center; justify-content: center; cursor: pointer">
+      <div style="display:flex;gap:8px"><a href="#Settings" aria-label="الإعدادات" style="width:44px;height:44px;border-radius:22px;border:1px solid rgba(246,241,231,0.4);background:rgba(0,0,0,0.15);color:#F6F1E7;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"></path></svg></a><button aria-label="الوضع الداكن" style="width: 44px; height: 44px; border-radius: 22px; border: 1px solid rgba(246,241,231,0.4); background: rgba(0,0,0,0.15); color: #F6F1E7; display: flex; align-items: center; justify-content: center; cursor: pointer">
         <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
-      </button>
+      </button></div>
     </div>
     <div style="position: relative; margin-top: 18px; display: flex; align-items: center; gap: 12px; background: rgba(246,241,231,0.12); border: 1px solid rgba(212,178,106,0.5); border-radius: 14px; padding: 10px 14px">
       <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D4B26A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-3 3-5 5-5 8a5 5 0 0 0 10 0c0-3-2-5-5-8z"></path><path d="M4 21h16"></path><path d="M6 21v-6M18 21v-6"></path></svg>
@@ -116,27 +162,10 @@
     </section>
   </main>
 
-  <nav aria-label="التنقل الرئيسي" style="display: flex; justify-content: space-around; align-items: center; height: 76px; background: #FFFDF8; border-top: 1px solid #E4DCCB; padding: 0 8px">
-    <a href="#Main" aria-current="page" style="min-width: 64px; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #0F5257; font-size: 12px; font-weight: 600">
-      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
-      اليوم
-    </a>
-    <a href="#Goals" style="min-width: 64px; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #5A6466; font-size: 12px">
-      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1"></circle></svg>
-      أهدافي
-    </a>
-    <a href="#Appointments" style="min-width: 64px; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #5A6466; font-size: 12px">
-      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 2.5M9 2h6"></path></svg>
-      المواعيد
-    </a>
-    <a href="#Settings" style="min-width: 64px; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #5A6466; font-size: 12px">
-      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"></path></svg>
-      الإعدادات
-    </a>
-  </nav>
+  <nav aria-label="التنقل الرئيسي" style="display:flex;justify-content:space-around;align-items:center;height:76px;flex:none;background:#FFFDF8;border-top:1px solid #E4DCCB;padding:0 8px"><a href="#Main" aria-current="page" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#0F5257;font-size:12px;font-weight:600"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>اليوم</a><a href="#Goals" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#5A6466;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1"></circle></svg>أهدافي</a><a href="#Appointments" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#5A6466;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 2.5M9 2h6"></path></svg>المواعيد</a><a href="#Journal" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#5A6466;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"></path><path d="M9 9h6M9 13h4"></path></svg>يومياتي</a></nav>
 </div>
-</section>
-<section id="Goals" class="screen">
+</section><figcaption>اليوم</figcaption></figure>
+<figure><section id="Goals" class="screen">
 
 <div dir="rtl" style="width: 390px; height: 844px; box-sizing: border-box; background: #F6F1E7; color: #1F2A2E; font-family: 'IBM Plex Sans Arabic', sans-serif; display: flex; flex-direction: column; overflow: hidden; position: relative">
 
@@ -241,27 +270,206 @@
     </section>
   </main>
 
-  <nav aria-label="التنقل الرئيسي" style="display: flex; justify-content: space-around; align-items: center; height: 76px; background: #FFFDF8; border-top: 1px solid #E4DCCB; padding: 0 8px">
-    <a href="#Main" style="min-width: 64px; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #5A6466; font-size: 12px">
-      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
-      اليوم
-    </a>
-    <a href="#Goals" aria-current="page" style="min-width: 64px; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #0F5257; font-size: 12px; font-weight: 600">
-      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1"></circle></svg>
-      أهدافي
-    </a>
-    <a href="#Appointments" style="min-width: 64px; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #5A6466; font-size: 12px">
-      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 2.5M9 2h6"></path></svg>
-      المواعيد
-    </a>
-    <a href="#Settings" style="min-width: 64px; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #5A6466; font-size: 12px">
-      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"></path></svg>
-      الإعدادات
-    </a>
-  </nav>
+  <nav aria-label="التنقل الرئيسي" style="display:flex;justify-content:space-around;align-items:center;height:76px;flex:none;background:#FFFDF8;border-top:1px solid #E4DCCB;padding:0 8px"><a href="#Main" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#5A6466;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>اليوم</a><a href="#Goals" aria-current="page" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#0F5257;font-size:12px;font-weight:600"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1"></circle></svg>أهدافي</a><a href="#Appointments" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#5A6466;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 2.5M9 2h6"></path></svg>المواعيد</a><a href="#Journal" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#5A6466;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"></path><path d="M9 9h6M9 13h4"></path></svg>يومياتي</a></nav>
 </div>
-</section>
-<section id="Appointments" class="screen">
+</section><figcaption>أهدافي</figcaption></figure>
+<figure><section id="NewGoal" class="screen">
+<div class="scr">
+  <header class="hdr row">
+    <h1 style="flex: 1">هدف جديد</h1>
+    <button class="icon-btn" aria-label="إغلاق"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg></button>
+  </header>
+  <main class="main" style="gap: 10px">
+    <label class="field">
+      <span class="lbl">الهدف</span>
+      <input type="text" value="قراءة صفحتين من القرآن">
+    </label>
+
+    <div class="card tight">
+      <span class="lbl">المستوى</span>
+      <div class="chips"><button class="chip">سنوي</button><button class="chip">شهري</button><button class="chip">أسبوعي</button><button class="chip on">يومي</button></div>
+      <div class="row muted"><span style="flex: 1">تابع لـ: حفظ ٥ أجزاء (سنوي)</span><span class="link">تغيير</span></div>
+    </div>
+
+    <div class="card tight">
+      <span class="lbl">الوقت</span>
+      <div class="chips"><button class="chip">ساعة محددة</button><button class="chip on">مربوط بصلاة</button></div>
+      <div class="chips"><button class="chip">قبل</button><button class="chip on">بعد</button><span class="sep"></span><button class="chip on">الفجر</button><button class="chip">الظهر</button><button class="chip">العصر</button><button class="chip">المغرب</button><button class="chip">العشاء</button></div>
+      <div class="row"><span style="flex: 1; font-size: 14px">بعد الصلاة بـ</span><button class="chip on">١٥ دقيقة</button></div>
+      <span class="hint">النهارده هينبّهك ٥:٤٠ ص · الميعاد بيتحرك لوحده مع الفجر</span>
+    </div>
+
+    <div class="card tight">
+      <span class="lbl">لو فاتني</span>
+      <div class="chips"><button class="chip on">يتسجّل قضاء</button><button class="chip">رحّله لبكرة</button><button class="chip">اسألني</button></div>
+    </div>
+
+    <label class="card tight row" style="flex-direction: row; cursor: pointer">
+      <span style="flex: 1; display: flex; flex-direction: column; gap: 2px">
+        <span style="font-size: 15px; font-weight: 600">يوم رحمة في الأسبوع</span>
+        <span class="muted">لو فوّت يوم واحد، السلسلة مش هتتكسر</span>
+      </span>
+      <input type="checkbox" checked class="cb">
+    </label>
+
+    <button class="btn" style="margin-top: auto">حفظ الهدف</button>
+  </main>
+</div>
+</section><figcaption>هدف جديد — مربوط بالصلاة + القضاء + يوم رحمة</figcaption></figure>
+<figure><section id="Streak" class="screen">
+<div class="scr">
+  <header class="hdr">
+    <h1>التزامي</h1>
+  </header>
+  <main class="main">
+    <section class="card" aria-label="السلسلة">
+      <div class="row">
+        <svg aria-hidden="true" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#B08D3C" stroke-width="1.3"><rect x="6" y="6" width="12" height="12"></rect><rect x="6" y="6" width="12" height="12" transform="rotate(45 12 12)"></rect><circle cx="12" cy="12" r="2.5" fill="#B08D3C"></circle></svg>
+        <div style="flex: 1; display: flex; flex-direction: column">
+          <span style="font-family: 'Reem Kufi', serif; font-size: 30px; font-weight: 700; color: #0F5257">٢٣ يوم</span>
+          <span class="muted">قراءة صفحتين من القرآن · من غير انقطاع</span>
+        </div>
+      </div>
+      <div class="week">
+        <span class="d ok">سب</span><span class="d ok">أح</span><span class="d grace">اث</span><span class="d ok">ث</span><span class="d ok">أر</span><span class="d ok">خ</span><span class="d today">ج</span>
+      </div>
+      <span class="hint">الاثنين فاتك واستخدمت يوم الرحمة بتاع الأسبوع ده، فالسلسلة كمّلت.</span>
+    </section>
+
+    <section class="card" aria-label="القضاء">
+      <div class="row">
+        <h2 class="h2" style="flex: 1">رصيد القضاء</h2>
+        <span class="badge">٣</span>
+      </div>
+      <div class="qada">
+        <div style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 500">مشي ٣٠ دقيقة</span><span class="muted">فاتك الأحد ١٨ أكتوبر</span></div>
+        <button class="btn sm">اقضِه</button>
+      </div>
+      <div class="qada">
+        <div style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 500">مذاكرة درس فرنساوي</span><span class="muted">فاتك الخميس ١٥ أكتوبر</span></div>
+        <button class="btn sm">اقضِه</button>
+      </div>
+      <div class="qada">
+        <div style="flex: 1; display: flex; flex-direction: column"><span style="font-size: 15px; font-weight: 500">مذاكرة درس فرنساوي</span><span class="muted">فاتك الثلاثاء ١٣ أكتوبر</span></div>
+        <button class="btn sm">اقضِه</button>
+      </div>
+      <span class="hint">الجمعة جدولك فاضي، تحب نحط فيها القضاء؟</span>
+      <button class="btn ghost">حطّهم يوم الجمعة</button>
+    </section>
+  </main>
+  <nav aria-label="التنقل الرئيسي" style="display:flex;justify-content:space-around;align-items:center;height:76px;flex:none;background:#FFFDF8;border-top:1px solid #E4DCCB;padding:0 8px"><a href="#Main" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#5A6466;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>اليوم</a><a href="#Goals" aria-current="page" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#0F5257;font-size:12px;font-weight:600"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1"></circle></svg>أهدافي</a><a href="#Appointments" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#5A6466;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 2.5M9 2h6"></path></svg>المواعيد</a><a href="#Journal" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#5A6466;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"></path><path d="M9 9h6M9 13h4"></path></svg>يومياتي</a></nav>
+</div>
+</section><figcaption>السلسلة والقضاء</figcaption></figure>
+<figure><section id="Books" class="screen">
+<div class="scr">
+  <header class="hdr">
+    <h1>كتبي</h1>
+  </header>
+  <main class="main">
+    <section class="card">
+      <div class="row" style="align-items: stretch; gap: 14px">
+        <div class="cover" aria-hidden="true">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D4B26A" stroke-width="1.1"><rect x="6" y="6" width="12" height="12"></rect><rect x="6" y="6" width="12" height="12" transform="rotate(45 12 12)"></rect><circle cx="12" cy="12" r="2.5"></circle></svg>
+          <span>مقدمة ابن خلدون</span>
+        </div>
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 4px">
+          <h2 class="h2">مقدمة ابن خلدون</h2>
+          <span class="muted">PDF · ٤٢٠ صفحة · ١٢ فصل</span>
+          <span class="muted">وصلت صفحة ٨٤ · الفصل ٣</span>
+          <div class="bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" aria-label="التقدم في الكتاب"><div style="width: 20%"></div></div>
+          <span style="font-size: 13px; font-weight: 600; color: #0F5257">٢٠٪</span>
+        </div>
+      </div>
+      <button class="btn">كمّل القراية من صفحة ٨٥</button>
+    </section>
+
+    <section class="card">
+      <span class="lbl">خطة القراية</span>
+      <div class="chips"><button class="chip on">خلّصه في مدة</button><button class="chip">فصول في الأسبوع</button><button class="chip">صفحات في اليوم</button></div>
+      <div class="chips"><button class="chip">أسبوعين</button><button class="chip on">شهر</button><button class="chip">شهرين</button><button class="chip">٣ شهور</button></div>
+      <div class="plan">
+        <div><b>١٢</b><span>صفحة في اليوم</span></div>
+        <div><b>٣</b><span>فصول في الأسبوع</span></div>
+        <div><b>٢٨ يوم</b><span>متبقي</span></div>
+      </div>
+      <div class="row"><span style="flex: 1; font-size: 14px">ميعاد القراية</span><button class="chip on">بعد العشاء</button></div>
+      <span class="hint">هيتعمل هدف يومي لوحده "اقرأ ١٢ صفحة"، ويتعلّم عليه صح أول ما توصل للصفحة دي في القارئ.</span>
+    </section>
+
+    <button class="dashed"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg>أضف كتاب (PDF أو EPUB)</button>
+  </main>
+  <nav aria-label="التنقل الرئيسي" style="display:flex;justify-content:space-around;align-items:center;height:76px;flex:none;background:#FFFDF8;border-top:1px solid #E4DCCB;padding:0 8px"><a href="#Main" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#5A6466;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>اليوم</a><a href="#Goals" aria-current="page" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#0F5257;font-size:12px;font-weight:600"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1"></circle></svg>أهدافي</a><a href="#Appointments" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#5A6466;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 2.5M9 2h6"></path></svg>المواعيد</a><a href="#Journal" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#5A6466;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"></path><path d="M9 9h6M9 13h4"></path></svg>يومياتي</a></nav>
+</div>
+</section><figcaption>كتبي — خطة القراية</figcaption></figure>
+<figure><section id="Journal" class="screen">
+<div class="scr dark">
+  <header class="hdr">
+    <h1>يومياتي</h1>
+    <div class="row" style="margin-top: 10px">
+      <button class="icon-btn" aria-label="اليوم السابق"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"></path></svg></button>
+      <span style="flex: 1; text-align: center; font-size: 15px; font-weight: 600">الاثنين، ١٩ أكتوبر</span>
+      <button class="icon-btn" aria-label="اليوم التالي"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 6l-6 6 6 6"></path></svg></button>
+    </div>
+  </header>
+  <main class="main">
+    <section class="card" aria-label="مكتوب">
+      <span class="lbl">مكتوب</span>
+      <p style="margin: 0; font-size: 15px; line-height: 1.8">النهارده خلصت التقرير بدري، ومشيت بعد العصر. حاسس إن الأسبوع ده أحسن من اللي فات، بس لازم أنام بدري عشان الفجر…</p>
+      <span class="hint">٣ دقايق من فوق كتبتهم بصوتك</span>
+    </section>
+
+    <div class="grid2">
+      <button class="btn tall"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"></rect><path d="M5 11a7 7 0 0 0 14 0M12 18v3"></path></svg>اكتب بصوتك</button>
+      <button class="btn tall ghost"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"></circle><circle cx="12" cy="12" r="4" fill="#E06A5F"></circle></svg>سجّل ريكورد</button>
+    </div>
+
+    <section class="card" aria-label="ريكوردات">
+      <span class="lbl">ريكوردات اليوم</span>
+      <div class="rec">
+        <button class="play" aria-label="تشغيل"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></button>
+        <div class="wave" aria-hidden="true"><i style="height:8px"></i><i style="height:16px"></i><i style="height:22px"></i><i style="height:12px"></i><i style="height:26px"></i><i style="height:18px"></i><i style="height:10px"></i><i style="height:20px"></i><i style="height:14px"></i><i style="height:24px"></i><i style="height:8px"></i><i style="height:16px"></i><i style="height:12px"></i><i style="height:20px"></i><i style="height:6px"></i><i style="height:14px"></i><i style="height:22px"></i><i style="height:10px"></i></div>
+        <span class="muted" style="white-space: nowrap">١:٢٤</span>
+      </div>
+      <div class="rec">
+        <button class="play" aria-label="تشغيل"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg></button>
+        <div class="wave" aria-hidden="true"><i style="height:12px"></i><i style="height:20px"></i><i style="height:8px"></i><i style="height:16px"></i><i style="height:24px"></i><i style="height:10px"></i><i style="height:18px"></i><i style="height:14px"></i><i style="height:22px"></i><i style="height:8px"></i><i style="height:12px"></i><i style="height:18px"></i></div>
+        <span class="muted" style="white-space: nowrap">٠:٤٧</span>
+      </div>
+    </section>
+
+    <section class="card" aria-label="أيام سابقة" style="gap: 6px">
+      <span class="lbl">أيام سابقة</span>
+      <div class="row prev"><span style="flex: 1">الأحد ١٨ أكتوبر</span><span class="muted">مكتوب + ريكورد</span></div>
+      <div class="row prev"><span style="flex: 1">السبت ١٧ أكتوبر</span><span class="muted">مكتوب</span></div>
+    </section>
+  </main>
+  <nav aria-label="التنقل الرئيسي" style="display:flex;justify-content:space-around;align-items:center;height:76px;flex:none;background:#12282B;border-top:1px solid #2A4044;padding:0 8px"><a href="#Main" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#A9B4B0;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>اليوم</a><a href="#Goals" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#A9B4B0;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1"></circle></svg>أهدافي</a><a href="#Appointments" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#A9B4B0;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 2.5M9 2h6"></path></svg>المواعيد</a><a href="#Journal" aria-current="page" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#D4B26A;font-size:12px;font-weight:600"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"></path><path d="M9 9h6M9 13h4"></path></svg>يومياتي</a></nav>
+</div>
+</section><figcaption>يومياتي (داكن)</figcaption></figure>
+<figure><section id="Notify" class="screen">
+<div class="scr lock">
+  <div style="padding: 120px 14px 0; display: flex; flex-direction: column; gap: 10px">
+    <p style="margin: 0 0 18px; text-align: center; color: #F6F1E7; font-size: 15px">إشعار مراجعة المساء · من غير ما تفتح التطبيق</p>
+    <div class="notif">
+      <div class="row muted2"><span class="appic" aria-hidden="true"></span><span style="flex: 1">حياتي · ٨:٠٠ م</span></div>
+      <b style="font-size: 15px">إنهاء تقرير الشغل</b>
+      <span class="muted">عملته النهارده؟</span>
+      <div class="acts"><button>تم ✓</button><button>ما اتعملش</button><button>رحّله لبكرة</button></div>
+    </div>
+    <div class="notif">
+      <div class="row muted2"><span class="appic" aria-hidden="true"></span><span style="flex: 1">حياتي · ٨:٠٠ م</span></div>
+      <b style="font-size: 15px">اقرأ ١٢ صفحة · مقدمة ابن خلدون</b>
+      <span class="muted">عملته النهارده؟</span>
+      <div class="acts"><button>تم ✓</button><button>ما اتعملش</button><button>رحّله لبكرة</button></div>
+    </div>
+    <div class="notif" style="opacity: 0.92">
+      <div class="row muted2"><span class="appic" aria-hidden="true"></span><span style="flex: 1">حياتي · ٨:٠٠ م</span></div>
+      <b style="font-size: 15px">باقي ١ هدف · افتح المراجعة</b>
+    </div>
+  </div>
+</div>
+</section><figcaption>إشعار الساعة ٨ بأزرار</figcaption></figure>
+<figure><section id="Appointments" class="screen">
 
 <div dir="rtl" style="width: 390px; height: 844px; box-sizing: border-box; background: #0E1A1C; color: #EDE6D6; font-family: 'IBM Plex Sans Arabic', sans-serif; display: flex; flex-direction: column; overflow: hidden; position: relative">
 
@@ -359,27 +567,10 @@
     </section>
   </main>
 
-  <nav aria-label="التنقل الرئيسي" style="display: flex; justify-content: space-around; align-items: center; height: 76px; background: #12282B; border-top: 1px solid #2A4044; padding: 0 8px">
-    <a href="#Main" style="min-width: 64px; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #A9B4B0; font-size: 12px">
-      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
-      اليوم
-    </a>
-    <a href="#Goals" style="min-width: 64px; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #A9B4B0; font-size: 12px">
-      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1"></circle></svg>
-      أهدافي
-    </a>
-    <a href="#Appointments" aria-current="page" style="min-width: 64px; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #D4B26A; font-size: 12px; font-weight: 600">
-      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 2.5M9 2h6"></path></svg>
-      المواعيد
-    </a>
-    <a href="#Settings" style="min-width: 64px; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #A9B4B0; font-size: 12px">
-      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"></path></svg>
-      الإعدادات
-    </a>
-  </nav>
+  <nav aria-label="التنقل الرئيسي" style="display:flex;justify-content:space-around;align-items:center;height:76px;flex:none;background:#12282B;border-top:1px solid #2A4044;padding:0 8px"><a href="#Main" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#A9B4B0;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>اليوم</a><a href="#Goals" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#A9B4B0;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1"></circle></svg>أهدافي</a><a href="#Appointments" aria-current="page" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#D4B26A;font-size:12px;font-weight:600"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 2.5M9 2h6"></path></svg>المواعيد</a><a href="#Journal" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#A9B4B0;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"></path><path d="M9 9h6M9 13h4"></path></svg>يومياتي</a></nav>
 </div>
-</section>
-<section id="Settings" class="screen">
+</section><figcaption>المواعيد (داكن)</figcaption></figure>
+<figure><section id="Settings" class="screen">
 
 <div dir="rtl" style="width: 390px; height: 844px; box-sizing: border-box; background: #F6F1E7; color: #1F2A2E; font-family: 'IBM Plex Sans Arabic', sans-serif; display: flex; flex-direction: column; overflow: hidden">
 
@@ -459,23 +650,6 @@
     </section>
   </main>
 
-  <nav aria-label="التنقل الرئيسي" style="display: flex; justify-content: space-around; align-items: center; height: 76px; background: #FFFDF8; border-top: 1px solid #E4DCCB; padding: 0 8px">
-    <a href="#Main" style="min-width: 64px; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #5A6466; font-size: 12px">
-      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
-      اليوم
-    </a>
-    <a href="#Goals" style="min-width: 64px; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #5A6466; font-size: 12px">
-      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1"></circle></svg>
-      أهدافي
-    </a>
-    <a href="#Appointments" style="min-width: 64px; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #5A6466; font-size: 12px">
-      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 2.5M9 2h6"></path></svg>
-      المواعيد
-    </a>
-    <a href="#Settings" aria-current="page" style="min-width: 64px; min-height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-decoration: none; color: #0F5257; font-size: 12px; font-weight: 600">
-      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"></path></svg>
-      الإعدادات
-    </a>
-  </nav>
+  <nav aria-label="التنقل الرئيسي" style="display:flex;justify-content:space-around;align-items:center;height:76px;flex:none;background:#FFFDF8;border-top:1px solid #E4DCCB;padding:0 8px"><a href="#Main" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#5A6466;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>اليوم</a><a href="#Goals" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#5A6466;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="5"></circle><circle cx="12" cy="12" r="1"></circle></svg>أهدافي</a><a href="#Appointments" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#5A6466;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"></circle><path d="M12 9v4l2.5 2.5M9 2h6"></path></svg>المواعيد</a><a href="#Journal" style="min-width:64px;min-height:52px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:#5A6466;font-size:12px;"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"></path><path d="M9 9h6M9 13h4"></path></svg>يومياتي</a></nav>
 </div>
-</section></div></body></html>
+</section><figcaption>الإعدادات</figcaption></figure></div></body></html>
