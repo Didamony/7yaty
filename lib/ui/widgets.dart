@@ -71,7 +71,7 @@ class OrnateHeader extends StatelessWidget {
                                 label: title,
                                 child: Image.asset(
                                   'assets/logo/logo_word.png',
-                                  height: 62,
+                                  height: 76,
                                   excludeFromSemantics: true,
                                 ),
                               )
