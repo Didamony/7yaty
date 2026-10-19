@@ -169,7 +169,7 @@ class _Cover extends StatelessWidget {
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const StarMark(size: 36, color: Color(0xFFD4B26A)),
+        const Rosette(size: 36, color: Color(0xFFD4B26A)),
         const SizedBox(height: 8),
         Text(
           title,

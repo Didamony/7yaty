@@ -85,7 +85,7 @@ class _GoalsPageState extends State<GoalsPage> {
                 children: [
                   Expanded(
                     child: _MiniCard(
-                      icon: StarMark(size: 26, color: p.gold, filled: true),
+                      icon: Rosette(size: 26, color: p.gold, filled: true),
                       title: tr('التزامي'),
                       value: tr('{n} يوم', {'n': best}),
                       badge: qada > 0 ? tr('قضاء {n}', {'n': qada}) : null,
@@ -552,7 +552,7 @@ class StreakPage extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            StarMark(size: 40, color: p.gold, filled: true),
+                            Rosette(size: 40, color: p.gold, filled: true),
                             const SizedBox(width: 12),
                             Expanded(
                               child: Column(

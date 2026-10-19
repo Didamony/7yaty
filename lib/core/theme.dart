@@ -179,9 +179,10 @@ ThemeData buildTheme(Brightness brightness) {
   );
 }
 
-/// The eight-pointed star (khatam) lattice drawn behind headers.
-class KhatamPainter extends CustomPainter {
-  const KhatamPainter({required this.color, this.cell = 44});
+/// The mashrabiya lattice drawn behind headers: diamonds with a ring at
+/// each crossing, like a carved wooden screen.
+class LatticePainter extends CustomPainter {
+  const LatticePainter({required this.color, this.cell = 36});
 
   final Color color;
   final double cell;
@@ -191,45 +192,39 @@ class KhatamPainter extends CustomPainter {
     final paint = Paint()
       ..color = color
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 1;
+      ..strokeWidth = 1.2;
+    final h = cell / 2;
     for (double y = 0; y < size.height + cell; y += cell) {
       for (double x = 0; x < size.width + cell; x += cell) {
-        final c = Offset(x + cell / 2, y + cell / 2);
-        final r = cell * 10 / 44;
-        canvas.drawRect(
-          Rect.fromCenter(center: c, width: 2 * r, height: 2 * r),
+        final c = Offset(x + h, y + h);
+        canvas.drawPath(
+          Path()
+            ..moveTo(x, y + h)
+            ..lineTo(x + h, y)
+            ..lineTo(x + cell, y + h)
+            ..lineTo(x + h, y + cell)
+            ..close(),
           paint,
         );
-        canvas.save();
-        canvas.translate(c.dx, c.dy);
-        canvas.rotate(math.pi / 4);
-        canvas.drawRect(
-          Rect.fromCenter(center: Offset.zero, width: 2 * r, height: 2 * r),
-          paint,
-        );
-        canvas.restore();
-        canvas.drawCircle(c, cell * 4 / 44, paint);
-        final k = cell * 12 / 44;
+        canvas.drawCircle(c, cell * 4 / 36, paint);
+        canvas.drawCircle(Offset(x, y), cell * 3 / 36, paint);
+        final t = cell * 10 / 36, u = cell * 6 / 36;
         canvas
-          ..drawLine(Offset(x, y), Offset(x + k, y + k), paint)
-          ..drawLine(Offset(x + cell, y), Offset(x + cell - k, y + k), paint)
-          ..drawLine(Offset(x, y + cell), Offset(x + k, y + cell - k), paint)
-          ..drawLine(
-            Offset(x + cell, y + cell),
-            Offset(x + cell - k, y + cell - k),
-            paint,
-          );
+          ..drawLine(c.translate(0, -t), c.translate(0, -u), paint)
+          ..drawLine(c.translate(0, t), c.translate(0, u), paint)
+          ..drawLine(c.translate(-t, 0), c.translate(-u, 0), paint)
+          ..drawLine(c.translate(t, 0), c.translate(u, 0), paint);
       }
     }
   }
 
   @override
-  bool shouldRepaint(KhatamPainter old) => old.color != color;
+  bool shouldRepaint(LatticePainter old) => old.color != color;
 }
 
-/// A single eight-pointed star, used as an ornament and divider mark.
-class StarMark extends StatelessWidget {
-  const StarMark({super.key, this.size = 16, this.color, this.filled = false});
+/// A floral rosette (shamsa) of eight round petals, used as an ornament.
+class Rosette extends StatelessWidget {
+  const Rosette({super.key, this.size = 16, this.color, this.filled = false});
 
   final double size;
   final Color? color;
@@ -239,44 +234,46 @@ class StarMark extends StatelessWidget {
   Widget build(BuildContext context) => ExcludeSemantics(
     child: CustomPaint(
       size: Size.square(size),
-      painter: _StarPainter(color ?? Palette.of(context).gold, filled),
+      painter: _RosettePainter(color ?? Palette.of(context).gold, filled),
     ),
   );
 }
 
-class _StarPainter extends CustomPainter {
-  _StarPainter(this.color, this.filled);
+class _RosettePainter extends CustomPainter {
+  _RosettePainter(this.color, this.filled);
 
   final Color color;
   final bool filled;
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()
+    final s = size.width;
+    final stroke = Paint()
       ..color = color
       ..style = PaintingStyle.stroke
-      ..strokeWidth = size.width / 16;
-    final c = size.center(Offset.zero);
-    final r = size.width * 0.3;
-    final rect = Rect.fromCenter(
-      center: Offset.zero,
-      width: 2 * r,
-      height: 2 * r,
-    );
+      ..strokeWidth = s / 18;
+    final fill = Paint()..color = color.withValues(alpha: filled ? 0.35 : 0);
     canvas.save();
-    canvas.translate(c.dx, c.dy);
-    canvas.drawRect(rect, paint);
-    canvas.rotate(math.pi / 4);
-    canvas.drawRect(rect, paint);
+    canvas.translate(s / 2, s / 2);
+    for (var i = 0; i < 8; i++) {
+      final petal = Rect.fromCenter(
+        center: Offset(0, -s * 0.25),
+        width: s * 0.2,
+        height: s * 0.4,
+      );
+      if (filled) canvas.drawOval(petal, fill);
+      canvas.drawOval(petal, stroke);
+      canvas.rotate(math.pi / 4);
+    }
     canvas.restore();
     canvas.drawCircle(
-      c,
-      size.width * 0.1,
-      paint..style = filled ? PaintingStyle.fill : PaintingStyle.stroke,
+      size.center(Offset.zero),
+      s * 0.1,
+      Paint()..color = color,
     );
   }
 
   @override
-  bool shouldRepaint(_StarPainter old) =>
+  bool shouldRepaint(_RosettePainter old) =>
       old.color != color || old.filled != filled;
 }

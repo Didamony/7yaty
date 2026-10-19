@@ -181,7 +181,7 @@ class _SurahTile extends StatelessWidget {
               child: Stack(
                 alignment: Alignment.center,
                 children: [
-                  StarMark(size: 44, color: p.gold),
+                  Rosette(size: 44, color: p.gold),
                   Text(
                     n(surah.number),
                     style: TextStyle(
@@ -488,7 +488,7 @@ class _SurahBanner extends StatelessWidget {
       ),
       child: Row(
         children: [
-          StarMark(size: 26, color: p.gold),
+          Rosette(size: 26, color: p.gold),
           Expanded(
             child: Text(
               'سورة $name',
@@ -501,7 +501,7 @@ class _SurahBanner extends StatelessWidget {
               ),
             ),
           ),
-          StarMark(size: 26, color: p.gold),
+          Rosette(size: 26, color: p.gold),
         ],
       ),
     );

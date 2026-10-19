@@ -40,7 +40,7 @@ class OrnateHeader extends StatelessWidget {
         children: [
           Positioned.fill(
             child: CustomPaint(
-              painter: KhatamPainter(
+              painter: LatticePainter(
                 color: const Color(0xFFD4B26A).withValues(alpha: 0.3),
               ),
             ),
@@ -222,7 +222,7 @@ class StarDivider extends StatelessWidget {
           line,
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
-            child: StarMark(size: 16),
+            child: Rosette(size: 16),
           ),
           line,
         ],
@@ -309,7 +309,7 @@ class EmptyNote extends StatelessWidget {
     padding: const EdgeInsets.symmetric(vertical: 28),
     child: Column(
       children: [
-        const StarMark(size: 36),
+        const Rosette(size: 36),
         const SizedBox(height: 10),
         Text(
           text,

@@ -430,7 +430,7 @@ class _GoalTile extends StatelessWidget {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      StarMark(size: 14, color: p.gold, filled: true),
+                      Rosette(size: 14, color: p.gold, filled: true),
                       const SizedBox(width: 3),
                       Text(
                         n(streak),

@@ -251,7 +251,7 @@ class _BackgroundPicker extends StatelessWidget {
                     : DecorationImage(image: image, fit: BoxFit.cover),
               ),
               child: image == null
-                  ? const Center(child: StarMark(size: 24))
+                  ? const Center(child: Rosette(size: 24))
                   : null,
             ),
             const SizedBox(width: 12),

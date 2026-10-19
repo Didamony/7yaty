@@ -510,7 +510,7 @@ class _DigitalCounter extends StatelessWidget {
                 child: const SizedBox.square(
                   dimension: 96,
                   child: Center(
-                    child: StarMark(size: 40, color: Color(0xFF1F2A2E)),
+                    child: Rosette(size: 40, color: Color(0xFF1F2A2E)),
                   ),
                 ),
               ),

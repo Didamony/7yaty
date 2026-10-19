@@ -70,7 +70,7 @@ class _CategoryTile extends StatelessWidget {
           padding: const EdgeInsets.all(14),
           child: Row(
             children: [
-              StarMark(size: 30, color: p.gold, filled: done),
+              Rosette(size: 30, color: p.gold, filled: done),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(
