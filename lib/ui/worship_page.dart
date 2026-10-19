@@ -162,11 +162,11 @@ class _BigCard extends StatelessWidget {
                     width: 54,
                     height: 54,
                     decoration: BoxDecoration(
-                      color: const Color(0xFF0F5257),
+                      color: p.header,
                       borderRadius: BorderRadius.circular(16),
                       border: Border.all(color: p.gold, width: 1.5),
                     ),
-                    child: Icon(icon, color: const Color(0xFFD4B26A), size: 28),
+                    child: Icon(icon, color: p.gold, size: 28),
                   ),
                   const SizedBox(width: 14),
                   Expanded(

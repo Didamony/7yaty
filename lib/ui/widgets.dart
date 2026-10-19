@@ -33,16 +33,15 @@ class OrnateHeader extends StatelessWidget {
     return Container(
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
-        color: p.header,
+        // Slightly see-through so the theme picture shows under the header.
+        color: p.header.withValues(alpha: 0.9),
         border: Border(bottom: BorderSide(color: p.gold, width: 3)),
       ),
       child: Stack(
         children: [
           Positioned.fill(
             child: CustomPaint(
-              painter: LatticePainter(
-                color: const Color(0xFFD4B26A).withValues(alpha: 0.3),
-              ),
+              painter: LatticePainter(color: p.gold.withValues(alpha: 0.3)),
             ),
           ),
           SafeArea(
@@ -249,7 +248,7 @@ class Bar extends StatelessWidget {
         backgroundColor: context.pal.line,
         color: Theme.of(context).brightness == Brightness.dark
             ? context.pal.primary
-            : const Color(0xFF0F5257),
+            : context.pal.primary,
       ),
     ),
   );

@@ -214,11 +214,11 @@ class _NextPrayer extends StatelessWidget {
     decoration: BoxDecoration(
       color: const Color(0x1FF6F1E7),
       borderRadius: BorderRadius.circular(14),
-      border: Border.all(color: const Color(0x80D4B26A)),
+      border: Border.all(color: context.pal.gold.withValues(alpha: 0.6)),
     ),
     child: Row(
       children: [
-        const Icon(Icons.mosque_outlined, color: Color(0xFFD4B26A)),
+        Icon(Icons.mosque_outlined, color: context.pal.gold),
         const SizedBox(width: 12),
         Expanded(
           child: Column(
@@ -242,7 +242,7 @@ class _NextPrayer extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
           decoration: BoxDecoration(
-            color: const Color(0xFFD4B26A),
+            color: context.pal.gold,
             borderRadius: BorderRadius.circular(999),
           ),
           child: Text(
@@ -586,7 +586,7 @@ class _MissTile extends StatelessWidget {
                   onPressed: () =>
                       store.update((d) => d.carry(goal, day, today())),
                   style: FilledButton.styleFrom(
-                    backgroundColor: const Color(0xFF0F5257),
+                    backgroundColor: p.header,
                     foregroundColor: const Color(0xFFF6F1E7),
                   ),
                   child: Text(tr('رحّله لليوم')),

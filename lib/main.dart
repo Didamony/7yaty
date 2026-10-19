@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import 'core/i18n.dart';
 import 'core/theme.dart';
+import 'data/models.dart';
 import 'data/store.dart';
 import 'demo.dart';
 import 'services/drive_sync.dart';
@@ -73,6 +74,9 @@ class _HayatiAppState extends State<HayatiApp> with WidgetsBindingObserver {
   }
 
   @override
+  void didChangePlatformBrightness() => setState(() {});
+
+  @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     final store = context.read<AppStore>();
     if (state == AppLifecycleState.resumed) {
@@ -88,38 +92,92 @@ class _HayatiAppState extends State<HayatiApp> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     final s = context.watch<AppStore>().settings;
     L10n.lang = s.lang;
+    final t = activeTheme(
+      s,
+      WidgetsBinding.instance.platformDispatcher.platformBrightness,
+      DateTime.now(),
+    );
     return MaterialApp(
       title: 'حياتي',
       debugShowCheckedModeBanner: false,
-      theme: buildTheme(Brightness.light),
-      darkTheme: buildTheme(Brightness.dark),
-      themeMode: switch (s.theme) {
-        'light' => ThemeMode.light,
-        'dark' => ThemeMode.dark,
-        _ => ThemeMode.system,
-      },
+      theme: buildTheme(t),
       locale: Locale(s.lang),
       supportedLocales: L10n.supported.map(Locale.new),
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
-      builder: (context, child) {
-        final p = Palette.of(context);
-        final image = Files.image(s.bgImage);
-        return ColoredBox(
-          color: p.bg,
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              if (image != null)
-                Opacity(
-                  opacity: s.bgOpacity,
-                  child: Image(image: image, fit: BoxFit.cover),
-                ),
-              child!,
-            ],
-          ),
-        );
-      },
+      builder: (context, child) => ThemeBackground(
+        theme: t,
+        image: Files.image(s.themeImages[t.id]),
+        strength: s.bgOpacity,
+        child: child!,
+      ),
       home: const Shell(),
+    );
+  }
+}
+
+/// Which look to use now: the dark theme in dark mode, otherwise the
+/// user's fixed pick or the theme of today's weekday.
+AppTheme activeTheme(Settings s, Brightness platform, DateTime now) {
+  final dark =
+      s.theme == 'dark' || (s.theme == 'system' && platform == Brightness.dark);
+  if (dark) return AppTheme.darkTheme;
+  if (s.themeChoice == 'auto') return AppTheme.forDay(now);
+  return AppTheme.byId(s.themeChoice);
+}
+
+/// The theme picture behind every screen, or a soft gradient in the
+/// theme's colors when no picture has been chosen.
+class ThemeBackground extends StatelessWidget {
+  const ThemeBackground({
+    super.key,
+    required this.theme,
+    required this.image,
+    required this.strength,
+    required this.child,
+  });
+
+  final AppTheme theme;
+  final ImageProvider? image;
+  final double strength;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final p = theme.palette;
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [p.bg, p.hint],
+        ),
+      ),
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          if (image != null) ...[
+            Opacity(
+              opacity: strength,
+              child: Image(image: image!, fit: BoxFit.cover),
+            ),
+            // A veil in the theme's own color keeps text readable on busy
+            // pictures.
+            DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    p.bg.withValues(alpha: 0.55),
+                    p.bg.withValues(alpha: 0.3),
+                  ],
+                ),
+              ),
+            ),
+          ],
+          child,
+        ],
+      ),
     );
   }
 }

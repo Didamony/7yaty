@@ -157,19 +157,19 @@ class _Cover extends StatelessWidget {
     width: 92,
     padding: const EdgeInsets.all(10),
     decoration: BoxDecoration(
-      color: const Color(0xFF0F5257),
+      color: context.pal.header,
       borderRadius: const BorderRadiusDirectional.only(
         topStart: Radius.circular(8),
         bottomStart: Radius.circular(8),
         topEnd: Radius.circular(14),
         bottomEnd: Radius.circular(14),
       ),
-      border: Border.all(color: const Color(0xFFB08D3C), width: 2),
+      border: Border.all(color: context.pal.gold, width: 2),
     ),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Rosette(size: 36, color: Color(0xFFD4B26A)),
+        Rosette(size: 36, color: context.pal.gold),
         const SizedBox(height: 8),
         Text(
           title,
@@ -706,7 +706,7 @@ class _ReaderPageState extends State<ReaderPage> {
                 'r': b.readToday(now).clamp(0, b.perDay(now)),
                 'd': b.perDay(now),
               }),
-              style: const TextStyle(color: Color(0xFFD4B26A), fontSize: 13),
+              style: TextStyle(color: context.pal.gold, fontSize: 13),
             ),
           ),
         ),

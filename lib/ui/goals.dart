@@ -157,7 +157,7 @@ class _LevelTabs extends StatelessWidget {
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: l == selected
-                          ? const Color(0xFFD4B26A)
+                          ? context.pal.gold
                           : Colors.transparent,
                       borderRadius: BorderRadius.circular(9),
                     ),

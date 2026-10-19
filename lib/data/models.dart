@@ -410,13 +410,15 @@ class Settings {
     Map<String, int>? prayerBefore,
     this.adhanAtTime = true,
     this.city = 0,
-    this.bgImage,
-    this.bgOpacity = 0.25,
+    this.themeChoice = 'auto',
+    Map<String, String>? themeImages,
+    this.bgOpacity = 0.6,
     this.syncBooks = true,
     this.googleEmail,
     this.lastSync,
   }) : prayerBefore =
-           prayerBefore ?? {for (final p in Prayer.values) p.name: 10};
+           prayerBefore ?? {for (final p in Prayer.values) p.name: 10},
+       themeImages = themeImages ?? {};
 
   String theme;
   String lang;
@@ -425,8 +427,13 @@ class Settings {
   bool adhanAtTime;
   int city;
 
-  /// A file name in the app folder, or a `data:` URI on the web build.
-  String? bgImage;
+  /// `auto` (a theme per weekday) or a fixed theme id.
+  String themeChoice;
+
+  /// The user's picture for each theme id: a file name in the media folder.
+  Map<String, String> themeImages;
+
+  /// How strongly the theme picture shows behind the screens.
   double bgOpacity;
   bool syncBooks;
   String? googleEmail;
@@ -439,7 +446,8 @@ class Settings {
     'prayerBefore': prayerBefore,
     'adhanAtTime': adhanAtTime,
     'city': city,
-    'bgImage': bgImage,
+    'themeChoice': themeChoice,
+    'themeImages': themeImages,
     'bgOpacity': bgOpacity,
     'syncBooks': syncBooks,
     'googleEmail': googleEmail,
@@ -453,8 +461,9 @@ class Settings {
     prayerBefore: (j['prayerBefore'] as Map?)?.cast<String, int>(),
     adhanAtTime: j['adhanAtTime'] ?? true,
     city: j['city'] ?? 0,
-    bgImage: j['bgImage'],
-    bgOpacity: (j['bgOpacity'] ?? 0.25).toDouble(),
+    themeChoice: j['themeChoice'] ?? 'auto',
+    themeImages: (j['themeImages'] as Map?)?.cast<String, String>(),
+    bgOpacity: (j['bgOpacity'] ?? 0.6).toDouble(),
     syncBooks: j['syncBooks'] ?? true,
     googleEmail: j['googleEmail'],
     lastSync: j['lastSync'],

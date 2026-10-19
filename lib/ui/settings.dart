@@ -56,7 +56,7 @@ class SettingsPage extends StatelessWidget {
                         store.update((d) => d.settings.theme = v),
                   ),
                   const SizedBox(height: 12),
-                  const _BackgroundPicker(),
+                  const _ThemePicker(),
                 ]),
                 section(tr('اللغة'), [
                   GridView.count(
@@ -207,95 +207,252 @@ class _Row extends StatelessWidget {
   );
 }
 
-class _BackgroundPicker extends StatelessWidget {
-  const _BackgroundPicker();
+/// The eight themes: automatic by weekday or a fixed pick, each with an
+/// optional picture from the phone.
+class _ThemePicker extends StatelessWidget {
+  const _ThemePicker();
 
-  Future<void> _pick(BuildContext context) async {
+  Future<void> _pickImage(BuildContext context, AppTheme t) async {
     final img = await ImagePicker().pickImage(
       source: ImageSource.gallery,
       maxWidth: 2000,
-      imageQuality: 85,
+      imageQuality: 88,
     );
     if (img == null || !context.mounted) return;
     final store = context.store;
-    final old = store.settings.bgImage;
-    final name = '${newId()}.jpg';
+    final old = store.settings.themeImages[t.id];
+    final name = 'theme-${t.id}-${newId()}.jpg';
     await Files.write('media', name, await img.readAsBytes());
-    if (old != null && !old.startsWith('data:')) {
-      await Files.delete('media', old);
-    }
-    await store.update((d) => d.settings.bgImage = name);
+    if (old != null && !old.contains(':')) await Files.delete('media', old);
+    await store.update((d) => d.settings.themeImages[t.id] = name);
+  }
+
+  Future<void> _menu(BuildContext context, AppTheme t) async {
+    final store = context.store;
+    final hasImage = store.settings.themeImages[t.id] != null;
+    await showModalBottomSheet(
+      context: context,
+      builder: (c) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              tr(t.name),
+              style: const TextStyle(
+                fontFamily: kDisplay,
+                fontSize: 20,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.check_circle_outline),
+              title: Text(tr('استخدم الشكل ده على طول')),
+              onTap: () {
+                store.update((d) {
+                  d.settings.themeChoice = t.id;
+                  if (!t.isDark && d.settings.theme == 'dark') {
+                    d.settings.theme = 'light';
+                  }
+                });
+                Navigator.pop(c);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.photo_outlined),
+              title: Text(
+                hasImage ? tr('غيّر الصورة') : tr('اختار صورة للشكل ده'),
+              ),
+              onTap: () {
+                Navigator.pop(c);
+                _pickImage(context, t);
+              },
+            ),
+            if (hasImage)
+              ListTile(
+                leading: const Icon(Icons.hide_image_outlined),
+                title: Text(tr('شيل الصورة')),
+                onTap: () async {
+                  final old = store.settings.themeImages[t.id]!;
+                  Navigator.pop(c);
+                  if (!old.contains(':')) await Files.delete('media', old);
+                  await store.update(
+                    (d) => d.settings.themeImages.remove(t.id),
+                  );
+                },
+              ),
+          ],
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     final store = context.watch<AppStore>();
     final s = store.settings;
-    final image = Files.image(s.bgImage);
+    final p = context.pal;
+    final today = AppTheme.forDay(DateTime.now());
+    const days = [
+      'السبت',
+      'الأحد',
+      'الاثنين',
+      'الثلاثاء',
+      'الأربعاء',
+      'الخميس',
+      'الجمعة',
+    ];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(tr('صورة الخلفية'), style: const TextStyle(fontSize: 15)),
-        const SizedBox(height: 8),
-        Row(
+        Text(tr('شكل التطبيق'), style: const TextStyle(fontSize: 15)),
+        const SizedBox(height: 4),
+        SwitchListTile(
+          contentPadding: EdgeInsets.zero,
+          value: s.themeChoice == 'auto',
+          onChanged: (v) => store.update(
+            (d) => d.settings.themeChoice = v ? 'auto' : today.id,
+          ),
+          title: Text(tr('شكل مختلف لكل يوم')),
+          subtitle: Muted(tr('وفي الوضع الداكن بيبقى شكل الكسوة')),
+        ),
+        const SizedBox(height: 6),
+        GridView.count(
+          crossAxisCount: 4,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 8,
+          childAspectRatio: 0.52,
           children: [
-            Container(
-              width: 64,
-              height: 96,
-              decoration: BoxDecoration(
-                color: context.pal.bg,
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: context.pal.chip),
-                image: image == null
-                    ? null
-                    : DecorationImage(image: image, fit: BoxFit.cover),
+            for (final (i, t) in appThemes.indexed)
+              _ThemeThumb(
+                theme: t,
+                label: i < 7 ? tr(days[i]) : tr('الداكن'),
+                image: Files.image(s.themeImages[t.id]),
+                selected: s.themeChoice == 'auto'
+                    ? (t.isDark ? false : t.id == today.id)
+                    : s.themeChoice == t.id,
+                onTap: () => _menu(context, t),
               ),
-              child: image == null
-                  ? const Center(child: Rosette(size: 24))
-                  : null,
-            ),
-            const SizedBox(width: 12),
+          ],
+        ),
+        const SizedBox(height: 6),
+        Muted(tr('اضغط على أي شكل عشان تختاره أو تحط له صورة من الموبايل.')),
+        const SizedBox(height: 8),
+        Text(tr('وضوح الصورة'), style: TextStyle(fontSize: 13, color: p.ink)),
+        Slider(
+          value: s.bgOpacity.clamp(0.1, 1),
+          min: 0.1,
+          max: 1,
+          label: pct(s.bgOpacity),
+          onChanged: (v) {
+            s.bgOpacity = v;
+            store.touch();
+          },
+          onChangeEnd: (v) => store.update((d) => d.settings.bgOpacity = v),
+        ),
+      ],
+    );
+  }
+}
+
+class _ThemeThumb extends StatelessWidget {
+  const _ThemeThumb({
+    required this.theme,
+    required this.label,
+    required this.image,
+    required this.selected,
+    required this.onTap,
+  });
+
+  final AppTheme theme;
+  final String label;
+  final ImageProvider? image;
+  final bool selected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final t = theme.palette;
+    final p = context.pal;
+    return Semantics(
+      button: true,
+      selected: selected,
+      label: '$label · ${tr(theme.name)}',
+      child: GestureDetector(
+        onTap: onTap,
+        child: Column(
+          children: [
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  OutlinedButton.icon(
-                    onPressed: () => _pick(context),
-                    icon: const Icon(Icons.photo_outlined),
-                    label: Text(tr('اختار صورة من الموبايل')),
+              child: Container(
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(
+                    color: selected ? p.primary : p.line,
+                    width: selected ? 3 : 1,
                   ),
-                  if (s.bgImage != null)
-                    TextButton(
-                      onPressed: () async {
-                        final old = s.bgImage!;
-                        if (!old.startsWith('data:')) {
-                          await Files.delete('media', old);
-                        }
-                        await store.update((d) => d.settings.bgImage = null);
-                      },
-                      child: Text(tr('شيل الصورة')),
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [t.bg, t.hint],
+                  ),
+                  image: image == null
+                      ? null
+                      : DecorationImage(image: image!, fit: BoxFit.cover),
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                      height: 18,
+                      decoration: BoxDecoration(
+                        color: t.header,
+                        border: Border(
+                          bottom: BorderSide(color: t.gold, width: 2),
+                        ),
+                      ),
                     ),
-                ],
+                    const Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          for (final c in [t.primary, t.gold, t.card])
+                            Container(
+                              width: 12,
+                              height: 12,
+                              margin: const EdgeInsets.symmetric(
+                                horizontal: 1.5,
+                              ),
+                              decoration: BoxDecoration(
+                                color: c,
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: Colors.white,
+                                  width: 1,
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              label,
+              style: TextStyle(
+                fontSize: 11,
+                fontWeight: selected ? FontWeight.w700 : FontWeight.w400,
+                color: p.ink,
               ),
             ),
           ],
         ),
-        if (s.bgImage != null) ...[
-          const SizedBox(height: 8),
-          Text(tr('وضوح الصورة'), style: const TextStyle(fontSize: 13)),
-          Slider(
-            value: s.bgOpacity,
-            min: 0.1,
-            max: 1,
-            label: pct(s.bgOpacity),
-            onChanged: (v) {
-              s.bgOpacity = v;
-              store.touch();
-            },
-            onChangeEnd: (v) => store.update((d) => d.settings.bgOpacity = v),
-          ),
-        ],
-      ],
+      ),
     );
   }
 }

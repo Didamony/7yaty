@@ -72,6 +72,8 @@ class Files {
 
   static ImageProvider? image(String? bg) {
     if (bg == null) return null;
+    // Sample pictures in demo builds are served next to the web app.
+    if (bg.startsWith('url:')) return NetworkImage(bg.substring(4));
     if (bg.startsWith('data:')) {
       return MemoryImage(base64Decode(bg.substring(bg.indexOf(',') + 1)));
     }

@@ -121,7 +121,7 @@ class _ResumeCard extends StatelessWidget {
           padding: const EdgeInsets.all(14),
           child: Row(
             children: [
-              const Icon(Icons.bookmark, color: Color(0xFFD4B26A)),
+              Icon(Icons.bookmark, color: p.gold),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(
@@ -150,7 +150,7 @@ class _ResumeCard extends StatelessWidget {
                   ],
                 ),
               ),
-              const Icon(Icons.chevron_right, color: Color(0xFFD4B26A)),
+              Icon(Icons.chevron_right, color: p.gold),
             ],
           ),
         ),

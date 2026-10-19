@@ -58,6 +58,8 @@ class Files {
 
   static ImageProvider? image(String? bg) {
     if (bg == null) return null;
+    // Sample pictures in demo builds are served next to the web app.
+    if (bg.startsWith('url:')) return NetworkImage(bg.substring(4));
     final f = File(path('media', bg));
     return f.existsSync() ? FileImage(f) : null;
   }
