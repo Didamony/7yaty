@@ -54,6 +54,8 @@ dependencies:
   uuid: ^4.6.0
   flutter_localizations:
     sdk: flutter
+  idb_shim: ^2.10.1+1
+  web: ^1.1.1
 
 dev_dependencies:
   flutter_test:

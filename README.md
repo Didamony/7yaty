@@ -24,6 +24,16 @@
 2. نزّل ملف `hayati.apk` وافتحه على الموبايل.
 3. لو الموبايل طلب إذن تسطيب من مصدر غير جوجل بلاي، وافق.
 
+## على الآيفون (نسخة الويب)
+
+1. افتح **https://didamony.github.io/7yaty/** من **Safari**.
+2. اضغط زرار المشاركة، وبعدين **Add to Home Screen** (إضافة إلى الشاشة الرئيسية).
+3. افتح **حياتي** من أيقونته على الشاشة الرئيسية. هيفتح زي أي تطبيق، وبياناتك بتتحفظ على الموبايل.
+
+نسخة الويب فيها كل حاجة: الأهداف، والقضاء، والمواعيد، واليوميات، والريكورد، والكتابة بالصوت، والكتب، وصورة الخلفية، والحفظ على درايف. اللي **مش موجود فيها** هو التنبيهات اللي بتيجي في ميعادها (الصلاة، ومراجعة الساعة ٨، والمواعيد)، لأن الآيفون مش بيسمح بيها لمواقع الويب. التنبيهات الكاملة موجودة في تطبيق أندرويد، أو في نسخة آيفون عن طريق TestFlight (محتاجة حساب Apple Developer).
+
+**أول مرة بس:** في الريبو على GitHub ادخل **Settings ← Pages**، واختار **Deploy from a branch**، وبعدين الفرع **gh-pages** والفولدر **/ (root)**، واضغط Save.
+
 ## الإعداد مرة واحدة
 
 ### 1) مفتاح التوقيع
@@ -44,9 +54,9 @@
 3. من **OAuth consent screen** اختار External، واكتب اسم التطبيق وإيميلك، وضيف إيميلك في Test users.
 4. من **Credentials ← Create credentials ← OAuth client ID**:
    - **Android:** اسم الباكدج `com.didamony.hayati`، وقيمة SHA-1 بتاعة مفتاح التوقيع.
-   - **Web application:** بس كده من غير أي حاجة تانية. انسخ الـ Client ID بتاعه.
+   - **Web application:** في **Authorized JavaScript origins** ضيف `https://didamony.github.io`. انسخ الـ Client ID بتاعه.
 5. في GitHub ضيف Secret اسمه `GOOGLE_SERVER_CLIENT_ID`، وقيمته الـ Client ID بتاع الـ Web application.
-6. افتح **Actions ← Build Android APK ← Run workflow** عشان تتبني نسخة جديدة فيها تسجيل الدخول.
+6. افتح **Actions** وشغّل **Build Android APK** و**Publish web app** (Run workflow) عشان تتبني نسخ جديدة فيها تسجيل الدخول.
 
 ## للمطورين
 

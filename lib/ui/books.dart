@@ -1,5 +1,6 @@
 import 'package:epubx/epubx.dart' as epub;
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pdfx/pdfx.dart';
 import 'package:provider/provider.dart';
@@ -39,10 +40,6 @@ class BooksPage extends StatelessWidget {
   const BooksPage({super.key});
 
   Future<void> _add(BuildContext context) async {
-    if (!Files.supported) {
-      toast(context, tr('إضافة الكتب متاحة في تطبيق الموبايل'));
-      return;
-    }
     final picked = await FilePicker.pickFile(
       type: FileType.custom,
       allowedExtensions: ['pdf', 'epub'],
@@ -56,15 +53,23 @@ class BooksPage extends StatelessWidget {
     final id = newId();
     final file = '$id.$ext';
     try {
-      await Files.ensure('books');
-      await picked.xFile.saveTo(Files.path('books', file));
+      Uint8List? bytes;
+      if (kIsWeb) {
+        bytes = await picked.xFile.readAsBytes();
+        await Files.write('books', file, bytes);
+      } else {
+        await Files.ensure('books');
+        await picked.xFile.saveTo(Files.path('books', file));
+      }
       late Book book;
       var title = picked.name.replaceAll(
         RegExp(r'\.(pdf|epub)$', caseSensitive: false),
         '',
       );
       if (ext == 'pdf') {
-        final doc = await PdfDocument.openFile(Files.path('books', file));
+        final doc = bytes != null
+            ? await PdfDocument.openData(bytes)
+            : await PdfDocument.openFile(Files.path('books', file));
         book = Book(
           id: id,
           title: title,
@@ -638,7 +643,9 @@ class _ReaderPageState extends State<ReaderPage> {
     final start = b.current.clamp(1, b.total);
     if (b.kind == BookKind.pdf) {
       _pdf = PdfController(
-        document: PdfDocument.openFile(Files.path('books', b.file)),
+        document: kIsWeb
+            ? PdfDocument.openData(Files.read('books', b.file).then((v) => v!))
+            : PdfDocument.openFile(Files.path('books', b.file)),
         initialPage: start,
       );
     } else {

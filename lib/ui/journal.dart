@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:record/record.dart';
 import 'package:speech_to_text/speech_to_text.dart';
@@ -147,17 +149,31 @@ class _JournalPageState extends State<JournalPage> {
     );
   }
 
-  Future<void> _toggleRecording() async {
-    if (!Files.supported) {
-      toast(context, tr('التسجيل متاح في تطبيق الموبايل'));
-      return;
+  /// The first audio format this device can record: AAC on phones and
+  /// Safari, Opus/WebM in other browsers.
+  Future<(AudioEncoder, String)> _format() async {
+    for (final f in const [
+      (AudioEncoder.aacLc, 'm4a'),
+      (AudioEncoder.opus, 'webm'),
+      (AudioEncoder.wav, 'wav'),
+    ]) {
+      if (await _recorder.isEncoderSupported(f.$1)) return f;
     }
+    return (AudioEncoder.aacLc, 'm4a');
+  }
+
+  Future<void> _toggleRecording() async {
     if (_recFile != null) {
-      await _recorder.stop();
+      final result = await _recorder.stop();
       _recTick?.cancel();
       final ms = DateTime.now().difference(_recStart!).inMilliseconds;
       final file = _recFile!;
       setState(() => _recFile = null);
+      // The browser hands back a blob URL; keep the audio in app storage.
+      if (kIsWeb && result != null) {
+        final bytes = (await http.get(Uri.parse(result))).bodyBytes;
+        await Files.write('recordings', file, bytes);
+      }
       await _store.update(
         (d) => d.journal
             .putIfAbsent(dkey(_day), JournalEntry.new)
@@ -176,13 +192,14 @@ class _JournalPageState extends State<JournalPage> {
       if (mounted) toast(context, tr('محتاج إذن الميكروفون عشان أسجّل'));
       return;
     }
-    final file = '${newId()}.m4a';
+    final (encoder, ext) = await _format();
+    final file = '${newId()}.$ext';
     await Files.ensure('recordings');
     await _recorder.start(
-      const RecordConfig(
-        encoder: AudioEncoder.aacLc,
+      RecordConfig(
+        encoder: encoder,
         bitRate: 32000,
-        sampleRate: 22050,
+        sampleRate: kIsWeb ? 48000 : 22050,
         numChannels: 1,
       ),
       path: Files.path('recordings', file),
@@ -204,7 +221,23 @@ class _JournalPageState extends State<JournalPage> {
       return;
     }
     await _player.stop();
-    await _player.play(DeviceFileSource(Files.path('recordings', r.file)));
+    if (kIsWeb) {
+      final bytes = await Files.read('recordings', r.file);
+      if (bytes == null) return;
+      final ext = r.file.split('.').last;
+      await _player.play(
+        BytesSource(
+          bytes,
+          mimeType: const {
+            'm4a': 'audio/mp4',
+            'webm': 'audio/webm',
+            'wav': 'audio/wav',
+          }[ext],
+        ),
+      );
+    } else {
+      await _player.play(DeviceFileSource(Files.path('recordings', r.file)));
+    }
     setState(() => _playing = r.file);
   }
 

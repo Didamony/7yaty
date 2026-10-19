@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -132,6 +130,12 @@ class SettingsPage extends StatelessWidget {
                     title: Text(tr('تنبيه عند دخول الوقت')),
                     subtitle: Muted(tr('بالإضافة للتنبيه المسبق')),
                   ),
+                  if (!Notifier.instance.supported)
+                    HintBox(
+                      tr(
+                        'نسخة الويب مفيهاش تنبيهات في المواعيد، لأن الآيفون مش بيسمح بيها للمواقع. افتح التطبيق وراجع أهدافك ومواعيدك، والتنبيهات كاملة في تطبيق أندرويد.',
+                      ),
+                    ),
                   if (Notifier.instance.supported)
                     TextButton.icon(
                       onPressed: () => Notifier.instance.requestPermissions(),
@@ -207,18 +211,12 @@ class _BackgroundPicker extends StatelessWidget {
     if (img == null || !context.mounted) return;
     final store = context.store;
     final old = store.settings.bgImage;
-    if (Files.supported) {
-      final name = '${newId()}.jpg';
-      await Files.ensure('media');
-      await img.saveTo(Files.path('media', name));
-      if (old != null) await Files.delete('media', old);
-      await store.update((d) => d.settings.bgImage = name);
-    } else {
-      final data = base64Encode(await img.readAsBytes());
-      await store.update(
-        (d) => d.settings.bgImage = 'data:image/jpeg;base64,$data',
-      );
+    final name = '${newId()}.jpg';
+    await Files.write('media', name, await img.readAsBytes());
+    if (old != null && !old.startsWith('data:')) {
+      await Files.delete('media', old);
     }
+    await store.update((d) => d.settings.bgImage = name);
   }
 
   @override
@@ -385,9 +383,7 @@ class _AccountSection extends StatelessWidget {
             const SizedBox(height: 8),
             if (!sync.supported) ...[
               Muted(
-                tr(
-                  'تسجيل الدخول بجوجل والحفظ على درايف شغالين في تطبيق الموبايل.',
-                ),
+                tr('تسجيل الدخول بجوجل لسه مش متظبط في النسخة دي.'),
                 size: 13,
               ),
             ] else if (!signedIn) ...[

@@ -44,13 +44,20 @@ class DriveSync extends ChangeNotifier {
   String? error;
   Timer? _debounce;
 
-  bool get supported => !kIsWeb && GoogleSignIn.instance.supportsAuthenticate();
+  /// On the web, sign-in needs the client ID baked into the build.
+  bool get supported => kIsWeb
+      ? _serverClientId.isNotEmpty
+      : GoogleSignIn.instance.supportsAuthenticate();
 
   Future<void> init() async {
-    if (kIsWeb || _ready) return;
+    if (_ready || (kIsWeb && _serverClientId.isEmpty)) return;
+    final id = _serverClientId.isEmpty ? null : _serverClientId;
     try {
+      // The same "Web client" ID is the client on the web and the server
+      // client on Android.
       await GoogleSignIn.instance.initialize(
-        serverClientId: _serverClientId.isEmpty ? null : _serverClientId,
+        clientId: kIsWeb ? id : null,
+        serverClientId: kIsWeb ? null : id,
       );
       _ready = true;
     } catch (e) {
@@ -61,6 +68,15 @@ class DriveSync extends ChangeNotifier {
   /// Interactive sign-in. Returns the account email.
   Future<String> signIn() async {
     await init();
+    if (kIsWeb) {
+      // Browsers grant Drive access directly; the email comes from Drive.
+      await GoogleSignIn.instance.authorizationClient.authorizeScopes(const [
+        _scope,
+      ]);
+      final api = await _api();
+      final about = await api!.about.get($fields: 'user(emailAddress)');
+      return about.user?.emailAddress ?? 'Google';
+    }
     final account = await GoogleSignIn.instance.authenticate(
       scopeHint: const [_scope],
     );
@@ -220,7 +236,7 @@ class DriveSync extends ChangeNotifier {
 
   /// Backs up a little while after the last change, while signed in.
   void backupSoon(AppData data) {
-    if (data.settings.googleEmail == null || kIsWeb) return;
+    if (data.settings.googleEmail == null) return;
     _debounce?.cancel();
     _debounce = Timer(const Duration(seconds: 20), () => backup(data));
   }

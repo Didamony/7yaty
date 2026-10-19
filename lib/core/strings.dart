@@ -199,8 +199,8 @@ const Map<String, Map<String, String>> translations = {
     'مفيش نسخة على درايف لسه': 'No copy on Drive yet',
     'رجعت كل حاجة من درايف': 'Everything restored from Drive',
     'الحساب والحفظ على جوجل درايف': 'Account & Google Drive backup',
-    'تسجيل الدخول بجوجل والحفظ على درايف شغالين في تطبيق الموبايل.':
-        'Google sign-in and Drive backup work in the mobile app.',
+    'تسجيل الدخول بجوجل لسه مش متظبط في النسخة دي.':
+        'Google sign-in isn\'t set up in this version yet.',
     'سجّل دخول بحساب جوجل، وكل حاجة (أهداف، يوميات، ريكوردات، كتب) هتتحفظ على درايف بتاعك. لو التطبيق اتمسح، تسجّل دخول تاني وكل حاجة ترجع.': 'Sign in with Google and everything (goals, diary, recordings, books) is saved to your Drive. If the app is deleted, sign in again and it all comes back.',
     'تسجيل الدخول بجوجل': 'Sign in with Google',
     'بيحفظ دلوقتي…': 'Saving now…',
@@ -278,6 +278,7 @@ const Map<String, Map<String, String>> translations = {
     'مراجعة المساء': 'Evening review',
     'قبل {p} · {t}': 'Before {p} · {t}',
     'بعد {p} · {t}': 'After {p} · {t}',
+    'نسخة الويب مفيهاش تنبيهات في المواعيد، لأن الآيفون مش بيسمح بيها للمواقع. افتح التطبيق وراجع أهدافك ومواعيدك، والتنبيهات كاملة في تطبيق أندرويد.': 'The web version has no timed reminders, because iPhone doesn\'t allow them for websites. Open the app to review your goals and schedule; full reminders are in the Android app.',
   },
   'fr': {
     'أهدافي': 'Mes objectifs',
@@ -480,7 +481,8 @@ const Map<String, Map<String, String>> translations = {
     'مفيش نسخة على درايف لسه': 'Pas encore de copie sur Drive',
     'رجعت كل حاجة من درايف': 'Tout a été restauré depuis Drive',
     'الحساب والحفظ على جوجل درايف': 'Compte et sauvegarde Google Drive',
-    'تسجيل الدخول بجوجل والحفظ على درايف شغالين في تطبيق الموبايل.': 'La connexion Google et la sauvegarde Drive fonctionnent dans l\'application mobile.',
+    'تسجيل الدخول بجوجل لسه مش متظبط في النسخة دي.':
+        'La connexion Google n\'est pas encore configurée dans cette version.',
     'سجّل دخول بحساب جوجل، وكل حاجة (أهداف، يوميات، ريكوردات، كتب) هتتحفظ على درايف بتاعك. لو التطبيق اتمسح، تسجّل دخول تاني وكل حاجة ترجع.': 'Connecte-toi avec Google et tout (objectifs, journal, enregistrements, livres) est sauvegardé sur ton Drive. Si l\'app est supprimée, reconnecte-toi et tout revient.',
     'تسجيل الدخول بجوجل': 'Se connecter avec Google',
     'بيحفظ دلوقتي…': 'Sauvegarde en cours…',
@@ -558,6 +560,7 @@ const Map<String, Map<String, String>> translations = {
     'مراجعة المساء': 'Bilan du soir',
     'قبل {p} · {t}': 'Avant {p} · {t}',
     'بعد {p} · {t}': 'Après {p} · {t}',
+    'نسخة الويب مفيهاش تنبيهات في المواعيد، لأن الآيفون مش بيسمح بيها للمواقع. افتح التطبيق وراجع أهدافك ومواعيدك، والتنبيهات كاملة في تطبيق أندرويد.': 'La version web n\'a pas de rappels programmés, car l\'iPhone ne les autorise pas pour les sites. Ouvre l\'app pour revoir tes objectifs ; les rappels complets sont dans l\'app Android.',
   },
   'de': {
     'أهدافي': 'Meine Ziele',
@@ -755,8 +758,8 @@ const Map<String, Map<String, String>> translations = {
     'مفيش نسخة على درايف لسه': 'Noch keine Kopie auf Drive',
     'رجعت كل حاجة من درايف': 'Alles von Drive wiederhergestellt',
     'الحساب والحفظ على جوجل درايف': 'Konto & Google-Drive-Sicherung',
-    'تسجيل الدخول بجوجل والحفظ على درايف شغالين في تطبيق الموبايل.':
-        'Google-Anmeldung und Drive-Sicherung funktionieren in der Handy-App.',
+    'تسجيل الدخول بجوجل لسه مش متظبط في النسخة دي.':
+        'Die Google-Anmeldung ist in dieser Version noch nicht eingerichtet.',
     'سجّل دخول بحساب جوجل، وكل حاجة (أهداف، يوميات، ريكوردات، كتب) هتتحفظ على درايف بتاعك. لو التطبيق اتمسح، تسجّل دخول تاني وكل حاجة ترجع.': 'Melde dich mit Google an und alles (Ziele, Tagebuch, Aufnahmen, Bücher) wird in deinem Drive gespeichert. Wird die App gelöscht, meldest du dich erneut an und alles ist wieder da.',
     'تسجيل الدخول بجوجل': 'Mit Google anmelden',
     'بيحفظ دلوقتي…': 'Wird gespeichert…',
@@ -834,5 +837,6 @@ const Map<String, Map<String, String>> translations = {
     'مراجعة المساء': 'Abendrückblick',
     'قبل {p} · {t}': 'Vor {p} · {t}',
     'بعد {p} · {t}': 'Nach {p} · {t}',
+    'نسخة الويب مفيهاش تنبيهات في المواعيد، لأن الآيفون مش بيسمح بيها للمواقع. افتح التطبيق وراجع أهدافك ومواعيدك، والتنبيهات كاملة في تطبيق أندرويد.': 'Die Web-Version hat keine zeitgesteuerten Erinnerungen, da das iPhone sie für Websites nicht erlaubt. Öffne die App, um deine Ziele zu prüfen; volle Erinnerungen gibt es in der Android-App.',
   },
 };
