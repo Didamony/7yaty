@@ -357,6 +357,11 @@ const Map<String, Map<String, String>> translations = {
     'ضيف كتاب PDF أو EPUB واقسم قرايته على الأيام':
         'Add a PDF or EPUB book and spread its reading over the days',
     'أضف كتاب': 'Add a book',
+    'بيضيف الكتاب…': 'Adding the book…',
+    'مش قادر أقرا عدد الصفحات': 'Can\'t read the page count',
+    'الكتاب فيه كام صفحة؟': 'How many pages does the book have?',
+    'ما قدرتش أضيف الكتاب': 'Couldn\'t add the book',
+    'تمام': 'OK',
   },
   'fr': {
     'أهدافي': 'Mes objectifs',
@@ -719,6 +724,11 @@ const Map<String, Map<String, String>> translations = {
     'ضيف كتاب PDF أو EPUB واقسم قرايته على الأيام':
         'Ajoute un livre PDF ou EPUB et répartis sa lecture sur les jours',
     'أضف كتاب': 'Ajouter un livre',
+    'بيضيف الكتاب…': 'Ajout du livre…',
+    'مش قادر أقرا عدد الصفحات': 'Impossible de lire le nombre de pages',
+    'الكتاب فيه كام صفحة؟': 'Combien de pages a le livre ?',
+    'ما قدرتش أضيف الكتاب': 'Impossible d\'ajouter le livre',
+    'تمام': 'OK',
   },
   'de': {
     'أهدافي': 'Meine Ziele',
@@ -1073,5 +1083,10 @@ const Map<String, Map<String, String>> translations = {
     'الكسوة': 'Kiswa',
     'ضيف كتاب PDF أو EPUB واقسم قرايته على الأيام': 'Füge ein PDF- oder EPUB-Buch hinzu und verteile das Lesen auf die Tage',
     'أضف كتاب': 'Buch hinzufügen',
+    'بيضيف الكتاب…': 'Buch wird hinzugefügt…',
+    'مش قادر أقرا عدد الصفحات': 'Seitenzahl nicht lesbar',
+    'الكتاب فيه كام صفحة؟': 'Wie viele Seiten hat das Buch?',
+    'ما قدرتش أضيف الكتاب': 'Buch konnte nicht hinzugefügt werden',
+    'تمام': 'OK',
   },
 };

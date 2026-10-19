@@ -1,5 +1,4 @@
 import 'package:epubx/epubx.dart' as epub;
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pdfx/pdfx.dart';
@@ -11,6 +10,7 @@ import '../core/theme.dart';
 import '../data/models.dart';
 import '../data/store.dart';
 import '../services/files.dart';
+import '../services/pick_book.dart';
 import 'widgets.dart';
 
 String unitName(Book b) => b.kind == BookKind.pdf ? tr('صفحة') : tr('جزء');
@@ -38,41 +38,54 @@ String unitName(Book b) => b.kind == BookKind.pdf ? tr('صفحة') : tr('جزء'
 
 /// Picks a PDF or EPUB from the phone, adds it, and opens its reading plan.
 Future<void> addBook(BuildContext context) async {
-  final picked = await FilePicker.pickFile(
-    type: FileType.custom,
-    allowedExtensions: ['pdf', 'epub'],
-  );
-  if (picked == null || !context.mounted) return;
-  final ext = (picked.extension ?? '').toLowerCase();
-  if (ext != 'pdf' && ext != 'epub') {
-    toast(context, tr('الملف لازم يكون PDF أو EPUB'));
+  final id = newId();
+  var file = '';
+  String? name;
+  try {
+    name = await pickBookFile((ext) => file = '$id.$ext');
+  } on BadBookType {
+    if (context.mounted) toast(context, tr('الملف لازم يكون PDF أو EPUB'));
+    return;
+  } catch (e) {
+    if (context.mounted) _bookError(context, e);
     return;
   }
-  final id = newId();
-  final file = '$id.$ext';
+  if (name == null || !context.mounted) return;
+
+  // Reading a big book takes a moment; show that something is happening.
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (_) => AlertDialog(
+      content: Row(
+        children: [
+          const CircularProgressIndicator(),
+          const SizedBox(width: 16),
+          Expanded(child: Text(tr('بيضيف الكتاب…'))),
+        ],
+      ),
+    ),
+  );
+  void closeLoading() {
+    if (context.mounted) Navigator.of(context, rootNavigator: true).pop();
+  }
+
+  final kind = file.endsWith('.pdf') ? BookKind.pdf : BookKind.epub;
+  var title = name.replaceAll(
+    RegExp(r'\.(pdf|epub)$', caseSensitive: false),
+    '',
+  );
+  Book? book;
   try {
-    Uint8List? bytes;
-    if (kIsWeb) {
-      bytes = await picked.xFile.readAsBytes();
-      await Files.write('books', file, bytes);
-    } else {
-      await Files.ensure('books');
-      await picked.xFile.saveTo(Files.path('books', file));
-    }
-    late Book book;
-    var title = picked.name.replaceAll(
-      RegExp(r'\.(pdf|epub)$', caseSensitive: false),
-      '',
-    );
-    if (ext == 'pdf') {
-      final doc = bytes != null
-          ? await PdfDocument.openData(bytes)
+    if (kind == BookKind.pdf) {
+      final doc = kIsWeb
+          ? await PdfDocument.openData((await Files.read('books', file))!)
           : await PdfDocument.openFile(Files.path('books', file));
       book = Book(
         id: id,
         title: title,
         file: file,
-        kind: BookKind.pdf,
+        kind: kind,
         total: doc.pagesCount,
       );
       await doc.close();
@@ -86,20 +99,76 @@ Future<void> addBook(BuildContext context) async {
         id: id,
         title: title,
         file: file,
-        kind: BookKind.epub,
+        kind: kind,
         total: titles.length,
         chapters: chapters,
       );
     }
-    book.planStartKey = dkey(today());
-    if (!context.mounted) return;
-    await context.store.update((d) => d.books.add(book));
-    if (context.mounted) await openPlan(context, book);
   } catch (e) {
-    await Files.delete('books', file);
-    if (context.mounted) toast(context, tr('مش قادر أفتح الملف ده'));
+    debugPrint('hayati: could not read book: $e');
   }
+  closeLoading();
+  if (!context.mounted) return;
+
+  // If the file could not be read, still keep it: ask for the page count
+  // so the reading plan works.
+  if (book == null || book.total == 0) {
+    final pages = await _askPages(context);
+    if (pages == null) {
+      await Files.delete('books', file);
+      return;
+    }
+    book = Book(id: id, title: title, file: file, kind: kind, total: pages);
+  }
+  book.planStartKey = dkey(today());
+  if (!context.mounted) return;
+  await context.store.update((d) => d.books.add(book!));
+  if (context.mounted) await openPlan(context, book);
 }
+
+Future<int?> _askPages(BuildContext context) async {
+  final ctl = TextEditingController();
+  final r = await showDialog<int>(
+    context: context,
+    builder: (c) => AlertDialog(
+      title: Text(tr('مش قادر أقرا عدد الصفحات')),
+      content: TextField(
+        controller: ctl,
+        autofocus: true,
+        keyboardType: TextInputType.number,
+        decoration: InputDecoration(labelText: tr('الكتاب فيه كام صفحة؟')),
+      ),
+      actions: [
+        TextButton(onPressed: () => Navigator.pop(c), child: Text(tr('إلغاء'))),
+        FilledButton(
+          onPressed: () => Navigator.pop(
+            c,
+            int.tryParse(
+              ctl.text.trim().replaceAllMapped(
+                RegExp('[٠-٩]'),
+                (m) => '${m[0]!.codeUnitAt(0) - 0x0660}',
+              ),
+            ),
+          ),
+          child: Text(tr('أضف')),
+        ),
+      ],
+    ),
+  );
+  ctl.dispose();
+  return r != null && r > 0 ? r : null;
+}
+
+void _bookError(BuildContext context, Object e) => showDialog(
+  context: context,
+  builder: (c) => AlertDialog(
+    title: Text(tr('ما قدرتش أضيف الكتاب')),
+    content: SelectableText('$e'),
+    actions: [
+      TextButton(onPressed: () => Navigator.pop(c), child: Text(tr('تمام'))),
+    ],
+  ),
+);
 
 class BooksPage extends StatelessWidget {
   const BooksPage({super.key});
