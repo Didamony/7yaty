@@ -7,6 +7,7 @@ import '../data/adhkar.dart';
 import '../data/quran.dart';
 import '../data/store.dart';
 import 'adhkar_page.dart';
+import 'books.dart';
 import 'quran_page.dart';
 import 'tasbih_page.dart';
 import 'widgets.dart';
@@ -96,6 +97,35 @@ class WorshipPage extends StatelessWidget {
                             ? BorderSide(color: p.gold, width: 1.5)
                             : null,
                         onPressed: () => openAdhkar(context, c),
+                      ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 12),
+              _BigCard(
+                icon: Icons.auto_stories,
+                title: tr('كتبي'),
+                subtitle: data.books.isEmpty
+                    ? tr('ضيف كتاب PDF أو EPUB واقسم قرايته على الأيام')
+                    : tr('{n} كتاب', {'n': data.books.length}),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const BooksPage()),
+                ),
+                footer: Wrap(
+                  spacing: 6,
+                  runSpacing: 6,
+                  children: [
+                    ActionChip(
+                      avatar: const Icon(Icons.add, size: 18),
+                      label: Text(tr('أضف كتاب')),
+                      onPressed: () => addBook(context),
+                    ),
+                    for (final b in data.books.take(3))
+                      ActionChip(
+                        avatar: const Icon(Icons.menu_book_outlined, size: 18),
+                        label: Text('${b.title} · ${pct(b.progress)}'),
+                        onPressed: () => openReader(context, b),
                       ),
                   ],
                 ),

@@ -354,6 +354,9 @@ const Map<String, Map<String, String>> translations = {
     'فيروز وسحاب': 'Turquoise and clouds',
     'فجر الجمعة': 'Friday dawn',
     'الكسوة': 'Kiswa',
+    'ضيف كتاب PDF أو EPUB واقسم قرايته على الأيام':
+        'Add a PDF or EPUB book and spread its reading over the days',
+    'أضف كتاب': 'Add a book',
   },
   'fr': {
     'أهدافي': 'Mes objectifs',
@@ -713,6 +716,9 @@ const Map<String, Map<String, String>> translations = {
     'فيروز وسحاب': 'Turquoise et nuages',
     'فجر الجمعة': 'Aube du vendredi',
     'الكسوة': 'Kiswa',
+    'ضيف كتاب PDF أو EPUB واقسم قرايته على الأيام':
+        'Ajoute un livre PDF ou EPUB et répartis sa lecture sur les jours',
+    'أضف كتاب': 'Ajouter un livre',
   },
   'de': {
     'أهدافي': 'Meine Ziele',
@@ -1065,5 +1071,7 @@ const Map<String, Map<String, String>> translations = {
     'فيروز وسحاب': 'Türkis und Wolken',
     'فجر الجمعة': 'Freitagsmorgen',
     'الكسوة': 'Kiswa',
+    'ضيف كتاب PDF أو EPUB واقسم قرايته على الأيام': 'Füge ein PDF- oder EPUB-Buch hinzu und verteile das Lesen auf die Tage',
+    'أضف كتاب': 'Buch hinzufügen',
   },
 };

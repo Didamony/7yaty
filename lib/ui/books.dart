@@ -36,72 +36,73 @@ String unitName(Book b) => b.kind == BookKind.pdf ? tr('صفحة') : tr('جزء'
   return (titles, html, chapters);
 }
 
+/// Picks a PDF or EPUB from the phone, adds it, and opens its reading plan.
+Future<void> addBook(BuildContext context) async {
+  final picked = await FilePicker.pickFile(
+    type: FileType.custom,
+    allowedExtensions: ['pdf', 'epub'],
+  );
+  if (picked == null || !context.mounted) return;
+  final ext = (picked.extension ?? '').toLowerCase();
+  if (ext != 'pdf' && ext != 'epub') {
+    toast(context, tr('الملف لازم يكون PDF أو EPUB'));
+    return;
+  }
+  final id = newId();
+  final file = '$id.$ext';
+  try {
+    Uint8List? bytes;
+    if (kIsWeb) {
+      bytes = await picked.xFile.readAsBytes();
+      await Files.write('books', file, bytes);
+    } else {
+      await Files.ensure('books');
+      await picked.xFile.saveTo(Files.path('books', file));
+    }
+    late Book book;
+    var title = picked.name.replaceAll(
+      RegExp(r'\.(pdf|epub)$', caseSensitive: false),
+      '',
+    );
+    if (ext == 'pdf') {
+      final doc = bytes != null
+          ? await PdfDocument.openData(bytes)
+          : await PdfDocument.openFile(Files.path('books', file));
+      book = Book(
+        id: id,
+        title: title,
+        file: file,
+        kind: BookKind.pdf,
+        total: doc.pagesCount,
+      );
+      await doc.close();
+    } else {
+      final e = await epub.EpubReader.readBook(
+        (await Files.read('books', file))!.toList(),
+      );
+      final (titles, _, chapters) = flattenEpub(e);
+      if ((e.Title ?? '').trim().isNotEmpty) title = e.Title!.trim();
+      book = Book(
+        id: id,
+        title: title,
+        file: file,
+        kind: BookKind.epub,
+        total: titles.length,
+        chapters: chapters,
+      );
+    }
+    book.planStartKey = dkey(today());
+    if (!context.mounted) return;
+    await context.store.update((d) => d.books.add(book));
+    if (context.mounted) await openPlan(context, book);
+  } catch (e) {
+    await Files.delete('books', file);
+    if (context.mounted) toast(context, tr('مش قادر أفتح الملف ده'));
+  }
+}
+
 class BooksPage extends StatelessWidget {
   const BooksPage({super.key});
-
-  Future<void> _add(BuildContext context) async {
-    final picked = await FilePicker.pickFile(
-      type: FileType.custom,
-      allowedExtensions: ['pdf', 'epub'],
-    );
-    if (picked == null || !context.mounted) return;
-    final ext = (picked.extension ?? '').toLowerCase();
-    if (ext != 'pdf' && ext != 'epub') {
-      toast(context, tr('الملف لازم يكون PDF أو EPUB'));
-      return;
-    }
-    final id = newId();
-    final file = '$id.$ext';
-    try {
-      Uint8List? bytes;
-      if (kIsWeb) {
-        bytes = await picked.xFile.readAsBytes();
-        await Files.write('books', file, bytes);
-      } else {
-        await Files.ensure('books');
-        await picked.xFile.saveTo(Files.path('books', file));
-      }
-      late Book book;
-      var title = picked.name.replaceAll(
-        RegExp(r'\.(pdf|epub)$', caseSensitive: false),
-        '',
-      );
-      if (ext == 'pdf') {
-        final doc = bytes != null
-            ? await PdfDocument.openData(bytes)
-            : await PdfDocument.openFile(Files.path('books', file));
-        book = Book(
-          id: id,
-          title: title,
-          file: file,
-          kind: BookKind.pdf,
-          total: doc.pagesCount,
-        );
-        await doc.close();
-      } else {
-        final e = await epub.EpubReader.readBook(
-          (await Files.read('books', file))!.toList(),
-        );
-        final (titles, _, chapters) = flattenEpub(e);
-        if ((e.Title ?? '').trim().isNotEmpty) title = e.Title!.trim();
-        book = Book(
-          id: id,
-          title: title,
-          file: file,
-          kind: BookKind.epub,
-          total: titles.length,
-          chapters: chapters,
-        );
-      }
-      book.planStartKey = dkey(today());
-      if (!context.mounted) return;
-      await context.store.update((d) => d.books.add(book));
-      if (context.mounted) await openPlan(context, book);
-    } catch (e) {
-      await Files.delete('books', file);
-      if (context.mounted) toast(context, tr('مش قادر أفتح الملف ده'));
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -130,7 +131,7 @@ class BooksPage extends StatelessWidget {
                   const SizedBox(height: 14),
                 ],
                 OutlinedButton.icon(
-                  onPressed: () => _add(context),
+                  onPressed: () => addBook(context),
                   style: OutlinedButton.styleFrom(
                     minimumSize: const Size.fromHeight(54),
                     side: BorderSide(color: p.chip, width: 2),
