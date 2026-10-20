@@ -5,8 +5,7 @@ import '../services/cloud.dart';
 import 'widgets.dart';
 
 /// The owner's account opens on this and nothing else: payment requests,
-/// activating accounts, the payment details users see, and where the
-/// WhatsApp notices go.
+/// activating accounts, and the payment details users see.
 class AdminPage extends StatefulWidget {
   const AdminPage({super.key});
 
@@ -18,8 +17,6 @@ class _AdminPageState extends State<AdminPage> {
   final _price = TextEditingController();
   final _instapay = TextEditingController();
   final _link = TextEditingController();
-  final _phone = TextEditingController();
-  final _apikey = TextEditingController();
   final _search = TextEditingController();
   Stream<List<PayRequest>> _requests = Cloud.instance.watchRequests();
   bool _retrying = false;
@@ -34,7 +31,7 @@ class _AdminPageState extends State<AdminPage> {
 
   @override
   void dispose() {
-    for (final c in [_price, _instapay, _link, _phone, _apikey, _search]) {
+    for (final c in [_price, _instapay, _link, _search]) {
       c.dispose();
     }
     super.dispose();
@@ -44,15 +41,12 @@ class _AdminPageState extends State<AdminPage> {
     try {
       final cloud = Cloud.instance;
       final pay = await cloud.loadPayInfo();
-      final notify = await cloud.loadNotifyInfo();
       final accounts = await cloud.recentAccounts();
       if (!mounted) return;
       setState(() {
         _price.text = pay.price;
         _instapay.text = pay.instapay;
         _link.text = pay.link;
-        _phone.text = notify.phone;
-        _apikey.text = notify.apikey;
         _accounts = accounts;
         _failed = false;
         _requests = Cloud.instance.watchRequests();
@@ -434,77 +428,6 @@ class _AdminPageState extends State<AdminPage> {
                             tr('اتحفظ'),
                           ),
                           child: Text(tr('احفظ')),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 14),
-                  SectionCard(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        GoldLabel(tr('رسايل الواتساب ليك')),
-                        const SizedBox(height: 4),
-                        Muted(
-                          tr(
-                            'كل طلب دفع بيوصلك رسالة واتساب لوحده. رقمك مش بيظهر لحد.',
-                          ),
-                          size: 12,
-                        ),
-                        const SizedBox(height: 8),
-                        _field(
-                          _phone,
-                          tr('رقم الواتساب بتاعك بكود الدولة'),
-                          hint: '+2010xxxxxxxx',
-                          ltr: true,
-                        ),
-                        _field(
-                          _apikey,
-                          tr('مفتاح CallMeBot (apikey)'),
-                          ltr: true,
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: FilledButton(
-                                onPressed: () => _run(
-                                  () => Cloud.instance.saveNotifyInfo(
-                                    NotifyInfo(
-                                      phone: _phone.text.trim(),
-                                      apikey: _apikey.text.trim(),
-                                    ),
-                                  ),
-                                  tr('اتحفظ'),
-                                ),
-                                child: Text(tr('احفظ')),
-                              ),
-                            ),
-                            const SizedBox(width: 8),
-                            Expanded(
-                              child: OutlinedButton(
-                                onPressed: () async {
-                                  final ok = await Cloud.instance.notifyOwner(
-                                    tr('🔔 حياتي: رسالة تجربة من لوحة التحكم'),
-                                    info: NotifyInfo(
-                                      phone: _phone.text.trim(),
-                                      apikey: _apikey.text.trim(),
-                                    ),
-                                  );
-                                  if (context.mounted) {
-                                    toast(
-                                      context,
-                                      ok
-                                          ? tr('اتبعتت، شوف الواتساب')
-                                          : tr(
-                                              'ما اتبعتتش، راجع الرقم والمفتاح',
-                                            ),
-                                    );
-                                  }
-                                },
-                                child: Text(tr('ابعت رسالة تجربة')),
-                              ),
-                            ),
-                          ],
                         ),
                       ],
                     ),

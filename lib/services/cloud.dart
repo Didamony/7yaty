@@ -6,7 +6,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
-import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/store.dart';
@@ -103,22 +102,6 @@ class PayInfo {
         : defaultInstapay,
     link: j?['link'] ?? '',
   );
-}
-
-/// Where the owner gets a WhatsApp message for each payment, through the
-/// free CallMeBot service (see README). Users never see the number.
-class NotifyInfo {
-  NotifyInfo({this.phone = '', this.apikey = ''});
-
-  String phone;
-  String apikey;
-
-  bool get isSet => phone.isNotEmpty && apikey.isNotEmpty;
-
-  Map<String, dynamic> toJson() => {'phone': phone, 'apikey': apikey};
-
-  factory NotifyInfo.fromJson(Map<String, dynamic>? j) =>
-      NotifyInfo(phone: j?['phone'] ?? '', apikey: j?['apikey'] ?? '');
 }
 
 /// A user's word that they paid, for the owner to check against InstaPay.
@@ -257,36 +240,8 @@ class Cloud extends ChangeNotifier {
 
   Future<void> savePayInfo(PayInfo info) => _payDoc.set(info.toJson());
 
-  DocumentReference<Map<String, dynamic>> get _notifyDoc =>
-      FirebaseFirestore.instance.collection('config').doc('notify');
-
   CollectionReference<Map<String, dynamic>> get _requests =>
       FirebaseFirestore.instance.collection('requests');
-
-  Future<NotifyInfo> loadNotifyInfo() async =>
-      NotifyInfo.fromJson((await _notifyDoc.get()).data());
-
-  Future<void> saveNotifyInfo(NotifyInfo info) => _notifyDoc.set(info.toJson());
-
-  /// Sends the owner a WhatsApp message. Best effort: a payment request is
-  /// saved for the owner's panel either way.
-  Future<bool> notifyOwner(String text, {NotifyInfo? info}) async {
-    try {
-      final n = info ?? await loadNotifyInfo();
-      if (!n.isSet) return false;
-      final uri = Uri.https('api.callmebot.com', '/whatsapp.php', {
-        'phone': n.phone.replaceAll(RegExp(r'[^0-9+]'), ''),
-        'text': text,
-        'apikey': n.apikey,
-      });
-      await http.get(uri).timeout(const Duration(seconds: 20));
-      return true;
-    } catch (e) {
-      // On the web the browser hides the reply, but the message still goes.
-      debugPrint('hayati: WhatsApp notice: $e');
-      return kIsWeb;
-    }
-  }
 
   /// This account's payment request, if it sent one.
   Future<PayRequest?> myRequest() async {
@@ -294,22 +249,9 @@ class Cloud extends ChangeNotifier {
     return d.exists ? PayRequest.fromDoc(d) : null;
   }
 
-  /// Saves the user's payment details for the owner and messages them.
-  Future<void> sendRequest(PayRequest r) async {
-    await _requests.doc(r.uid).set(r.toJson());
-    await notifyOwner(
-      [
-        '🔔 حياتي: طلب تفعيل جديد',
-        'الإيميل: ${r.email}',
-        'الاسم في InstaPay: ${r.name}',
-        'حوّل من: ${r.from}',
-        'المبلغ: ${r.amount}',
-        'رقم العملية: ${r.ref}',
-        'الكود في سبب التحويل: ${r.code}',
-        'فعّله من لوحة التحكم في التطبيق.',
-      ].join('\n'),
-    );
-  }
+  /// Saves the user's payment details for the owner's panel.
+  Future<void> sendRequest(PayRequest r) =>
+      _requests.doc(r.uid).set(r.toJson());
 
   /// Payment requests, newest first, as they come.
   Stream<List<PayRequest>> watchRequests() => _requests
