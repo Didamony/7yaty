@@ -144,6 +144,11 @@ class AppData {
     final day = dayOnly(d);
     final start = parseKey(g.periodKey);
     if (day.isBefore(start)) return false;
+    if (g.repeat != Repeat.none &&
+        g.untilKey != null &&
+        day.isAfter(parseKey(g.untilKey!))) {
+      return false;
+    }
     final parent = goal(g.parentId);
     if (parent != null && !parent.isDaily) {
       final (ps, pe) = parent.period;

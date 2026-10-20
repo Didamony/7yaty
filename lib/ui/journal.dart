@@ -41,6 +41,9 @@ class _JournalPageState extends State<JournalPage> {
   final _text = TextEditingController();
   Timer? _saveTimer;
 
+  /// The note has changes not saved yet.
+  bool _dirty = false;
+
   final _speech = SpeechToText();
   bool _listening = false;
   String _beforeDictation = '';
@@ -63,7 +66,7 @@ class _JournalPageState extends State<JournalPage> {
 
   @override
   void dispose() {
-    _flush();
+    _flush(rebuild: false);
     _text.dispose();
     _recTick?.cancel();
     _recorder.dispose();
@@ -83,12 +86,14 @@ class _JournalPageState extends State<JournalPage> {
   }
 
   void _onTextChanged(String _) {
+    if (!_dirty) setState(() => _dirty = true);
     _saveTimer?.cancel();
-    _saveTimer = Timer(const Duration(milliseconds: 800), _flush);
+    _saveTimer = Timer(const Duration(seconds: 3), _flush);
   }
 
-  void _flush() {
+  void _flush({bool rebuild = true}) {
     _saveTimer?.cancel();
+    if (_dirty && rebuild && mounted) setState(() => _dirty = false);
     final key = dkey(_day);
     final text = _text.text;
     if ((_store.data.journal[key]?.text ?? '') == text) return;
@@ -96,6 +101,11 @@ class _JournalPageState extends State<JournalPage> {
       final e = d.journal.putIfAbsent(key, JournalEntry.new)..text = text;
       if (e.isEmpty) d.journal.remove(key);
     });
+  }
+
+  void _saveNote() {
+    FocusScope.of(context).unfocus();
+    _flush();
   }
 
   Future<void> _toggleDictation() async {
@@ -357,7 +367,7 @@ class _JournalPageState extends State<JournalPage> {
                     TextField(
                       controller: _text,
                       onChanged: _onTextChanged,
-                      onTapOutside: (_) => _flush(),
+                      onTapOutside: (_) => _saveNote(),
                       minLines: 5,
                       maxLines: null,
                       style: const TextStyle(fontSize: 15, height: 1.8),
@@ -373,6 +383,33 @@ class _JournalPageState extends State<JournalPage> {
                     if (_listening) ...[
                       const SizedBox(height: 6),
                       HintBox(tr('بسمعك… اتكلم وأنا هكتب')),
+                    ],
+                    if (_text.text.isNotEmpty || _dirty) ...[
+                      const SizedBox(height: 8),
+                      Align(
+                        alignment: AlignmentDirectional.centerEnd,
+                        child: _dirty
+                            ? FilledButton.icon(
+                                onPressed: _saveNote,
+                                icon: const Icon(Icons.check),
+                                label: Text(tr('حفظ')),
+                              )
+                            : Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Icon(
+                                    Icons.check_circle,
+                                    size: 18,
+                                    color: p.green,
+                                  ),
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    tr('اتحفظت'),
+                                    style: TextStyle(color: p.green),
+                                  ),
+                                ],
+                              ),
+                      ),
                     ],
                   ],
                 ),

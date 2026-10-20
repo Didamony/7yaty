@@ -13,13 +13,23 @@ Future<void> openGoalEditor(
   Level? level,
   DateTime? day,
   String? parentId,
+  Repeat? repeat,
+  DateTime? until,
+  int? clockMin,
 }) {
   return Navigator.push(
     context,
     MaterialPageRoute(
       fullscreenDialog: true,
-      builder: (_) =>
-          GoalEditor(goal: goal, level: level, day: day, parentId: parentId),
+      builder: (_) => GoalEditor(
+        goal: goal,
+        level: level,
+        day: day,
+        parentId: parentId,
+        repeat: repeat,
+        until: until,
+        clockMin: clockMin,
+      ),
     ),
   );
 }
@@ -32,12 +42,30 @@ String defaultPeriodKey(Level level, DateTime day) => switch (level) {
 };
 
 class GoalEditor extends StatefulWidget {
-  const GoalEditor({super.key, this.goal, this.level, this.day, this.parentId});
+  const GoalEditor({
+    super.key,
+    this.goal,
+    this.level,
+    this.day,
+    this.parentId,
+    this.repeat,
+    this.until,
+    this.clockMin,
+  });
 
   final Goal? goal;
   final Level? level;
   final DateTime? day;
   final String? parentId;
+
+  /// For a new daily goal: how it repeats.
+  final Repeat? repeat;
+
+  /// For a new daily goal: repeat up to this date.
+  final DateTime? until;
+
+  /// For a new daily goal: start at this time of day.
+  final int? clockMin;
 
   @override
   State<GoalEditor> createState() => _GoalEditorState();
@@ -76,6 +104,15 @@ class _GoalEditorState extends State<GoalEditor> {
                 : Repeat.none,
             createdKey: dkey(today()),
           );
+    if (src == null && _g.isDaily) {
+      if (widget.repeat != null) _g.repeat = widget.repeat!;
+      if (widget.until != null) _g.untilKey = dkey(widget.until!);
+      if (widget.clockMin != null) {
+        _g
+          ..timeMode = TimeMode.clock
+          ..clockMin = widget.clockMin!;
+      }
+    }
     _title = TextEditingController(text: _g.title);
   }
 
@@ -248,6 +285,20 @@ class _GoalEditorState extends State<GoalEditor> {
                           _WeekdayPicker(
                             selected: _g.weekdays,
                             onChanged: () => setState(() {}),
+                          ),
+                        ],
+                        if (_g.repeat != Repeat.none &&
+                            _g.untilKey != null) ...[
+                          const SizedBox(height: 8),
+                          InputChip(
+                            avatar: const Icon(Icons.event_busy, size: 18),
+                            label: Text(
+                              tr('لحد {d}', {
+                                'd': fmtDateShort(parseKey(_g.untilKey!)),
+                              }),
+                            ),
+                            deleteButtonTooltipMessage: tr('من غير نهاية'),
+                            onDeleted: () => setState(() => _g.untilKey = null),
                           ),
                         ],
                       ],

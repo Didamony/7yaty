@@ -35,6 +35,88 @@ Future<void> openGoalPlan(BuildContext context, {Goal? goal}) {
 
 String _scopeTitle(Goal? g) => g == null ? tr('كل المهام') : g.title;
 
+/// Where a new goal of [level] for from..to belongs: the deepest goal at
+/// or under [root] whose period covers that span. With no root, none; the
+/// editor lets the user pick.
+Goal? _parentFor(
+  AppData d,
+  Goal? root,
+  Level level,
+  DateTime from,
+  DateTime to,
+) {
+  if (root == null) return null;
+  Goal? best;
+  for (final g in [root, ...d.descendants(root.id)]) {
+    if (g.isDaily || g.level.index >= level.index) continue;
+    final (s, e) = g.period;
+    if (from.isBefore(s) || to.isAfter(e)) continue;
+    if (best == null || g.level.index > best.level.index) best = g;
+  }
+  return best;
+}
+
+/// Opens the editor for a new goal of [level] in from..to under [root].
+/// Daily tasks are one-off on [from] unless [everyDay], which repeats them
+/// every day up to [to], starting today if the span has begun.
+Future<void> _addGoal(
+  BuildContext context,
+  Goal? root,
+  Level level,
+  DateTime from,
+  DateTime to, {
+  bool everyDay = false,
+  int? clockMin,
+}) {
+  final data = context.store.data;
+  final now = today();
+  final start = everyDay && now.isAfter(from) && !now.isAfter(to) ? now : from;
+  return openGoalEditor(
+    context,
+    level: level,
+    day: start,
+    parentId: _parentFor(data, root, level, from, to)?.id,
+    repeat: level == Level.day ? (everyDay ? Repeat.daily : Repeat.none) : null,
+    until: everyDay ? to : null,
+    clockMin: clockMin,
+  );
+}
+
+/// "Every day of this month / week" button.
+class _EveryDayButton extends StatelessWidget {
+  const _EveryDayButton({required this.label, required this.onPressed});
+
+  final String label;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.only(bottom: 12),
+    child: OutlinedButton.icon(
+      onPressed: onPressed,
+      icon: const Icon(Icons.repeat),
+      label: Text(label),
+    ),
+  );
+}
+
+class _AddIcon extends StatelessWidget {
+  const _AddIcon({required this.tooltip, required this.onPressed});
+
+  final String tooltip;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) => IconButton(
+    tooltip: tooltip,
+    visualDensity: VisualDensity.compact,
+    padding: EdgeInsets.zero,
+    constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+    onPressed: onPressed,
+    icon: Icon(Icons.add_circle_outline, size: 22, color: context.pal.goldText),
+  );
+}
+
 class _PlanScaffold extends StatelessWidget {
   const _PlanScaffold({
     required this.goal,
@@ -110,6 +192,8 @@ class _PeriodTile extends StatelessWidget {
     required this.tally,
     required this.goals,
     required this.onTap,
+    this.onAdd,
+    this.addTooltip = '',
     this.current = false,
   });
 
@@ -117,6 +201,8 @@ class _PeriodTile extends StatelessWidget {
   final Tally tally;
   final List<Goal> goals;
   final VoidCallback onTap;
+  final VoidCallback? onAdd;
+  final String addTooltip;
   final bool current;
 
   @override
@@ -159,6 +245,8 @@ class _PeriodTile extends StatelessWidget {
                       color: tally.rate == null ? p.muted : color,
                     ),
                   ),
+                  if (onAdd != null)
+                    _AddIcon(tooltip: addTooltip, onPressed: onAdd!),
                 ],
               ),
               const SizedBox(height: 6),
@@ -184,7 +272,9 @@ class _PeriodTile extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 4),
                   child: Row(
                     children: [
-                      Rosette(size: 10, color: p.gold),
+                      _isDone(context, g)
+                          ? Icon(Icons.check_circle, size: 12, color: p.green)
+                          : Rosette(size: 10, color: p.gold),
                       const SizedBox(width: 4),
                       Expanded(
                         child: Text(
@@ -207,39 +297,103 @@ class _PeriodTile extends StatelessWidget {
   }
 }
 
+bool _isDone(BuildContext context, Goal g) {
+  final data = context.read<AppStore>().data;
+  return data.children(g.id).isEmpty ? g.manualDone : data.progress(g) >= 1;
+}
+
+/// The goals set for a period, each with its check-off (or its progress
+/// when it has goals under it), plus a button to add one.
 class _GoalChips extends StatelessWidget {
-  const _GoalChips({required this.title, required this.goals});
+  const _GoalChips({required this.title, required this.goals, this.onAdd});
 
   final String title;
   final List<Goal> goals;
+  final VoidCallback? onAdd;
 
   @override
   Widget build(BuildContext context) {
-    if (goals.isEmpty) return const SizedBox.shrink();
+    if (goals.isEmpty && onAdd == null) return const SizedBox.shrink();
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          GoldLabel(title),
-          const SizedBox(height: 6),
-          Wrap(
-            spacing: 6,
-            runSpacing: 6,
+          Row(
             children: [
-              for (final g in goals)
-                ActionChip(
-                  avatar: Icon(
-                    g.manualDone ? Icons.check_circle : Icons.flag_outlined,
-                    size: 18,
-                    color: g.manualDone
-                        ? context.pal.green
-                        : context.pal.goldText,
-                  ),
-                  label: Text(g.title),
-                  onPressed: () => openGoalEditor(context, goal: g),
+              Expanded(child: GoldLabel(title)),
+              if (onAdd != null)
+                TextButton.icon(
+                  onPressed: onAdd,
+                  icon: const Icon(Icons.add),
+                  label: Text(tr('ضيف هدف')),
                 ),
             ],
+          ),
+          const SizedBox(height: 6),
+          if (goals.isEmpty)
+            Muted(tr('لسه ما كتبتش أهداف هنا.'))
+          else
+            Wrap(
+              spacing: 6,
+              runSpacing: 6,
+              children: [for (final g in goals) _GoalPill(goal: g)],
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+class _GoalPill extends StatelessWidget {
+  const _GoalPill({required this.goal});
+
+  final Goal goal;
+
+  @override
+  Widget build(BuildContext context) {
+    final store = context.watch<AppStore>();
+    final p = context.pal;
+    final leaf = store.data.children(goal.id).isEmpty;
+    final done = _isDone(context, goal);
+    return Material(
+      color: done ? p.greenBg : p.card,
+      shape: StadiumBorder(side: BorderSide(color: done ? p.green : p.line)),
+      clipBehavior: Clip.antiAlias,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (leaf)
+            IconButton(
+              tooltip: done ? tr('ما اتعملش') : tr('تم'),
+              visualDensity: VisualDensity.compact,
+              onPressed: () =>
+                  store.update((_) => goal.manualDone = !goal.manualDone),
+              icon: Icon(
+                done ? Icons.check_circle : Icons.radio_button_unchecked,
+                color: done ? p.green : p.goldText,
+              ),
+            )
+          else
+            Padding(
+              padding: const EdgeInsetsDirectional.only(start: 12, end: 4),
+              child: Text(
+                pct(store.data.progress(goal)),
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  color: rateColor(context, store.data.progress(goal)),
+                ),
+              ),
+            ),
+          InkWell(
+            onTap: () => openGoalEditor(context, goal: goal),
+            child: Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(4, 10, 14, 10),
+              child: Text(
+                goal.title,
+                style: TextStyle(color: done ? p.greenText : null),
+              ),
+            ),
           ),
         ],
       ),
@@ -280,7 +434,19 @@ class _PlanYearPageState extends State<PlanYearPage> {
       onPrev: goal == null ? () => setState(() => _year--) : null,
       onNext: goal == null ? () => setState(() => _year++) : null,
       children: [
-        _GoalChips(title: tr('أهداف السنة'), goals: yearGoals),
+        _GoalChips(
+          title: tr('أهداف السنة'),
+          goals: yearGoals,
+          onAdd: goal == null
+              ? () => _addGoal(
+                  context,
+                  null,
+                  Level.year,
+                  DateTime(_year),
+                  DateTime(_year, 12, 31),
+                )
+              : null,
+        ),
         GridView.count(
           crossAxisCount: 3,
           shrinkWrap: true,
@@ -295,6 +461,8 @@ class _PlanYearPageState extends State<PlanYearPage> {
                 tally: m.tally,
                 current: m.from.year == now.year && m.from.month == now.month,
                 goals: goalsInPeriod(data, goal, Level.month, m.from, m.to),
+                addTooltip: tr('ضيف هدف للشهر ده'),
+                onAdd: () => _addGoal(context, goal, Level.month, m.from, m.to),
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
@@ -354,6 +522,14 @@ class _PlanMonthPageState extends State<PlanMonthPage> {
             _month,
             end,
           ).where((g) => g.id != goal?.id).toList(),
+          onAdd: fixed
+              ? null
+              : () => _addGoal(context, goal, Level.month, _month, end),
+        ),
+        _EveryDayButton(
+          label: tr('مهمة كل يوم في الشهر ده'),
+          onPressed: () =>
+              _addGoal(context, goal, Level.day, _month, end, everyDay: true),
         ),
         for (final (i, w) in weeksOfMonth(_month).indexed) ...[
           _PeriodTile(
@@ -369,6 +545,14 @@ class _PlanMonthPageState extends State<PlanMonthPage> {
             ),
             current: sameDay(w, weekStart(now)),
             goals: goalsInPeriod(data, goal, Level.week, w, addDays(w, 6)),
+            addTooltip: tr('ضيف هدف للأسبوع ده'),
+            onAdd: () => _addGoal(
+              context,
+              goal,
+              Level.week,
+              w.isBefore(_month) ? _month : w,
+              addDays(w, 6).isAfter(end) ? end : addDays(w, 6),
+            ),
             onTap: () => Navigator.push(
               context,
               MaterialPageRoute(
@@ -420,6 +604,26 @@ class _PlanWeekPageState extends State<PlanWeekPage> {
             _week,
             addDays(_week, 6),
           ).where((g) => g.id != goal?.id).toList(),
+          onAdd: fixed
+              ? null
+              : () => _addGoal(
+                  context,
+                  goal,
+                  Level.week,
+                  _week,
+                  addDays(_week, 6),
+                ),
+        ),
+        _EveryDayButton(
+          label: tr('مهمة كل يوم في الأسبوع ده'),
+          onPressed: () => _addGoal(
+            context,
+            goal,
+            Level.day,
+            _week,
+            addDays(_week, 6),
+            everyDay: true,
+          ),
         ),
         for (var i = 0; i < 7; i++)
           Builder(
@@ -466,6 +670,16 @@ class _PlanWeekPageState extends State<PlanWeekPage> {
                                 style: TextStyle(
                                   fontWeight: FontWeight.w700,
                                   color: rateColor(context, t.rate),
+                                ),
+                              ),
+                              _AddIcon(
+                                tooltip: tr('ضيف مهمة لليوم ده'),
+                                onPressed: () => _addGoal(
+                                  context,
+                                  goal,
+                                  Level.day,
+                                  day,
+                                  day,
                                 ),
                               ),
                             ],
@@ -521,23 +735,30 @@ class _StatusChip extends StatelessWidget {
             ? (p.redBg, p.redText, Icons.close)
             : (p.bg, p.muted, Icons.schedule),
     };
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(
-        color: bg,
-        borderRadius: BorderRadius.circular(999),
-        border: Border.all(color: fg.withValues(alpha: 0.4)),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 14, color: fg),
-          const SizedBox(width: 4),
-          Text(
-            goalTitle(data, goal, day),
-            style: TextStyle(fontSize: 12, color: fg),
+    final done = st == Occ.done || st == Occ.qadaPaid;
+    return Material(
+      color: bg,
+      shape: StadiumBorder(side: BorderSide(color: fg.withValues(alpha: 0.4))),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        // Tap to check off; future days can't be checked yet.
+        onTap: day.isAfter(today()) || st == Occ.qadaPaid
+            ? null
+            : () => context.store.update((d) => d.setDone(goal, day, !done)),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(icon, size: 14, color: fg),
+              const SizedBox(width: 4),
+              Text(
+                goalTitle(data, goal, day),
+                style: TextStyle(fontSize: 12, color: fg),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
@@ -603,19 +824,26 @@ class _PlanDayPageState extends State<PlanDayPage> {
       onPrev: () => setState(() => _day = addDays(_day, -1)),
       onNext: () => setState(() => _day = addDays(_day, 1)),
       children: [
-        if (tasks.isEmpty) EmptyNote(tr('مفيش مهام في اليوم ده.')),
-        if (untimed.isNotEmpty) ...[
-          SectionCard(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                GoldLabel(tr('من غير وقت')),
-                for (final g in untimed) taskRow(g, null),
-              ],
-            ),
+        SectionCard(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Row(
+                children: [
+                  Expanded(child: GoldLabel(tr('من غير وقت'))),
+                  _AddIcon(
+                    tooltip: tr('ضيف مهمة من غير وقت'),
+                    onPressed: () =>
+                        _addGoal(context, goal, Level.day, _day, _day),
+                  ),
+                ],
+              ),
+              if (tasks.isEmpty) Muted(tr('مفيش مهام في اليوم ده.')),
+              for (final g in untimed) taskRow(g, null),
+            ],
           ),
-          const SizedBox(height: 10),
-        ],
+        ),
+        const SizedBox(height: 10),
         for (var b = 0; b < 8; b++)
           Padding(
             padding: const EdgeInsets.only(bottom: 8),
@@ -646,6 +874,17 @@ class _PlanDayPageState extends State<PlanDayPage> {
                       ),
                       const Spacer(),
                       if (blocks[b].isEmpty) Muted(tr('فاضي'), size: 12),
+                      _AddIcon(
+                        tooltip: tr('ضيف مهمة في الوقت ده'),
+                        onPressed: () => _addGoal(
+                          context,
+                          goal,
+                          Level.day,
+                          _day,
+                          _day,
+                          clockMin: b * 180,
+                        ),
+                      ),
                     ],
                   ),
                   for (final (g, at) in blocks[b]) taskRow(g, at),

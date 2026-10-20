@@ -55,6 +55,7 @@ class Goal {
     this.manualDone = false,
     this.bookId,
     this.carriedFrom,
+    this.untilKey,
     required this.createdKey,
   }) : weekdays = weekdays ?? [];
 
@@ -80,6 +81,9 @@ class Goal {
   bool manualDone;
   String? bookId;
   String? carriedFrom;
+
+  /// Last day of a repeating daily goal, or null to repeat with no end.
+  String? untilKey;
   String createdKey;
 
   bool get isDaily => level == Level.day;
@@ -97,7 +101,8 @@ class Goal {
         return (s, addDays(s, 6));
       case Level.day:
         final s = parseKey(periodKey);
-        return (s, repeat == Repeat.none ? s : DateTime(9999));
+        if (repeat == Repeat.none) return (s, s);
+        return (s, untilKey == null ? DateTime(9999) : parseKey(untilKey!));
     }
   }
 
@@ -119,6 +124,7 @@ class Goal {
     'manualDone': manualDone,
     'bookId': bookId,
     'carriedFrom': carriedFrom,
+    'untilKey': untilKey,
     'createdKey': createdKey,
   };
 
@@ -140,6 +146,7 @@ class Goal {
     manualDone: j['manualDone'] ?? false,
     bookId: j['bookId'],
     carriedFrom: j['carriedFrom'],
+    untilKey: j['untilKey'],
     createdKey: j['createdKey'] ?? j['periodKey'],
   );
 }

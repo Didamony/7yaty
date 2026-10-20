@@ -98,4 +98,14 @@ void main() {
     expect(addDays(ws.last, 6).isBefore(DateTime(2026, 10, 31)), isFalse);
     expect(ws.length, 6);
   });
+
+  test('a daily task planned for one month stops at its end', () {
+    final g = daily('m')..untilKey = dkey(DateTime(2026, 10, 31));
+    final d = AppData()..goals.add(g);
+    expect(d.occursOn(g, DateTime(2026, 10, 31)), isTrue);
+    expect(d.occursOn(g, DateTime(2026, 11, 1)), isFalse);
+    expect(g.period.$2, DateTime(2026, 10, 31));
+    final back = Goal.fromJson(g.toJson());
+    expect(back.untilKey, '2026-10-31');
+  });
 }

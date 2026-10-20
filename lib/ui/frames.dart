@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'dart:ui' show ImageFilter;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -11,7 +12,7 @@ import '../services/files.dart';
 import 'widgets.dart';
 
 /// Share of the picture's area the note itself covers.
-const kFrameContentArea = 0.6;
+const kFrameContentArea = 0.4;
 
 /// Built-in frames drawn in the current theme's colors.
 const builtinFrames = ['arch', 'lattice', 'roses', 'dawn'];
@@ -23,7 +24,7 @@ String frameName(String id) => tr(switch (id) {
   _ => 'فجر',
 });
 
-/// A note or recording shown on a picture, the content covering 60% of the
+/// A note or recording shown on a picture, the content covering 40% of the
 /// picture's area and centered on it like a photo in a frame.
 class FramedCard extends StatelessWidget {
   const FramedCard({super.key, required this.frame, required this.child});
@@ -42,14 +43,22 @@ class FramedCard extends StatelessWidget {
           Positioned.fill(child: FrameBackground(frame: frame)),
           _FrameLayout(
             side: math.sqrt(kFrameContentArea),
-            child: Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: p.card.withValues(alpha: 0.86),
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: p.gold.withValues(alpha: 0.6)),
+            // Frosted glass: the picture shows through, blurred enough to
+            // keep the text readable.
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
+                child: Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: BoxDecoration(
+                    color: p.card.withValues(alpha: 0.6),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: p.gold.withValues(alpha: 0.5)),
+                  ),
+                  child: child,
+                ),
               ),
-              child: child,
             ),
           ),
         ],
