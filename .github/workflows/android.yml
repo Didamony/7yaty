@@ -98,7 +98,8 @@ jobs:
           tag_name: build-${{ github.run_number }}
           name: حياتي — نسخة ${{ github.run_number }}
           target_commitish: ${{ github.sha }}
-          prerelease: ${{ github.ref != 'refs/heads/main' }}
+          # The newest build is "latest", so releases/latest/download works.
+          make_latest: true
           files: hayati.apk
           body: |
             نزّل ملف hayati.apk على الموبايل وافتحه عشان تسطّب التطبيق.

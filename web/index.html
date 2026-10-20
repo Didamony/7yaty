@@ -33,8 +33,81 @@
 
   <title>حياتي</title>
   <link rel="manifest" href="manifest.json">
+  <style>
+    /* First-visit guide: one link for everyone; Android gets the app,
+       iPhone learns to add the web app to the home screen. */
+    #welcome { position: fixed; inset: 0; z-index: 9999; display: none;
+      overflow-y: auto; background: #EEF2F7; color: #24313F;
+      font-family: -apple-system, "Segoe UI", Tahoma, sans-serif; }
+    #welcome * { box-sizing: border-box; }
+    #welcome .box { max-width: 420px; margin: 0 auto; padding: 24px 20px 40px; }
+    #welcome .logo { background: #3F6A93; border-radius: 22px; padding: 22px;
+      text-align: center; }
+    #welcome .logo img { height: 96px; }
+    #welcome .card { background: #fff; border-radius: 20px; margin-top: 16px;
+      padding: 22px 20px; border: 1px solid #DDE4EC; }
+    #welcome h1 { font-size: 22px; margin: 0 0 8px; color: #8E3F5E;
+      text-align: center; }
+    #welcome p { line-height: 1.8; margin: 6px 0; }
+    #welcome ol { padding-inline-start: 22px; line-height: 2; margin: 10px 0; }
+    #welcome .btn { display: block; text-align: center; text-decoration: none;
+      background: #3F6A93; color: #fff; border: 0; border-radius: 14px;
+      padding: 15px; font-size: 17px; font-weight: 700; width: 100%;
+      margin-top: 14px; font-family: inherit; cursor: pointer; }
+    #welcome .link { background: none; color: #3F6A93; font-weight: 600; }
+    #welcome .muted { color: #6B7785; font-size: 14px; }
+    #welcome svg { vertical-align: middle; }
+  </style>
 </head>
 <body>
+  <div id="welcome">
+    <div class="box">
+      <div class="logo"><img src="assets/assets/logo/logo_word.png" alt="حياتي"></div>
+      <div class="card" id="w-android" hidden>
+        <h1>نزّل حياتي على موبايلك</h1>
+        <p>أهدافك ومواعيدك ومواقيت الصلاة ويومياتك في مكان واحد، وكمان التنبيهات في ميعادها.</p>
+        <a class="btn" id="w-apk" href="#">نزّل التطبيق</a>
+        <p class="muted">بعد التنزيل افتح الملف. لو الموبايل سأل عن التسطيب من مصدر غير معروف، وافق.</p>
+        <button class="btn link" onclick="hayatiWelcomeDone()">أو استخدمه من المتصفح</button>
+      </div>
+      <div class="card" id="w-ios" hidden>
+        <h1>حط حياتي على الشاشة الرئيسية</h1>
+        <p>عشان يفتح زي أي تطبيق، من <b>Safari</b>:</p>
+        <ol>
+          <li>دوس على زرار المشاركة
+            <svg width="20" height="24" viewBox="0 0 20 24" fill="none" stroke="#3F6A93" stroke-width="2"><path d="M10 15V2M5 7l5-5 5 5M4 10H2v12h16V10h-2"/></svg>
+            اللي تحت.</li>
+          <li>انزل واختار <b>إضافة إلى الشاشة الرئيسية</b> (Add to Home Screen).</li>
+          <li>دوس <b>إضافة</b>، وافتح حياتي من الأيقونة.</li>
+        </ol>
+        <p class="muted">لو فاتح اللينك من واتساب أو فيسبوك، افتحه في Safari الأول.</p>
+        <button class="btn" onclick="hayatiWelcomeDone()">تمام، كمّل</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var ua = navigator.userAgent;
+      var android = /Android/i.test(ua);
+      var ios = /iPhone|iPad|iPod/i.test(ua) ||
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      var installed = navigator.standalone ||
+        window.matchMedia('(display-mode: standalone)').matches;
+      var seen = false;
+      try { seen = localStorage.getItem('hayati.welcomed') === '1'; } catch (e) {}
+      window.hayatiWelcomeDone = function () {
+        try { localStorage.setItem('hayati.welcomed', '1'); } catch (e) {}
+        document.getElementById('welcome').style.display = 'none';
+      };
+      if (installed || seen || !(android || ios)) return;
+      // The app is published next to this page's repository.
+      var repo = location.pathname.indexOf('/hayati-app') === 0 ? 'hayati-app' : '7yaty';
+      document.getElementById('w-apk').href =
+        'https://github.com/Didamony/' + repo + '/releases/latest/download/hayati.apk';
+      document.getElementById(android ? 'w-android' : 'w-ios').hidden = false;
+      document.getElementById('welcome').style.display = 'block';
+    })();
+  </script>
   <!-- pdf.js (Apache-2.0, legacy build for older Safari) is bundled so books open without a CDN. -->
   <script src="pdfjs/pdf.min.mjs" type="module"></script>
   <script type="module">
