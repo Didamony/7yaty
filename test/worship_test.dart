@@ -24,8 +24,11 @@ void main() {
         if (q == null) continue;
         final (surah, from, to) = q;
         final count = (quran[surah - 1][2] as List).length;
-        expect(from >= 1 && from <= to && to <= count, isTrue,
-            reason: '${c.title}: $surah:$from-$to');
+        expect(
+          from >= 1 && from <= to && to <= count,
+          isTrue,
+          reason: '${c.title}: $surah:$from-$to',
+        );
       }
     }
   });

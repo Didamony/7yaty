@@ -44,6 +44,10 @@ String pct(double v) {
   return L10n.lang == 'ar' ? '${n(x)}٪' : '$x%';
 }
 
+/// Separator between items of a list in running text. A middle dot next to
+/// Arabic digits reads as a zero.
+String listSep() => L10n.rtl ? '، ' : ', ';
+
 String fmtMinutes(int minutes) =>
     fmtTime(DateTime(2000, 1, 1, minutes ~/ 60, minutes % 60));
 
@@ -68,6 +72,9 @@ String fmtDateLong(DateTime d) => n(DateFormat.yMMMMEEEEd(_locale()).format(d));
 
 /// "الاثنين ١٩ أكتوبر"
 String fmtDateShort(DateTime d) => n(DateFormat.MMMMEEEEd(_locale()).format(d));
+
+/// "أكتوبر"
+String fmtMonthName(DateTime d) => n(DateFormat.MMMM(_locale()).format(d));
 
 String fmtMonth(DateTime d) => n(DateFormat.yMMMM(_locale()).format(d));
 

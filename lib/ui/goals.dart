@@ -8,6 +8,8 @@ import '../data/models.dart';
 import '../data/store.dart';
 import 'books.dart';
 import 'goal_editor.dart';
+import 'goal_plan.dart';
+import 'stats_page.dart';
 import 'widgets.dart';
 
 String periodLabel(Goal g) {
@@ -105,6 +107,31 @@ class _GoalsPageState extends State<GoalsPage> {
                         context,
                         MaterialPageRoute(builder: (_) => const BooksPage()),
                       ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  Expanded(
+                    child: _MiniCard(
+                      icon: Icon(Icons.bar_chart, color: p.gold),
+                      title: tr('الرسم البياني'),
+                      value: tr('عملت إيه وما عملتش إيه'),
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const StatsPage()),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: _MiniCard(
+                      icon: Icon(Icons.grid_view, color: p.gold),
+                      title: tr('جدول السنة'),
+                      value: tr('شهور، أسابيع، أيام'),
+                      onTap: () => openGoalPlan(context),
                     ),
                   ),
                 ],
@@ -355,6 +382,26 @@ class _GoalNode extends StatelessWidget {
           const SizedBox(height: 6),
           Bar(progress, label: goal.title),
         ],
+        if (top)
+          Wrap(
+            spacing: 4,
+            children: [
+              if (!goal.isDaily)
+                TextButton.icon(
+                  onPressed: () => openGoalPlan(context, goal: goal),
+                  icon: const Icon(Icons.grid_view, size: 18),
+                  label: Text(tr('الجدول')),
+                ),
+              TextButton.icon(
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => StatsPage(goalId: goal.id)),
+                ),
+                icon: const Icon(Icons.bar_chart, size: 18),
+                label: Text(tr('الرسم البياني')),
+              ),
+            ],
+          ),
         if (goal.isDaily && goal.repeat != Repeat.none) ...[
           const SizedBox(height: 6),
           WeekStrip(goal: goal),
