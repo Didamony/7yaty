@@ -99,12 +99,15 @@
         try { localStorage.setItem('hayati.welcomed', '1'); } catch (e) {}
         document.getElementById('welcome').style.display = 'none';
       };
-      if (installed || seen || !(android || ios)) return;
+      // The download link (?get) always shows the guide, to anyone.
+      var forced = /[?&#]get\b/.test(location.search + location.hash);
+      if (installed || (!forced && (seen || !(android || ios)))) return;
       // The app is published next to this page's repository.
       var repo = location.pathname.indexOf('/hayati-app') === 0 ? 'hayati-app' : '7yaty';
       document.getElementById('w-apk').href =
         'https://github.com/Didamony/' + repo + '/releases/latest/download/hayati.apk';
-      document.getElementById(android ? 'w-android' : 'w-ios').hidden = false;
+      if (android || !ios) document.getElementById('w-android').hidden = false;
+      if (ios || !android) document.getElementById('w-ios').hidden = false;
       document.getElementById('welcome').style.display = 'block';
     })();
   </script>
