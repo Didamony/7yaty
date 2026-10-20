@@ -8,6 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../core/i18n.dart';
 import '../core/theme.dart';
 import '../services/cloud.dart';
+import 'admin_page.dart';
 import 'widgets.dart';
 
 /// Shows [child] only to a signed-in account with a confirmed email, after
@@ -126,8 +127,13 @@ class _AuthGateState extends State<AuthGate> {
       cloud.allowed = false;
       return const AuthPage();
     }
-    if (!user.emailVerified) return const VerifyPage();
-    if (!cloud.isAdmin) {
+    if (!cloud.verified) return const VerifyPage();
+    if (cloud.isAdmin) {
+      // The owner's account only runs the control panel.
+      cloud.allowed = false;
+      return const AdminPage();
+    }
+    {
       final access = _access;
       if (access == null || access.uid != user.uid) {
         if (_accessFailed) {
@@ -154,7 +160,7 @@ class _AuthGateState extends State<AuthGate> {
       return _Waiting(tr('بنجهّز بياناتك…'));
     }
     final access = _access;
-    if (cloud.isAdmin || access == null || access.paid) return widget.child;
+    if (access == null || access.paid) return widget.child;
     return Stack(
       children: [
         widget.child,
@@ -237,7 +243,8 @@ class _Retry extends StatelessWidget {
 }
 
 /// Shown when the free trial is over (or opened from the trial badge):
-/// how to pay with InstaPay and send the receipt.
+/// how to pay with InstaPay, then a form whose details reach the owner's
+/// panel and WhatsApp.
 class PaywallPage extends StatefulWidget {
   const PaywallPage({super.key, required this.onCheck, this.trial = false});
 
@@ -252,15 +259,51 @@ class PaywallPage extends StatefulWidget {
 
 class _PaywallPageState extends State<PaywallPage> {
   PayInfo? _info;
+  PayRequest? _request;
+  bool _editing = false;
+  bool _sending = false;
   bool _checking = false;
+  final _form = GlobalKey<FormState>();
+  final _name = TextEditingController();
+  final _from = TextEditingController();
+  final _amount = TextEditingController();
+  final _ref = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    Cloud.instance
-        .loadPayInfo()
-        .then((i) => mounted ? setState(() => _info = i) : null)
-        .catchError((_) => mounted ? setState(() => _info = PayInfo()) : null);
+    _load();
+  }
+
+  @override
+  void dispose() {
+    for (final c in [_name, _from, _amount, _ref]) {
+      c.dispose();
+    }
+    super.dispose();
+  }
+
+  Future<void> _load() async {
+    PayInfo info;
+    PayRequest? req;
+    try {
+      info = await Cloud.instance.loadPayInfo();
+      req = await Cloud.instance.myRequest();
+    } catch (_) {
+      info = PayInfo();
+    }
+    if (!mounted) return;
+    setState(() {
+      _info = info;
+      _request = req;
+      if (_amount.text.isEmpty) _amount.text = info.price;
+      if (req != null) {
+        _name.text = req.name;
+        _from.text = req.from;
+        _amount.text = req.amount;
+        _ref.text = req.ref;
+      }
+    });
   }
 
   Future<void> _copy(String text) async {
@@ -276,13 +319,31 @@ class _PaywallPageState extends State<PaywallPage> {
     if (!ok && mounted) toast(context, tr('ما قدرتش أفتح اللينك'));
   }
 
-  void _whatsapp(PayInfo info) {
-    final email = Cloud.instance.user?.email ?? '';
-    final number = info.whatsapp.replaceAll(RegExp(r'[^0-9]'), '');
-    final text = tr('أنا حوّلت تمن تطبيق حياتي. إيميل حسابي: {e}', {
-      'e': email,
-    });
-    _open('https://wa.me/$number?text=${Uri.encodeComponent(text)}');
+  Future<void> _send() async {
+    if (!_form.currentState!.validate()) return;
+    final user = Cloud.instance.user!;
+    setState(() => _sending = true);
+    try {
+      final r = PayRequest(
+        uid: user.uid,
+        email: user.email ?? '',
+        name: _name.text.trim(),
+        from: _from.text.trim(),
+        amount: _amount.text.trim(),
+        ref: _ref.text.trim(),
+        code: activationCode(user.uid),
+      );
+      await Cloud.instance.sendRequest(r);
+      if (!mounted) return;
+      setState(() {
+        _request = r;
+        _editing = false;
+      });
+    } catch (e) {
+      if (mounted) toast(context, tr('حصلت مشكلة، جرّب تاني'));
+    } finally {
+      if (mounted) setState(() => _sending = false);
+    }
   }
 
   Future<void> _check() async {
@@ -290,14 +351,75 @@ class _PaywallPageState extends State<PaywallPage> {
     await widget.onCheck();
     if (!mounted) return;
     setState(() => _checking = false);
-    if (widget.trial) Navigator.of(context).maybePop();
+    if (widget.trial) {
+      Navigator.of(context).maybePop();
+    } else {
+      // Still here: not activated yet; maybe the request was answered.
+      await _load();
+      if (mounted) toast(context, tr('لسه ما اتفعّلش'));
+    }
   }
+
+  Widget _copyRow(String label, String value, {bool big = false}) => Container(
+    margin: const EdgeInsets.only(top: 6),
+    padding: const EdgeInsets.fromLTRB(12, 4, 4, 4),
+    decoration: BoxDecoration(
+      color: context.pal.hint,
+      borderRadius: BorderRadius.circular(12),
+    ),
+    child: Row(
+      children: [
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Muted(label, size: 11),
+              Text(
+                value,
+                textDirection: TextDirection.ltr,
+                style: TextStyle(
+                  fontSize: big ? 20 : 15,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: big ? 1.5 : 0,
+                ),
+              ),
+            ],
+          ),
+        ),
+        IconButton(
+          tooltip: tr('انسخ'),
+          onPressed: () => _copy(value),
+          icon: const Icon(Icons.copy),
+        ),
+      ],
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
     final p = context.pal;
     final info = _info;
-    final email = Cloud.instance.user?.email ?? '';
+    final req = _request;
+    final uid = Cloud.instance.user?.uid ?? '';
+    final pending = req != null && req.status == 'pending' && !_editing;
+
+    Widget field(
+      TextEditingController c,
+      String label, {
+      String? hint,
+      bool ltr = false,
+      bool required = true,
+    }) => Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: TextFormField(
+        controller: c,
+        textDirection: ltr ? TextDirection.ltr : null,
+        decoration: InputDecoration(labelText: label, hintText: hint),
+        validator: (v) =>
+            required && v!.trim().isEmpty ? tr('الخانة دي مطلوبة') : null,
+      ),
+    );
+
     return _AuthScaffold(
       children: [
         if (widget.trial)
@@ -331,9 +453,35 @@ class _PaywallPageState extends State<PaywallPage> {
         const SizedBox(height: 14),
         if (info == null)
           const Center(child: CircularProgressIndicator())
-        else if (!info.isSet)
-          HintBox(tr('طريقة الدفع لسه ما اتحطتش. كلّم صاحب التطبيق.'))
-        else ...[
+        else if (pending) ...[
+          Icon(Icons.mark_email_read_outlined, size: 40, color: p.green),
+          const SizedBox(height: 6),
+          Text(
+            tr('طلبك وصل'),
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            tr(
+              'هنراجع التحويل ونفعّل حسابك في أقرب وقت. أول ما يتفعّل دوس الزرار اللي تحت.',
+            ),
+            textAlign: TextAlign.center,
+            style: const TextStyle(height: 1.7),
+          ),
+          TextButton(
+            onPressed: () => setState(() => _editing = true),
+            child: Text(tr('عدّل البيانات')),
+          ),
+        ] else ...[
+          if (req?.status == 'rejected') ...[
+            HintBox(
+              tr(
+                'البيانات اللي بعتها ما اتطابقتش مع أي تحويل. راجعها وابعتها تاني.',
+              ),
+            ),
+            const SizedBox(height: 10),
+          ],
           if (info.price.isNotEmpty)
             Text(
               tr('السعر: {p}', {'p': info.price}),
@@ -342,41 +490,49 @@ class _PaywallPageState extends State<PaywallPage> {
             ),
           const SizedBox(height: 12),
           GoldLabel(tr('١. حوّل المبلغ على InstaPay')),
-          if (info.instapay.isNotEmpty)
-            ListTile(
-              contentPadding: EdgeInsets.zero,
-              title: Text(
-                info.instapay,
-                textDirection: TextDirection.ltr,
-                style: const TextStyle(fontWeight: FontWeight.w600),
-              ),
-              trailing: IconButton(
-                tooltip: tr('انسخ'),
-                onPressed: () => _copy(info.instapay),
-                icon: const Icon(Icons.copy),
-              ),
-            ),
-          if (info.link.isNotEmpty)
+          _copyRow(tr('حوّل لـ'), info.instapay),
+          if (info.link.isNotEmpty) ...[
+            const SizedBox(height: 6),
             OutlinedButton.icon(
               onPressed: () => _open(info.link),
               icon: const Icon(Icons.open_in_new),
               label: Text(tr('ادفع بلينك InstaPay')),
             ),
-          const SizedBox(height: 12),
-          GoldLabel(tr('٢. ابعت صورة التحويل')),
-          Muted(tr('ومعاها إيميل حسابك: {e}', {'e': email}), size: 13),
-          const SizedBox(height: 6),
-          if (info.whatsapp.isNotEmpty)
-            FilledButton.icon(
-              onPressed: () => _whatsapp(info),
-              icon: const Icon(Icons.chat_outlined),
-              label: Text(tr('ابعتها على واتساب')),
+          ],
+          const SizedBox(height: 14),
+          GoldLabel(tr('٢. اكتب الكود ده في سبب التحويل')),
+          _copyRow(tr('كود حسابك'), activationCode(uid), big: true),
+          const SizedBox(height: 14),
+          GoldLabel(tr('٣. بعد التحويل اكتب بياناته هنا')),
+          const SizedBox(height: 8),
+          Form(
+            key: _form,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                field(_name, tr('اسمك زي ما ظاهر في InstaPay')),
+                field(
+                  _from,
+                  tr('حوّلت من (رقم الموبايل أو عنوان InstaPay)'),
+                  ltr: true,
+                ),
+                field(_amount, tr('المبلغ اللي حوّلته')),
+                field(_ref, tr('رقم العملية من إيصال InstaPay'), ltr: true),
+              ],
             ),
-          const SizedBox(height: 12),
-          GoldLabel(tr('٣. استنى التفعيل')),
-          Muted(
-            tr('أول ما يتفعّل، دوس الزرار اللي تحت والتطبيق يفتح.'),
-            size: 13,
+          ),
+          FilledButton.icon(
+            onPressed: _sending ? null : _send,
+            style: FilledButton.styleFrom(
+              minimumSize: const Size.fromHeight(52),
+            ),
+            icon: _sending
+                ? const SizedBox.square(
+                    dimension: 20,
+                    child: CircularProgressIndicator(strokeWidth: 2.5),
+                  )
+                : const Icon(Icons.verified_outlined),
+            label: Text(tr('أكّد الدفع')),
           ),
         ],
         const SizedBox(height: 14),

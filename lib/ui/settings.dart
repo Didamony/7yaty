@@ -7,7 +7,6 @@ import '../core/theme.dart';
 import '../data/models.dart';
 import '../data/store.dart';
 import '../services/cloud.dart';
-import 'admin_page.dart';
 import 'auth_page.dart';
 import '../services/files.dart';
 import '../services/notifications.dart';
@@ -582,15 +581,6 @@ class _AccountSection extends StatelessWidget {
                   ),
                 ],
               ),
-              if (cloud.isAdmin)
-                OutlinedButton.icon(
-                  onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (_) => const AdminPage()),
-                  ),
-                  icon: const Icon(Icons.admin_panel_settings_outlined),
-                  label: Text(tr('لوحة التفعيل')),
-                ),
               TextButton(
                 onPressed: () async {
                   if (await confirm(

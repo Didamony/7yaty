@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
+import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/store.dart';
@@ -73,14 +74,12 @@ class Access {
   }
 }
 
+/// The owner's InstaPay address, used until the admin sets another.
+const defaultInstapay = 'didamony372@instapay';
+
 /// Payment details shown to users whose trial ended, set by the admin.
 class PayInfo {
-  PayInfo({
-    this.price = '',
-    this.instapay = '',
-    this.link = '',
-    this.whatsapp = '',
-  });
+  PayInfo({this.price = '', this.instapay = defaultInstapay, this.link = ''});
 
   /// e.g. "300 جنيه".
   String price;
@@ -91,25 +90,102 @@ class PayInfo {
   /// Optional InstaPay payment link.
   String link;
 
-  /// WhatsApp number, with country code, to send the receipt to.
-  String whatsapp;
-
-  bool get isSet => instapay.isNotEmpty || link.isNotEmpty;
-
   Map<String, dynamic> toJson() => {
     'price': price,
     'instapay': instapay,
     'link': link,
-    'whatsapp': whatsapp,
   };
 
   factory PayInfo.fromJson(Map<String, dynamic>? j) => PayInfo(
     price: j?['price'] ?? '',
-    instapay: j?['instapay'] ?? '',
+    instapay: (j?['instapay'] as String?)?.isNotEmpty == true
+        ? j!['instapay']
+        : defaultInstapay,
     link: j?['link'] ?? '',
-    whatsapp: j?['whatsapp'] ?? '',
   );
 }
+
+/// Where the owner gets a WhatsApp message for each payment, through the
+/// free CallMeBot service (see README). Users never see the number.
+class NotifyInfo {
+  NotifyInfo({this.phone = '', this.apikey = ''});
+
+  String phone;
+  String apikey;
+
+  bool get isSet => phone.isNotEmpty && apikey.isNotEmpty;
+
+  Map<String, dynamic> toJson() => {'phone': phone, 'apikey': apikey};
+
+  factory NotifyInfo.fromJson(Map<String, dynamic>? j) =>
+      NotifyInfo(phone: j?['phone'] ?? '', apikey: j?['apikey'] ?? '');
+}
+
+/// A user's word that they paid, for the owner to check against InstaPay.
+/// Kept at `requests/{uid}`.
+class PayRequest {
+  PayRequest({
+    required this.uid,
+    required this.email,
+    required this.name,
+    required this.from,
+    required this.amount,
+    required this.ref,
+    required this.code,
+    this.at,
+    this.status = 'pending',
+  });
+
+  final String uid;
+  final String email;
+
+  /// Sender's name as InstaPay shows it.
+  final String name;
+
+  /// The phone or InstaPay address they paid from.
+  final String from;
+  final String amount;
+
+  /// InstaPay's reference number for the transfer.
+  final String ref;
+
+  /// The account's code, written as the transfer's reason.
+  final String code;
+  final DateTime? at;
+
+  /// pending, approved or rejected.
+  final String status;
+
+  Map<String, dynamic> toJson() => {
+    'email': email,
+    'name': name,
+    'from': from,
+    'amount': amount,
+    'ref': ref,
+    'code': code,
+    'at': FieldValue.serverTimestamp(),
+    'status': 'pending',
+  };
+
+  factory PayRequest.fromDoc(DocumentSnapshot<Map<String, dynamic>> d) {
+    final j = d.data() ?? {};
+    return PayRequest(
+      uid: d.id,
+      email: j['email'] ?? '',
+      name: j['name'] ?? '',
+      from: j['from'] ?? '',
+      amount: j['amount'] ?? '',
+      ref: j['ref'] ?? '',
+      code: j['code'] ?? '',
+      at: (j['at'] as Timestamp?)?.toDate(),
+      status: j['status'] ?? 'pending',
+    );
+  }
+}
+
+/// A short code for the account, for the user to write as the transfer's
+/// reason so the owner can tell whose payment it is.
+String activationCode(String uid) => 'HY-${uid.substring(0, 6).toUpperCase()}';
 
 /// Folders whose files are kept in the cloud.
 const _folders = ['recordings', 'books', 'media'];
@@ -141,7 +217,11 @@ class Cloud extends ChangeNotifier {
   bool get enabled => CloudConfig.configured && _ready;
   User? get user => enabled ? FirebaseAuth.instance.currentUser : null;
   bool get signedIn => user != null;
-  bool get verified => user?.emailVerified ?? false;
+  bool get verified => (user?.emailVerified ?? false) && !_tokenStale;
+
+  /// The email was just confirmed but the sign-in token doesn't say so yet,
+  /// so the database would still refuse this account.
+  bool _tokenStale = false;
 
   bool get isAdmin =>
       verified && user?.email?.toLowerCase() == adminEmail.toLowerCase();
@@ -176,6 +256,82 @@ class Cloud extends ChangeNotifier {
       PayInfo.fromJson((await _payDoc.get()).data());
 
   Future<void> savePayInfo(PayInfo info) => _payDoc.set(info.toJson());
+
+  DocumentReference<Map<String, dynamic>> get _notifyDoc =>
+      FirebaseFirestore.instance.collection('config').doc('notify');
+
+  CollectionReference<Map<String, dynamic>> get _requests =>
+      FirebaseFirestore.instance.collection('requests');
+
+  Future<NotifyInfo> loadNotifyInfo() async =>
+      NotifyInfo.fromJson((await _notifyDoc.get()).data());
+
+  Future<void> saveNotifyInfo(NotifyInfo info) => _notifyDoc.set(info.toJson());
+
+  /// Sends the owner a WhatsApp message. Best effort: a payment request is
+  /// saved for the owner's panel either way.
+  Future<bool> notifyOwner(String text, {NotifyInfo? info}) async {
+    try {
+      final n = info ?? await loadNotifyInfo();
+      if (!n.isSet) return false;
+      final uri = Uri.https('api.callmebot.com', '/whatsapp.php', {
+        'phone': n.phone.replaceAll(RegExp(r'[^0-9+]'), ''),
+        'text': text,
+        'apikey': n.apikey,
+      });
+      await http.get(uri).timeout(const Duration(seconds: 20));
+      return true;
+    } catch (e) {
+      // On the web the browser hides the reply, but the message still goes.
+      debugPrint('hayati: WhatsApp notice: $e');
+      return kIsWeb;
+    }
+  }
+
+  /// This account's payment request, if it sent one.
+  Future<PayRequest?> myRequest() async {
+    final d = await _requests.doc(user!.uid).get();
+    return d.exists ? PayRequest.fromDoc(d) : null;
+  }
+
+  /// Saves the user's payment details for the owner and messages them.
+  Future<void> sendRequest(PayRequest r) async {
+    await _requests.doc(r.uid).set(r.toJson());
+    await notifyOwner(
+      [
+        '🔔 حياتي: طلب تفعيل جديد',
+        'الإيميل: ${r.email}',
+        'الاسم في InstaPay: ${r.name}',
+        'حوّل من: ${r.from}',
+        'المبلغ: ${r.amount}',
+        'رقم العملية: ${r.ref}',
+        'الكود في سبب التحويل: ${r.code}',
+        'فعّله من لوحة التحكم في التطبيق.',
+      ].join('\n'),
+    );
+  }
+
+  /// Payment requests, newest first, as they come.
+  Stream<List<PayRequest>> watchRequests() => _requests
+      .orderBy('at', descending: true)
+      .limit(200)
+      .snapshots()
+      .map((q) => q.docs.map(PayRequest.fromDoc).toList());
+
+  /// Activates the account for life and closes its request.
+  Future<void> approve(String uid) async {
+    final batch = FirebaseFirestore.instance.batch()
+      ..update(_access.doc(uid), {
+        'paid': true,
+        'paidAt': FieldValue.serverTimestamp(),
+      });
+    final req = await _requests.doc(uid).get();
+    if (req.exists) batch.update(req.reference, {'status': 'approved'});
+    await batch.commit();
+  }
+
+  Future<void> reject(String uid) =>
+      _requests.doc(uid).update({'status': 'rejected'});
 
   /// Newest accounts first, for the admin.
   Future<List<Access>> recentAccounts() async {
@@ -244,10 +400,15 @@ class Cloud extends ChangeNotifier {
   Future<bool> refresh() async {
     final u = FirebaseAuth.instance.currentUser;
     if (u == null) return false;
-    await u.reload();
-    // Fresh token, so the database rules see the confirmed email.
-    if (FirebaseAuth.instance.currentUser!.emailVerified) {
-      await FirebaseAuth.instance.currentUser!.getIdToken(true);
+    if (!u.emailVerified) _tokenStale = true;
+    try {
+      await u.reload();
+      // Fresh token, so the database rules see the confirmed email.
+      if (FirebaseAuth.instance.currentUser!.emailVerified) {
+        await FirebaseAuth.instance.currentUser!.getIdToken(true);
+      }
+    } finally {
+      _tokenStale = false;
     }
     notifyListeners();
     return FirebaseAuth.instance.currentUser!.emailVerified;

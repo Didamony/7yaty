@@ -2,7 +2,8 @@ rules_version = '2';
 
 // Each account reads and writes only its own data, once its email is
 // confirmed, and only while it has paid or is in its 2-hour free trial.
-// Only the admin can mark an account paid or change the payment details.
+// Only the admin can mark an account paid, answer payment requests, or
+// change the payment details.
 service cloud.firestore {
   match /databases/{database}/documents {
     function verified() {
@@ -29,6 +30,18 @@ service cloud.firestore {
         && request.resource.data.keys().hasOnly(['trialStart', 'email'])
         && request.resource.data.trialStart == request.time
         && request.resource.data.email == request.auth.token.email;
+      allow update, delete: if isAdmin();
+    }
+
+    // A user's payment details, for the owner to check. The user writes
+    // only their own, always as pending; only the owner answers it.
+    match /requests/{uid} {
+      allow get: if verified() && (request.auth.uid == uid || isAdmin());
+      allow list: if isAdmin();
+      allow create, update: if verified() && request.auth.uid == uid
+        && request.resource.data.status == 'pending'
+        && request.resource.data.keys().hasOnly(
+          ['email', 'name', 'from', 'amount', 'ref', 'code', 'at', 'status']);
       allow update, delete: if isAdmin();
     }
 
