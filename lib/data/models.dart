@@ -489,7 +489,6 @@ class Settings {
     Map<String, String>? themeImages,
     this.bgOpacity = 0.6,
     this.syncBooks = true,
-    this.googleEmail,
     this.lastSync,
   }) : prayerBefore =
            prayerBefore ?? {for (final p in Prayer.values) p.name: 10},
@@ -511,7 +510,6 @@ class Settings {
   /// How strongly the theme picture shows behind the screens.
   double bgOpacity;
   bool syncBooks;
-  String? googleEmail;
   int? lastSync;
 
   Map<String, dynamic> toJson() => {
@@ -525,7 +523,6 @@ class Settings {
     'themeImages': themeImages,
     'bgOpacity': bgOpacity,
     'syncBooks': syncBooks,
-    'googleEmail': googleEmail,
     'lastSync': lastSync,
   };
 
@@ -540,7 +537,6 @@ class Settings {
     themeImages: (j['themeImages'] as Map?)?.cast<String, String>(),
     bgOpacity: (j['bgOpacity'] ?? 0.6).toDouble(),
     syncBooks: j['syncBooks'] ?? true,
-    googleEmail: j['googleEmail'],
     lastSync: j['lastSync'],
   );
 }

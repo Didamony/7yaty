@@ -6,7 +6,8 @@ import '../core/i18n.dart';
 import '../core/theme.dart';
 import '../data/models.dart';
 import '../data/store.dart';
-import '../services/drive_sync.dart';
+import '../services/cloud.dart';
+import 'auth_page.dart';
 import '../services/files.dart';
 import '../services/notifications.dart';
 import 'widgets.dart';
@@ -462,80 +463,13 @@ class _AccountSection extends StatelessWidget {
 
   static String _when(DateTime t) => '${fmtTime(t)} · ${fmtDayMonth(t)}';
 
-  Future<void> _signIn(BuildContext context) async {
-    final store = context.store;
-    final sync = DriveSync.instance;
-    try {
-      final email = await sync.signIn();
-      await store.update((d) => d.settings.googleEmail = email);
-      final remoteAt = await sync.remoteUpdatedAt();
-      if (!context.mounted) return;
-      if (remoteAt == null) {
-        await sync.backup(store.data);
-      } else if (store.data.isEmpty) {
-        await _restore(context);
-      } else {
-        final restore = await showDialog<bool>(
-          context: context,
-          builder: (c) => AlertDialog(
-            title: Text(tr('لقيت نسخة على درايف')),
-            content: Text(
-              tr(
-                'في نسخة محفوظة من {d}. تحب ترجّعها على الموبايل، ولا ترفع اللي على الموبايل مكانها؟',
-                {
-                  'd': fmtDateLong(
-                    DateTime.fromMillisecondsSinceEpoch(remoteAt),
-                  ),
-                },
-              ),
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(c, false),
-                child: Text(tr('ارفع اللي هنا')),
-              ),
-              FilledButton(
-                onPressed: () => Navigator.pop(c, true),
-                child: Text(tr('رجّع نسخة درايف')),
-              ),
-            ],
-          ),
-        );
-        if (!context.mounted) return;
-        if (restore == true) {
-          await _restore(context);
-        } else if (restore == false) {
-          await sync.backup(store.data);
-        }
-      }
-    } catch (e) {
-      if (context.mounted) {
-        toast(context, tr('ما قدرتش أسجّل الدخول بجوجل. جرّب تاني.'));
-      }
-    }
-  }
-
-  Future<void> _restore(BuildContext context) async {
-    final store = context.store;
-    final email = store.settings.googleEmail;
-    final data = await DriveSync.instance.restore(prompt: true);
-    if (!context.mounted) return;
-    if (data == null) {
-      toast(context, tr('مفيش نسخة على درايف لسه'));
-      return;
-    }
-    data.settings.googleEmail = email;
-    await store.replaceAll(data);
-    if (context.mounted) toast(context, tr('رجعت كل حاجة من درايف'));
-  }
-
   @override
   Widget build(BuildContext context) {
     final store = context.watch<AppStore>();
     final s = store.settings;
-    final sync = context.watch<DriveSync>();
+    final cloud = context.watch<Cloud>();
     final p = context.pal;
-    final signedIn = s.googleEmail != null;
+    final email = cloud.user?.email;
 
     return Padding(
       padding: const EdgeInsets.only(bottom: 14),
@@ -544,33 +478,17 @@ class _AccountSection extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            GoldLabel(tr('الحساب والحفظ على جوجل درايف')),
+            GoldLabel(tr('الحساب والحفظ')),
             const SizedBox(height: 8),
-            if (!sync.supported) ...[
-              Muted(
-                tr('تسجيل الدخول بجوجل لسه مش متظبط في النسخة دي.'),
-                size: 13,
-              ),
-            ] else if (!signedIn) ...[
-              Muted(
-                tr(
-                  'سجّل دخول بحساب جوجل، وكل حاجة (أهداف، يوميات، ريكوردات، كتب) هتتحفظ على درايف بتاعك. لو التطبيق اتمسح، تسجّل دخول تاني وكل حاجة ترجع.',
-                ),
-                size: 13,
-              ),
-              const SizedBox(height: 10),
-              FilledButton.icon(
-                onPressed: sync.busy ? null : () => _signIn(context),
-                icon: const Icon(Icons.account_circle_outlined),
-                label: Text(tr('تسجيل الدخول بجوجل')),
-              ),
-            ] else ...[
+            if (email == null)
+              Muted(tr('الحساب والحفظ لسه مش متظبطين في النسخة دي.'), size: 13)
+            else ...[
               Row(
                 children: [
                   CircleAvatar(
                     backgroundColor: p.primary,
                     child: Text(
-                      s.googleEmail!.substring(0, 1).toUpperCase(),
+                      email.substring(0, 1).toUpperCase(),
                       style: TextStyle(color: p.onPrimary),
                     ),
                   ),
@@ -580,11 +498,12 @@ class _AccountSection extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          s.googleEmail!,
+                          email,
+                          textDirection: TextDirection.ltr,
                           style: const TextStyle(fontWeight: FontWeight.w600),
                         ),
                         Muted(
-                          sync.busy
+                          cloud.busy
                               ? tr('بيحفظ دلوقتي…')
                               : s.lastSync == null
                               ? tr('لسه ما اتحفظش')
@@ -601,7 +520,14 @@ class _AccountSection extends StatelessWidget {
                   ),
                 ],
               ),
-              if (sync.error != null) ...[
+              const SizedBox(height: 6),
+              Muted(
+                tr(
+                  'كل حاجة بتتحفظ في حسابك لوحدها. لو مسحت التطبيق، ادخل بنفس الإيميل والباسورد وكل حاجة ترجع.',
+                ),
+                size: 12,
+              ),
+              if (cloud.error != null) ...[
                 const SizedBox(height: 6),
                 Muted(
                   tr('آخر محاولة حفظ ما نجحتش، هيحاول تاني لوحده.'),
@@ -620,19 +546,14 @@ class _AccountSection extends StatelessWidget {
                 children: [
                   Expanded(
                     child: FilledButton(
-                      onPressed: sync.busy
+                      onPressed: cloud.busy
                           ? null
                           : () async {
-                              final ok = await DriveSync.instance.backup(
-                                store.data,
-                                prompt: true,
-                              );
+                              final ok = await cloud.backup(store.data);
                               if (context.mounted) {
                                 toast(
                                   context,
-                                  ok
-                                      ? tr('اتحفظ على درايف')
-                                      : tr('الحفظ ما نجحش'),
+                                  ok ? tr('اتحفظ') : tr('الحفظ ما نجحش'),
                                 );
                               }
                             },
@@ -642,29 +563,36 @@ class _AccountSection extends StatelessWidget {
                   const SizedBox(width: 8),
                   Expanded(
                     child: OutlinedButton(
-                      onPressed: sync.busy
-                          ? null
-                          : () async {
-                              if (await confirm(
-                                    context,
-                                    tr(
-                                      'ده هيبدّل اللي على الموبايل بالنسخة اللي على درايف. متأكد؟',
-                                    ),
-                                    ok: tr('رجّع'),
-                                  ) &&
-                                  context.mounted) {
-                                await _restore(context);
-                              }
-                            },
-                      child: Text(tr('رجّع من درايف')),
+                      onPressed: () async {
+                        try {
+                          await cloud.resetPassword(email);
+                          if (context.mounted) {
+                            toast(
+                              context,
+                              tr('بعتنالك على إيميلك لينك تغيّر بيه الباسورد'),
+                            );
+                          }
+                        } catch (e) {
+                          if (context.mounted) toast(context, authMessage(e));
+                        }
+                      },
+                      child: Text(tr('غيّر الباسورد')),
                     ),
                   ),
                 ],
               ),
               TextButton(
                 onPressed: () async {
-                  await DriveSync.instance.signOut();
-                  await store.update((d) => d.settings.googleEmail = null);
+                  if (await confirm(
+                        context,
+                        tr(
+                          'تخرج من حسابك؟ بياناتك محفوظة فيه وترجع لما تدخل تاني.',
+                        ),
+                        ok: tr('خروج'),
+                      ) &&
+                      context.mounted) {
+                    await cloud.signOut(store.data);
+                  }
                 },
                 child: Text(tr('تسجيل الخروج')),
               ),

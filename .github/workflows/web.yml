@@ -28,11 +28,17 @@ jobs:
 
       - run: flutter pub get
 
+      - name: Firebase settings
+        env:
+          FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+          FIREBASE_ANDROID_APP_ID: ${{ secrets.FIREBASE_ANDROID_APP_ID }}
+        run: python3 tool/firebase_defines.py firebase.defines.json
+
       - name: Build web
         run: >
           flutter build web --release --no-web-resources-cdn
           --base-href /${{ github.event.repository.name }}/
-          --dart-define=GOOGLE_SERVER_CLIENT_ID=${{ secrets.GOOGLE_SERVER_CLIENT_ID }}
+          --dart-define-from-file=firebase.defines.json
 
       - uses: peaceiris/actions-gh-pages@v4
         with:

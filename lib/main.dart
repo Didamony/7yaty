@@ -8,10 +8,11 @@ import 'core/theme.dart';
 import 'data/models.dart';
 import 'data/store.dart';
 import 'demo.dart';
-import 'services/drive_sync.dart';
+import 'services/cloud.dart';
 import 'services/files.dart';
 import 'services/notifications.dart';
 import 'services/prayer.dart';
+import 'ui/auth_page.dart';
 import 'ui/shell.dart';
 
 /// Builds with `--dart-define=DEMO=true` start with sample content, for
@@ -29,6 +30,7 @@ Future<void> main() async {
     await store.data.save();
   }
   L10n.lang = store.settings.lang;
+  await Cloud.instance.init(store.settings.lang);
 
   final notifier = Notifier.instance;
   await notifier.init();
@@ -39,14 +41,14 @@ Future<void> main() async {
   };
   store
     ..onSaved(notifier.scheduleSoon)
-    ..onSaved(DriveSync.instance.backupSoon);
+    ..onSaved(Cloud.instance.backupSoon);
   notifier.scheduleSoon(store.data);
 
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider.value(value: store),
-        ChangeNotifierProvider.value(value: DriveSync.instance),
+        ChangeNotifierProvider.value(value: Cloud.instance),
       ],
       child: const HayatiApp(),
     ),
@@ -82,9 +84,8 @@ class _HayatiAppState extends State<HayatiApp> with WidgetsBindingObserver {
     if (state == AppLifecycleState.resumed) {
       // Notification buttons may have changed the saved data meanwhile.
       store.reload().then((_) => Notifier.instance.scheduleSoon(store.data));
-    } else if (state == AppLifecycleState.paused &&
-        store.settings.googleEmail != null) {
-      DriveSync.instance.backup(store.data);
+    } else if (state == AppLifecycleState.paused) {
+      Cloud.instance.backup(store.data);
     }
   }
 
@@ -110,7 +111,7 @@ class _HayatiAppState extends State<HayatiApp> with WidgetsBindingObserver {
         strength: s.bgOpacity,
         child: child!,
       ),
-      home: const Shell(),
+      home: const AuthGate(child: Shell()),
     );
   }
 }

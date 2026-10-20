@@ -45,11 +45,17 @@ jobs:
       - run: flutter analyze
       - run: flutter test
 
+      - name: Firebase settings
+        env:
+          FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+          FIREBASE_ANDROID_APP_ID: ${{ secrets.FIREBASE_ANDROID_APP_ID }}
+        run: python3 tool/firebase_defines.py firebase.defines.json
+
       - name: Build APK
         run: >
           flutter build apk --release
           --build-number=${{ github.run_number }}
-          --dart-define=GOOGLE_SERVER_CLIENT_ID=${{ secrets.GOOGLE_SERVER_CLIENT_ID }}
+          --dart-define-from-file=firebase.defines.json
 
       - name: Rename APK
         run: mv build/app/outputs/flutter-apk/app-release.apk hayati.apk
