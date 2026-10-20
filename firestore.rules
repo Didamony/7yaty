@@ -1,13 +1,40 @@
 rules_version = '2';
 
 // Each account reads and writes only its own data, once its email is
-// confirmed.
+// confirmed, and only while it has paid or is in its 2-hour free trial.
+// Only the admin can mark an account paid or change the payment details.
 service cloud.firestore {
   match /databases/{database}/documents {
+    function verified() {
+      return request.auth != null && request.auth.token.email_verified == true;
+    }
+    function isAdmin() {
+      return verified() && request.auth.token.email == 'medsyncplus@gmail.com';
+    }
+    function allowed(uid) {
+      let path = /databases/$(database)/documents/access/$(uid);
+      return isAdmin() || (exists(path) && (get(path).data.paid == true
+        || request.time < get(path).data.trialStart + duration.value(2, 'h')));
+    }
+
     match /users/{uid}/{document=**} {
-      allow read, write: if request.auth != null
-        && request.auth.uid == uid
-        && request.auth.token.email_verified;
+      allow read, write: if verified() && request.auth.uid == uid && allowed(uid);
+    }
+
+    match /access/{uid} {
+      allow get: if verified() && (request.auth.uid == uid || isAdmin());
+      allow list: if isAdmin();
+      // The trial starts when the account first opens the app, never later.
+      allow create: if verified() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['trialStart', 'email'])
+        && request.resource.data.trialStart == request.time
+        && request.resource.data.email == request.auth.token.email;
+      allow update, delete: if isAdmin();
+    }
+
+    match /config/{doc} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
     }
   }
 }

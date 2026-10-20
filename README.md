@@ -73,6 +73,24 @@
 
 7. افتح **Actions** وشغّل **Build Android APK** و**Publish web app** (Run workflow).
 
+### 3) البيع والتفعيل
+
+- أي حد ينزّل التطبيق يعمل حساب وياخد **تجربة ساعتين ببلاش**. بعدها التطبيق يقفل ويظهرله السعر وطريقة الدفع بـ InstaPay، ويبعتلك صورة التحويل على واتساب بإيميله.
+- إنت تدخل بحساب الأدمن `medsyncplus@gmail.com`، ومن **الإعدادات ← لوحة التفعيل** تفعّل إيميله **مدى الحياة**. من نفس اللوحة بتغيّر السعر وعنوان InstaPay ورقم الواتساب.
+- مين اتفعّل ومين لأ محفوظ في Firebase، ومحمي بالقواعد اللي في `firestore.rules`: محدش يقدر يفعّل نفسه، ولا يطوّل التجربة، ولا يوصل لبياناته بعد التجربة من غير ما يدفع. لازم القواعد اللي في الملف تتحط في Firebase ← Firestore ← Rules كل ما تتغير.
+- إيميل الأدمن ومدة التجربة مكتوبين في `lib/services/cloud.dart` وفي `firestore.rules` و`storage.rules`، ولو اتغيروا لازم يتغيروا في التلاتة.
+
+### 4) قفل الكود
+
+الكود في الريبو ده، والتطبيق نفسه (ملف APK ونسخة الويب) بيتنشر في ريبو تاني Public اسمه `Didamony/hayati-app`، فالريبو ده يتقفل (Private):
+1. اعمل ريبو جديد Public اسمه `hayati-app`، وعلّم على **Add a README file**.
+2. اعمل **Fine-grained token** من GitHub ← Settings ← Developer settings، يقدر يوصل لريبو `hayati-app` بس، وصلاحية **Contents: Read and write**.
+3. ضيفه هنا كـ Secret اسمه `DIST_TOKEN`، وشغّل الـ Actions.
+4. في ريبو `hayati-app` من Settings ← Pages اختار فرع `gh-pages`.
+5. خلي الريبو ده Private من Settings ← Danger Zone ← Change visibility.
+
+لينك التنزيل الثابت: `https://github.com/Didamony/hayati-app/releases/latest/download/hayati.apk`، ونسخة الويب: `https://didamony.github.io/hayati-app/`.
+
 ## للمطورين
 
 ```bash

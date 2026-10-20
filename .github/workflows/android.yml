@@ -65,7 +65,34 @@ jobs:
           name: hayati-apk
           path: hayati.apk
 
+      - name: Where to publish
+        id: dest
+        env:
+          DIST_TOKEN: ${{ secrets.DIST_TOKEN }}
+        # With a DIST_TOKEN, the app goes to the public Didamony/hayati-app
+        # repository, so this one (the code) can stay private.
+        run: |
+          if [ -n "$DIST_TOKEN" ]; then
+            echo "external=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "external=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publish to the public app repository
+        if: steps.dest.outputs.external == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          repository: Didamony/hayati-app
+          token: ${{ secrets.DIST_TOKEN }}
+          tag_name: build-${{ github.run_number }}
+          name: حياتي — نسخة ${{ github.run_number }}
+          make_latest: true
+          files: hayati.apk
+          body: |
+            نزّل ملف hayati.apk على الموبايل وافتحه عشان تسطّب التطبيق.
+
       - name: Publish to Releases
+        if: steps.dest.outputs.external != 'true'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: build-${{ github.run_number }}

@@ -34,13 +34,39 @@ jobs:
           FIREBASE_ANDROID_APP_ID: ${{ secrets.FIREBASE_ANDROID_APP_ID }}
         run: python3 tool/firebase_defines.py firebase.defines.json
 
+      - name: Where to publish
+        id: dest
+        env:
+          DIST_TOKEN: ${{ secrets.DIST_TOKEN }}
+        # With a DIST_TOKEN, the app goes to the public Didamony/hayati-app
+        # repository, so this one (the code) can stay private.
+        run: |
+          if [ -n "$DIST_TOKEN" ]; then
+            echo "external=true" >> "$GITHUB_OUTPUT"
+            echo "base=/hayati-app/" >> "$GITHUB_OUTPUT"
+          else
+            echo "external=false" >> "$GITHUB_OUTPUT"
+            echo "base=/${{ github.event.repository.name }}/" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Build web
         run: >
           flutter build web --release --no-web-resources-cdn
-          --base-href /${{ github.event.repository.name }}/
+          --base-href ${{ steps.dest.outputs.base }}
           --dart-define-from-file=firebase.defines.json
 
       - uses: peaceiris/actions-gh-pages@v4
+        if: steps.dest.outputs.external == 'true'
+        with:
+          personal_token: ${{ secrets.DIST_TOKEN }}
+          external_repository: Didamony/hayati-app
+          publish_branch: gh-pages
+          publish_dir: build/web
+          force_orphan: true
+          commit_message: "Publish web app"
+
+      - uses: peaceiris/actions-gh-pages@v4
+        if: steps.dest.outputs.external != 'true'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: build/web

@@ -1,13 +1,16 @@
 rules_version = '2';
 
 // Each account reads and writes only its own files, once its email is
-// confirmed.
+// confirmed, and only while it has paid or is in its 2-hour free trial.
 service firebase.storage {
   match /b/{bucket}/o {
     match /users/{uid}/{allPaths=**} {
       allow read, write: if request.auth != null
         && request.auth.uid == uid
-        && request.auth.token.email_verified;
+        && request.auth.token.email_verified == true
+        && (request.auth.token.email == 'medsyncplus@gmail.com'
+          || firestore.get(/databases/(default)/documents/access/$(uid)).data.paid == true
+          || request.time < firestore.get(/databases/(default)/documents/access/$(uid)).data.trialStart + duration.value(2, 'h'));
     }
   }
 }

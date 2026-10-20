@@ -37,6 +37,80 @@ abstract final class CloudConfig {
   );
 }
 
+/// The account that activates others and sets the payment details. Must
+/// match `firestore.rules` and `storage.rules`.
+const adminEmail = 'medsyncplus@gmail.com';
+
+/// How long a new account can use the app before paying. Must match the
+/// rules.
+const trialLength = Duration(hours: 2);
+
+/// Whether an account may use the app: paid once for life, or still in its
+/// free trial. Kept in Firestore at `access/{uid}`; only the admin can mark
+/// it paid.
+class Access {
+  Access({required this.uid, this.email, this.trialStart, this.paid = false});
+
+  final String uid;
+  final String? email;
+  final DateTime? trialStart;
+  final bool paid;
+
+  DateTime? get trialEnd => trialStart?.add(trialLength);
+
+  bool inTrial(DateTime now) => trialEnd != null && now.isBefore(trialEnd!);
+
+  bool allowed(DateTime now) => paid || inTrial(now);
+
+  factory Access.fromDoc(DocumentSnapshot<Map<String, dynamic>> d) {
+    final j = d.data() ?? {};
+    return Access(
+      uid: d.id,
+      email: j['email'] as String?,
+      trialStart: (j['trialStart'] as Timestamp?)?.toDate(),
+      paid: j['paid'] == true,
+    );
+  }
+}
+
+/// Payment details shown to users whose trial ended, set by the admin.
+class PayInfo {
+  PayInfo({
+    this.price = '',
+    this.instapay = '',
+    this.link = '',
+    this.whatsapp = '',
+  });
+
+  /// e.g. "300 جنيه".
+  String price;
+
+  /// InstaPay address or phone number to send to.
+  String instapay;
+
+  /// Optional InstaPay payment link.
+  String link;
+
+  /// WhatsApp number, with country code, to send the receipt to.
+  String whatsapp;
+
+  bool get isSet => instapay.isNotEmpty || link.isNotEmpty;
+
+  Map<String, dynamic> toJson() => {
+    'price': price,
+    'instapay': instapay,
+    'link': link,
+    'whatsapp': whatsapp,
+  };
+
+  factory PayInfo.fromJson(Map<String, dynamic>? j) => PayInfo(
+    price: j?['price'] ?? '',
+    instapay: j?['instapay'] ?? '',
+    link: j?['link'] ?? '',
+    whatsapp: j?['whatsapp'] ?? '',
+  );
+}
+
 /// Folders whose files are kept in the cloud.
 const _folders = ['recordings', 'books', 'media'];
 
@@ -68,6 +142,62 @@ class Cloud extends ChangeNotifier {
   User? get user => enabled ? FirebaseAuth.instance.currentUser : null;
   bool get signedIn => user != null;
   bool get verified => user?.emailVerified ?? false;
+
+  bool get isAdmin =>
+      verified && user?.email?.toLowerCase() == adminEmail.toLowerCase();
+
+  /// Whether this account may use the app now; saving to the cloud waits
+  /// for it. Set by the sign-in gate.
+  bool allowed = false;
+
+  // -------------------------------------------------------------- access
+
+  CollectionReference<Map<String, dynamic>> get _access =>
+      FirebaseFirestore.instance.collection('access');
+
+  DocumentReference<Map<String, dynamic>> get _payDoc =>
+      FirebaseFirestore.instance.collection('config').doc('pay');
+
+  /// This account's access, starting its free trial on first use.
+  Future<Access> loadAccess() async {
+    final ref = _access.doc(user!.uid);
+    var snap = await ref.get();
+    if (!snap.exists) {
+      await ref.set({
+        'trialStart': FieldValue.serverTimestamp(),
+        'email': user!.email,
+      });
+      snap = await ref.get();
+    }
+    return Access.fromDoc(snap);
+  }
+
+  Future<PayInfo> loadPayInfo() async =>
+      PayInfo.fromJson((await _payDoc.get()).data());
+
+  Future<void> savePayInfo(PayInfo info) => _payDoc.set(info.toJson());
+
+  /// Newest accounts first, for the admin.
+  Future<List<Access>> recentAccounts() async {
+    final q = await _access
+        .orderBy('trialStart', descending: true)
+        .limit(200)
+        .get();
+    return q.docs.map(Access.fromDoc).toList();
+  }
+
+  Future<Access?> findAccount(String email) async {
+    final q = await _access
+        .where('email', isEqualTo: email.trim().toLowerCase())
+        .limit(1)
+        .get();
+    return q.docs.isEmpty ? null : Access.fromDoc(q.docs.first);
+  }
+
+  Future<void> setPaid(String uid, bool paid) => _access.doc(uid).update({
+    'paid': paid,
+    'paidAt': paid ? FieldValue.serverTimestamp() : null,
+  });
 
   Future<void> init(String lang) async {
     if (!CloudConfig.configured || _ready) return;
@@ -129,6 +259,7 @@ class Cloud extends ChangeNotifier {
   Future<void> signOut(AppData data) async {
     _debounce?.cancel();
     await backup(data);
+    allowed = false;
     await FirebaseAuth.instance.signOut();
   }
 
@@ -192,7 +323,7 @@ class Cloud extends ChangeNotifier {
 
   /// Uploads the data, and any file the cloud does not have yet.
   Future<bool> backup(AppData data) async {
-    if (user == null || !verified || busy) return false;
+    if (user == null || !verified || !allowed || busy) return false;
     busy = true;
     error = null;
     notifyListeners();
@@ -291,7 +422,7 @@ class Cloud extends ChangeNotifier {
 
   /// Saves to the cloud a little while after the last change.
   void backupSoon(AppData data) {
-    if (user == null || !verified) return;
+    if (user == null || !verified || !allowed) return;
     _debounce?.cancel();
     _debounce = Timer(const Duration(seconds: 5), () => backup(data));
   }
