@@ -149,21 +149,36 @@ void seedDemo(AppData d) {
     ),
   ]);
 
+  int at(int h, int m) =>
+      t.add(Duration(hours: h, minutes: m)).millisecondsSinceEpoch;
   d.journal[dkey(t)] = JournalEntry(
     frame: 'url:demo_themes/sat.jpg',
+    notes: [
+      Note(
+        id: 'n1',
+        text: 'الفجر في الجامع، والجو كان حلو.',
+        frame: 'builtin:arch',
+        at: at(5, 20),
+      ),
+      Note(
+        id: 'n2',
+        text: 'النهارده خلصت التقرير بدري، ومشيت بعد العصر. حاسس إن الأسبوع ده أحسن من اللي فات، بس لازم أنام بدري عشان الفجر.',
+        frame: 'url:demo_themes/sat.jpg',
+        at: at(18, 45),
+      ),
+    ],
     recordings: [
       Recording(
         file: 'demo.m4a',
         ms: 84000,
-        at: t
-            .add(const Duration(hours: 20, minutes: 10))
-            .millisecondsSinceEpoch,
+        at: at(20, 10),
         frame: 'builtin:roses',
       ),
     ],
-    text: 'النهارده خلصت التقرير بدري، ومشيت بعد العصر. حاسس إن الأسبوع ده أحسن من اللي فات، بس لازم أنام بدري عشان الفجر.',
   );
-  d.journal[dkey(addDays(t, -1))] = JournalEntry(text: 'يوم هادي.');
+  d.journal[dkey(addDays(t, -1))] = JournalEntry(
+    notes: [Note(id: 'n3', text: 'يوم هادي.', at: at(-3, 0))],
+  );
 
   final m = monthStart(t);
   d.sheet.addAll({

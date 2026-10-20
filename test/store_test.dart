@@ -156,7 +156,7 @@ void main() {
         Appointment(id: 'x', title: 'x', dateKey: dkey(t), timeMin: 420),
       )
       ..journal[dkey(t)] = JournalEntry(
-        text: 'hi',
+        notes: [Note(id: 'n', text: 'hi', frame: 'builtin:arch', at: 5)],
         recordings: [Recording(file: 'r.m4a', ms: 1000, at: 1)],
       )
       ..sheet[dkey(t)] = 'شغل'
@@ -165,6 +165,15 @@ void main() {
     final back = AppData.fromJson(d.toJson());
     expect(back.sheet[dkey(t)], 'شغل');
     expect(back.toJson(), d.toJson());
+  });
+
+  test('a diary day from before notes keeps its text as the first note', () {
+    final e = JournalEntry.fromJson({'text': 'old day', 'frame': 'a.jpg'});
+    expect(e.notes.single.text, 'old day');
+    expect(e.notes.single.frame, 'a.jpg');
+    expect(e.usesFrame('a.jpg'), isTrue);
+    final back = JournalEntry.fromJson(e.toJson());
+    expect(back.notes.single.text, 'old day');
   });
 
   test('Cairo prayer times are in a sane order and range', () {

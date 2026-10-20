@@ -38,11 +38,9 @@ class JournalPage extends StatefulWidget {
 class _JournalPageState extends State<JournalPage> {
   DateTime _day = today();
   late final AppStore _store;
-  final _text = TextEditingController();
-  Timer? _saveTimer;
 
-  /// The note has changes not saved yet.
-  bool _dirty = false;
+  /// The note being written; saved as a new note with the save button.
+  final _text = TextEditingController();
 
   final _speech = SpeechToText();
   bool _listening = false;
@@ -60,13 +58,12 @@ class _JournalPageState extends State<JournalPage> {
   void initState() {
     super.initState();
     _store = context.store;
-    _loadDay();
     _player.onPlayerComplete.listen((_) => setState(() => _playing = null));
   }
 
   @override
   void dispose() {
-    _flush(rebuild: false);
+    _addNote(rebuild: false);
     _text.dispose();
     _recTick?.cancel();
     _recorder.dispose();
@@ -75,51 +72,52 @@ class _JournalPageState extends State<JournalPage> {
     super.dispose();
   }
 
-  void _loadDay() {
-    _text.text = _store.data.journal[dkey(_day)]?.text ?? '';
-  }
-
   void _goTo(DateTime d) {
-    _flush();
+    _addNote();
     setState(() => _day = d);
-    _loadDay();
   }
 
-  void _onTextChanged(String _) {
-    if (!_dirty) setState(() => _dirty = true);
-    _saveTimer?.cancel();
-    _saveTimer = Timer(const Duration(seconds: 3), _flush);
-  }
-
-  void _flush({bool rebuild = true}) {
-    _saveTimer?.cancel();
-    if (_dirty && rebuild && mounted) setState(() => _dirty = false);
+  /// Saves what is being written as a new note of the day and clears the
+  /// box for the next one.
+  void _addNote({bool rebuild = true}) {
+    final text = _text.text.trim();
+    if (text.isEmpty) return;
     final key = dkey(_day);
-    final text = _text.text;
-    if ((_store.data.journal[key]?.text ?? '') == text) return;
     _store.update((d) {
-      final e = d.journal.putIfAbsent(key, JournalEntry.new)..text = text;
-      if (e.isEmpty) d.journal.remove(key);
+      final e = d.journal.putIfAbsent(key, JournalEntry.new);
+      e.notes.add(
+        Note(
+          id: newId(),
+          text: text,
+          frame: e.frame,
+          at: DateTime.now().millisecondsSinceEpoch,
+        ),
+      );
     });
+    _text.clear();
+    if (rebuild && mounted) {
+      FocusScope.of(context).unfocus();
+      setState(() {});
+    }
   }
 
-  void _saveNote() {
-    FocusScope.of(context).unfocus();
-    _flush();
+  /// Deletes a picture file once nothing uses it.
+  Future<void> _dropFrame(String? frame) async {
+    if (frame == null) return;
+    if (_store.data.journal.values.any((e) => e.usesFrame(frame))) return;
+    await dropFrameFile(frame);
   }
 
   Future<void> _toggleDictation() async {
     if (_listening) {
       await _speech.stop();
       setState(() => _listening = false);
-      _flush();
       return;
     }
     final ok = await _speech.initialize(
       onStatus: (s) {
         if (s == 'done' || s == 'notListening') {
           if (mounted) setState(() => _listening = false);
-          _flush();
         }
       },
       onError: (_) {
@@ -149,7 +147,7 @@ class _JournalPageState extends State<JournalPage> {
           text: joined,
           selection: TextSelection.collapsed(offset: joined.length),
         );
-        if (r.finalResult) _flush();
+        if (mounted) setState(() {});
       },
       listenOptions: SpeechListenOptions(
         localeId: _speechLocales[L10n.lang],
@@ -257,7 +255,8 @@ class _JournalPageState extends State<JournalPage> {
       ? SectionCard(child: child)
       : FramedCard(frame: frame, child: child);
 
-  Future<void> _pickNoteFrame() async {
+  /// Picks the background for the note being written.
+  Future<void> _pickDraftFrame() async {
     final key = dkey(_day);
     final f = await pickFrame(
       context,
@@ -271,7 +270,39 @@ class _JournalPageState extends State<JournalPage> {
       e.frame = f.isEmpty ? null : f;
       if (e.isEmpty) d.journal.remove(key);
     });
-    if (old != f) await dropFrameFile(old);
+    if (old != f) await _dropFrame(old);
+  }
+
+  Future<void> _pickNoteFrame(Note note) async {
+    final f = await pickFrame(context, current: note.frame);
+    if (f == null) return;
+    final old = note.frame;
+    await _store.update((_) => note.frame = f.isEmpty ? null : f);
+    if (old != f) await _dropFrame(old);
+  }
+
+  Future<void> _editNote(Note note) async {
+    final text = await showModalBottomSheet<String>(
+      context: context,
+      isScrollControlled: true,
+      showDragHandle: true,
+      builder: (_) => _NoteEditor(initial: note.text),
+    );
+    if (text == null || text.trim().isEmpty) return;
+    await _store.update((_) => note.text = text.trim());
+  }
+
+  Future<void> _deleteNote(Note note) async {
+    if (!await confirm(context, tr('تمسح الكتابة دي؟'), ok: tr('امسحها'))) {
+      return;
+    }
+    final key = dkey(_day);
+    await _store.update((d) {
+      final e = d.journal[key];
+      e?.notes.removeWhere((x) => x.id == note.id);
+      if (e != null && e.isEmpty) d.journal.remove(key);
+    });
+    await _dropFrame(note.frame);
   }
 
   Future<void> _pickRecordingFrame(Recording r) async {
@@ -279,7 +310,7 @@ class _JournalPageState extends State<JournalPage> {
     if (f == null) return;
     final old = r.frame;
     await _store.update((_) => r.frame = f.isEmpty ? null : f);
-    if (old != f) await dropFrameFile(old);
+    if (old != f) await _dropFrame(old);
   }
 
   Future<void> _deleteRecording(Recording r) async {
@@ -293,6 +324,7 @@ class _JournalPageState extends State<JournalPage> {
       e?.recordings.removeWhere((x) => x.file == r.file);
       if (e != null && e.isEmpty) d.journal.remove(dkey(_day));
     });
+    await _dropFrame(r.frame);
   }
 
   @override
@@ -355,20 +387,20 @@ class _JournalPageState extends State<JournalPage> {
                   children: [
                     Row(
                       children: [
-                        Expanded(child: GoldLabel(tr('مكتوب'))),
+                        Expanded(child: GoldLabel(tr('اكتب حاجة جديدة'))),
                         IconButton(
                           tooltip: tr('خلفية'),
                           visualDensity: VisualDensity.compact,
-                          onPressed: _pickNoteFrame,
+                          onPressed: _pickDraftFrame,
                           icon: Icon(Icons.wallpaper, color: p.goldText),
                         ),
                       ],
                     ),
                     TextField(
                       controller: _text,
-                      onChanged: _onTextChanged,
-                      onTapOutside: (_) => _saveNote(),
-                      minLines: 5,
+                      onChanged: (_) => setState(() {}),
+                      onTapOutside: (_) => FocusScope.of(context).unfocus(),
+                      minLines: 4,
                       maxLines: null,
                       style: const TextStyle(fontSize: 15, height: 1.8),
                       decoration: InputDecoration(
@@ -384,31 +416,15 @@ class _JournalPageState extends State<JournalPage> {
                       const SizedBox(height: 6),
                       HintBox(tr('بسمعك… اتكلم وأنا هكتب')),
                     ],
-                    if (_text.text.isNotEmpty || _dirty) ...[
+                    if (_text.text.trim().isNotEmpty) ...[
                       const SizedBox(height: 8),
                       Align(
                         alignment: AlignmentDirectional.centerEnd,
-                        child: _dirty
-                            ? FilledButton.icon(
-                                onPressed: _saveNote,
-                                icon: const Icon(Icons.check),
-                                label: Text(tr('حفظ')),
-                              )
-                            : Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Icon(
-                                    Icons.check_circle,
-                                    size: 18,
-                                    color: p.green,
-                                  ),
-                                  const SizedBox(width: 4),
-                                  Text(
-                                    tr('اتحفظت'),
-                                    style: TextStyle(color: p.green),
-                                  ),
-                                ],
-                              ),
+                        child: FilledButton.icon(
+                          onPressed: _addNote,
+                          icon: const Icon(Icons.check),
+                          label: Text(tr('حفظ')),
+                        ),
                       ),
                     ],
                   ],
@@ -461,6 +477,57 @@ class _JournalPageState extends State<JournalPage> {
                   ),
                 ],
               ),
+              if (entry != null && entry.notes.isNotEmpty) ...[
+                const SizedBox(height: 16),
+                GoldLabel(tr('كتابات اليوم ({n})', {'n': entry.notes.length})),
+                for (final note in entry.notes) ...[
+                  const SizedBox(height: 10),
+                  _framed(
+                    note.frame,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              child: note.at == 0
+                                  ? const SizedBox.shrink()
+                                  : Muted(
+                                      fmtTime(
+                                        DateTime.fromMillisecondsSinceEpoch(
+                                          note.at,
+                                        ),
+                                      ),
+                                      size: 12,
+                                    ),
+                            ),
+                            _SmallIcon(
+                              tooltip: tr('خلفية'),
+                              icon: Icons.wallpaper,
+                              onPressed: () => _pickNoteFrame(note),
+                            ),
+                            _SmallIcon(
+                              tooltip: tr('تعديل'),
+                              icon: Icons.edit_outlined,
+                              onPressed: () => _editNote(note),
+                            ),
+                            _SmallIcon(
+                              tooltip: tr('امسح'),
+                              icon: Icons.delete_outline,
+                              onPressed: () => _deleteNote(note),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          note.text,
+                          style: const TextStyle(fontSize: 15, height: 1.8),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ],
               if (entry != null && entry.recordings.isNotEmpty) ...[
                 const SizedBox(height: 12),
                 GoldLabel(tr('ريكوردات اليوم')),
@@ -531,8 +598,10 @@ class _JournalPageState extends State<JournalPage> {
                                 ),
                                 Muted(
                                   [
-                                    if (e.value.text.trim().isNotEmpty)
-                                      tr('مكتوب'),
+                                    if (e.value.notes.isNotEmpty)
+                                      tr('{n} كتابة', {
+                                        'n': e.value.notes.length,
+                                      }),
                                     if (e.value.recordings.isNotEmpty)
                                       tr('{n} ريكورد', {
                                         'n': e.value.recordings.length,
@@ -553,4 +622,77 @@ class _JournalPageState extends State<JournalPage> {
       ],
     );
   }
+}
+
+class _SmallIcon extends StatelessWidget {
+  const _SmallIcon({
+    required this.tooltip,
+    required this.icon,
+    required this.onPressed,
+  });
+
+  final String tooltip;
+  final IconData icon;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) => IconButton(
+    tooltip: tooltip,
+    visualDensity: VisualDensity.compact,
+    padding: EdgeInsets.zero,
+    constraints: const BoxConstraints(minWidth: 34, minHeight: 34),
+    onPressed: onPressed,
+    icon: Icon(icon, size: 20, color: context.pal.goldText),
+  );
+}
+
+/// Bottom sheet to change a saved note; pops the new text, or null.
+class _NoteEditor extends StatefulWidget {
+  const _NoteEditor({required this.initial});
+
+  final String initial;
+
+  @override
+  State<_NoteEditor> createState() => _NoteEditorState();
+}
+
+class _NoteEditorState extends State<_NoteEditor> {
+  late final _text = TextEditingController(text: widget.initial);
+
+  @override
+  void dispose() {
+    _text.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: EdgeInsets.fromLTRB(
+      16,
+      0,
+      16,
+      16 + MediaQuery.viewInsetsOf(context).bottom,
+    ),
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        TextField(
+          controller: _text,
+          autofocus: true,
+          minLines: 3,
+          maxLines: 10,
+        ),
+        const SizedBox(height: 12),
+        Align(
+          alignment: AlignmentDirectional.centerEnd,
+          child: FilledButton.icon(
+            onPressed: () => Navigator.pop(context, _text.text),
+            icon: const Icon(Icons.check),
+            label: Text(tr('حفظ')),
+          ),
+        ),
+      ],
+    ),
+  );
 }

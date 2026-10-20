@@ -430,6 +430,12 @@ const Map<String, Map<String, String>> translations = {
     'ملاحظات الشهر': 'This month\'s notes',
     'ملاحظة صغيرة على كل يوم: شغل، إجازة، مواعيد':
         'A short note on each day: work, days off, appointments',
+    '{n} كتابة': '{n} notes',
+    'اكتب حاجة جديدة': 'Write something new',
+    'امسحها': 'Delete it',
+    'تعديل': 'Edit',
+    'تمسح الكتابة دي؟': 'Delete this note?',
+    'كتابات اليوم ({n})': 'Today\'s notes ({n})',
   },
   'fr': {
     'أهدافي': 'Mes objectifs',
@@ -867,6 +873,12 @@ const Map<String, Map<String, String>> translations = {
     'ملاحظات الشهر': 'Notes du mois',
     'ملاحظة صغيرة على كل يوم: شغل، إجازة، مواعيد':
         'Une petite note par jour : travail, congés, rendez-vous',
+    '{n} كتابة': '{n} notes',
+    'اكتب حاجة جديدة': 'Écrire quelque chose',
+    'امسحها': 'Supprimer',
+    'تعديل': 'Modifier',
+    'تمسح الكتابة دي؟': 'Supprimer cette note ?',
+    'كتابات اليوم ({n})': 'Notes du jour ({n})',
   },
   'de': {
     'أهدافي': 'Meine Ziele',
@@ -1295,5 +1307,11 @@ const Map<String, Map<String, String>> translations = {
     'ملاحظات الشهر': 'Notizen des Monats',
     'ملاحظة صغيرة على كل يوم: شغل، إجازة، مواعيد':
         'Eine kurze Notiz pro Tag: Arbeit, frei, Termine',
+    '{n} كتابة': '{n} Notizen',
+    'اكتب حاجة جديدة': 'Etwas Neues schreiben',
+    'امسحها': 'Löschen',
+    'تعديل': 'Bearbeiten',
+    'تمسح الكتابة دي؟': 'Diese Notiz löschen?',
+    'كتابات اليوم ({n})': 'Notizen des Tages ({n})',
   },
 };

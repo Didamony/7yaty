@@ -252,33 +252,77 @@ class Recording {
   );
 }
 
-class JournalEntry {
-  JournalEntry({this.text = '', List<Recording>? recordings, this.frame})
-    : recordings = recordings ?? [];
+/// One written note in a day's diary.
+class Note {
+  Note({required this.id, this.text = '', this.frame, this.at = 0});
 
+  final String id;
   String text;
-  List<Recording> recordings;
 
-  /// Background picture behind the written note: `builtin:<id>` or a file
-  /// in the media folder.
+  /// Background picture: `builtin:<id>` or a file in the media folder.
   String? frame;
 
-  bool get isEmpty =>
-      text.trim().isEmpty && recordings.isEmpty && frame == null;
+  /// When it was written, in ms since epoch; 0 if unknown.
+  int at;
 
   Map<String, dynamic> toJson() => {
+    'id': id,
     'text': text,
+    'frame': frame,
+    'at': at,
+  };
+
+  factory Note.fromJson(Map<String, dynamic> j) => Note(
+    id: j['id'] ?? '${j['at'] ?? 0}',
+    text: j['text'] ?? '',
+    frame: j['frame'],
+    at: j['at'] ?? 0,
+  );
+}
+
+class JournalEntry {
+  JournalEntry({List<Note>? notes, List<Recording>? recordings, this.frame})
+    : notes = notes ?? [],
+      recordings = recordings ?? [];
+
+  /// Written notes, oldest first.
+  List<Note> notes;
+  List<Recording> recordings;
+
+  /// Background picked for the next note written on this day.
+  String? frame;
+
+  bool get isEmpty => notes.isEmpty && recordings.isEmpty && frame == null;
+
+  Map<String, dynamic> toJson() => {
+    'notes': notes.map((x) => x.toJson()).toList(),
     'recordings': recordings.map((r) => r.toJson()).toList(),
     'frame': frame,
   };
 
-  factory JournalEntry.fromJson(Map<String, dynamic> j) => JournalEntry(
-    text: j['text'] ?? '',
-    recordings: ((j['recordings'] as List?) ?? [])
-        .map((e) => Recording.fromJson(Map<String, dynamic>.from(e)))
-        .toList(),
-    frame: j['frame'],
-  );
+  factory JournalEntry.fromJson(Map<String, dynamic> j) {
+    final notes = ((j['notes'] as List?) ?? [])
+        .map((e) => Note.fromJson(Map<String, dynamic>.from(e)))
+        .toList();
+    // Older data had one text per day.
+    final text = (j['text'] as String?) ?? '';
+    if (j['notes'] == null && text.trim().isNotEmpty) {
+      notes.add(Note(id: 'first', text: text, frame: j['frame']));
+    }
+    return JournalEntry(
+      notes: notes,
+      recordings: ((j['recordings'] as List?) ?? [])
+          .map((e) => Recording.fromJson(Map<String, dynamic>.from(e)))
+          .toList(),
+      frame: j['frame'],
+    );
+  }
+
+  /// Whether [frame] is used by this day's notes, recordings or next note.
+  bool usesFrame(String frame) =>
+      this.frame == frame ||
+      notes.any((x) => x.frame == frame) ||
+      recordings.any((r) => r.frame == frame);
 }
 
 class Chapter {
