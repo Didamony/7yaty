@@ -3,7 +3,7 @@
     "short_name": "حياتي",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0F5257",
+    "background_color": "#F3E6D3",
     "theme_color": "#0F5257",
     "description": "أهدافك ومواعيدك ويومياتك",
     "orientation": "portrait-primary",
