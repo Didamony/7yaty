@@ -55,6 +55,8 @@ jobs:
         run: >
           flutter build apk --release
           --build-number=${{ github.run_number }}
+          --dart-define=BUILD_NUMBER=${{ github.run_number }}
+          --dart-define=DIST_REPO=${{ secrets.DIST_TOKEN != '' && 'Didamony/hayati-app' || github.repository }}
           --dart-define-from-file=firebase.defines.json
           --dart-define=ADHAN=${{ hashFiles('android/app/src/main/res/raw/adhan.mp3') != '' && hashFiles('android/app/src/main/res/raw/adhan_fajr.mp3') != '' }}
 

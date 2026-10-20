@@ -33,7 +33,8 @@ const Map<String, Map<String, String>> translations = {
     'التنبيه قبلها بـ': 'Remind before',
     'مواعيدي': 'My appointments',
     'موعد جديد': 'New appointment',
-    'مفيش مواعيد جاية. ضيف موعد زي "بكرة ٧ الصبح الشغل".': 'No upcoming appointments. Add one, like "work tomorrow at 7 am".',
+    'مفيش مواعيد جاية. ضيف موعد زي "بكرة ٧ الصبح الشغل".':
+        'No upcoming appointments. Add one, like "work tomorrow at 7 am".',
     'مواعيد خلصت': 'Past appointments',
     'امسح': 'Delete',
     'القادمة': 'Next',
@@ -54,7 +55,8 @@ const Map<String, Map<String, String>> translations = {
     'امسح الموعد': 'Delete appointment',
     'صفحة': 'page',
     'جزء': 'section',
-    'إضافة الكتب متاحة في تطبيق الموبايل': 'Adding books works in the mobile app',
+    'إضافة الكتب متاحة في تطبيق الموبايل':
+        'Adding books works in the mobile app',
     'الملف لازم يكون PDF أو EPUB': 'The file must be a PDF or EPUB',
     'مش قادر أفتح الملف ده': 'Can\'t open this file',
     'كتبي': 'My books',
@@ -79,7 +81,8 @@ const Map<String, Map<String, String>> translations = {
     'فصول في الأسبوع': 'Chapters per week',
     'صفحات في اليوم': 'Pages per day',
     'أجزاء في اليوم': 'Sections per day',
-    'الملف ده مفيهوش فهرس فصول. الكتاب فيه كام فصل؟': 'This file has no chapter list. How many chapters does the book have?',
+    'الملف ده مفيهوش فهرس فصول. الكتاب فيه كام فصل؟':
+        'This file has no chapter list. How many chapters does the book have?',
     '{u} في اليوم': '{u} per day',
     '{n} يوم': '{n} days',
     'متبقي': 'left',
@@ -92,7 +95,8 @@ const Map<String, Map<String, String>> translations = {
     '{u} {c} من {t} · النهارده {r}/{d}': '{u} {c} of {t} · today {r}/{d}',
     'اكتب اسم الهدف': 'Enter the goal name',
     'تمسح الهدف ده؟': 'Delete this goal?',
-    'تمسح الهدف ده و{n} هدف تحته؟': 'Delete this goal and the {n} goals under it?',
+    'تمسح الهدف ده و{n} هدف تحته؟':
+        'Delete this goal and the {n} goals under it?',
     'هدف جديد': 'New goal',
     'تعديل الهدف': 'Edit goal',
     'إغلاق': 'Close',
@@ -108,14 +112,16 @@ const Map<String, Map<String, String>> translations = {
     'قبل': 'Before',
     'بعد': 'After',
     'بفرق': 'Offset',
-    'النهارده هينبّهك {t} · الميعاد بيتحرك لوحده مع {p}': 'Today\'s reminder: {t} · it moves with {p} every day',
+    'النهارده هينبّهك {t} · الميعاد بيتحرك لوحده مع {p}':
+        'Today\'s reminder: {t} · it moves with {p} every day',
     'هينبّهك كل يوم {t}': 'Reminder every day at {t}',
     'لو فاتني': 'If I miss it',
     'اسألني (يظهر بالأحمر)': 'Ask me (shows in red)',
     'يتسجّل قضاء': 'Add to make-up',
     'رحّله لليوم اللي بعده': 'Move to the next day',
     'يوم رحمة في الأسبوع': 'Grace day each week',
-    'لو فوّت يوم واحد في الأسبوع، السلسلة مش هتتكسر': 'Missing one day a week won\'t break your streak',
+    'لو فوّت يوم واحد في الأسبوع، السلسلة مش هتتكسر':
+        'Missing one day a week won\'t break your streak',
     'حفظ الهدف': 'Save goal',
     'الشهر': 'Month',
     'الأسبوع': 'Week',
@@ -136,12 +142,14 @@ const Map<String, Map<String, String>> translations = {
     'فاتك {d}': 'Missed {d}',
     'فاتك {d} · متحط يوم {p}': 'Missed {d} · planned for {p}',
     'اقضِه': 'Make up',
-    'النهارده الجمعة، تحب تقضيهم النهارده؟': 'It\'s Friday — make them up today?',
+    'النهارده الجمعة، تحب تقضيهم النهارده؟':
+        'It\'s Friday — make them up today?',
     'تحب تحطهم يوم الجمعة {d}؟': 'Plan them for Friday {d}?',
     'حطّهم يوم الجمعة': 'Plan for Friday',
     'الكتابة بالصوت مش متاحة. اتأكد إن خدمة التعرف على الكلام من جوجل شغالة على موبايلك.': 'Voice typing isn\'t available. Make sure Google speech recognition is enabled on your phone.',
     'التسجيل متاح في تطبيق الموبايل': 'Recording works in the mobile app',
-    'محتاج إذن الميكروفون عشان أسجّل': 'Microphone permission is needed to record',
+    'محتاج إذن الميكروفون عشان أسجّل':
+        'Microphone permission is needed to record',
     'تمسح الريكورد ده؟': 'Delete this recording?',
     'يومياتي': 'My diary',
     'اليوم السابق': 'Previous day',
@@ -166,9 +174,11 @@ const Map<String, Map<String, String>> translations = {
     'اللغة': 'Language',
     'التنبيهات': 'Notifications',
     'مراجعة الأهداف اليومية': 'Daily goal review',
-    'إشعار لكل هدف فيه أزرار: تم، ما اتعملش، رحّله': 'One notification per goal with buttons: done, not done, move',
+    'إشعار لكل هدف فيه أزرار: تم، ما اتعملش، رحّله':
+        'One notification per goal with buttons: done, not done, move',
     'التنبيه قبل كل الصلوات': 'Reminder before all prayers',
-    'تقدر تغيّر كل صلاة لوحدها من شاشة المواعيد.': 'You can set each prayer separately on the Schedule screen.',
+    'تقدر تغيّر كل صلاة لوحدها من شاشة المواعيد.':
+        'You can set each prayer separately on the Schedule screen.',
     'تنبيه عند دخول الوقت': 'Alert when prayer time begins',
     'بالإضافة للتنبيه المسبق': 'In addition to the early reminder',
     'اسمح بالإشعارات': 'Allow notifications',
@@ -184,19 +194,23 @@ const Map<String, Map<String, String>> translations = {
     'في نسخة محفوظة من {d}. تحب ترجّعها على الموبايل، ولا ترفع اللي على الموبايل مكانها؟': 'There is a copy saved on {d}. Restore it to this phone, or upload this phone\'s data instead?',
     'ارفع اللي هنا': 'Upload this phone\'s',
     'رجّع نسخة درايف': 'Restore from Drive',
-    'ما قدرتش أسجّل الدخول بجوجل. جرّب تاني.': 'Couldn\'t sign in with Google. Try again.',
+    'ما قدرتش أسجّل الدخول بجوجل. جرّب تاني.':
+        'Couldn\'t sign in with Google. Try again.',
     'مفيش نسخة على درايف لسه': 'No copy on Drive yet',
     'رجعت كل حاجة من درايف': 'Everything restored from Drive',
     'الحساب والحفظ على جوجل درايف': 'Account & Google Drive backup',
-    'تسجيل الدخول بجوجل لسه مش متظبط في النسخة دي.': 'Google sign-in isn\'t set up in this version yet.',
+    'تسجيل الدخول بجوجل لسه مش متظبط في النسخة دي.':
+        'Google sign-in isn\'t set up in this version yet.',
     'سجّل دخول بحساب جوجل، وكل حاجة (أهداف، يوميات، ريكوردات، كتب) هتتحفظ على درايف بتاعك. لو التطبيق اتمسح، تسجّل دخول تاني وكل حاجة ترجع.': 'Sign in with Google and everything (goals, diary, recordings, books) is saved to your Drive. If the app is deleted, sign in again and it all comes back.',
     'تسجيل الدخول بجوجل': 'Sign in with Google',
     'بيحفظ دلوقتي…': 'Saving now…',
     'لسه ما اتحفظش': 'Not saved yet',
     'آخر حفظ: {d}': 'Last saved: {d}',
-    'آخر محاولة حفظ ما نجحتش، هيحاول تاني لوحده.': 'The last backup failed; it will retry automatically.',
+    'آخر محاولة حفظ ما نجحتش، هيحاول تاني لوحده.':
+        'The last backup failed; it will retry automatically.',
     'احفظ ملفات الكتب كمان': 'Also back up book files',
-    'لو قفلتها، بيتحفظ مكانك في الكتاب بس': 'If off, only your place in each book is saved',
+    'لو قفلتها، بيتحفظ مكانك في الكتاب بس':
+        'If off, only your place in each book is saved',
     'اتحفظ على درايف': 'Saved to Drive',
     'الحفظ ما نجحش': 'Backup failed',
     'احفظ دلوقتي': 'Back up now',
@@ -295,7 +309,8 @@ const Map<String, Map<String, String>> translations = {
     'تذكير بأذكار الصباح والمساء': 'Morning and evening adhkar reminders',
     'بعد الفجر وبعد العصر بنص ساعة': 'Half an hour after Fajr and after Asr',
     'عباداتي': 'Worship',
-    'تمّت المائة · قل: لا إله إلا الله وحده لا شريك له…': '100 complete · now say: lā ilāha illā Allāh waḥdahu lā sharīka lah…',
+    'تمّت المائة · قل: لا إله إلا الله وحده لا شريك له…':
+        '100 complete · now say: lā ilāha illā Allāh waḥdahu lā sharīka lah…',
     'ذكر جديد': 'New dhikr',
     'اكتب الذكر': 'Type the dhikr',
     'أضف': 'Add',
@@ -312,8 +327,10 @@ const Map<String, Map<String, String>> translations = {
     '١١٤ سورة · بالرسم العثماني': '114 surahs · Uthmani script',
     'كمّل: سورة {s} · آية {a}': 'Continue: Surah {s} · verse {a}',
     'كمّل: سورة {s}': 'Continue: Surah {s}',
-    'الصباح والمساء وبعد الصلاة والنوم': 'Morning, evening, after prayer, and sleep',
-    'خشب، كهرمان، لؤلؤ، زمرد، أو عداد رقمي': 'Wood, amber, pearl, emerald, or digital counter',
+    'الصباح والمساء وبعد الصلاة والنوم':
+        'Morning, evening, after prayer, and sleep',
+    'خشب، كهرمان، لؤلؤ، زمرد، أو عداد رقمي':
+        'Wood, amber, pearl, emerald, or digital counter',
     'سبّحت لحد دلوقتي {n} مرة': '{n} counted so far',
     'خشب': 'Wood',
     'كهرمان': 'Amber',
@@ -327,7 +344,8 @@ const Map<String, Map<String, String>> translations = {
     'شكل مختلف لكل يوم': 'A different look each day',
     'وفي الوضع الداكن بيبقى شكل الكسوة': 'In dark mode it uses the Kiswa look',
     'الداكن': 'Dark',
-    'اضغط على أي شكل عشان تختاره أو تحط له صورة من الموبايل.': 'Tap a look to choose it or give it a picture from your phone.',
+    'اضغط على أي شكل عشان تختاره أو تحط له صورة من الموبايل.':
+        'Tap a look to choose it or give it a picture from your phone.',
     'ربيع النعناع': 'Mint spring',
     'غروب الخوخ': 'Peach sunset',
     'ورد المدينة': 'Roses of Madinah',
@@ -336,7 +354,8 @@ const Map<String, Map<String, String>> translations = {
     'فيروز وسحاب': 'Turquoise and clouds',
     'فجر الجمعة': 'Friday dawn',
     'الكسوة': 'Kiswa',
-    'ضيف كتاب PDF أو EPUB واقسم قرايته على الأيام': 'Add a PDF or EPUB book and spread its reading over the days',
+    'ضيف كتاب PDF أو EPUB واقسم قرايته على الأيام':
+        'Add a PDF or EPUB book and spread its reading over the days',
     'أضف كتاب': 'Add a book',
     'بيضيف الكتاب…': 'Adding the book…',
     'مش قادر أقرا عدد الصفحات': 'Can\'t read the page count',
@@ -377,8 +396,10 @@ const Map<String, Map<String, String>> translations = {
     'المهمة التانية': 'Second task',
     'اختار مهمتين عشان تقارن بينهم.': 'Choose two tasks to compare them.',
     'لسه مفيش أيام كفاية عشان أقارن.': 'Not enough days yet to compare.',
-    'مستواك قريب في الاتنين ({a} و{b}).': 'You did about the same in both ({a} and {b}).',
-    'كنت أحسن في «{a}» ({ra}) من «{b}» ({rb}).': 'You did better at “{a}” ({ra}) than “{b}” ({rb}).',
+    'مستواك قريب في الاتنين ({a} و{b}).':
+        'You did about the same in both ({a} and {b}).',
+    'كنت أحسن في «{a}» ({ra}) من «{b}» ({rb}).':
+        'You did better at “{a}” ({ra}) than “{b}” ({rb}).',
     'مهمة': 'One task',
     'مقارنة مهمتين': 'Compare two',
     'مفيش مهام يومية في الفترة دي.': 'No daily tasks in this period.',
@@ -402,10 +423,13 @@ const Map<String, Map<String, String>> translations = {
     'الشهر اللي بعده': 'Next month',
     'الشهر اللي قبله': 'Previous month',
     'الشيت الشهري': 'Monthly sheet',
-    'دوس على أي يوم عشان تكتب أو تعدّل الملاحظة بتاعته.': 'Tap any day to write or edit its note.',
-    'مثلًا: شغل، إجازة، ميعاد الدكتور ٥ م': 'e.g. work, day off, doctor at 5 pm',
+    'دوس على أي يوم عشان تكتب أو تعدّل الملاحظة بتاعته.':
+        'Tap any day to write or edit its note.',
+    'مثلًا: شغل، إجازة، ميعاد الدكتور ٥ م':
+        'e.g. work, day off, doctor at 5 pm',
     'ملاحظات الشهر': 'This month\'s notes',
-    'ملاحظة صغيرة على كل يوم: شغل، إجازة، مواعيد': 'A short note on each day: work, days off, appointments',
+    'ملاحظة صغيرة على كل يوم: شغل، إجازة، مواعيد':
+        'A short note on each day: work, days off, appointments',
     '{n} كتابة': '{n} notes',
     'اكتب حاجة جديدة': 'Write something new',
     'امسحها': 'Delete it',
@@ -427,14 +451,17 @@ const Map<String, Map<String, String>> translations = {
     'الإيميل أو الباسورد غلط': 'Wrong email or password',
     'الإيميل مكتوب غلط': 'That email doesn\'t look right',
     'الباسورد': 'Password',
-    'الباسورد ضعيف، خليه ٦ حروف أو أرقام على الأقل': 'Password too weak; use at least 6 characters',
+    'الباسورد ضعيف، خليه ٦ حروف أو أرقام على الأقل':
+        'Password too weak; use at least 6 characters',
     'الباسوردين مش زي بعض': 'The passwords don\'t match',
     'الحساب ده متوقف': 'This account is disabled',
     'الحساب والحفظ': 'Account and backup',
-    'الحساب والحفظ لسه مش متظبطين في النسخة دي.': 'Accounts and backup aren\'t set up in this version yet.',
+    'الحساب والحفظ لسه مش متظبطين في النسخة دي.':
+        'Accounts and backup aren\'t set up in this version yet.',
     'اللي على الموبايل': 'This phone\'s',
     'اللي في حسابي': 'My account\'s',
-    'بعتنالك على إيميلك لينك تغيّر بيه الباسورد': 'We emailed you a link to change your password',
+    'بعتنالك على إيميلك لينك تغيّر بيه الباسورد':
+        'We emailed you a link to change your password',
     'بعتناها تاني': 'Sent again',
     'بنجهّز بياناتك…': 'Getting your data ready…',
     'حصلت مشكلة، جرّب تاني': 'Something went wrong; try again',
@@ -443,16 +470,21 @@ const Map<String, Map<String, String>> translations = {
     'دخول': 'Sign in',
     'عندك حساب؟': 'Do you have an account?',
     'غيّر الباسورد': 'Change password',
-    'في بيانات على الموبايل وفي حسابك': 'There\'s data on this phone and in your account',
+    'في بيانات على الموبايل وفي حسابك':
+        'There\'s data on this phone and in your account',
     'لأ، حساب جديد': 'No, new account',
-    'لسه ما اتأكدش. افتح الرسالة ودوس على اللينك اللي فيها.': 'Not confirmed yet. Open the email and tap its link.',
-    'محاولات كتير، استنى شوية وجرّب تاني': 'Too many attempts; wait a bit and try again',
-    'مفيش إنترنت، اتأكد من النت وجرّب تاني': 'No internet; check your connection and try again',
+    'لسه ما اتأكدش. افتح الرسالة ودوس على اللينك اللي فيها.':
+        'Not confirmed yet. Open the email and tap its link.',
+    'محاولات كتير، استنى شوية وجرّب تاني':
+        'Too many attempts; wait a bit and try again',
+    'مفيش إنترنت، اتأكد من النت وجرّب تاني':
+        'No internet; check your connection and try again',
     'نسيت الباسورد': 'Forgot password',
     'نسيت الباسورد؟': 'Forgot your password?',
     'حسابك فيه بيانات محفوظة من {d}، والموبايل ده عليه بيانات اتكتبت قبل ما تدخل. تحب تاخد أنهي؟': 'Your account has data saved on {d}, and this phone has data written before you signed in. Which do you want to keep?',
     'الإيميل ده عليه حساب بالفعل. ادخل بيه، ولو ناسي الباسورد رجّعه.': 'That email already has an account. Sign in with it, or reset the password if you forgot it.',
-    'اكتب إيميلك، وهنبعتلك عليه رسالة فيها لينك تعمل بيه باسورد جديد.': 'Enter your email and we\'ll send you a link to set a new password.',
+    'اكتب إيميلك، وهنبعتلك عليه رسالة فيها لينك تعمل بيه باسورد جديد.':
+        'Enter your email and we\'ll send you a link to set a new password.',
     'لو الإيميل {e} عليه حساب، هتوصلك رسالة فيها لينك تغيّر بيه الباسورد. لو مش لاقيها بص في الـ Spam.': 'If {e} has an account, you\'ll get an email with a link to change the password. If you can\'t find it, check Spam.',
     'هنبعت رسالة على إيميلك تأكد بيها إنه بتاعك. كل حاجة بتكتبها هتتحفظ في حسابك، ولو مسحت التطبيق ونزّلته تاني تدخل بنفس الإيميل والباسورد وكل حاجة ترجع.': 'We\'ll email you to confirm it\'s yours. Everything you write is saved in your account; if you reinstall the app, sign in with the same email and password and it all comes back.',
     'بعتنا رسالة على {e}. افتحها ودوس على اللينك اللي فيها، وبعدين ارجع هنا. لو مش لاقيها بص في الـ Spam.': 'We sent an email to {e}. Open it, tap the link, then come back here. If you can\'t find it, check Spam.',
@@ -460,8 +492,10 @@ const Map<String, Map<String, String>> translations = {
     'تخرج من حسابك؟ بياناتك محفوظة فيه وترجع لما تدخل تاني.': 'Sign out? Your data stays in your account and comes back when you sign in.',
     '{h} س {m} د': '{h} h {m} min',
     '{n} حساب · {p} مدفوع': '{n} accounts · {p} paid',
-    'أنا حوّلت تمن تطبيق حياتي. إيميل حسابي: {e}': 'I paid for the Hayati app. My account email: {e}',
-    'أول ما يتفعّل، دوس الزرار اللي تحت والتطبيق يفتح.': 'Once it\'s activated, tap the button below and the app opens.',
+    'أنا حوّلت تمن تطبيق حياتي. إيميل حسابي: {e}':
+        'I paid for the Hayati app. My account email: {e}',
+    'أول ما يتفعّل، دوس الزرار اللي تحت والتطبيق يفتح.':
+        'Once it\'s activated, tap the button below and the app opens.',
     'إيميل اللي دفع': 'Email of who paid',
     'ابعتها على واتساب': 'Send it on WhatsApp',
     'اتفعّل': 'Activated',
@@ -485,7 +519,8 @@ const Map<String, Map<String, String>> translations = {
     'حدّث': 'Refresh',
     'رجوع': 'Back',
     'رقم الواتساب اللي يبعتولك عليه': 'WhatsApp number for receipts',
-    'طريقة الدفع لسه ما اتحطتش. كلّم صاحب التطبيق.': 'Payment details aren\'t set yet. Contact the app owner.',
+    'طريقة الدفع لسه ما اتحطتش. كلّم صاحب التطبيق.':
+        'Payment details aren\'t set yet. Contact the app owner.',
     'عنوان InstaPay أو رقمه': 'InstaPay address or number',
     'فترة التجربة خلصت': 'Your free trial is over',
     'فعّل': 'Activate',
@@ -520,10 +555,12 @@ const Map<String, Map<String, String>> translations = {
     'ترفض طلب {e}؟ هيظهرله يراجع بياناته ويبعتها تاني.': 'Reject {e}\'s request? They\'ll be asked to check their details and resend.',
     'حوّل لـ': 'Send to',
     'حوّل من': 'Sent from',
-    'حوّلت من (رقم الموبايل أو عنوان InstaPay)': 'Sent from (phone or InstaPay address)',
+    'حوّلت من (رقم الموبايل أو عنوان InstaPay)':
+        'Sent from (phone or InstaPay address)',
     'رسايل الواتساب ليك': 'WhatsApp messages to you',
     'رقم العملية': 'Reference',
-    'رقم العملية (Reference) من إيصال InstaPay': 'Reference number from the InstaPay receipt',
+    'رقم العملية (Reference) من إيصال InstaPay':
+        'Reference number from the InstaPay receipt',
     'رقم الواتساب بتاعك بكود الدولة': 'Your WhatsApp number with country code',
     'طلبات الدفع ({n} مستني)': 'Payment requests ({n} waiting)',
     'طلبات خلصت': 'Answered requests',
@@ -537,14 +574,19 @@ const Map<String, Map<String, String>> translations = {
     'مستني': 'Waiting',
     'مفتاح CallMeBot (apikey)': 'CallMeBot key (apikey)',
     'مفيش طلبات مستنية دلوقتي.': 'No requests waiting.',
-    '٢. اكتب الكود ده في سبب التحويل': '2. Write this code as the transfer\'s reason',
-    '٣. بعد التحويل اكتب بياناته هنا': '3. After sending, enter its details here',
-    '🔔 حياتي: رسالة تجربة من لوحة التحكم': '🔔 Hayati: test message from the control panel',
-    'البيانات اللي بعتها ما اتطابقتش مع أي تحويل. راجعها وابعتها تاني.': 'Your details didn\'t match any transfer. Check them and send again.',
+    '٢. اكتب الكود ده في سبب التحويل':
+        '2. Write this code as the transfer\'s reason',
+    '٣. بعد التحويل اكتب بياناته هنا':
+        '3. After sending, enter its details here',
+    '🔔 حياتي: رسالة تجربة من لوحة التحكم':
+        '🔔 Hayati: test message from the control panel',
+    'البيانات اللي بعتها ما اتطابقتش مع أي تحويل. راجعها وابعتها تاني.':
+        'Your details didn\'t match any transfer. Check them and send again.',
     'كل طلب دفع بيوصلك رسالة واتساب لوحده. رقمك مش بيظهر لحد.': 'Each payment request sends you a WhatsApp message. Your number isn\'t shown to anyone.',
     'ما اتبعتتش، راجع الرقم والمفتاح': 'Not sent; check the number and key',
     'هنراجع التحويل ونفعّل حسابك في أقرب وقت. أول ما يتفعّل دوس الزرار اللي تحت.': 'We\'ll check the transfer and activate your account soon. Once it\'s activated, tap the button below.',
-    'رقم العملية من إيصال InstaPay': 'Reference number from the InstaPay receipt',
+    'رقم العملية من إيصال InstaPay':
+        'Reference number from the InstaPay receipt',
     'الدخول بالإيميل والباسورد مش متفعّل في Firebase. فعّله من Authentication ← Sign-in method.': 'Email/password sign-in is not enabled in Firebase. Enable it in Authentication → Sign-in method.',
     'الحساب': 'Account',
     'صاحب التطبيق': 'App owner',
@@ -554,17 +596,23 @@ const Map<String, Map<String, String>> translations = {
     'لينك الدفع': 'Payment link',
     'ما دفعش': 'Not paid',
     'مش متحدد': 'Not set',
-    'هيوصلك على إيميلك لينك تعمل بيه باسورد جديد': 'You\'ll get an email with a link to set a new password',
+    'هيوصلك على إيميلك لينك تعمل بيه باسورد جديد':
+        'You\'ll get an email with a link to set a new password',
     'إيقاف الأذان': 'Stop adhan',
     'اقتربت صلاة {p}': '{p} prayer is near',
     'الأذان بعد {n} دقيقة، الساعة {t}': 'Adhan in {n} minutes, at {t}',
     'الأذان عند دخول الوقت': 'Adhan when prayer time begins',
-    'الصلاة خير من النوم · الأذان بعد {n} دقيقة، الساعة {t}': 'Prayer is better than sleep · Adhan in {n} minutes, at {t}',
+    'الصلاة خير من النوم · الأذان بعد {n} دقيقة، الساعة {t}':
+        'Prayer is better than sleep · Adhan in {n} minutes, at {t}',
     'الله أكبر، الله أكبر': 'Allahu Akbar, Allahu Akbar',
     'بالإضافة للتنبيه قبل الصلاة': 'As well as the reminder before prayer',
     'حان الآن موعد أذان {p}': 'It\'s time for the {p} adhan',
     'الأذان': 'Adhan',
     'أذان الفجر': 'Fajr adhan',
+    'فيه تحديث جديد': 'New update available',
+    'نزّله وسطّبه فوق القديم، وبياناتك هتفضل زي ما هي.':
+        'Download and install it over the old one; your data stays as it is.',
+    'بعدين': 'Later',
   },
   'fr': {
     'أهدافي': 'Mes objectifs',
@@ -618,7 +666,8 @@ const Map<String, Map<String, String>> translations = {
     'امسح الموعد': 'Supprimer le rendez-vous',
     'صفحة': 'page',
     'جزء': 'section',
-    'إضافة الكتب متاحة في تطبيق الموبايل': 'L\'ajout de livres fonctionne dans l\'application mobile',
+    'إضافة الكتب متاحة في تطبيق الموبايل':
+        'L\'ajout de livres fonctionne dans l\'application mobile',
     'الملف لازم يكون PDF أو EPUB': 'Le fichier doit être un PDF ou un EPUB',
     'مش قادر أفتح الملف ده': 'Impossible d\'ouvrir ce fichier',
     'كتبي': 'Mes livres',
@@ -652,11 +701,14 @@ const Map<String, Map<String, String>> translations = {
     'بعد {p}': 'Après {p}',
     'هيتعمل هدف يومي لوحده "اقرأ {n} {u}"، ويتعلّم عليه صح أول ما توصل للمطلوب في القارئ.': 'Un objectif quotidien « Lire {n} {u} » est créé et coché dès que tu l\'atteins dans le lecteur.',
     'حفظ الخطة': 'Enregistrer le plan',
-    'ملف الكتاب مش موجود على الجهاز ده': 'Le fichier du livre n\'est pas sur cet appareil',
-    '{u} {c} من {t} · النهارده {r}/{d}': '{u} {c} sur {t} · aujourd\'hui {r}/{d}',
+    'ملف الكتاب مش موجود على الجهاز ده':
+        'Le fichier du livre n\'est pas sur cet appareil',
+    '{u} {c} من {t} · النهارده {r}/{d}':
+        '{u} {c} sur {t} · aujourd\'hui {r}/{d}',
     'اكتب اسم الهدف': 'Saisis le nom de l\'objectif',
     'تمسح الهدف ده؟': 'Supprimer cet objectif ?',
-    'تمسح الهدف ده و{n} هدف تحته؟': 'Supprimer cet objectif et ses {n} sous-objectifs ?',
+    'تمسح الهدف ده و{n} هدف تحته؟':
+        'Supprimer cet objectif et ses {n} sous-objectifs ?',
     'هدف جديد': 'Nouvel objectif',
     'تعديل الهدف': 'Modifier l\'objectif',
     'إغلاق': 'Fermer',
@@ -672,14 +724,16 @@ const Map<String, Map<String, String>> translations = {
     'قبل': 'Avant',
     'بعد': 'Après',
     'بفرق': 'Décalage',
-    'النهارده هينبّهك {t} · الميعاد بيتحرك لوحده مع {p}': 'Rappel aujourd\'hui : {t} · l\'heure suit {p} chaque jour',
+    'النهارده هينبّهك {t} · الميعاد بيتحرك لوحده مع {p}':
+        'Rappel aujourd\'hui : {t} · l\'heure suit {p} chaque jour',
     'هينبّهك كل يوم {t}': 'Rappel chaque jour à {t}',
     'لو فاتني': 'Si je le rate',
     'اسألني (يظهر بالأحمر)': 'Me demander (en rouge)',
     'يتسجّل قضاء': 'Ajouter au rattrapage',
     'رحّله لليوم اللي بعده': 'Reporter au lendemain',
     'يوم رحمة في الأسبوع': 'Jour de grâce chaque semaine',
-    'لو فوّت يوم واحد في الأسبوع، السلسلة مش هتتكسر': 'Rater un jour par semaine ne casse pas ta série',
+    'لو فوّت يوم واحد في الأسبوع، السلسلة مش هتتكسر':
+        'Rater un jour par semaine ne casse pas ta série',
     'حفظ الهدف': 'Enregistrer l\'objectif',
     'الشهر': 'Mois',
     'الأسبوع': 'Semaine',
@@ -692,20 +746,25 @@ const Map<String, Map<String, String>> translations = {
     'لسه مفيش أهداف هنا.': 'Pas encore d\'objectifs ici.',
     'الكل': 'Tous',
     'قسّمه: هدف {l} تحته': 'Découper : ajouter un objectif {l}',
-    'هدف جديد — ابدأ من أي مستوى': 'Nouvel objectif — commence à n\'importe quel niveau',
-    'السلسلة بتظهر للأهداف اللي بتتكرر.': 'Les séries s\'affichent pour les objectifs récurrents.',
+    'هدف جديد — ابدأ من أي مستوى':
+        'Nouvel objectif — commence à n\'importe quel niveau',
+    'السلسلة بتظهر للأهداف اللي بتتكرر.':
+        'Les séries s\'affichent pour les objectifs récurrents.',
     'يوم الرحمة شغال: يوم واحد في الأسبوع يفوتك من غير ما السلسلة تتكسر.': 'Jour de grâce activé : tu peux rater un jour par semaine sans casser la série.',
     'رصيد القضاء': 'Rattrapages en attente',
     'مفيش قضاء عليك. ما شاء الله!': 'Rien à rattraper. Bravo !',
     'فاتك {d}': 'Manqué le {d}',
     'فاتك {d} · متحط يوم {p}': 'Manqué le {d} · prévu le {p}',
     'اقضِه': 'Rattraper',
-    'النهارده الجمعة، تحب تقضيهم النهارده؟': 'C\'est vendredi — les rattraper aujourd\'hui ?',
+    'النهارده الجمعة، تحب تقضيهم النهارده؟':
+        'C\'est vendredi — les rattraper aujourd\'hui ?',
     'تحب تحطهم يوم الجمعة {d}؟': 'Les prévoir vendredi {d} ?',
     'حطّهم يوم الجمعة': 'Prévoir vendredi',
     'الكتابة بالصوت مش متاحة. اتأكد إن خدمة التعرف على الكلام من جوجل شغالة على موبايلك.': 'La dictée vocale n\'est pas disponible. Vérifie que la reconnaissance vocale Google est activée.',
-    'التسجيل متاح في تطبيق الموبايل': 'L\'enregistrement fonctionne dans l\'application mobile',
-    'محتاج إذن الميكروفون عشان أسجّل': 'L\'autorisation du micro est nécessaire',
+    'التسجيل متاح في تطبيق الموبايل':
+        'L\'enregistrement fonctionne dans l\'application mobile',
+    'محتاج إذن الميكروفون عشان أسجّل':
+        'L\'autorisation du micro est nécessaire',
     'تمسح الريكورد ده؟': 'Supprimer cet enregistrement ?',
     'يومياتي': 'Mon journal',
     'اليوم السابق': 'Jour précédent',
@@ -730,16 +789,19 @@ const Map<String, Map<String, String>> translations = {
     'اللغة': 'Langue',
     'التنبيهات': 'Notifications',
     'مراجعة الأهداف اليومية': 'Bilan quotidien des objectifs',
-    'إشعار لكل هدف فيه أزرار: تم، ما اتعملش، رحّله': 'Une notification par objectif avec boutons : fait, pas fait, reporter',
+    'إشعار لكل هدف فيه أزرار: تم، ما اتعملش، رحّله':
+        'Une notification par objectif avec boutons : fait, pas fait, reporter',
     'التنبيه قبل كل الصلوات': 'Rappel avant toutes les prières',
-    'تقدر تغيّر كل صلاة لوحدها من شاشة المواعيد.': 'Tu peux régler chaque prière dans l\'écran Rendez-vous.',
+    'تقدر تغيّر كل صلاة لوحدها من شاشة المواعيد.':
+        'Tu peux régler chaque prière dans l\'écran Rendez-vous.',
     'تنبيه عند دخول الوقت': 'Alerte à l\'heure de la prière',
     'بالإضافة للتنبيه المسبق': 'En plus du rappel anticipé',
     'اسمح بالإشعارات': 'Autoriser les notifications',
     'مواقيت الصلاة': 'Heures de prière',
     'المدينة': 'Ville',
     'طريقة الحساب': 'Méthode de calcul',
-    'الهيئة المصرية العامة للمساحة': 'Autorité générale égyptienne d\'arpentage',
+    'الهيئة المصرية العامة للمساحة':
+        'Autorité générale égyptienne d\'arpentage',
     'صورة الخلفية': 'Image de fond',
     'اختار صورة من الموبايل': 'Choisir une photo',
     'شيل الصورة': 'Retirer l\'image',
@@ -748,19 +810,23 @@ const Map<String, Map<String, String>> translations = {
     'في نسخة محفوظة من {d}. تحب ترجّعها على الموبايل، ولا ترفع اللي على الموبايل مكانها؟': 'Une copie du {d} existe. La restaurer sur ce téléphone, ou envoyer les données de ce téléphone à la place ?',
     'ارفع اللي هنا': 'Envoyer celles-ci',
     'رجّع نسخة درايف': 'Restaurer depuis Drive',
-    'ما قدرتش أسجّل الدخول بجوجل. جرّب تاني.': 'Connexion Google impossible. Réessaie.',
+    'ما قدرتش أسجّل الدخول بجوجل. جرّب تاني.':
+        'Connexion Google impossible. Réessaie.',
     'مفيش نسخة على درايف لسه': 'Pas encore de copie sur Drive',
     'رجعت كل حاجة من درايف': 'Tout a été restauré depuis Drive',
     'الحساب والحفظ على جوجل درايف': 'Compte et sauvegarde Google Drive',
-    'تسجيل الدخول بجوجل لسه مش متظبط في النسخة دي.': 'La connexion Google n\'est pas encore configurée dans cette version.',
+    'تسجيل الدخول بجوجل لسه مش متظبط في النسخة دي.':
+        'La connexion Google n\'est pas encore configurée dans cette version.',
     'سجّل دخول بحساب جوجل، وكل حاجة (أهداف، يوميات، ريكوردات، كتب) هتتحفظ على درايف بتاعك. لو التطبيق اتمسح، تسجّل دخول تاني وكل حاجة ترجع.': 'Connecte-toi avec Google et tout (objectifs, journal, enregistrements, livres) est sauvegardé sur ton Drive. Si l\'app est supprimée, reconnecte-toi et tout revient.',
     'تسجيل الدخول بجوجل': 'Se connecter avec Google',
     'بيحفظ دلوقتي…': 'Sauvegarde en cours…',
     'لسه ما اتحفظش': 'Pas encore sauvegardé',
     'آخر حفظ: {d}': 'Dernière sauvegarde : {d}',
-    'آخر محاولة حفظ ما نجحتش، هيحاول تاني لوحده.': 'La dernière sauvegarde a échoué ; nouvel essai automatique.',
+    'آخر محاولة حفظ ما نجحتش، هيحاول تاني لوحده.':
+        'La dernière sauvegarde a échoué ; nouvel essai automatique.',
     'احفظ ملفات الكتب كمان': 'Sauvegarder aussi les livres',
-    'لو قفلتها، بيتحفظ مكانك في الكتاب بس': 'Si désactivé, seule ta position dans chaque livre est sauvegardée',
+    'لو قفلتها، بيتحفظ مكانك في الكتاب بس':
+        'Si désactivé, seule ta position dans chaque livre est sauvegardée',
     'اتحفظ على درايف': 'Sauvegardé sur Drive',
     'الحفظ ما نجحش': 'Échec de la sauvegarde',
     'احفظ دلوقتي': 'Sauvegarder maintenant',
@@ -850,7 +916,8 @@ const Map<String, Map<String, String>> translations = {
     'مكية': 'Mecquoise',
     'مدنية': 'Médinoise',
     '{n} آية': '{n} versets',
-    'علّم هنا (وقفت عند الآية دي)': 'Marquer ici (je me suis arrêté à ce verset)',
+    'علّم هنا (وقفت عند الآية دي)':
+        'Marquer ici (je me suis arrêté à ce verset)',
     'انسخ الآية': 'Copier le verset',
     'اتنسخت': 'Copié',
     'صغّر الخط': 'Texte plus petit',
@@ -859,7 +926,8 @@ const Map<String, Map<String, String>> translations = {
     'تذكير بأذكار الصباح والمساء': 'Rappels des adhkar du matin et du soir',
     'بعد الفجر وبعد العصر بنص ساعة': 'Une demi-heure après Fajr et après Asr',
     'عباداتي': 'Adoration',
-    'تمّت المائة · قل: لا إله إلا الله وحده لا شريك له…': 'Cent atteints · dis : lā ilāha illā Allāh waḥdahu lā sharīka lah…',
+    'تمّت المائة · قل: لا إله إلا الله وحده لا شريك له…':
+        'Cent atteints · dis : lā ilāha illā Allāh waḥdahu lā sharīka lah…',
     'ذكر جديد': 'Nouveau dhikr',
     'اكتب الذكر': 'Écris le dhikr',
     'أضف': 'Ajouter',
@@ -876,8 +944,10 @@ const Map<String, Map<String, String>> translations = {
     '١١٤ سورة · بالرسم العثماني': '114 sourates · écriture uthmani',
     'كمّل: سورة {s} · آية {a}': 'Reprendre : sourate {s} · verset {a}',
     'كمّل: سورة {s}': 'Reprendre : sourate {s}',
-    'الصباح والمساء وبعد الصلاة والنوم': 'Matin, soir, après la prière et coucher',
-    'خشب، كهرمان، لؤلؤ، زمرد، أو عداد رقمي': 'Bois, ambre, perle, émeraude ou compteur numérique',
+    'الصباح والمساء وبعد الصلاة والنوم':
+        'Matin, soir, après la prière et coucher',
+    'خشب، كهرمان، لؤلؤ، زمرد، أو عداد رقمي':
+        'Bois, ambre, perle, émeraude ou compteur numérique',
     'سبّحت لحد دلوقتي {n} مرة': '{n} comptés jusqu\'ici',
     'خشب': 'Bois',
     'كهرمان': 'Ambre',
@@ -889,9 +959,11 @@ const Map<String, Map<String, String>> translations = {
     'اختار صورة للشكل ده': 'Choisir une image pour ce style',
     'شكل التطبيق': 'Apparence de l\'app',
     'شكل مختلف لكل يوم': 'Un style différent chaque jour',
-    'وفي الوضع الداكن بيبقى شكل الكسوة': 'En mode sombre, c\'est le style Kiswa',
+    'وفي الوضع الداكن بيبقى شكل الكسوة':
+        'En mode sombre, c\'est le style Kiswa',
     'الداكن': 'Sombre',
-    'اضغط على أي شكل عشان تختاره أو تحط له صورة من الموبايل.': 'Touche un style pour le choisir ou lui donner une image.',
+    'اضغط على أي شكل عشان تختاره أو تحط له صورة من الموبايل.':
+        'Touche un style pour le choisir ou lui donner une image.',
     'ربيع النعناع': 'Printemps menthe',
     'غروب الخوخ': 'Coucher pêche',
     'ورد المدينة': 'Roses de Médine',
@@ -900,7 +972,8 @@ const Map<String, Map<String, String>> translations = {
     'فيروز وسحاب': 'Turquoise et nuages',
     'فجر الجمعة': 'Aube du vendredi',
     'الكسوة': 'Kiswa',
-    'ضيف كتاب PDF أو EPUB واقسم قرايته على الأيام': 'Ajoute un livre PDF ou EPUB et répartis sa lecture sur les jours',
+    'ضيف كتاب PDF أو EPUB واقسم قرايته على الأيام':
+        'Ajoute un livre PDF ou EPUB et répartis sa lecture sur les jours',
     'أضف كتاب': 'Ajouter un livre',
     'بيضيف الكتاب…': 'Ajout du livre…',
     'مش قادر أقرا عدد الصفحات': 'Impossible de lire le nombre de pages',
@@ -940,12 +1013,16 @@ const Map<String, Map<String, String>> translations = {
     'المهمة': 'Tâche',
     'المهمة التانية': 'Deuxième tâche',
     'اختار مهمتين عشان تقارن بينهم.': 'Choisis deux tâches pour les comparer.',
-    'لسه مفيش أيام كفاية عشان أقارن.': 'Pas encore assez de jours pour comparer.',
-    'مستواك قريب في الاتنين ({a} و{b}).': 'Niveau proche pour les deux ({a} et {b}).',
-    'كنت أحسن في «{a}» ({ra}) من «{b}» ({rb}).': 'Tu as mieux réussi « {a} » ({ra}) que « {b} » ({rb}).',
+    'لسه مفيش أيام كفاية عشان أقارن.':
+        'Pas encore assez de jours pour comparer.',
+    'مستواك قريب في الاتنين ({a} و{b}).':
+        'Niveau proche pour les deux ({a} et {b}).',
+    'كنت أحسن في «{a}» ({ra}) من «{b}» ({rb}).':
+        'Tu as mieux réussi « {a} » ({ra}) que « {b} » ({rb}).',
     'مهمة': 'Une tâche',
     'مقارنة مهمتين': 'Comparer deux',
-    'مفيش مهام يومية في الفترة دي.': 'Aucune tâche quotidienne sur cette période.',
+    'مفيش مهام يومية في الفترة دي.':
+        'Aucune tâche quotidienne sur cette période.',
     'كل مهمة لوحدها': 'Chaque tâche',
     'أسبوع': 'Semaine',
     'سنة': 'Année',
@@ -966,10 +1043,13 @@ const Map<String, Map<String, String>> translations = {
     'الشهر اللي بعده': 'Mois suivant',
     'الشهر اللي قبله': 'Mois précédent',
     'الشيت الشهري': 'Feuille du mois',
-    'دوس على أي يوم عشان تكتب أو تعدّل الملاحظة بتاعته.': 'Touche un jour pour écrire ou modifier sa note.',
-    'مثلًا: شغل، إجازة، ميعاد الدكتور ٥ م': 'ex. : travail, congé, médecin à 17 h',
+    'دوس على أي يوم عشان تكتب أو تعدّل الملاحظة بتاعته.':
+        'Touche un jour pour écrire ou modifier sa note.',
+    'مثلًا: شغل، إجازة، ميعاد الدكتور ٥ م':
+        'ex. : travail, congé, médecin à 17 h',
     'ملاحظات الشهر': 'Notes du mois',
-    'ملاحظة صغيرة على كل يوم: شغل، إجازة، مواعيد': 'Une petite note par jour : travail, congés, rendez-vous',
+    'ملاحظة صغيرة على كل يوم: شغل، إجازة، مواعيد':
+        'Une petite note par jour : travail, congés, rendez-vous',
     '{n} كتابة': '{n} notes',
     'اكتب حاجة جديدة': 'Écrire quelque chose',
     'امسحها': 'Supprimer',
@@ -991,14 +1071,16 @@ const Map<String, Map<String, String>> translations = {
     'الإيميل أو الباسورد غلط': 'E-mail ou mot de passe incorrect',
     'الإيميل مكتوب غلط': 'Cet e-mail n\'est pas valide',
     'الباسورد': 'Mot de passe',
-    'الباسورد ضعيف، خليه ٦ حروف أو أرقام على الأقل': 'Mot de passe trop faible : au moins 6 caractères',
+    'الباسورد ضعيف، خليه ٦ حروف أو أرقام على الأقل':
+        'Mot de passe trop faible : au moins 6 caractères',
     'الباسوردين مش زي بعض': 'Les mots de passe ne correspondent pas',
     'الحساب ده متوقف': 'Ce compte est désactivé',
     'الحساب والحفظ': 'Compte et sauvegarde',
     'الحساب والحفظ لسه مش متظبطين في النسخة دي.': 'Le compte et la sauvegarde ne sont pas encore configurés dans cette version.',
     'اللي على الموبايل': 'Celles du téléphone',
     'اللي في حسابي': 'Celles de mon compte',
-    'بعتنالك على إيميلك لينك تغيّر بيه الباسورد': 'On t\'a envoyé un lien pour changer ton mot de passe',
+    'بعتنالك على إيميلك لينك تغيّر بيه الباسورد':
+        'On t\'a envoyé un lien pour changer ton mot de passe',
     'بعتناها تاني': 'Renvoyé',
     'بنجهّز بياناتك…': 'Préparation de tes données…',
     'حصلت مشكلة، جرّب تاني': 'Un problème est survenu, réessaie',
@@ -1007,11 +1089,14 @@ const Map<String, Map<String, String>> translations = {
     'دخول': 'Se connecter',
     'عندك حساب؟': 'As-tu un compte ?',
     'غيّر الباسورد': 'Changer le mot de passe',
-    'في بيانات على الموبايل وفي حسابك': 'Il y a des données sur le téléphone et dans ton compte',
+    'في بيانات على الموبايل وفي حسابك':
+        'Il y a des données sur le téléphone et dans ton compte',
     'لأ، حساب جديد': 'Non, nouveau compte',
-    'لسه ما اتأكدش. افتح الرسالة ودوس على اللينك اللي فيها.': 'Pas encore confirmé. Ouvre l\'e-mail et touche le lien.',
+    'لسه ما اتأكدش. افتح الرسالة ودوس على اللينك اللي فيها.':
+        'Pas encore confirmé. Ouvre l\'e-mail et touche le lien.',
     'محاولات كتير، استنى شوية وجرّب تاني': 'Trop de tentatives, attends un peu',
-    'مفيش إنترنت، اتأكد من النت وجرّب تاني': 'Pas d\'internet, vérifie ta connexion',
+    'مفيش إنترنت، اتأكد من النت وجرّب تاني':
+        'Pas d\'internet, vérifie ta connexion',
     'نسيت الباسورد': 'Mot de passe oublié',
     'نسيت الباسورد؟': 'Mot de passe oublié ?',
     'حسابك فيه بيانات محفوظة من {d}، والموبايل ده عليه بيانات اتكتبت قبل ما تدخل. تحب تاخد أنهي؟': 'Ton compte a des données enregistrées le {d}, et ce téléphone a des données écrites avant la connexion. Lesquelles garder ?',
@@ -1021,11 +1106,14 @@ const Map<String, Map<String, String>> translations = {
     'هنبعت رسالة على إيميلك تأكد بيها إنه بتاعك. كل حاجة بتكتبها هتتحفظ في حسابك، ولو مسحت التطبيق ونزّلته تاني تدخل بنفس الإيميل والباسورد وكل حاجة ترجع.': 'On t\'enverra un e-mail pour confirmer qu\'il est à toi. Tout est enregistré dans ton compte ; après une réinstallation, reconnecte-toi et tout revient.',
     'بعتنا رسالة على {e}. افتحها ودوس على اللينك اللي فيها، وبعدين ارجع هنا. لو مش لاقيها بص في الـ Spam.': 'On a envoyé un e-mail à {e}. Ouvre-le, touche le lien, puis reviens ici. Sinon, regarde dans les spams.',
     'كل حاجة بتتحفظ في حسابك لوحدها. لو مسحت التطبيق، ادخل بنفس الإيميل والباسورد وكل حاجة ترجع.': 'Tout est enregistré automatiquement dans ton compte. Après une suppression de l\'app, reconnecte-toi et tout revient.',
-    'تخرج من حسابك؟ بياناتك محفوظة فيه وترجع لما تدخل تاني.': 'Te déconnecter ? Tes données restent dans ton compte.',
+    'تخرج من حسابك؟ بياناتك محفوظة فيه وترجع لما تدخل تاني.':
+        'Te déconnecter ? Tes données restent dans ton compte.',
     '{h} س {m} د': '{h} h {m} min',
     '{n} حساب · {p} مدفوع': '{n} comptes · {p} payés',
-    'أنا حوّلت تمن تطبيق حياتي. إيميل حسابي: {e}': 'J\'ai payé l\'application Hayati. E-mail de mon compte : {e}',
-    'أول ما يتفعّل، دوس الزرار اللي تحت والتطبيق يفتح.': 'Une fois activé, touche le bouton ci-dessous et l\'app s\'ouvre.',
+    'أنا حوّلت تمن تطبيق حياتي. إيميل حسابي: {e}':
+        'J\'ai payé l\'application Hayati. E-mail de mon compte : {e}',
+    'أول ما يتفعّل، دوس الزرار اللي تحت والتطبيق يفتح.':
+        'Une fois activé, touche le bouton ci-dessous et l\'app s\'ouvre.',
     'إيميل اللي دفع': 'E-mail de la personne qui a payé',
     'ابعتها على واتساب': 'L\'envoyer sur WhatsApp',
     'اتفعّل': 'Activé',
@@ -1058,7 +1146,8 @@ const Map<String, Map<String, String>> translations = {
     'فعّل مدى الحياة': 'Activer à vie',
     'في التجربة': 'En essai',
     'لوحة التفعيل': 'Panneau d\'activation',
-    'لينك الدفع بـ InstaPay (لو عندك)': 'Lien de paiement InstaPay (facultatif)',
+    'لينك الدفع بـ InstaPay (لو عندك)':
+        'Lien de paiement InstaPay (facultatif)',
     'ما قدرتش أفتح اللينك': 'Impossible d\'ouvrir le lien',
     'مثلًا: ٣٠٠ جنيه': 'ex. : 300 EGP',
     'مدفوع': 'Payé',
@@ -1081,13 +1170,16 @@ const Map<String, Map<String, String>> translations = {
     'المبلغ': 'Montant',
     'المبلغ اللي حوّلته': 'Montant envoyé',
     'تخرج من حسابك؟': 'Se déconnecter ?',
-    'ترفض طلب {e}؟ هيظهرله يراجع بياناته ويبعتها تاني.': 'Refuser la demande de {e} ? On lui demandera de vérifier et renvoyer.',
+    'ترفض طلب {e}؟ هيظهرله يراجع بياناته ويبعتها تاني.':
+        'Refuser la demande de {e} ? On lui demandera de vérifier et renvoyer.',
     'حوّل لـ': 'Envoyer à',
     'حوّل من': 'Envoyé depuis',
-    'حوّلت من (رقم الموبايل أو عنوان InstaPay)': 'Envoyé depuis (téléphone ou adresse InstaPay)',
+    'حوّلت من (رقم الموبايل أو عنوان InstaPay)':
+        'Envoyé depuis (téléphone ou adresse InstaPay)',
     'رسايل الواتساب ليك': 'Messages WhatsApp pour toi',
     'رقم العملية': 'Référence',
-    'رقم العملية (Reference) من إيصال InstaPay': 'Numéro de référence du reçu InstaPay',
+    'رقم العملية (Reference) من إيصال InstaPay':
+        'Numéro de référence du reçu InstaPay',
     'رقم الواتساب بتاعك بكود الدولة': 'Ton numéro WhatsApp avec l\'indicatif',
     'طلبات الدفع ({n} مستني)': 'Demandes de paiement ({n} en attente)',
     'طلبات خلصت': 'Demandes traitées',
@@ -1101,12 +1193,17 @@ const Map<String, Map<String, String>> translations = {
     'مستني': 'En attente',
     'مفتاح CallMeBot (apikey)': 'Clé CallMeBot (apikey)',
     'مفيش طلبات مستنية دلوقتي.': 'Aucune demande en attente.',
-    '٢. اكتب الكود ده في سبب التحويل': '2. Écris ce code comme motif du virement',
-    '٣. بعد التحويل اكتب بياناته هنا': '3. Après le virement, saisis ses détails ici',
-    '🔔 حياتي: رسالة تجربة من لوحة التحكم': '🔔 Hayati : message test du panneau',
-    'البيانات اللي بعتها ما اتطابقتش مع أي تحويل. راجعها وابعتها تاني.': 'Tes infos ne correspondent à aucun virement. Vérifie et renvoie.',
+    '٢. اكتب الكود ده في سبب التحويل':
+        '2. Écris ce code comme motif du virement',
+    '٣. بعد التحويل اكتب بياناته هنا':
+        '3. Après le virement, saisis ses détails ici',
+    '🔔 حياتي: رسالة تجربة من لوحة التحكم':
+        '🔔 Hayati : message test du panneau',
+    'البيانات اللي بعتها ما اتطابقتش مع أي تحويل. راجعها وابعتها تاني.':
+        'Tes infos ne correspondent à aucun virement. Vérifie et renvoie.',
     'كل طلب دفع بيوصلك رسالة واتساب لوحده. رقمك مش بيظهر لحد.': 'Chaque demande t\'envoie un message WhatsApp. Ton numéro n\'est montré à personne.',
-    'ما اتبعتتش، راجع الرقم والمفتاح': 'Non envoyé, vérifie le numéro et la clé',
+    'ما اتبعتتش، راجع الرقم والمفتاح':
+        'Non envoyé, vérifie le numéro et la clé',
     'هنراجع التحويل ونفعّل حسابك في أقرب وقت. أول ما يتفعّل دوس الزرار اللي تحت.': 'On vérifie le virement et on active ton compte bientôt. Ensuite, touche le bouton ci-dessous.',
     'رقم العملية من إيصال InstaPay': 'Numéro de référence du reçu InstaPay',
     'الدخول بالإيميل والباسورد مش متفعّل في Firebase. فعّله من Authentication ← Sign-in method.': 'La connexion par e-mail n\'est pas activée dans Firebase. Active-la dans Authentication → Sign-in method.',
@@ -1118,17 +1215,22 @@ const Map<String, Map<String, String>> translations = {
     'لينك الدفع': 'Lien de paiement',
     'ما دفعش': 'Non payé',
     'مش متحدد': 'Non défini',
-    'هيوصلك على إيميلك لينك تعمل بيه باسورد جديد': 'Tu recevras un lien pour un nouveau mot de passe',
+    'هيوصلك على إيميلك لينك تعمل بيه باسورد جديد':
+        'Tu recevras un lien pour un nouveau mot de passe',
     'إيقاف الأذان': 'Arrêter l\'adhan',
     'اقتربت صلاة {p}': 'La prière {p} approche',
     'الأذان بعد {n} دقيقة، الساعة {t}': 'Adhan dans {n} minutes, à {t}',
     'الأذان عند دخول الوقت': 'Adhan à l\'heure de la prière',
-    'الصلاة خير من النوم · الأذان بعد {n} دقيقة، الساعة {t}': 'La prière vaut mieux que le sommeil · Adhan dans {n} minutes, à {t}',
+    'الصلاة خير من النوم · الأذان بعد {n} دقيقة، الساعة {t}':
+        'La prière vaut mieux que le sommeil · Adhan dans {n} minutes, à {t}',
     'الله أكبر، الله أكبر': 'Allahu Akbar, Allahu Akbar',
     'بالإضافة للتنبيه قبل الصلاة': 'En plus du rappel avant la prière',
     'حان الآن موعد أذان {p}': 'C\'est l\'heure de l\'adhan de {p}',
     'الأذان': 'Adhan',
     'أذان الفجر': 'Adhan du Fajr',
+    'فيه تحديث جديد': 'Nouvelle mise à jour',
+    'نزّله وسطّبه فوق القديم، وبياناتك هتفضل زي ما هي.': 'Télécharge-la et installe-la par-dessus ; tes données restent intactes.',
+    'بعدين': 'Plus tard',
   },
   'de': {
     'أهدافي': 'Meine Ziele',
@@ -1182,7 +1284,8 @@ const Map<String, Map<String, String>> translations = {
     'امسح الموعد': 'Termin löschen',
     'صفحة': 'Seite',
     'جزء': 'Abschnitt',
-    'إضافة الكتب متاحة في تطبيق الموبايل': 'Bücher hinzufügen geht in der Handy-App',
+    'إضافة الكتب متاحة في تطبيق الموبايل':
+        'Bücher hinzufügen geht in der Handy-App',
     'الملف لازم يكون PDF أو EPUB': 'Die Datei muss PDF oder EPUB sein',
     'مش قادر أفتح الملف ده': 'Diese Datei lässt sich nicht öffnen',
     'كتبي': 'Meine Bücher',
@@ -1216,11 +1319,13 @@ const Map<String, Map<String, String>> translations = {
     'بعد {p}': 'Nach {p}',
     'هيتعمل هدف يومي لوحده "اقرأ {n} {u}"، ويتعلّم عليه صح أول ما توصل للمطلوب في القارئ.': 'Ein tägliches Ziel „{n} {u} lesen“ wird angelegt und abgehakt, sobald du es im Reader erreichst.',
     'حفظ الخطة': 'Plan speichern',
-    'ملف الكتاب مش موجود على الجهاز ده': 'Die Buchdatei ist nicht auf diesem Gerät',
+    'ملف الكتاب مش موجود على الجهاز ده':
+        'Die Buchdatei ist nicht auf diesem Gerät',
     '{u} {c} من {t} · النهارده {r}/{d}': '{u} {c} von {t} · heute {r}/{d}',
     'اكتب اسم الهدف': 'Gib das Ziel ein',
     'تمسح الهدف ده؟': 'Dieses Ziel löschen?',
-    'تمسح الهدف ده و{n} هدف تحته؟': 'Dieses Ziel und die {n} Ziele darunter löschen?',
+    'تمسح الهدف ده و{n} هدف تحته؟':
+        'Dieses Ziel und die {n} Ziele darunter löschen?',
     'هدف جديد': 'Neues Ziel',
     'تعديل الهدف': 'Ziel bearbeiten',
     'إغلاق': 'Schließen',
@@ -1236,14 +1341,16 @@ const Map<String, Map<String, String>> translations = {
     'قبل': 'Vor',
     'بعد': 'Nach',
     'بفرق': 'Abstand',
-    'النهارده هينبّهك {t} · الميعاد بيتحرك لوحده مع {p}': 'Heutige Erinnerung: {t} · sie wandert täglich mit {p}',
+    'النهارده هينبّهك {t} · الميعاد بيتحرك لوحده مع {p}':
+        'Heutige Erinnerung: {t} · sie wandert täglich mit {p}',
     'هينبّهك كل يوم {t}': 'Erinnerung jeden Tag um {t}',
     'لو فاتني': 'Wenn ich es verpasse',
     'اسألني (يظهر بالأحمر)': 'Frag mich (rot angezeigt)',
     'يتسجّل قضاء': 'Zum Nachholen',
     'رحّله لليوم اللي بعده': 'Auf den nächsten Tag',
     'يوم رحمة في الأسبوع': 'Gnadentag pro Woche',
-    'لو فوّت يوم واحد في الأسبوع، السلسلة مش هتتكسر': 'Ein verpasster Tag pro Woche bricht deine Serie nicht',
+    'لو فوّت يوم واحد في الأسبوع، السلسلة مش هتتكسر':
+        'Ein verpasster Tag pro Woche bricht deine Serie nicht',
     'حفظ الهدف': 'Ziel speichern',
     'الشهر': 'Monat',
     'الأسبوع': 'Woche',
@@ -1257,14 +1364,17 @@ const Map<String, Map<String, String>> translations = {
     'الكل': 'Alle',
     'قسّمه: هدف {l} تحته': 'Aufteilen: {l}es Ziel hinzufügen',
     'هدف جديد — ابدأ من أي مستوى': 'Neues Ziel — auf jeder Ebene beginnen',
-    'السلسلة بتظهر للأهداف اللي بتتكرر.': 'Serien gibt es für wiederkehrende Ziele.',
-    'يوم الرحمة شغال: يوم واحد في الأسبوع يفوتك من غير ما السلسلة تتكسر.': 'Gnadentag aktiv: ein verpasster Tag pro Woche bricht die Serie nicht.',
+    'السلسلة بتظهر للأهداف اللي بتتكرر.':
+        'Serien gibt es für wiederkehrende Ziele.',
+    'يوم الرحمة شغال: يوم واحد في الأسبوع يفوتك من غير ما السلسلة تتكسر.':
+        'Gnadentag aktiv: ein verpasster Tag pro Woche bricht die Serie nicht.',
     'رصيد القضاء': 'Nachzuholen',
     'مفيش قضاء عليك. ما شاء الله!': 'Nichts nachzuholen. Super!',
     'فاتك {d}': 'Verpasst am {d}',
     'فاتك {d} · متحط يوم {p}': 'Verpasst am {d} · geplant für {p}',
     'اقضِه': 'Nachholen',
-    'النهارده الجمعة، تحب تقضيهم النهارده؟': 'Heute ist Freitag — heute nachholen?',
+    'النهارده الجمعة، تحب تقضيهم النهارده؟':
+        'Heute ist Freitag — heute nachholen?',
     'تحب تحطهم يوم الجمعة {d}؟': 'Für Freitag, {d} einplanen?',
     'حطّهم يوم الجمعة': 'Für Freitag einplanen',
     'الكتابة بالصوت مش متاحة. اتأكد إن خدمة التعرف على الكلام من جوجل شغالة على موبايلك.': 'Spracheingabe ist nicht verfügbar. Prüfe, ob die Google-Spracherkennung aktiviert ist.',
@@ -1296,7 +1406,8 @@ const Map<String, Map<String, String>> translations = {
     'مراجعة الأهداف اليومية': 'Tägliche Zielprüfung',
     'إشعار لكل هدف فيه أزرار: تم، ما اتعملش، رحّله': 'Eine Benachrichtigung pro Ziel mit Knöpfen: erledigt, nicht erledigt, verschieben',
     'التنبيه قبل كل الصلوات': 'Erinnerung vor allen Gebeten',
-    'تقدر تغيّر كل صلاة لوحدها من شاشة المواعيد.': 'Jedes Gebet lässt sich einzeln unter Termine einstellen.',
+    'تقدر تغيّر كل صلاة لوحدها من شاشة المواعيد.':
+        'Jedes Gebet lässt sich einzeln unter Termine einstellen.',
     'تنبيه عند دخول الوقت': 'Hinweis zu Gebetsbeginn',
     'بالإضافة للتنبيه المسبق': 'Zusätzlich zur Vorab-Erinnerung',
     'اسمح بالإشعارات': 'Benachrichtigungen erlauben',
@@ -1312,11 +1423,13 @@ const Map<String, Map<String, String>> translations = {
     'في نسخة محفوظة من {d}. تحب ترجّعها على الموبايل، ولا ترفع اللي على الموبايل مكانها؟': 'Es gibt eine Kopie vom {d}. Auf dieses Handy zurückholen oder stattdessen die Daten dieses Handys hochladen?',
     'ارفع اللي هنا': 'Diese hochladen',
     'رجّع نسخة درايف': 'Von Drive zurückholen',
-    'ما قدرتش أسجّل الدخول بجوجل. جرّب تاني.': 'Google-Anmeldung fehlgeschlagen. Versuch es erneut.',
+    'ما قدرتش أسجّل الدخول بجوجل. جرّب تاني.':
+        'Google-Anmeldung fehlgeschlagen. Versuch es erneut.',
     'مفيش نسخة على درايف لسه': 'Noch keine Kopie auf Drive',
     'رجعت كل حاجة من درايف': 'Alles von Drive wiederhergestellt',
     'الحساب والحفظ على جوجل درايف': 'Konto & Google-Drive-Sicherung',
-    'تسجيل الدخول بجوجل لسه مش متظبط في النسخة دي.': 'Die Google-Anmeldung ist in dieser Version noch nicht eingerichtet.',
+    'تسجيل الدخول بجوجل لسه مش متظبط في النسخة دي.':
+        'Die Google-Anmeldung ist in dieser Version noch nicht eingerichtet.',
     'سجّل دخول بحساب جوجل، وكل حاجة (أهداف، يوميات، ريكوردات، كتب) هتتحفظ على درايف بتاعك. لو التطبيق اتمسح، تسجّل دخول تاني وكل حاجة ترجع.': 'Melde dich mit Google an und alles (Ziele, Tagebuch, Aufnahmen, Bücher) wird in deinem Drive gespeichert. Wird die App gelöscht, meldest du dich erneut an und alles ist wieder da.',
     'تسجيل الدخول بجوجل': 'Mit Google anmelden',
     'بيحفظ دلوقتي…': 'Wird gespeichert…',
@@ -1324,11 +1437,13 @@ const Map<String, Map<String, String>> translations = {
     'آخر حفظ: {d}': 'Zuletzt gesichert: {d}',
     'آخر محاولة حفظ ما نجحتش، هيحاول تاني لوحده.': 'Die letzte Sicherung ist fehlgeschlagen; es wird automatisch erneut versucht.',
     'احفظ ملفات الكتب كمان': 'Buchdateien auch sichern',
-    'لو قفلتها، بيتحفظ مكانك في الكتاب بس': 'Wenn aus, wird nur deine Leseposition gesichert',
+    'لو قفلتها، بيتحفظ مكانك في الكتاب بس':
+        'Wenn aus, wird nur deine Leseposition gesichert',
     'اتحفظ على درايف': 'Auf Drive gesichert',
     'الحفظ ما نجحش': 'Sicherung fehlgeschlagen',
     'احفظ دلوقتي': 'Jetzt sichern',
-    'ده هيبدّل اللي على الموبايل بالنسخة اللي على درايف. متأكد؟': 'Das ersetzt die Daten auf diesem Handy durch die Drive-Kopie. Sicher?',
+    'ده هيبدّل اللي على الموبايل بالنسخة اللي على درايف. متأكد؟':
+        'Das ersetzt die Daten auf diesem Handy durch die Drive-Kopie. Sicher?',
     'رجّع': 'Zurückholen',
     'رجّع من درايف': 'Von Drive zurückholen',
     'تسجيل الخروج': 'Abmelden',
@@ -1414,7 +1529,8 @@ const Map<String, Map<String, String>> translations = {
     'مكية': 'Mekkanisch',
     'مدنية': 'Medinensisch',
     '{n} آية': '{n} Verse',
-    'علّم هنا (وقفت عند الآية دي)': 'Hier markieren (bei diesem Vers aufgehört)',
+    'علّم هنا (وقفت عند الآية دي)':
+        'Hier markieren (bei diesem Vers aufgehört)',
     'انسخ الآية': 'Vers kopieren',
     'اتنسخت': 'Kopiert',
     'صغّر الخط': 'Kleinere Schrift',
@@ -1440,8 +1556,10 @@ const Map<String, Map<String, String>> translations = {
     '١١٤ سورة · بالرسم العثماني': '114 Suren · uthmanische Schrift',
     'كمّل: سورة {s} · آية {a}': 'Weiter: Sure {s} · Vers {a}',
     'كمّل: سورة {s}': 'Weiter: Sure {s}',
-    'الصباح والمساء وبعد الصلاة والنوم': 'Morgens, abends, nach dem Gebet und vor dem Schlaf',
-    'خشب، كهرمان، لؤلؤ، زمرد، أو عداد رقمي': 'Holz, Bernstein, Perle, Smaragd oder Digitalzähler',
+    'الصباح والمساء وبعد الصلاة والنوم':
+        'Morgens, abends, nach dem Gebet und vor dem Schlaf',
+    'خشب، كهرمان، لؤلؤ، زمرد، أو عداد رقمي':
+        'Holz, Bernstein, Perle, Smaragd oder Digitalzähler',
     'سبّحت لحد دلوقتي {n} مرة': 'Bisher {n} gezählt',
     'خشب': 'Holz',
     'كهرمان': 'Bernstein',
@@ -1455,7 +1573,8 @@ const Map<String, Map<String, String>> translations = {
     'شكل مختلف لكل يوم': 'Jeden Tag ein anderer Stil',
     'وفي الوضع الداكن بيبقى شكل الكسوة': 'Im Dunkelmodus gilt der Kiswa-Stil',
     'الداكن': 'Dunkel',
-    'اضغط على أي شكل عشان تختاره أو تحط له صورة من الموبايل.': 'Tippe auf einen Stil, um ihn zu wählen oder ihm ein Bild zu geben.',
+    'اضغط على أي شكل عشان تختاره أو تحط له صورة من الموبايل.':
+        'Tippe auf einen Stil, um ihn zu wählen oder ihm ein Bild zu geben.',
     'ربيع النعناع': 'Minzfrühling',
     'غروب الخوخ': 'Pfirsich-Abend',
     'ورد المدينة': 'Rosen von Medina',
@@ -1505,11 +1624,14 @@ const Map<String, Map<String, String>> translations = {
     'المهمة التانية': 'Zweite Aufgabe',
     'اختار مهمتين عشان تقارن بينهم.': 'Wähle zwei Aufgaben zum Vergleichen.',
     'لسه مفيش أيام كفاية عشان أقارن.': 'Noch nicht genug Tage zum Vergleichen.',
-    'مستواك قريب في الاتنين ({a} و{b}).': 'In beiden etwa gleich ({a} und {b}).',
-    'كنت أحسن في «{a}» ({ra}) من «{b}» ({rb}).': 'Bei „{a}“ ({ra}) warst du besser als bei „{b}“ ({rb}).',
+    'مستواك قريب في الاتنين ({a} و{b}).':
+        'In beiden etwa gleich ({a} und {b}).',
+    'كنت أحسن في «{a}» ({ra}) من «{b}» ({rb}).':
+        'Bei „{a}“ ({ra}) warst du besser als bei „{b}“ ({rb}).',
     'مهمة': 'Eine Aufgabe',
     'مقارنة مهمتين': 'Zwei vergleichen',
-    'مفيش مهام يومية في الفترة دي.': 'Keine täglichen Aufgaben in diesem Zeitraum.',
+    'مفيش مهام يومية في الفترة دي.':
+        'Keine täglichen Aufgaben in diesem Zeitraum.',
     'كل مهمة لوحدها': 'Jede Aufgabe',
     'أسبوع': 'Woche',
     'سنة': 'Jahr',
@@ -1530,10 +1652,13 @@ const Map<String, Map<String, String>> translations = {
     'الشهر اللي بعده': 'Nächster Monat',
     'الشهر اللي قبله': 'Voriger Monat',
     'الشيت الشهري': 'Monatsblatt',
-    'دوس على أي يوم عشان تكتب أو تعدّل الملاحظة بتاعته.': 'Tippe auf einen Tag, um seine Notiz zu schreiben oder zu ändern.',
-    'مثلًا: شغل، إجازة، ميعاد الدكتور ٥ م': 'z. B. Arbeit, frei, Arzt um 17 Uhr',
+    'دوس على أي يوم عشان تكتب أو تعدّل الملاحظة بتاعته.':
+        'Tippe auf einen Tag, um seine Notiz zu schreiben oder zu ändern.',
+    'مثلًا: شغل، إجازة، ميعاد الدكتور ٥ م':
+        'z. B. Arbeit, frei, Arzt um 17 Uhr',
     'ملاحظات الشهر': 'Notizen des Monats',
-    'ملاحظة صغيرة على كل يوم: شغل، إجازة، مواعيد': 'Eine kurze Notiz pro Tag: Arbeit, frei, Termine',
+    'ملاحظة صغيرة على كل يوم: شغل، إجازة، مواعيد':
+        'Eine kurze Notiz pro Tag: Arbeit, frei, Termine',
     '{n} كتابة': '{n} Notizen',
     'اكتب حاجة جديدة': 'Etwas Neues schreiben',
     'امسحها': 'Löschen',
@@ -1547,7 +1672,8 @@ const Map<String, Map<String, String>> translations = {
     'ابعت الرسالة تاني': 'E-Mail erneut senden',
     'اتحفظ': 'Gespeichert',
     'استخدم إيميل تاني': 'Andere E-Mail verwenden',
-    'استنى دقيقة قبل ما تبعتها تاني': 'Warte eine Minute, bevor du sie erneut sendest',
+    'استنى دقيقة قبل ما تبعتها تاني':
+        'Warte eine Minute, bevor du sie erneut sendest',
     'اظهر الباسورد': 'Passwort anzeigen',
     'اعمل الحساب': 'Konto erstellen',
     'اكتب الباسورد تاني': 'Passwort wiederholen',
@@ -1555,14 +1681,17 @@ const Map<String, Map<String, String>> translations = {
     'الإيميل أو الباسورد غلط': 'E-Mail oder Passwort falsch',
     'الإيميل مكتوب غلط': 'Diese E-Mail ist ungültig',
     'الباسورد': 'Passwort',
-    'الباسورد ضعيف، خليه ٦ حروف أو أرقام على الأقل': 'Passwort zu schwach; mindestens 6 Zeichen',
+    'الباسورد ضعيف، خليه ٦ حروف أو أرقام على الأقل':
+        'Passwort zu schwach; mindestens 6 Zeichen',
     'الباسوردين مش زي بعض': 'Die Passwörter stimmen nicht überein',
     'الحساب ده متوقف': 'Dieses Konto ist deaktiviert',
     'الحساب والحفظ': 'Konto und Sicherung',
-    'الحساب والحفظ لسه مش متظبطين في النسخة دي.': 'Konto und Sicherung sind in dieser Version noch nicht eingerichtet.',
+    'الحساب والحفظ لسه مش متظبطين في النسخة دي.':
+        'Konto und Sicherung sind in dieser Version noch nicht eingerichtet.',
     'اللي على الموبايل': 'Die vom Handy',
     'اللي في حسابي': 'Die meines Kontos',
-    'بعتنالك على إيميلك لينك تغيّر بيه الباسورد': 'Wir haben dir einen Link zum Ändern des Passworts geschickt',
+    'بعتنالك على إيميلك لينك تغيّر بيه الباسورد':
+        'Wir haben dir einen Link zum Ändern des Passworts geschickt',
     'بعتناها تاني': 'Erneut gesendet',
     'بنجهّز بياناتك…': 'Deine Daten werden vorbereitet…',
     'حصلت مشكلة، جرّب تاني': 'Etwas ist schiefgelaufen; versuch es erneut',
@@ -1573,9 +1702,11 @@ const Map<String, Map<String, String>> translations = {
     'غيّر الباسورد': 'Passwort ändern',
     'في بيانات على الموبايل وفي حسابك': 'Daten auf dem Handy und im Konto',
     'لأ، حساب جديد': 'Nein, neues Konto',
-    'لسه ما اتأكدش. افتح الرسالة ودوس على اللينك اللي فيها.': 'Noch nicht bestätigt. Öffne die E-Mail und tippe auf den Link.',
+    'لسه ما اتأكدش. افتح الرسالة ودوس على اللينك اللي فيها.':
+        'Noch nicht bestätigt. Öffne die E-Mail und tippe auf den Link.',
     'محاولات كتير، استنى شوية وجرّب تاني': 'Zu viele Versuche; warte kurz',
-    'مفيش إنترنت، اتأكد من النت وجرّب تاني': 'Kein Internet; prüfe die Verbindung',
+    'مفيش إنترنت، اتأكد من النت وجرّب تاني':
+        'Kein Internet; prüfe die Verbindung',
     'نسيت الباسورد': 'Passwort vergessen',
     'نسيت الباسورد؟': 'Passwort vergessen?',
     'حسابك فيه بيانات محفوظة من {d}، والموبايل ده عليه بيانات اتكتبت قبل ما تدخل. تحب تاخد أنهي؟': 'Dein Konto hat Daten vom {d}, und dieses Handy hat Daten von vor der Anmeldung. Welche behalten?',
@@ -1585,11 +1716,14 @@ const Map<String, Map<String, String>> translations = {
     'هنبعت رسالة على إيميلك تأكد بيها إنه بتاعك. كل حاجة بتكتبها هتتحفظ في حسابك، ولو مسحت التطبيق ونزّلته تاني تدخل بنفس الإيميل والباسورد وكل حاجة ترجع.': 'Wir schicken dir eine E-Mail zur Bestätigung. Alles wird in deinem Konto gespeichert; nach einer Neuinstallation meldest du dich an und alles ist wieder da.',
     'بعتنا رسالة على {e}. افتحها ودوس على اللينك اللي فيها، وبعدين ارجع هنا. لو مش لاقيها بص في الـ Spam.': 'Wir haben eine E-Mail an {e} geschickt. Öffne sie, tippe auf den Link und komm zurück. Sieh sonst im Spam nach.',
     'كل حاجة بتتحفظ في حسابك لوحدها. لو مسحت التطبيق، ادخل بنفس الإيميل والباسورد وكل حاجة ترجع.': 'Alles wird automatisch in deinem Konto gespeichert. Nach dem Löschen der App meldest du dich an und alles ist wieder da.',
-    'تخرج من حسابك؟ بياناتك محفوظة فيه وترجع لما تدخل تاني.': 'Abmelden? Deine Daten bleiben im Konto.',
+    'تخرج من حسابك؟ بياناتك محفوظة فيه وترجع لما تدخل تاني.':
+        'Abmelden? Deine Daten bleiben im Konto.',
     '{h} س {m} د': '{h} Std. {m} Min.',
     '{n} حساب · {p} مدفوع': '{n} Konten · {p} bezahlt',
-    'أنا حوّلت تمن تطبيق حياتي. إيميل حسابي: {e}': 'Ich habe für die Hayati-App bezahlt. Meine Konto-E-Mail: {e}',
-    'أول ما يتفعّل، دوس الزرار اللي تحت والتطبيق يفتح.': 'Nach der Aktivierung tippe unten und die App öffnet sich.',
+    'أنا حوّلت تمن تطبيق حياتي. إيميل حسابي: {e}':
+        'Ich habe für die Hayati-App bezahlt. Meine Konto-E-Mail: {e}',
+    'أول ما يتفعّل، دوس الزرار اللي تحت والتطبيق يفتح.':
+        'Nach der Aktivierung tippe unten und die App öffnet sich.',
     'إيميل اللي دفع': 'E-Mail der zahlenden Person',
     'ابعتها على واتساب': 'Per WhatsApp senden',
     'اتفعّل': 'Aktiviert',
@@ -1613,7 +1747,8 @@ const Map<String, Map<String, String>> translations = {
     'حدّث': 'Aktualisieren',
     'رجوع': 'Zurück',
     'رقم الواتساب اللي يبعتولك عليه': 'WhatsApp-Nummer für Belege',
-    'طريقة الدفع لسه ما اتحطتش. كلّم صاحب التطبيق.': 'Zahlungsdaten fehlen noch. Wende dich an den Inhaber.',
+    'طريقة الدفع لسه ما اتحطتش. كلّم صاحب التطبيق.':
+        'Zahlungsdaten fehlen noch. Wende dich an den Inhaber.',
     'عنوان InstaPay أو رقمه': 'InstaPay-Adresse oder -Nummer',
     'فترة التجربة خلصت': 'Dein Gratistest ist vorbei',
     'فعّل': 'Aktivieren',
@@ -1648,10 +1783,12 @@ const Map<String, Map<String, String>> translations = {
     'ترفض طلب {e}؟ هيظهرله يراجع بياناته ويبعتها تاني.': 'Anfrage von {e} ablehnen? Die Person wird gebeten, die Angaben zu prüfen.',
     'حوّل لـ': 'Senden an',
     'حوّل من': 'Gesendet von',
-    'حوّلت من (رقم الموبايل أو عنوان InstaPay)': 'Gesendet von (Telefon oder InstaPay-Adresse)',
+    'حوّلت من (رقم الموبايل أو عنوان InstaPay)':
+        'Gesendet von (Telefon oder InstaPay-Adresse)',
     'رسايل الواتساب ليك': 'WhatsApp-Nachrichten an dich',
     'رقم العملية': 'Referenz',
-    'رقم العملية (Reference) من إيصال InstaPay': 'Referenznummer aus dem InstaPay-Beleg',
+    'رقم العملية (Reference) من إيصال InstaPay':
+        'Referenznummer aus dem InstaPay-Beleg',
     'رقم الواتساب بتاعك بكود الدولة': 'Deine WhatsApp-Nummer mit Ländervorwahl',
     'طلبات الدفع ({n} مستني)': 'Zahlungsanfragen ({n} offen)',
     'طلبات خلصت': 'Erledigte Anfragen',
@@ -1665,12 +1802,15 @@ const Map<String, Map<String, String>> translations = {
     'مستني': 'Offen',
     'مفتاح CallMeBot (apikey)': 'CallMeBot-Schlüssel (apikey)',
     'مفيش طلبات مستنية دلوقتي.': 'Keine offenen Anfragen.',
-    '٢. اكتب الكود ده في سبب التحويل': '2. Diesen Code als Verwendungszweck angeben',
+    '٢. اكتب الكود ده في سبب التحويل':
+        '2. Diesen Code als Verwendungszweck angeben',
     '٣. بعد التحويل اكتب بياناته هنا': '3. Danach die Angaben hier eintragen',
-    '🔔 حياتي: رسالة تجربة من لوحة التحكم': '🔔 Hayati: Testnachricht aus der Verwaltung',
+    '🔔 حياتي: رسالة تجربة من لوحة التحكم':
+        '🔔 Hayati: Testnachricht aus der Verwaltung',
     'البيانات اللي بعتها ما اتطابقتش مع أي تحويل. راجعها وابعتها تاني.': 'Deine Angaben passen zu keiner Überweisung. Bitte prüfen und erneut senden.',
     'كل طلب دفع بيوصلك رسالة واتساب لوحده. رقمك مش بيظهر لحد.': 'Jede Anfrage schickt dir eine WhatsApp-Nachricht. Deine Nummer sieht niemand.',
-    'ما اتبعتتش، راجع الرقم والمفتاح': 'Nicht gesendet; Nummer und Schlüssel prüfen',
+    'ما اتبعتتش، راجع الرقم والمفتاح':
+        'Nicht gesendet; Nummer und Schlüssel prüfen',
     'هنراجع التحويل ونفعّل حسابك في أقرب وقت. أول ما يتفعّل دوس الزرار اللي تحت.': 'Wir prüfen die Überweisung und aktivieren dein Konto bald. Danach unten tippen.',
     'رقم العملية من إيصال InstaPay': 'Referenznummer aus dem InstaPay-Beleg',
     'الدخول بالإيميل والباسورد مش متفعّل في Firebase. فعّله من Authentication ← Sign-in method.': 'E-Mail-Anmeldung ist in Firebase nicht aktiviert. Aktiviere sie unter Authentication → Sign-in method.',
@@ -1682,16 +1822,21 @@ const Map<String, Map<String, String>> translations = {
     'لينك الدفع': 'Zahlungslink',
     'ما دفعش': 'Nicht bezahlt',
     'مش متحدد': 'Nicht festgelegt',
-    'هيوصلك على إيميلك لينك تعمل بيه باسورد جديد': 'Du bekommst einen Link für ein neues Passwort',
+    'هيوصلك على إيميلك لينك تعمل بيه باسورد جديد':
+        'Du bekommst einen Link für ein neues Passwort',
     'إيقاف الأذان': 'Adhan stoppen',
     'اقتربت صلاة {p}': 'Das {p}-Gebet naht',
     'الأذان بعد {n} دقيقة، الساعة {t}': 'Adhan in {n} Minuten, um {t}',
     'الأذان عند دخول الوقت': 'Adhan zur Gebetszeit',
-    'الصلاة خير من النوم · الأذان بعد {n} دقيقة، الساعة {t}': 'Das Gebet ist besser als Schlaf · Adhan in {n} Minuten, um {t}',
+    'الصلاة خير من النوم · الأذان بعد {n} دقيقة، الساعة {t}':
+        'Das Gebet ist besser als Schlaf · Adhan in {n} Minuten, um {t}',
     'الله أكبر، الله أكبر': 'Allahu Akbar, Allahu Akbar',
     'بالإضافة للتنبيه قبل الصلاة': 'Zusätzlich zur Erinnerung vorher',
     'حان الآن موعد أذان {p}': 'Zeit für den {p}-Adhan',
     'الأذان': 'Adhan',
     'أذان الفجر': 'Fajr-Adhan',
+    'فيه تحديث جديد': 'Neues Update verfügbar',
+    'نزّله وسطّبه فوق القديم، وبياناتك هتفضل زي ما هي.': 'Herunterladen und über die alte installieren; deine Daten bleiben erhalten.',
+    'بعدين': 'Später',
   },
 };

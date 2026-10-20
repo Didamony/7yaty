@@ -12,8 +12,10 @@ import 'services/cloud.dart';
 import 'services/files.dart';
 import 'services/notifications.dart';
 import 'services/prayer.dart';
+import 'services/updates.dart';
 import 'ui/auth_page.dart';
 import 'ui/shell.dart';
+import 'ui/update_banner.dart';
 
 /// Builds with `--dart-define=DEMO=true` start with sample content, for
 /// screenshots only.
@@ -43,6 +45,7 @@ Future<void> main() async {
     ..onSaved(notifier.scheduleSoon)
     ..onSaved(Cloud.instance.backupSoon);
   notifier.scheduleSoon(store.data);
+  Updates.instance.check();
 
   runApp(
     MultiProvider(
@@ -82,6 +85,7 @@ class _HayatiAppState extends State<HayatiApp> with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     final store = context.read<AppStore>();
     if (state == AppLifecycleState.resumed) {
+      Updates.instance.check();
       // Notification buttons may have changed the saved data meanwhile.
       store.reload().then((_) => Notifier.instance.scheduleSoon(store.data));
     } else if (state == AppLifecycleState.paused) {
@@ -109,7 +113,10 @@ class _HayatiAppState extends State<HayatiApp> with WidgetsBindingObserver {
         theme: t,
         image: Files.image(s.themeImages[t.id]),
         strength: s.bgOpacity,
-        child: child!,
+        child: Stack(
+          fit: StackFit.expand,
+          children: [child!, const UpdateBanner()],
+        ),
       ),
       home: const AuthGate(child: Shell()),
     );
