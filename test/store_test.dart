@@ -159,9 +159,11 @@ void main() {
         text: 'hi',
         recordings: [Recording(file: 'r.m4a', ms: 1000, at: 1)],
       )
+      ..sheet[dkey(t)] = 'شغل'
       ..settings.lang = 'de';
     d.setDone(d.goals.first, t, true);
     final back = AppData.fromJson(d.toJson());
+    expect(back.sheet[dkey(t)], 'شغل');
     expect(back.toJson(), d.toJson());
   });
 

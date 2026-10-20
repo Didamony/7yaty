@@ -30,6 +30,10 @@ class AppData {
   Map<String, String> qadaPlan = {};
   List<Appointment> appointments = [];
   Map<String, JournalEntry> journal = {};
+
+  /// Monthly sheet: a short note per day, keyed by [dkey]. Separate from
+  /// goals.
+  Map<String, String> sheet = {};
   List<Book> books = [];
   Settings settings = Settings();
   Worship worship = Worship();
@@ -42,6 +46,7 @@ class AppData {
     'qadaPlan': qadaPlan,
     'appointments': appointments.map((a) => a.toJson()).toList(),
     'journal': journal.map((k, v) => MapEntry(k, v.toJson())),
+    'sheet': sheet,
     'books': books.map((b) => b.toJson()).toList(),
     'settings': settings.toJson(),
     'worship': worship.toJson(),
@@ -63,6 +68,7 @@ class AppData {
           JournalEntry.fromJson(Map<String, dynamic>.from(v)),
         ),
       )
+      ..sheet = Map<String, String>.from(j['sheet'] ?? {})
       ..books = list('books').map(Book.fromJson).toList()
       ..worship = Worship.fromJson(
         Map<String, dynamic>.from(j['worship'] ?? {}),
@@ -93,7 +99,11 @@ class AppData {
   }
 
   bool get isEmpty =>
-      goals.isEmpty && appointments.isEmpty && journal.isEmpty && books.isEmpty;
+      goals.isEmpty &&
+      appointments.isEmpty &&
+      journal.isEmpty &&
+      sheet.isEmpty &&
+      books.isEmpty;
 
   // ---------------------------------------------------------------- goals
 

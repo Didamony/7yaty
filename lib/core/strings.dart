@@ -420,6 +420,16 @@ const Map<String, Map<String, String>> translations = {
     'من غير نهاية': 'No end date',
     'مهمة كل يوم في الأسبوع ده': 'Daily task for this week',
     'مهمة كل يوم في الشهر ده': 'Daily task for this month',
+    'الشهر اللي بعده': 'Next month',
+    'الشهر اللي قبله': 'Previous month',
+    'الشيت الشهري': 'Monthly sheet',
+    'دوس على أي يوم عشان تكتب أو تعدّل الملاحظة بتاعته.':
+        'Tap any day to write or edit its note.',
+    'مثلًا: شغل، إجازة، ميعاد الدكتور ٥ م':
+        'e.g. work, day off, doctor at 5 pm',
+    'ملاحظات الشهر': 'This month\'s notes',
+    'ملاحظة صغيرة على كل يوم: شغل، إجازة، مواعيد':
+        'A short note on each day: work, days off, appointments',
   },
   'fr': {
     'أهدافي': 'Mes objectifs',
@@ -847,6 +857,16 @@ const Map<String, Map<String, String>> translations = {
     'من غير نهاية': 'Sans date de fin',
     'مهمة كل يوم في الأسبوع ده': 'Tâche quotidienne pour cette semaine',
     'مهمة كل يوم في الشهر ده': 'Tâche quotidienne pour ce mois',
+    'الشهر اللي بعده': 'Mois suivant',
+    'الشهر اللي قبله': 'Mois précédent',
+    'الشيت الشهري': 'Feuille du mois',
+    'دوس على أي يوم عشان تكتب أو تعدّل الملاحظة بتاعته.':
+        'Touche un jour pour écrire ou modifier sa note.',
+    'مثلًا: شغل، إجازة، ميعاد الدكتور ٥ م':
+        'ex. : travail, congé, médecin à 17 h',
+    'ملاحظات الشهر': 'Notes du mois',
+    'ملاحظة صغيرة على كل يوم: شغل، إجازة، مواعيد':
+        'Une petite note par jour : travail, congés, rendez-vous',
   },
   'de': {
     'أهدافي': 'Meine Ziele',
@@ -1265,5 +1285,15 @@ const Map<String, Map<String, String>> translations = {
     'من غير نهاية': 'Ohne Enddatum',
     'مهمة كل يوم في الأسبوع ده': 'Tägliche Aufgabe für diese Woche',
     'مهمة كل يوم في الشهر ده': 'Tägliche Aufgabe für diesen Monat',
+    'الشهر اللي بعده': 'Nächster Monat',
+    'الشهر اللي قبله': 'Voriger Monat',
+    'الشيت الشهري': 'Monatsblatt',
+    'دوس على أي يوم عشان تكتب أو تعدّل الملاحظة بتاعته.':
+        'Tippe auf einen Tag, um seine Notiz zu schreiben oder zu ändern.',
+    'مثلًا: شغل، إجازة، ميعاد الدكتور ٥ م':
+        'z. B. Arbeit, frei, Arzt um 17 Uhr',
+    'ملاحظات الشهر': 'Notizen des Monats',
+    'ملاحظة صغيرة على كل يوم: شغل، إجازة، مواعيد':
+        'Eine kurze Notiz pro Tag: Arbeit, frei, Termine',
   },
 };

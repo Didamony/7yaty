@@ -164,4 +164,16 @@ void seedDemo(AppData d) {
     text: 'النهارده خلصت التقرير بدري، ومشيت بعد العصر. حاسس إن الأسبوع ده أحسن من اللي فات، بس لازم أنام بدري عشان الفجر.',
   );
   d.journal[dkey(addDays(t, -1))] = JournalEntry(text: 'يوم هادي.');
+
+  final m = monthStart(t);
+  d.sheet.addAll({
+    dkey(addDays(m, 0)): 'شغل',
+    dkey(addDays(m, 1)): 'شغل',
+    dkey(addDays(m, 5)): 'إجازة',
+    dkey(addDays(m, 8)): 'شغل\nبعدها الجيم',
+    dkey(addDays(m, 15)): 'فرح أحمد ٨ م',
+    dkey(t): 'شغل\nأجيب الدوا',
+    dkey(addDays(t, 3)): 'دكتور الأسنان',
+    dkey(addDays(t, 5)): 'إجازة',
+  });
 }

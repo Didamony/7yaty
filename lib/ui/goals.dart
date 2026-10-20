@@ -9,6 +9,7 @@ import '../data/store.dart';
 import 'books.dart';
 import 'goal_editor.dart';
 import 'goal_plan.dart';
+import 'sheet_page.dart';
 import 'stats_page.dart';
 import 'widgets.dart';
 
@@ -135,6 +136,16 @@ class _GoalsPageState extends State<GoalsPage> {
                     ),
                   ),
                 ],
+              ),
+              const SizedBox(height: 10),
+              _MiniCard(
+                icon: Icon(Icons.calendar_month_outlined, color: p.gold),
+                title: tr('الشيت الشهري'),
+                value: tr('ملاحظة صغيرة على كل يوم: شغل، إجازة، مواعيد'),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const SheetPage()),
+                ),
               ),
               const SizedBox(height: 16),
               if (roots.isEmpty) EmptyNote(tr('لسه مفيش أهداف هنا.')),
