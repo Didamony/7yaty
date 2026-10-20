@@ -111,6 +111,7 @@ flutter build web --dart-define=DEMO=true # نسخة ويب فيها بيانا�
 - `lib/ui/`: الشاشات.
 - `lib/core/strings.dart`: الترجمات. النص العربي مكتوب في الكود نفسه، وفي اختبار بيفشل لو نص عربي جديد مالوش ترجمة.
 
+- الأذان: [Beautiful adhan](https://commons.wikimedia.org/wiki/File:Beautiful_adhan.ogg) من Wikimedia Commons، برخصة CC0 (ملك عام). الملف في `android/app/src/main/res/raw/adhan.mp3`، وأذان الفجر في `adhan_fajr.mp3` (نفس التسجيل لحد ما يتحط أذان فجر)، وبيشتغلوا في الأندرويد بس.
 - الخطوط: Reem Kufi وIBM Plex Sans Arabic وAmiri Quran، وكلهم برخصة SIL Open Font License.
 - نص القرآن: الرسم العثماني من موسوعة القرآن الكريم (quranenc.com، نص مجمع الملك فهد لطباعة المصحف الشريف)، عن طريق مكتبة [quran-json](https://github.com/risan/quran-json)، برخصة CC BY-SA 4.0. التفاصيل في `assets/quran/README.md`.
 - الأذكار من الأحاديث الصحيحة المشهورة في حصن المسلم، وكل ذكر مكتوب جنبه مصدره.
