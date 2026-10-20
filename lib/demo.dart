@@ -4,10 +4,6 @@ import 'data/store.dart';
 
 /// Sample content for screenshots (`--dart-define=DEMO=true` builds only).
 void seedDemo(AppData d) {
-  // Theme pictures for screenshots, copied next to the web build by hand.
-  for (final id in ['sat', 'sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'dark']) {
-    d.settings.themeImages[id] = 'url:demo_themes/$id.jpg';
-  }
   final t = today();
   final year = Goal(
     id: newId(),
@@ -152,7 +148,7 @@ void seedDemo(AppData d) {
   int at(int h, int m) =>
       t.add(Duration(hours: h, minutes: m)).millisecondsSinceEpoch;
   d.journal[dkey(t)] = JournalEntry(
-    frame: 'url:demo_themes/sat.jpg',
+    frame: 'builtin:dawn',
     notes: [
       Note(
         id: 'n1',
@@ -163,7 +159,7 @@ void seedDemo(AppData d) {
       Note(
         id: 'n2',
         text: 'النهارده خلصت التقرير بدري، ومشيت بعد العصر. حاسس إن الأسبوع ده أحسن من اللي فات، بس لازم أنام بدري عشان الفجر.',
-        frame: 'url:demo_themes/sat.jpg',
+        frame: 'builtin:dawn',
         at: at(18, 45),
       ),
     ],

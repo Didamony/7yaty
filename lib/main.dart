@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
@@ -21,8 +22,13 @@ import 'ui/update_banner.dart';
 /// screenshots only.
 const _demo = bool.fromEnvironment('DEMO');
 
+/// Builds with `--dart-define=VIDEO=true` run animations at half speed, so
+/// a screen recording at a low frame rate can be sped up smoothly.
+const _video = bool.fromEnvironment('VIDEO');
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  if (_video) timeDilation = 2;
   PrayerTimes.init();
   await Files.init();
   await initializeDateFormatting();
