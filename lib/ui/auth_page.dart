@@ -640,6 +640,9 @@ String authMessage(Object e) => switch (Cloud.errorCode(e)) {
   'too-many-requests' => tr('محاولات كتير، استنى شوية وجرّب تاني'),
   'network-request-failed' => tr('مفيش إنترنت، اتأكد من النت وجرّب تاني'),
   'user-disabled' => tr('الحساب ده متوقف'),
+  'operation-not-allowed' => tr(
+    'الدخول بالإيميل والباسورد مش متفعّل في Firebase. فعّله من Authentication ← Sign-in method.',
+  ),
   _ => tr('حصلت مشكلة، جرّب تاني'),
 };
 

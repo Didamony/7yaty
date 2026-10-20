@@ -587,6 +587,7 @@ const Map<String, Map<String, String>> translations = {
     'هنراجع التحويل ونفعّل حسابك في أقرب وقت. أول ما يتفعّل دوس الزرار اللي تحت.': 'We\'ll check the transfer and activate your account soon. Once it\'s activated, tap the button below.',
     'رقم العملية من إيصال InstaPay':
         'Reference number from the InstaPay receipt',
+    'الدخول بالإيميل والباسورد مش متفعّل في Firebase. فعّله من Authentication ← Sign-in method.': 'Email/password sign-in is not enabled in Firebase. Enable it in Authentication → Sign-in method.',
   },
   'fr': {
     'أهدافي': 'Mes objectifs',
@@ -1180,6 +1181,7 @@ const Map<String, Map<String, String>> translations = {
         'Non envoyé, vérifie le numéro et la clé',
     'هنراجع التحويل ونفعّل حسابك في أقرب وقت. أول ما يتفعّل دوس الزرار اللي تحت.': 'On vérifie le virement et on active ton compte bientôt. Ensuite, touche le bouton ci-dessous.',
     'رقم العملية من إيصال InstaPay': 'Numéro de référence du reçu InstaPay',
+    'الدخول بالإيميل والباسورد مش متفعّل في Firebase. فعّله من Authentication ← Sign-in method.': 'La connexion par e-mail n\'est pas activée dans Firebase. Active-la dans Authentication → Sign-in method.',
   },
   'de': {
     'أهدافي': 'Meine Ziele',
@@ -1762,5 +1764,6 @@ const Map<String, Map<String, String>> translations = {
         'Nicht gesendet; Nummer und Schlüssel prüfen',
     'هنراجع التحويل ونفعّل حسابك في أقرب وقت. أول ما يتفعّل دوس الزرار اللي تحت.': 'Wir prüfen die Überweisung und aktivieren dein Konto bald. Danach unten tippen.',
     'رقم العملية من إيصال InstaPay': 'Referenznummer aus dem InstaPay-Beleg',
+    'الدخول بالإيميل والباسورد مش متفعّل في Firebase. فعّله من Authentication ← Sign-in method.': 'E-Mail-Anmeldung ist in Firebase nicht aktiviert. Aktiviere sie unter Authentication → Sign-in method.',
   },
 };
