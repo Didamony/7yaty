@@ -21,6 +21,10 @@ Future<void> onBackgroundNotificationAction(NotificationResponse r) async {
   }
 }
 
+/// Built with the adhan recordings in `android/app/src/main/res/raw`
+/// (`adhan.mp3`, and `adhan_fajr.mp3` for Fajr); see the Android workflow.
+const _hasAdhan = bool.fromEnvironment('ADHAN');
+
 /// Schedules every reminder the app gives: prayers, the evening review with
 /// buttons per goal, goal times and appointments. Everything is rebuilt from
 /// the saved data whenever it changes, a few days ahead.
@@ -119,6 +123,7 @@ class Notifier {
       _Channel ch, {
       String? payload,
       bool withActions = false,
+      bool adhan = false,
     }) async {
       if (!when.isAfter(now)) return;
       final scheduled = tz.TZDateTime(
@@ -144,7 +149,17 @@ class Notifier {
               importance: Importance.high,
               priority: Priority.high,
               styleInformation: BigTextStyleInformation(body),
-              actions: withActions
+              // The adhan plays as an alarm sound, so it's heard as it
+              // should be; dismissing the notification stops it.
+              sound: ch.sound == null
+                  ? null
+                  : RawResourceAndroidNotificationSound(ch.sound),
+              audioAttributesUsage: adhan
+                  ? AudioAttributesUsage.alarm
+                  : AudioAttributesUsage.notification,
+              actions: adhan
+                  ? [AndroidNotificationAction('stop', tr('إيقاف الأذان'))]
+                  : withActions
                   ? [
                       AndroidNotificationAction('done', tr('تم ✓')),
                       AndroidNotificationAction('missed', tr('ما اتعملش')),
@@ -174,8 +189,16 @@ class Notifier {
           await at(
             t.subtract(Duration(minutes: before)),
             'prayer-before|${p.name}|${dkey(day)}',
-            tr('صلاة {p} بعد {n} دقيقة', {'p': prayerName(p), 'n': before}),
-            tr('الصلاة الساعة {t}', {'t': fmtTime(t)}),
+            tr('اقتربت صلاة {p}', {'p': prayerName(p)}),
+            p == Prayer.fajr
+                ? tr('الصلاة خير من النوم · الأذان بعد {n} دقيقة، الساعة {t}', {
+                    'n': before,
+                    't': fmtTime(t),
+                  })
+                : tr('الأذان بعد {n} دقيقة، الساعة {t}', {
+                    'n': before,
+                    't': fmtTime(t),
+                  }),
             _Channel.prayer,
           );
         }
@@ -183,9 +206,14 @@ class Notifier {
           await at(
             t,
             'prayer-now|${p.name}|${dkey(day)}',
-            tr('حان الآن موعد صلاة {p}', {'p': prayerName(p)}),
-            cityName(s.city),
-            _Channel.prayer,
+            tr('حان الآن موعد أذان {p}', {'p': prayerName(p)}),
+            '${tr('الله أكبر، الله أكبر')} · ${cityName(s.city)}',
+            !_hasAdhan
+                ? _Channel.prayer
+                : p == Prayer.fajr
+                ? _Channel.adhanFajr
+                : _Channel.adhan,
+            adhan: _hasAdhan,
           );
         }
       }
@@ -294,13 +322,19 @@ String goalTitle(AppData data, Goal g, DateTime day) {
 
 enum _Channel {
   prayer('hayati_prayer', 'مواعيد الصلاة'),
+  adhan('hayati_adhan', 'الأذان', sound: 'adhan'),
+  adhanFajr('hayati_adhan_fajr', 'أذان الفجر', sound: 'adhan_fajr'),
   goals('hayati_goals', 'أهدافي'),
   review('hayati_review', 'مراجعة المساء'),
   appointments('hayati_appointments', 'مواعيدي'),
   adhkar('hayati_adhkar', 'الأذكار');
 
-  const _Channel(this.id, this.name);
+  const _Channel(this.id, this.name, {this.sound});
 
   final String id;
   final String name;
+
+  /// A recording in `res/raw`; Android fixes a channel's sound when it is
+  /// first created.
+  final String? sound;
 }

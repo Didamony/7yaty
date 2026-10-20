@@ -128,8 +128,8 @@ class SettingsPage extends StatelessWidget {
                     value: s.adhanAtTime,
                     onChanged: (v) =>
                         store.update((d) => d.settings.adhanAtTime = v),
-                    title: Text(tr('تنبيه عند دخول الوقت')),
-                    subtitle: Muted(tr('بالإضافة للتنبيه المسبق')),
+                    title: Text(tr('الأذان عند دخول الوقت')),
+                    subtitle: Muted(tr('بالإضافة للتنبيه قبل الصلاة')),
                   ),
                   SwitchListTile(
                     contentPadding: EdgeInsets.zero,

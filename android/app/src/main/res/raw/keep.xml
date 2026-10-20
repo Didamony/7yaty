@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- The notification icon is referenced only from Dart; keep it in release builds. -->
+<!-- Referenced only from Dart; keep them in release builds. -->
 <resources xmlns:tools="http://schemas.android.com/tools"
-    tools:keep="@drawable/ic_stat_hayati" />
+    tools:keep="@drawable/ic_stat_hayati,@raw/adhan,@raw/adhan_fajr" />
