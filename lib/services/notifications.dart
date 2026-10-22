@@ -43,7 +43,11 @@ class Notifier {
       !kIsWeb && defaultTargetPlatform == TargetPlatform.android ||
       !kIsWeb && defaultTargetPlatform == TargetPlatform.iOS;
 
-  Future<void> init() async {
+  Future<void>? _starting;
+
+  Future<void> init() => _starting ??= _init();
+
+  Future<void> _init() async {
     if (!supported || _ready) return;
     PrayerTimes.init();
     await _plugin.initialize(

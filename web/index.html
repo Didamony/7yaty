@@ -57,9 +57,56 @@
     #welcome .link { background: none; color: #3F6A93; font-weight: 600; }
     #welcome .muted { color: #6B7785; font-size: 14px; }
     #welcome svg { vertical-align: middle; }
+    /* Shown at once while the app engine downloads, until its first frame. */
+    #splash { position: fixed; inset: 0; z-index: 9998; display: flex;
+      flex-direction: column; align-items: center; justify-content: center;
+      background: #EEF2F7; transition: opacity .35s; }
+    #splash img { width: 150px; height: 150px; border-radius: 34px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.18); }
+    #splash .bar { width: 160px; height: 4px; border-radius: 4px; margin-top: 34px;
+      background: rgba(63,106,147,.18); overflow: hidden; }
+    #splash .bar i { display: block; width: 40%; height: 100%; border-radius: 4px;
+      background: #3F6A93; animation: slide 1.1s ease-in-out infinite; }
+    #splash p { margin-top: 14px; color: #6B7785;
+      font-family: -apple-system, "Segoe UI", Tahoma, sans-serif; font-size: 14px; }
+    @keyframes slide { 0% { transform: translateX(260%); } 100% { transform: translateX(-110%); } }
+    @media (prefers-color-scheme: dark) {
+      #splash { background: #0E0D0B; }
+      #splash .bar { background: rgba(212,176,58,.2); }
+      #splash .bar i { background: #D4B03A; }
+      #splash p { color: #A69E8C; }
+    }
   </style>
 </head>
 <body>
+  <div id="splash">
+    <img src="icons/Icon-192.png" alt="حياتي">
+    <div class="bar"><i></i></div>
+    <p>ثواني وحياتي تفتح…</p>
+  </div>
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      var s = document.getElementById('splash');
+      if (!s) return;
+      s.style.opacity = '0';
+      setTimeout(function () { s.remove(); }, 400);
+      // The PDF reader is only needed for books: load it after the app.
+      var m = document.createElement('script');
+      m.type = 'module';
+      m.src = 'pdfjs/pdf.min.mjs';
+      m.onload = function () {
+        var lib = globalThis.pdfjsLib;
+        if (!lib) return;
+        lib.GlobalWorkerOptions.workerSrc =
+          new URL('pdfjs/pdf.worker.min.mjs', document.baseURI).href;
+        globalThis.pdfRenderOptions = {
+          cMapUrl: new URL('pdfjs/cmaps/', document.baseURI).href,
+          cMapPacked: true,
+        };
+      };
+      document.body.appendChild(m);
+    });
+  </script>
   <div id="welcome">
     <div class="box">
       <div class="logo"><img src="assets/assets/logo/logo_word.png" alt="حياتي"></div>
@@ -111,17 +158,8 @@
       document.getElementById('welcome').style.display = 'block';
     })();
   </script>
-  <!-- pdf.js (Apache-2.0, legacy build for older Safari) is bundled so books open without a CDN. -->
-  <script src="pdfjs/pdf.min.mjs" type="module"></script>
-  <script type="module">
-  var { pdfjsLib } = globalThis;
-  pdfjsLib.GlobalWorkerOptions.workerSrc = new URL('pdfjs/pdf.worker.min.mjs', document.baseURI).href;
-
-  globalThis.pdfRenderOptions = {
-    cMapUrl: new URL('pdfjs/cmaps/', document.baseURI).href,
-    cMapPacked: true,
-  }
-  </script>
+  <!-- pdf.js (Apache-2.0, legacy build for older Safari) is bundled so books
+       open without a CDN; it loads after the app's first frame (above). -->
   <!--
     You can customize the "flutter_bootstrap.js" script.
     This is useful to provide a custom configuration to the Flutter loader

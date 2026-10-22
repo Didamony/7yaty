@@ -62,7 +62,8 @@ class _AuthGateState extends State<AuthGate> {
       }
     } catch (e) {
       debugPrint('hayati: could not load access: $e');
-      if (mounted) setState(() => _accessFailed = true);
+      // Offline with a saved answer: keep using it.
+      if (mounted && _access?.uid != uid) setState(() => _accessFailed = true);
     } finally {
       _loadingAccess = null;
     }
@@ -77,6 +78,7 @@ class _AuthGateState extends State<AuthGate> {
 
   Future<void> _attach(String uid) async {
     if (_attaching == uid) return;
+    final background = _attached == uid;
     _attaching = uid;
     try {
       await Cloud.instance
@@ -86,7 +88,7 @@ class _AuthGateState extends State<AuthGate> {
       // Offline or a cloud error: open the app anyway; it saves later.
       debugPrint('hayati: could not sync on sign-in: $e');
     }
-    if (mounted) setState(() => _attached = uid);
+    if (mounted && !background) setState(() => _attached = uid);
   }
 
   Future<bool> _askKeepLocal(DateTime saved) async {
@@ -134,6 +136,16 @@ class _AuthGateState extends State<AuthGate> {
       return const AdminPage();
     }
     {
+      // Open at once with the access saved on this device, and check again
+      // in the background.
+      final cached = cloud.cachedAccess;
+      if ((_access == null || _access!.uid != user.uid) &&
+          cached?.uid == user.uid) {
+        _access = cached;
+        WidgetsBinding.instance.addPostFrameCallback(
+          (_) => _loadAccess(user.uid),
+        );
+      }
       final access = _access;
       if (access == null || access.uid != user.uid) {
         if (_accessFailed) {
@@ -155,6 +167,12 @@ class _AuthGateState extends State<AuthGate> {
       }
     }
     cloud.allowed = true;
+    if (_attached != user.uid && cloud.deviceOwner == user.uid) {
+      // This device already has this account's data: open now and sync in
+      // the background.
+      _attached = user.uid;
+      WidgetsBinding.instance.addPostFrameCallback((_) => _attach(user.uid));
+    }
     if (_attached != user.uid) {
       WidgetsBinding.instance.addPostFrameCallback((_) => _attach(user.uid));
       return _Waiting(tr('بنجهّز بياناتك…'));

@@ -62,6 +62,29 @@ class Access {
 
   bool allowed(DateTime now) => paid || inTrial(now);
 
+  String toCache() => jsonEncode({
+    'uid': uid,
+    'email': email,
+    'trialStart': trialStart?.millisecondsSinceEpoch,
+    'paid': paid,
+  });
+
+  static Access? fromCache(String? raw) {
+    if (raw == null) return null;
+    try {
+      final j = jsonDecode(raw) as Map<String, dynamic>;
+      final t = j['trialStart'] as int?;
+      return Access(
+        uid: j['uid'],
+        email: j['email'],
+        trialStart: t == null ? null : DateTime.fromMillisecondsSinceEpoch(t),
+        paid: j['paid'] == true,
+      );
+    } catch (_) {
+      return null;
+    }
+  }
+
   factory Access.fromDoc(DocumentSnapshot<Map<String, dynamic>> d) {
     final j = d.data() ?? {};
     return Access(
@@ -179,6 +202,9 @@ const _partSize = 500000;
 /// Who owns the data on this device, so another account never sees it.
 const _ownerKey = 'hayati.owner';
 
+/// The account's access as last read, for opening offline.
+const _accessKey = 'hayati.access';
+
 /// The user's account (email and password, with a confirmed email) and a
 /// copy of all their data in Firebase, so it comes back on any device,
 /// however long after.
@@ -213,6 +239,14 @@ class Cloud extends ChangeNotifier {
   /// for it. Set by the sign-in gate.
   bool allowed = false;
 
+  /// The account whose data is on this device, so later launches open at
+  /// once and sync in the background.
+  String? deviceOwner;
+
+  /// The last access read from the cloud, so the app opens at once (and
+  /// offline) and checks again in the background.
+  Access? cachedAccess;
+
   // -------------------------------------------------------------- access
 
   CollectionReference<Map<String, dynamic>> get _access =>
@@ -232,7 +266,11 @@ class Cloud extends ChangeNotifier {
       });
       snap = await ref.get();
     }
-    return Access.fromDoc(snap);
+    final a = Access.fromDoc(snap);
+    cachedAccess = a;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_accessKey, a.toCache());
+    return a;
   }
 
   Future<PayInfo> loadPayInfo() async =>
@@ -308,6 +346,15 @@ class Cloud extends ChangeNotifier {
         await FirebaseStorage.instance.useStorageEmulator('localhost', 9199);
       }
       await auth.setLanguageCode(lang);
+      // The saved sign-in comes back asynchronously (on the web it takes a
+      // moment); wait for it so the sign-in screen doesn't flash.
+      await auth.authStateChanges().first.timeout(
+        const Duration(seconds: 6),
+        onTimeout: () => null,
+      );
+      final prefs = await SharedPreferences.getInstance();
+      deviceOwner = prefs.getString(_ownerKey);
+      cachedAccess = Access.fromCache(prefs.getString(_accessKey));
       _ready = true;
       _sub = auth.userChanges().listen((_) => notifyListeners());
     } catch (e) {
@@ -417,11 +464,15 @@ class Cloud extends ChangeNotifier {
       await backup(local);
     }
     await prefs.setString(_ownerKey, uid);
+    deviceOwner = uid;
   }
 
   Future<void> _restoreInto(AppStore store) async {
+    final before = store.data.updatedAt;
     final data = await restore();
-    if (data != null) await store.replaceAll(data);
+    // Runs in the background on later launches: keep edits made meanwhile.
+    if (data == null || store.data.updatedAt != before) return;
+    await store.replaceAll(data);
   }
 
   /// Uploads the data, and any file the cloud does not have yet.

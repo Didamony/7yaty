@@ -41,7 +41,8 @@ Future<void> main() async {
   await Cloud.instance.init(store.settings.lang);
 
   final notifier = Notifier.instance;
-  await notifier.init();
+  // Started without waiting, so the first screen shows sooner.
+  notifier.init();
   notifier.onAction = (payload, action) {
     if (action != null) {
       store.update((d) => d.applyNotificationAction(payload, action));
