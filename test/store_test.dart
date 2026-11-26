@@ -3,6 +3,7 @@ import 'package:hayati/core/dates.dart';
 import 'package:hayati/data/models.dart';
 import 'package:hayati/data/store.dart';
 import 'package:hayati/services/prayer.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Goal daily(
   String id,
@@ -187,5 +188,58 @@ void main() {
     expect(times[Prayer.fajr]!.hour, inInclusiveRange(4, 5));
     expect(times[Prayer.dhuhr]!.hour, 12);
     expect(times[Prayer.maghrib]!.hour, inInclusiveRange(17, 18));
+  });
+
+  test(
+    'a notification press in the background survives the app saving',
+    () async {
+      final t = dayOnly(DateTime.now());
+      final g = daily('bg', addDays(t, -3));
+      SharedPreferences.setMockInitialValues({});
+      final first = AppData()..goals.add(g);
+      await first.save();
+      final store = await AppStore.open();
+
+      // The background handler marks today done while the app is running.
+      await AppData.recordBackgroundAction('goal|bg|${dkey(t)}', 'done');
+      expect(store.data.status(store.data.goal('bg')!, t), isNot(Occ.done));
+
+      // Any save in the app takes it in instead of writing over it.
+      await store.update((d) => d.sheet[dkey(t)] = 'x');
+      expect(store.data.status(store.data.goal('bg')!, t), Occ.done);
+      final saved = await AppData.load();
+      expect(saved.status(saved.goal('bg')!, t), Occ.done);
+
+      // Taken in once only.
+      final goals = store.data.goals.length;
+      await AppData.recordBackgroundAction('goal|bg|${dkey(t)}', 'carry');
+      await store.refresh();
+      await store.refresh();
+      expect(store.data.goals.length, goals + 1);
+    },
+  );
+
+  test('settling missed days does not make the data look edited', () async {
+    final t = dayOnly(DateTime.now());
+    SharedPreferences.setMockInitialValues({});
+    final d = AppData()..goals.add(daily('s', addDays(t, -3)));
+    await d.save();
+    final edited = (await AppData.load()).updatedAt;
+    final store = await AppStore.open();
+    expect(
+      store.data.status(store.data.goal('s')!, addDays(t, -1)),
+      Occ.missed,
+    );
+    expect((await AppData.load()).updatedAt, edited);
+  });
+
+  test("'not done' on today's review carries to tomorrow", () {
+    final t = dayOnly(DateTime.now());
+    final g = daily('c', addDays(t, -3), onMiss: OnMiss.carry);
+    final d = AppData()..goals.add(g);
+    d.applyNotificationAction('goal|c|${dkey(t)}', 'missed');
+    expect(d.status(g, t), Occ.carried);
+    final copy = d.goals.firstWhere((x) => x.carriedFrom == dkey(t));
+    expect(copy.periodKey, dkey(addDays(t, 1)));
   });
 }

@@ -591,7 +591,20 @@ class _AccountSection extends StatelessWidget {
                         ok: tr('خروج'),
                       ) &&
                       context.mounted) {
-                    await cloud.signOut(store.data);
+                    if (await cloud.signOut(store.data) || !context.mounted) {
+                      return;
+                    }
+                    // Offline: the latest changes aren't in the account yet.
+                    if (await confirm(
+                          context,
+                          tr(
+                            'آخر تعديلاتك لسه ما اتحفظتش في حسابك، اتأكد من النت. لو خرجت دلوقتي هتضيع. تخرج برضه؟',
+                          ),
+                          ok: tr('اخرج برضه'),
+                        ) &&
+                        context.mounted) {
+                      await cloud.signOut(store.data, force: true);
+                    }
                   }
                 },
                 child: Text(tr('تسجيل الخروج')),

@@ -4,11 +4,6 @@ name: Check the app on Android
 # a release build with demo data; screenshots and logs are committed to
 # diagnostics/ so problems on real Android can be read.
 on:
-  push:
-    paths:
-      - .github/workflows/android-check.yml
-      - tool/android_check.sh
-      - integration_test/**
   workflow_dispatch:
 
 permissions:
@@ -79,7 +74,7 @@ jobs:
           script: |
             mkdir -p diagnostics/tour-api-${{ matrix.api }}
             adb logcat -c
-            flutter drive --release --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart --dart-define=DEMO=true > diagnostics/tour-api-${{ matrix.api }}/drive.txt 2>&1; echo "exit $?" >> diagnostics/tour-api-${{ matrix.api }}/drive.txt
+            flutter drive --profile --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart --dart-define=DEMO=true > diagnostics/tour-api-${{ matrix.api }}/drive.txt 2>&1; echo "exit $?" >> diagnostics/tour-api-${{ matrix.api }}/drive.txt
             adb logcat -d -s flutter:V AndroidRuntime:E > diagnostics/tour-api-${{ matrix.api }}/flutter.txt 2>&1 || true
             if [ -d diagnostics/tour ]; then mv diagnostics/tour/* diagnostics/tour-api-${{ matrix.api }}/; rmdir diagnostics/tour; fi
       - uses: actions/upload-artifact@v4

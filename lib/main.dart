@@ -101,8 +101,9 @@ class _HayatiAppState extends State<HayatiApp> with WidgetsBindingObserver {
     final store = context.read<AppStore>();
     if (state == AppLifecycleState.resumed) {
       Updates.instance.check();
+      Cloud.instance.ensureAttached();
       // Notification buttons may have changed the saved data meanwhile.
-      store.reload().then((_) => Notifier.instance.scheduleSoon(store.data));
+      store.refresh().then((_) => Notifier.instance.scheduleSoon(store.data));
     } else if (state == AppLifecycleState.paused) {
       Cloud.instance.backup(store.data);
     }

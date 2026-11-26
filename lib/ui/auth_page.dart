@@ -27,6 +27,7 @@ class _AuthGateState extends State<AuthGate> {
   /// The account whose data has been brought onto this device.
   String? _attached;
   String? _attaching;
+  bool _attachFailed = false;
 
   /// The signed-in account's access, once loaded.
   Access? _access;
@@ -81,12 +82,17 @@ class _AuthGateState extends State<AuthGate> {
     final background = _attached == uid;
     _attaching = uid;
     try {
-      await Cloud.instance
-          .attach(context.store, _askKeepLocal)
-          .timeout(const Duration(minutes: 3));
+      await Cloud.instance.attach(context.store, _askKeepLocal);
     } catch (e) {
-      // Offline or a cloud error: open the app anyway; it saves later.
       debugPrint('hayati: could not sync on sign-in: $e');
+      // First sign-in on this device needs the account's data: offer to try
+      // again instead of opening empty. Later launches already have it and
+      // try again when the app comes back.
+      if (!background) {
+        _attaching = null;
+        if (mounted) setState(() => _attachFailed = true);
+        return;
+      }
     }
     if (mounted && !background) setState(() => _attached = uid);
   }
@@ -174,6 +180,14 @@ class _AuthGateState extends State<AuthGate> {
       WidgetsBinding.instance.addPostFrameCallback((_) => _attach(user.uid));
     }
     if (_attached != user.uid) {
+      if (_attachFailed) {
+        return _Retry(
+          onRetry: () {
+            setState(() => _attachFailed = false);
+            _attach(user.uid);
+          },
+        );
+      }
       WidgetsBinding.instance.addPostFrameCallback((_) => _attach(user.uid));
       return _Waiting(tr('بنجهّز بياناتك…'));
     }

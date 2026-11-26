@@ -15,10 +15,7 @@ import 'prayer.dart';
 @pragma('vm:entry-point')
 Future<void> onBackgroundNotificationAction(NotificationResponse r) async {
   DartPluginRegistrant.ensureInitialized();
-  final data = await AppData.load();
-  if (data.applyNotificationAction(r.payload, r.actionId)) {
-    await data.save();
-  }
+  await AppData.recordBackgroundAction(r.payload, r.actionId);
 }
 
 /// Built with the adhan recordings in `android/app/src/main/res/raw`
@@ -104,10 +101,28 @@ class Notifier {
     _debounce = Timer(const Duration(seconds: 2), () => reschedule(data));
   }
 
+  Future<void>? _running;
+
+  /// Rebuilds the schedule; runs one at a time, so an older run never adds
+  /// reminders after a newer one cleared them.
   Future<void> reschedule(AppData data) async {
+    final previous = _running;
+    final run = () async {
+      await previous;
+      await _reschedule(data);
+    }();
+    _running = run;
+    await run;
+  }
+
+  Future<void> _reschedule(AppData data) async {
     if (!supported) return;
     await init();
-    await _plugin.cancelAll();
+    // Cancel only what's scheduled: notifications already on screen (an
+    // unanswered evening review, a playing adhan) stay.
+    for (final r in await _plugin.pendingNotificationRequests()) {
+      await _plugin.cancel(id: r.id);
+    }
     final android = _plugin
         .resolvePlatformSpecificImplementation<
           AndroidFlutterLocalNotificationsPlugin

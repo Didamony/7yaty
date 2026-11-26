@@ -3,6 +3,8 @@
 
 const Map<String, Map<String, String>> translations = {
   'en': {
+    'آخر تعديلاتك لسه ما اتحفظتش في حسابك، اتأكد من النت. لو خرجت دلوقتي هتضيع. تخرج برضه؟': 'Your latest changes aren\'t saved to your account yet; check your internet. If you sign out now they\'ll be lost. Sign out anyway?',
+    'اخرج برضه': 'Sign out anyway',
     'أهدافي': 'My goals',
     'بعد {n} د': 'in {n} min',
     'بعد {h} س {m} د': 'in {h} h {m} min',
@@ -615,6 +617,8 @@ const Map<String, Map<String, String>> translations = {
     'بعدين': 'Later',
   },
   'fr': {
+    'آخر تعديلاتك لسه ما اتحفظتش في حسابك، اتأكد من النت. لو خرجت دلوقتي هتضيع. تخرج برضه؟': 'Tes dernières modifications ne sont pas encore enregistrées dans ton compte ; vérifie ta connexion. Si tu te déconnectes maintenant, elles seront perdues. Te déconnecter quand même ?',
+    'اخرج برضه': 'Se déconnecter quand même',
     'أهدافي': 'Mes objectifs',
     'بعد {n} د': 'dans {n} min',
     'بعد {h} س {m} د': 'dans {h} h {m} min',
@@ -1233,6 +1237,8 @@ const Map<String, Map<String, String>> translations = {
     'بعدين': 'Plus tard',
   },
   'de': {
+    'آخر تعديلاتك لسه ما اتحفظتش في حسابك، اتأكد من النت. لو خرجت دلوقتي هتضيع. تخرج برضه؟': 'Deine letzten Änderungen sind noch nicht im Konto gespeichert; prüfe deine Internetverbindung. Wenn du dich jetzt abmeldest, gehen sie verloren. Trotzdem abmelden?',
+    'اخرج برضه': 'Trotzdem abmelden',
     'أهدافي': 'Meine Ziele',
     'بعد {n} د': 'in {n} Min.',
     'بعد {h} س {m} د': 'in {h} Std. {m} Min.',

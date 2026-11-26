@@ -247,6 +247,18 @@ class Cloud extends ChangeNotifier {
   /// offline) and checks again in the background.
   Access? cachedAccess;
 
+  /// The account whose data was reconciled with the cloud in this run of
+  /// the app. Until then nothing is uploaded, so a device that hasn't yet
+  /// taken in the account's data never overwrites it.
+  String? _attachedUid;
+  Future<void> Function()? _retryAttach;
+  bool _attaching = false;
+
+  /// A backup asked for while another was running.
+  AppData? _again;
+
+  bool get synced => user != null && _attachedUid == user!.uid;
+
   // -------------------------------------------------------------- access
 
   CollectionReference<Map<String, dynamic>> get _access =>
@@ -406,11 +418,21 @@ class Cloud extends ChangeNotifier {
   Future<void> resetPassword(String email) =>
       FirebaseAuth.instance.sendPasswordResetEmail(email: email.trim());
 
-  Future<void> signOut(AppData data) async {
+  /// Signs out after saving the latest changes. Returns false, staying
+  /// signed in, when they couldn't be saved (offline), unless [force].
+  Future<bool> signOut(AppData data, {bool force = false}) async {
     _debounce?.cancel();
-    await backup(data);
+    if (!force && synced && allowed) {
+      for (var i = 0; i < 120 && busy; i++) {
+        await Future<void>.delayed(const Duration(milliseconds: 500));
+      }
+      if (!await backup(data)) return false;
+    }
     allowed = false;
+    _attachedUid = null;
+    _retryAttach = null;
     await FirebaseAuth.instance.signOut();
+    return true;
   }
 
   /// The message to show for a failed account action.
@@ -433,6 +455,31 @@ class Cloud extends ChangeNotifier {
     AppStore store,
     Future<bool> Function(DateTime saved) askKeepLocal,
   ) async {
+    _retryAttach = () => attach(store, askKeepLocal);
+    if (_attaching) return;
+    _attaching = true;
+    try {
+      await _attach(store, askKeepLocal);
+    } finally {
+      _attaching = false;
+    }
+  }
+
+  /// Tries again to reconcile with the cloud after a failed attempt (e.g.
+  /// it was offline), when the app comes back.
+  Future<void> ensureAttached() async {
+    if (user == null || synced || !allowed) return;
+    try {
+      await _retryAttach?.call();
+    } catch (e) {
+      debugPrint('hayati: sync retry failed: $e');
+    }
+  }
+
+  Future<void> _attach(
+    AppStore store,
+    Future<bool> Function(DateTime saved) askKeepLocal,
+  ) async {
     final prefs = await SharedPreferences.getInstance();
     final uid = user!.uid;
     final owner = prefs.getString(_ownerKey);
@@ -450,34 +497,44 @@ class Cloud extends ChangeNotifier {
     }
     final local = store.data;
     if (remoteAt == null) {
-      await backup(local);
+      await backup(local, attaching: true);
     } else if (owner == uid) {
       if (remoteAt > local.updatedAt) {
         await _restoreInto(store);
       } else {
-        await backup(local);
+        await backup(local, attaching: true);
       }
     } else if (local.isEmpty ||
         !await askKeepLocal(DateTime.fromMillisecondsSinceEpoch(remoteAt))) {
       await _restoreInto(store);
     } else {
-      await backup(local);
+      await backup(local, attaching: true);
     }
     await prefs.setString(_ownerKey, uid);
     deviceOwner = uid;
+    _attachedUid = uid;
   }
 
   Future<void> _restoreInto(AppStore store) async {
     final before = store.data.updatedAt;
     final data = await restore();
-    // Runs in the background on later launches: keep edits made meanwhile.
-    if (data == null || store.data.updatedAt != before) return;
+    if (data == null) return;
+    // Runs in the background on later launches: never drop edits made
+    // meanwhile; try again on a later launch.
+    if (store.data.updatedAt != before) {
+      throw StateError('edited while restoring');
+    }
     await store.replaceAll(data);
   }
 
   /// Uploads the data, and any file the cloud does not have yet.
-  Future<bool> backup(AppData data) async {
-    if (user == null || !verified || !allowed || busy) return false;
+  Future<bool> backup(AppData data, {bool attaching = false}) async {
+    if (user == null || !verified || !allowed) return false;
+    if (!attaching && !synced) return false;
+    if (busy) {
+      _again = data;
+      return false;
+    }
     busy = true;
     error = null;
     notifyListeners();
@@ -531,6 +588,9 @@ class Cloud extends ChangeNotifier {
     } finally {
       busy = false;
       notifyListeners();
+      final again = _again;
+      _again = null;
+      if (again != null) backupSoon(again);
     }
   }
 
@@ -567,7 +627,8 @@ class Cloud extends ChangeNotifier {
     } catch (e) {
       error = '$e';
       debugPrint('hayati: restore failed: $e');
-      return null;
+      // Not "nothing saved": the caller must not go on as if restored.
+      rethrow;
     } finally {
       busy = false;
       notifyListeners();
@@ -576,7 +637,7 @@ class Cloud extends ChangeNotifier {
 
   /// Saves to the cloud a little while after the last change.
   void backupSoon(AppData data) {
-    if (user == null || !verified || !allowed) return;
+    if (user == null || !verified || !allowed || !synced) return;
     _debounce?.cancel();
     _debounce = Timer(const Duration(seconds: 5), () => backup(data));
   }

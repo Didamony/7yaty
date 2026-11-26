@@ -9,6 +9,10 @@ import '../core/dates.dart';
 import 'models.dart';
 
 const _prefsKey = 'hayati.data.v1';
+
+/// Notification button presses handled while the app was in the background,
+/// for the running app to take in: `id|payload|action` per entry.
+const _pendingKey = 'hayati.pending.actions';
 const _uuid = Uuid();
 
 String newId() => _uuid.v4();
@@ -39,6 +43,10 @@ class AppData {
   Worship worship = Worship();
   int updatedAt = 0;
 
+  /// Ids of notification button presses already applied (latest 100), so a
+  /// press saved by the background handler is never applied twice.
+  List<String> appliedActions = [];
+
   Map<String, dynamic> toJson() => {
     'v': 1,
     'goals': goals.map((g) => g.toJson()).toList(),
@@ -51,6 +59,7 @@ class AppData {
     'settings': settings.toJson(),
     'worship': worship.toJson(),
     'updatedAt': updatedAt,
+    'appliedActions': appliedActions,
   };
 
   factory AppData.fromJson(Map<String, dynamic> j) {
@@ -76,7 +85,8 @@ class AppData {
       ..settings = Settings.fromJson(
         Map<String, dynamic>.from(j['settings'] ?? {}),
       )
-      ..updatedAt = j['updatedAt'] ?? 0;
+      ..updatedAt = j['updatedAt'] ?? 0
+      ..appliedActions = List<String>.from(j['appliedActions'] ?? []);
   }
 
   static Future<AppData> load() async {
@@ -92,8 +102,11 @@ class AppData {
     }
   }
 
-  Future<void> save() async {
-    updatedAt = DateTime.now().millisecondsSinceEpoch;
+  /// Saves on the device. [touch] marks the data as edited now; leave it off
+  /// for automatic changes (settling missed days) so they don't make this
+  /// device's copy look newer than the cloud's.
+  Future<void> save({bool touch = true}) async {
+    if (touch) updatedAt = DateTime.now().millisecondsSinceEpoch;
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_prefsKey, jsonEncode(toJson()));
   }
@@ -421,13 +434,51 @@ class AppData {
       case 'done':
         setDone(g, d, true);
       case 'missed':
-        applyMiss(g, d, now);
+        if (g.onMiss == OnMiss.carry) {
+          // From the evening review: to the next day, not back to today.
+          final next = addDays(d, 1);
+          final today = dayOnly(now);
+          carry(g, d, next.isBefore(today) ? today : next);
+        } else {
+          applyMiss(g, d, now);
+        }
       case 'carry':
         carry(g, d, addDays(dayOnly(now), 1));
       default:
         return false;
     }
     return true;
+  }
+
+  /// Applies a button press once, by its id. Returns whether it changed
+  /// anything.
+  bool applyActionOnce(String id, String? payload, String? action) {
+    if (appliedActions.contains(id)) return false;
+    appliedActions.add(id);
+    if (appliedActions.length > 100) {
+      appliedActions.removeRange(0, appliedActions.length - 100);
+    }
+    applyNotificationAction(payload, action);
+    return true;
+  }
+
+  /// Called from the background notification handler, which runs apart
+  /// from the app: saves the press into the stored data (for when the app
+  /// isn't running) and queues it for the running app (which keeps its own
+  /// copy in memory and would otherwise save over it).
+  static Future<void> recordBackgroundAction(
+    String? payload,
+    String? action,
+  ) async {
+    final id = '${DateTime.now().microsecondsSinceEpoch}';
+    final data = await load();
+    if (data.applyActionOnce(id, payload, action)) await data.save();
+    final prefs = await SharedPreferences.getInstance();
+    final queue = prefs.getStringList(_pendingKey) ?? [];
+    await prefs.setStringList(_pendingKey, [
+      ...queue,
+      '$id|${payload ?? ''}|${action ?? ''}',
+    ]);
   }
 }
 
@@ -446,9 +497,44 @@ class AppStore extends ChangeNotifier {
 
   static Future<AppStore> open() async {
     final store = AppStore(await AppData.load());
-    if (store.data.settleMisses(DateTime.now())) await store.data.save();
+    if (store.data.settleMisses(DateTime.now())) {
+      await store.data.save(touch: false);
+    }
     store._scheduleMidnight();
     return store;
+  }
+
+  /// Takes in notification button presses made while the app was in the
+  /// background. Returns whether anything changed.
+  Future<bool> _absorbPending() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.reload();
+    final queue = prefs.getStringList(_pendingKey) ?? [];
+    if (queue.isEmpty) return false;
+    var changed = false;
+    for (final e in queue) {
+      final parts = e.split('|');
+      if (parts.length < 4) continue;
+      final payload = parts.sublist(1, parts.length - 1).join('|');
+      if (data.applyActionOnce(parts.first, payload, parts.last)) {
+        changed = true;
+      }
+    }
+    await prefs.remove(_pendingKey);
+    return changed;
+  }
+
+  /// When the app comes back: takes in notification presses, settles days
+  /// that passed, and saves only if something changed.
+  Future<void> refresh() async {
+    final absorbed = await _absorbPending();
+    final settled = data.settleMisses(DateTime.now());
+    if (!absorbed && !settled) return;
+    notifyListeners();
+    await data.save(touch: absorbed);
+    for (final l in _savedListeners) {
+      l(data);
+    }
   }
 
   void onSaved(void Function(AppData) listener) =>
@@ -458,24 +544,21 @@ class AppStore extends ChangeNotifier {
   Future<void> update(void Function(AppData d) change) async {
     change(data);
     notifyListeners();
+    // Don't save over a notification press made in the background.
+    if (await _absorbPending()) notifyListeners();
     await data.save();
     for (final l in _savedListeners) {
       l(data);
     }
   }
 
-  /// Re-reads saved data, e.g. after a notification button changed it.
-  Future<void> reload() async {
-    data = await AppData.load();
-    if (data.settleMisses(DateTime.now())) await data.save();
-    notifyListeners();
-  }
-
   Future<void> replaceAll(AppData fresh) async {
     data = fresh;
     data.settleMisses(DateTime.now());
     notifyListeners();
-    await data.save();
+    // Keeps the restored copy's date, so it doesn't look newer than the
+    // cloud's.
+    await data.save(touch: false);
     for (final l in _savedListeners) {
       l(data);
     }
@@ -486,10 +569,8 @@ class AppStore extends ChangeNotifier {
     final now = DateTime.now();
     final next = addDays(dayOnly(now), 1).add(const Duration(seconds: 5));
     _dayTimer = Timer(next.difference(now), () {
-      if (data.settleMisses(DateTime.now())) {
-        data.save();
-      }
-      notifyListeners();
+      // A new day: redraw even if nothing needed settling.
+      refresh().then((_) => notifyListeners());
       _scheduleMidnight();
     });
   }
