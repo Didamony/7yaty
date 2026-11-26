@@ -1,0 +1,5 @@
+Starting: Intent { cmp=com.didamony.hayati/.MainActivity }
+Status: timeout
+Activity: com.didamony.hayati/.MainActivity
+WaitTime: 10093
+Complete

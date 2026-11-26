@@ -1,0 +1,31 @@
+--------- beginning of main
+--------- beginning of system
+11-26 20:26:27.180  4520  4520 I flutter : [IMPORTANT:flutter/shell/common/shell.cc(528)] [Action Required]: Impeller opt-out deprecated.
+11-26 20:26:27.180  4520  4520 I flutter :     The application opted out of Impeller by either using the
+11-26 20:26:27.180  4520  4520 I flutter :     `--no-enable-impeller` flag or the
+11-26 20:26:27.180  4520  4520 I flutter :     `io.flutter.embedding.android.EnableImpeller` `AndroidManifest.xml` entry.
+11-26 20:26:27.180  4520  4520 I flutter :     These options are going to go away in an upcoming Flutter release. Remove
+11-26 20:26:27.180  4520  4520 I flutter :     the explicit opt-out. If you need to opt-out, please report a bug describing
+11-26 20:26:27.180  4520  4520 I flutter :     the issue.
+11-26 20:26:27.180  4520  4520 I flutter : 
+11-26 20:26:27.180  4520  4520 I flutter :     https://github.com/flutter/flutter/issues/new?template=02_bug.yml
+11-26 20:26:27.180  4520  4520 I flutter : 
+11-26 20:26:27.367  4520  4520 E flutter : [ERROR:flutter/runtime/dart_vm_initializer.cc(40)] Unhandled Exception: PlatformException(PlatformException, java.lang.NoSuchMethodError: no non-static method "Lio/flutter/plugins/sharedpreferences/SharedPreferencesApiRegistrar;.getAll(Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", Exception in Java: java.lang.NoSuchMethodError: no non-static method "Lio/flutter/plugins/sharedpreferences/SharedPreferencesApiRegistrar;.getAll(Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;"
+11-26 20:26:27.367  4520  4520 E flutter : java.lang.NoSuchMethodError: no non-static method "Lio/flutter/plugins/sharedpreferences/SharedPreferencesApiRegistrar;.getAll(Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;"
+11-26 20:26:27.367  4520  4520 E flutter : 	at android.os.MessageQueue.nativePollOnce(Native Method)
+11-26 20:26:27.367  4520  4520 E flutter : 	at android.os.MessageQueue.next(MessageQueue.java:325)
+11-26 20:26:27.367  4520  4520 E flutter : 	at android.os.Looper.loop(Looper.java:142)
+11-26 20:26:27.367  4520  4520 E flutter : 	at android.app.ActivityThread.main(ActivityThread.java:6541)
+11-26 20:26:27.367  4520  4520 E flutter : 	at java.lang.reflect.Method.invoke(Native Method)
+11-26 20:26:27.367  4520  4520 E flutter : 	at com.android.internal.os.Zygote$MethodAndArgsCaller.run(Zygote.java:240)
+11-26 20:26:27.367  4520  4520 E flutter : 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:767)
+11-26 20:26:27.367  4520  4520 E flutter : , java.lang.NoSuchMethodError: no non-static method "Lio/flutter/plugins/sharedpreferences/SharedPreferencesApiRegistrar;.getAll(Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;"
+11-26 20:26:27.367  4520  4520 E flutter : 	at android.os.MessageQueue.nativePollOnce(Native Method)
+11-26 20:26:27.367  4520  4520 E flutter : 	at android.os.MessageQueue.next(MessageQueue.java:325)
+11-26 20:26:27.367  4520  4520 E flutter : 	at android.os.Looper.loop(Looper.java:142)
+11-26 20:26:27.367  4520  4520 E flutter : 	at android.app.ActivityThread.main(ActivityThread.java:6541)
+11-26 20:26:27.367  4520  4520 E flutter : 	at java.lang.reflect.Method.invoke(Native Method)
+11-26 20:26:27.367  4520  4520 E flutter : 	at com.android.internal.os.Zygote$MethodAndArgsCaller.run(Zygote.java:240)
+11-26 20:26:27.367  4520  4520 E flutter : 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:767)
+11-26 20:26:27.367  4520  4520 E flutter : )
+11-26 20:26:27.367  4520  4520 E flutter : 
