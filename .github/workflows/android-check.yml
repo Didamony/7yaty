@@ -1,0 +1,45 @@
+name: Check the app on Android
+
+# Installs the published APK on Android emulators, opens it, and commits
+# screenshots and logs to diagnostics/ so startup problems can be read.
+on:
+  push:
+    paths: [.github/workflows/android-check.yml, tool/android_check.sh]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: android-check-${{ github.ref }}
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        api: [26, 34]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules && sudo udevadm trigger --name-match=kvm
+      - name: Download the published APK
+        run: curl -sSL -o hayati.apk "https://github.com/${{ github.repository }}/releases/latest/download/hayati.apk"
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api }}
+          arch: x86_64
+          target: google_apis
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          script: bash tool/android_check.sh diagnostics/api-${{ matrix.api }}
+      - name: Commit the results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f diagnostics
+          git commit -m "Android check results (API ${{ matrix.api }})" || exit 0
+          for i in 1 2 3 4 5; do git pull --rebase -q && git push && break; sleep $((RANDOM % 10 + 5)); done
