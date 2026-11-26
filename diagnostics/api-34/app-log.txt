@@ -1,0 +1,52 @@
+11-26 20:18:06.770  3512  3512 W didamony.hayati: Unexpected CPU variant for x86: x86_64.
+11-26 20:18:06.770  3512  3512 W didamony.hayati: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, tremont, kabylake, default
+11-26 20:18:06.772  3512  3512 E didamony.hayati: Not starting debugger since process cannot load the jdwp agent.
+11-26 20:18:06.950  3512  3512 W FirebaseApp: Default FirebaseApp failed to initialize because no default options were found. This usually means that com.google.gms:google-services was not applied to your gradle project.
+11-26 20:18:07.028  3512  3512 W didamony.hayati: type=1400 audit(0.0:15): avc:  denied  { read } for  name="max_map_count" dev="proc" ino=56875 scontext=u:r:untrusted_app:s0:c192,c256,c512,c768 tcontext=u:object_r:proc_max_map_count:s0 tclass=file permissive=0 app=com.didamony.hayati
+11-26 20:18:07.358  3512  3512 E flutter : [ERROR:flutter/runtime/dart_vm_initializer.cc(40)] Unhandled Exception: PlatformException(PlatformException, java.lang.NoSuchMethodError: no non-static method "Lio/flutter/plugins/sharedpreferences/SharedPreferencesApiRegistrar;.getAll(Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", Exception in Java: java.lang.NoSuchMethodError: no non-static method "Lio/flutter/plugins/sharedpreferences/SharedPreferencesApiRegistrar;.getAll(Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;"
+11-26 20:18:07.358  3512  3512 E flutter : java.lang.NoSuchMethodError: no non-static method "Lio/flutter/plugins/sharedpreferences/SharedPreferencesApiRegistrar;.getAll(Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;"
+11-26 20:18:07.358  3512  3512 E flutter : 	at android.os.MessageQueue.nativePollOnce(Native Method)
+11-26 20:18:07.358  3512  3512 E flutter : 	at android.os.MessageQueue.next(MessageQueue.java:335)
+11-26 20:18:07.358  3512  3512 E flutter : 	at android.os.Looper.loopOnce(Looper.java:162)
+11-26 20:18:07.358  3512  3512 E flutter : 	at android.os.Looper.loop(Looper.java:294)
+11-26 20:18:07.358  3512  3512 E flutter : 	at android.app.ActivityThread.main(ActivityThread.java:8177)
+11-26 20:18:07.358  3512  3512 E flutter : 	at java.lang.reflect.Method.invoke(Native Method)
+11-26 20:18:07.358  3512  3512 E flutter : 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+11-26 20:18:07.358  3512  3512 E flutter : 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+11-26 20:18:07.358  3512  3512 E flutter : , java.lang.NoSuchMethodError: no non-static method "Lio/flutter/plugins/sharedpreferences/SharedPreferencesApiRegistrar;.getAll(Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;"
+11-26 20:18:07.358  3512  3512 E flutter : 	at android.os.MessageQueue.nativePollOnce(Native Method)
+11-26 20:18:07.358  3512  3512 E flutter : 	at android.os.MessageQueue.next(MessageQueue.java:335)
+11-26 20:18:07.358  3512  3512 E flutter : 	at android.os.Looper.loopOnce(Looper.java:162)
+11-26 20:18:07.358  3512  3512 E flutter : 	at android.os.Looper.loop(Looper.java:294)
+11-26 20:18:07.358  3512  3512 E flutter : 	at android.app.ActivityThread.main(ActivityThread.java:8177)
+11-26 20:18:07.358  3512  3512 E flutter : 	at java.lang.reflect.Method.invoke(Native Method)
+11-26 20:18:07.358  3512  3512 E flutter : 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+11-26 20:18:07.358  3512  3512 E flutter : 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+11-26 20:18:07.358  3512  3512 E flutter : )
+11-26 20:18:07.358  3512  3512 E flutter : 
+11-26 20:18:07.404   524  1114 W InputManager-JNI: Input channel object '504af9 com.didamony.hayati/com.didamony.hayati.MainActivity (client)' was disposed without first being removed with the input manager!
+11-26 20:18:07.576  3512  3512 E flutter : [ERROR:flutter/runtime/dart_vm_initializer.cc(40)] Unhandled Exception: PlatformException(PlatformException, java.lang.NoSuchMethodError: no non-static method "Lio/flutter/plugins/sharedpreferences/SharedPreferencesApiRegistrar;.getAll(Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", Exception in Java: java.lang.NoSuchMethodError: no non-static method "Lio/flutter/plugins/sharedpreferences/SharedPreferencesApiRegistrar;.getAll(Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;"
+11-26 20:18:07.576  3512  3512 E flutter : java.lang.NoSuchMethodError: no non-static method "Lio/flutter/plugins/sharedpreferences/SharedPreferencesApiRegistrar;.getAll(Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;"
+11-26 20:18:07.576  3512  3512 E flutter : 	at android.os.MessageQueue.nativePollOnce(Native Method)
+11-26 20:18:07.576  3512  3512 E flutter : 	at android.os.MessageQueue.next(MessageQueue.java:335)
+11-26 20:18:07.576  3512  3512 E flutter : 	at android.os.Looper.loopOnce(Looper.java:162)
+11-26 20:18:07.576  3512  3512 E flutter : 	at android.os.Looper.loop(Looper.java:294)
+11-26 20:18:07.576  3512  3512 E flutter : 	at android.app.ActivityThread.main(ActivityThread.java:8177)
+11-26 20:18:07.576  3512  3512 E flutter : 	at java.lang.reflect.Method.invoke(Native Method)
+11-26 20:18:07.576  3512  3512 E flutter : 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+11-26 20:18:07.576  3512  3512 E flutter : 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+11-26 20:18:07.576  3512  3512 E flutter : , java.lang.NoSuchMethodError: no non-static method "Lio/flutter/plugins/sharedpreferences/SharedPreferencesApiRegistrar;.getAll(Ljava/lang/String;Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;"
+11-26 20:18:07.576  3512  3512 E flutter : 	at android.os.MessageQueue.nativePollOnce(Native Method)
+11-26 20:18:07.576  3512  3512 E flutter : 	at android.os.MessageQueue.next(MessageQueue.java:335)
+11-26 20:18:07.576  3512  3512 E flutter : 	at android.os.Looper.loopOnce(Looper.java:162)
+11-26 20:18:07.576  3512  3512 E flutter : 	at android.os.Looper.loop(Looper.java:294)
+11-26 20:18:07.576  3512  3512 E flutter : 	at android.app.ActivityThread.main(ActivityThread.java:8177)
+11-26 20:18:07.576  3512  3512 E flutter : 	at java.lang.reflect.Method.invoke(Native Method)
+11-26 20:18:07.576  3512  3512 E flutter : 	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:552)
+11-26 20:18:07.576  3512  3512 E flutter : 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:971)
+11-26 20:18:07.576  3512  3512 E flutter : )
+11-26 20:18:07.576  3512  3512 E flutter : 
+11-26 20:18:08.904  3512  3512 W FlutterJNI: Tried to send a platform message response, but FlutterJNI was detached from native C++. Could not send. Response ID: 1
+11-26 20:18:11.901  3872  3969 E FirebaseInstanceId: Topic sync or token retrieval failed on hard failure exceptions: AUTHENTICATION_FAILED. Won't retry the operation.
+11-26 20:18:37.903  1411  1608 W PhenotypeConfigurationU: Update for unknown DeviceConfig package com.google.android.gms.firebase.auth [CONTEXT service_id=204 ]
+11-26 20:18:37.903  1411  1608 W PhenotypeConfigurationU: bwix: No package exists for config package: com.google.android.gms.firebase.auth
