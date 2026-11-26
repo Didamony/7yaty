@@ -1,10 +1,14 @@
 name: Check the app on Android
 
-# Installs the published APK on Android emulators, opens it, and commits
-# screenshots and logs to diagnostics/ so startup problems can be read.
+# Opens the published APK on Android emulators, and tours every screen of
+# a release build with demo data; screenshots and logs are committed to
+# diagnostics/ so problems on real Android can be read.
 on:
   push:
-    paths: [.github/workflows/android-check.yml, tool/android_check.sh]
+    paths:
+      - .github/workflows/android-check.yml
+      - tool/android_check.sh
+      - integration_test/**
   workflow_dispatch:
 
 permissions:
@@ -14,7 +18,7 @@ concurrency:
   group: android-check-${{ github.ref }}
 
 jobs:
-  run:
+  startup:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -33,13 +37,71 @@ jobs:
           api-level: ${{ matrix.api }}
           arch: x86_64
           target: google_apis
+          profile: pixel_6
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          script: bash tool/android_check.sh diagnostics/api-${{ matrix.api }}
+          script: bash tool/android_check.sh diagnostics/startup-api-${{ matrix.api }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: startup-${{ matrix.api }}
+          path: diagnostics
+
+  tour:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        api: [26, 34]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules && sudo udevadm trigger --name-match=kvm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.47.7
+          cache: true
+      - run: flutter pub get
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ matrix.api }}
+          arch: x86_64
+          target: google_apis
+          profile: pixel_6
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          script: |
+            mkdir -p diagnostics/tour-api-${{ matrix.api }}
+            adb logcat -c
+            flutter drive --release --driver=test_driver/integration_test.dart --target=integration_test/app_test.dart --dart-define=DEMO=true > diagnostics/tour-api-${{ matrix.api }}/drive.txt 2>&1; echo "exit $?" >> diagnostics/tour-api-${{ matrix.api }}/drive.txt
+            adb logcat -d -s flutter:V AndroidRuntime:E > diagnostics/tour-api-${{ matrix.api }}/flutter.txt 2>&1 || true
+            if [ -d diagnostics/tour ]; then mv diagnostics/tour/* diagnostics/tour-api-${{ matrix.api }}/; rmdir diagnostics/tour; fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tour-${{ matrix.api }}
+          path: diagnostics
+
+  report:
+    needs: [startup, tour]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
       - name: Commit the results
         run: |
+          rm -rf diagnostics && mkdir diagnostics
+          for d in artifacts/*/; do cp -r "$d"* diagnostics/ 2>/dev/null || true; done
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f diagnostics
-          git commit -m "Android check results (API ${{ matrix.api }})" || exit 0
-          for i in 1 2 3 4 5; do git pull --rebase -q && git push && break; sleep $((RANDOM % 10 + 5)); done
+          git add -A diagnostics
+          git commit -m "Android check results" || exit 0
+          for i in 1 2 3 4 5; do git pull --rebase -q && git push && break; sleep 5; done

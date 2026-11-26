@@ -29,10 +29,18 @@ const _video = bool.fromEnvironment('VIDEO');
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (_video) timeDilation = 2;
-  PrayerTimes.init();
-  await Files.init();
-  await initializeDateFormatting();
-  final store = await AppStore.open();
+  final AppStore store;
+  try {
+    PrayerTimes.init();
+    await Files.init();
+    await initializeDateFormatting();
+    store = await AppStore.open();
+  } catch (e, st) {
+    // Never stay on the launch screen: say what went wrong instead.
+    debugPrint('hayati: startup failed: $e\n$st');
+    runApp(_StartupError('$e'));
+    return;
+  }
   if (_demo && store.data.isEmpty) {
     seedDemo(store.data);
     await store.data.save();
@@ -195,4 +203,47 @@ class ThemeBackground extends StatelessWidget {
       ),
     );
   }
+}
+
+/// Shown when the app can't read its saved data at startup, instead of
+/// staying on the launch screen. Nothing is written, so nothing is lost.
+class _StartupError extends StatelessWidget {
+  const _StartupError(this.error);
+
+  final String error;
+
+  @override
+  Widget build(BuildContext context) => MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: Directionality(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.error_outline, size: 56),
+                const SizedBox(height: 16),
+                const Text(
+                  'حياتي ما قدرش يفتح بياناتك.\nاقفل التطبيق وافتحه تاني، ولو المشكلة فضلت ابعت صورة الشاشة دي لصاحب التطبيق.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 16, height: 1.7),
+                ),
+                const SizedBox(height: 16),
+                SelectableText(
+                  error,
+                  textDirection: TextDirection.ltr,
+                  style: const TextStyle(fontSize: 11, color: Colors.grey),
+                ),
+                const SizedBox(height: 16),
+                FilledButton(onPressed: main, child: const Text('جرّب تاني')),
+              ],
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
 }

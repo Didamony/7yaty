@@ -1,6 +1,0 @@
-Starting: Intent { cmp=com.didamony.hayati/.MainActivity }
-Status: timeout
-LaunchState: UNKNOWN (-1)
-Activity: com.didamony.hayati/.MainActivity
-WaitTime: 10481
-Complete
