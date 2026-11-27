@@ -1,0 +1,641 @@
+--------- beginning of main
+11-27 03:04:50.916  4238  4238 W EasBundling: in EasBundling.init, isBundlingEnabled=true
+11-27 03:04:51.151  1654  2447 W zygote64: Long monitor contention with owner PackageManager (1694) at int com.android.server.am.ActivityManagerService.broadcastIntent(android.app.IApplicationThread, android.content.Intent, java.lang.String, android.content.IIntentReceiver, int, java.lang.String, android.os.Bundle, java.lang.String[], int, android.os.Bundle, boolean, boolean, int)(ActivityManagerService.java:19705) waiters=3 in void com.android.server.am.ActivityManagerService.serviceDoneExecuting(android.os.IBinder, int, int, int) for 150ms
+11-27 03:04:51.153  1654  2030 W zygote64: Long monitor contention with owner ActivityManager (1682) at void com.android.server.am.BroadcastQueue.processNextBroadcast(boolean)(BroadcastQueue.java:821) waiters=4 in android.content.ComponentName com.android.server.am.ActivityManagerService.startService(android.app.IApplicationThread, android.content.Intent, java.lang.String, boolean, java.lang.String, int) for 150ms
+11-27 03:04:51.154  1654  4243 W zygote64: Long monitor contention with owner ActivityManager (1682) at void com.android.server.am.BroadcastQueue.processNextBroadcast(boolean)(BroadcastQueue.java:821) waiters=4 in android.content.ComponentName com.android.server.am.ActivityManagerService.startService(android.app.IApplicationThread, android.content.Intent, java.lang.String, boolean, java.lang.String, int) for 150ms
+11-27 03:04:51.155  1654  1681 W zygote64: Long monitor contention with owner ActivityManager (1682) at void com.android.server.am.BroadcastQueue.processNextBroadcast(boolean)(BroadcastQueue.java:821) waiters=7 in int com.android.server.am.ActivityManagerService.broadcastIntent(android.app.IApplicationThread, android.content.Intent, java.lang.String, android.content.IIntentReceiver, int, java.lang.String, android.os.Bundle, java.lang.String[], int, android.os.Bundle, boolean, boolean, int) for 147ms
+11-27 03:04:51.208  1775  1775 W SystemServiceRegistry: No service published for: persistent_data_block
+11-27 03:04:51.291  4238  4269 W irr     : START TRACE Inbox first results loaded <ecfb0b5d89ff4371000001a21af67d5b>@65192.91113
+11-27 03:04:51.331  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0203f6
+11-27 03:04:51.331  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f13080c
+11-27 03:04:51.331  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0203f8
+11-27 03:04:51.331  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f13086b
+11-27 03:04:51.331  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0203fa
+11-27 03:04:51.340  4238  4238 W GAV2    : Thread[main,5,main]: Need to call initialize() and be in fallback mode to start dispatch.
+11-27 03:04:51.331  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f1308b0
+11-27 03:04:51.483  1654  1654 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-27 03:04:51.483  1654  1654 W Binder  : java.lang.Throwable
+11-27 03:04:51.483  1654  1654 W Binder  : 	at android.os.BinderProxy.transact(Binder.java:736)
+11-27 03:04:51.483  1654  1654 W Binder  : 	at com.android.internal.backup.IBackupTransport$Stub$Proxy.name(IBackupTransport.java:369)
+11-27 03:04:51.483  1654  1654 W Binder  : 	at com.android.server.backup.TransportManager$TransportConnection.onServiceConnected(TransportManager.java:339)
+11-27 03:04:51.483  1654  1654 W Binder  : 	at android.app.LoadedApk$ServiceDispatcher.doConnected(LoadedApk.java:1634)
+11-27 03:04:51.483  1654  1654 W Binder  : 	at android.app.LoadedApk$ServiceDispatcher$RunConnection.run(LoadedApk.java:1663)
+11-27 03:04:51.483  1654  1654 W Binder  : 	at android.os.Handler.handleCallback(Handler.java:789)
+11-27 03:04:51.483  1654  1654 W Binder  : 	at android.os.Handler.dispatchMessage(Handler.java:98)
+11-27 03:04:51.483  1654  1654 W Binder  : 	at android.os.Looper.loop(Looper.java:164)
+11-27 03:04:51.483  1654  1654 W Binder  : 	at com.android.server.SystemServer.run(SystemServer.java:421)
+11-27 03:04:51.483  1654  1654 W Binder  : 	at com.android.server.SystemServer.main(SystemServer.java:260)
+11-27 03:04:51.483  1654  1654 W Binder  : 	at java.lang.reflect.Method.invoke(Native Method)
+11-27 03:04:51.483  1654  1654 W Binder  : 	at com.android.internal.os.Zygote$MethodAndArgsCaller.run(Zygote.java:240)
+11-27 03:04:51.483  1654  1654 W Binder  : 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:767)
+11-27 03:04:51.830  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f02011d
+11-27 03:04:51.832  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f12032d
+11-27 03:04:51.832  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f12032d
+11-27 03:04:51.832  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f12032c
+11-27 03:04:52.051  1775  2533 W GCM     : Unexpected forwarded intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.didamony.hayati flg=0x4000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) }
+11-27 03:04:52.053  1775  4194 W GCM     : Unexpected forwarded intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.didamony.hayati flg=0x4000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) }
+11-27 03:04:52.085  4301  4301 W zygote64: Unexpected CPU variant for X86 using defaults: x86_64
+11-27 03:04:52.101  2178  2591 E GmsClient: unable to connect to service: com.google.android.gms.auth.key.retrieval.service.START on com.google.android.gms
+11-27 03:04:52.304  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f020078
+11-27 03:04:52.304  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f100262
+11-27 03:04:52.462  2572  2817 W ErrorReporter: reportError [type: 211, code: 524300]: Error reading from input stream
+11-27 03:04:52.462  2572  2817 W ErrorProcessor: onFatalError, processing error from engine(4)
+11-27 03:04:52.462  2572  2817 W ErrorProcessor: com.google.android.apps.gsa.shared.speech.b.g: Error reading from input stream
+11-27 03:04:52.462  2572  2817 W ErrorProcessor: 	at com.google.android.apps.gsa.staticplugins.recognizer.j.a.a(SourceFile:28)
+11-27 03:04:52.462  2572  2817 W ErrorProcessor: 	at com.google.android.apps.gsa.staticplugins.recognizer.j.b.run(SourceFile:15)
+11-27 03:04:52.462  2572  2817 W ErrorProcessor: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:457)
+11-27 03:04:52.462  2572  2817 W ErrorProcessor: 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+11-27 03:04:52.462  2572  2817 W ErrorProcessor: 	at com.google.android.apps.gsa.shared.util.concurrent.a.ax.run(SourceFile:14)
+11-27 03:04:52.462  2572  2817 W ErrorProcessor: 	at com.google.android.apps.gsa.shared.util.concurrent.a.bl.run(SourceFile:4)
+11-27 03:04:52.462  2572  2817 W ErrorProcessor: 	at com.google.android.apps.gsa.shared.util.concurrent.a.bl.run(SourceFile:4)
+11-27 03:04:52.462  2572  2817 W ErrorProcessor: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+11-27 03:04:52.462  2572  2817 W ErrorProcessor: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+11-27 03:04:52.462  2572  2817 W ErrorProcessor: 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:04:52.462  2572  2817 W ErrorProcessor: 	at com.google.android.apps.gsa.shared.util.concurrent.a.ai.run(SourceFile:6)
+11-27 03:04:52.462  2572  2817 W ErrorProcessor: Caused by: com.google.android.apps.gsa.shared.exception.GsaIOException: Error code: 393238 | Buffer overflow, no available space.
+11-27 03:04:52.462  2572  2817 W ErrorProcessor: 	at com.google.android.apps.gsa.speech.audio.Tee.f(SourceFile:103)
+11-27 03:04:52.462  2572  2817 W ErrorProcessor: 	at com.google.android.apps.gsa.speech.audio.au.read(SourceFile:2)
+11-27 03:04:52.462  2572  2817 W ErrorProcessor: 	at java.io.InputStream.read(InputStream.java:101)
+11-27 03:04:52.462  2572  2817 W ErrorProcessor: 	at com.google.android.apps.gsa.speech.audio.ao.run(SourceFile:18)
+11-27 03:04:52.462  2572  2817 W ErrorProcessor: 	at com.google.android.apps.gsa.speech.audio.an.run(SourceFile:2)
+11-27 03:04:52.462  2572  2817 W ErrorProcessor: 	... 9 more
+11-27 03:04:52.583  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0200ea
+11-27 03:04:52.583  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0c02b0
+11-27 03:04:52.583  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0c02ad
+11-27 03:04:52.583  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0200eb
+11-27 03:04:52.583  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0c02b1
+11-27 03:04:52.583  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0c02ae
+11-27 03:04:52.583  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0200ec
+11-27 03:04:52.583  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0c02b2
+11-27 03:04:52.583  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0c02af
+11-27 03:04:52.591  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f02014c
+11-27 03:04:52.591  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f110426
+11-27 03:04:52.591  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f110427
+11-27 03:04:52.592  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f02014d
+11-27 03:04:52.592  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f110428
+11-27 03:04:52.592  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f110429
+11-27 03:04:52.642  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f080128
+11-27 03:04:52.642  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f120dcc
+11-27 03:04:52.642  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f080127
+11-27 03:04:52.642  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f1203c5
+11-27 03:04:52.642  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f080126
+11-27 03:04:52.642  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f12084e
+11-27 03:04:52.712  2178  2505 E Icing   : Aborting indexing of corpus movies
+11-27 03:04:52.717  2178  2505 E Icing   : Aborting indexing of corpus shows
+11-27 03:04:52.769  1654  1681 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-27 03:04:52.769  1654  1681 W Binder  : java.lang.Throwable
+11-27 03:04:52.769  1654  1681 W Binder  : 	at android.os.BinderProxy.transact(Binder.java:736)
+11-27 03:04:52.769  1654  1681 W Binder  : 	at com.android.internal.location.ILocationProvider$Stub$Proxy.getProperties(ILocationProvider.java:232)
+11-27 03:04:52.769  1654  1681 W Binder  : 	at com.android.server.location.LocationProviderProxy$1.run(LocationProviderProxy.java:119)
+11-27 03:04:52.769  1654  1681 W Binder  : 	at android.os.Handler.handleCallback(Handler.java:789)
+11-27 03:04:52.769  1654  1681 W Binder  : 	at android.os.Handler.dispatchMessage(Handler.java:98)
+11-27 03:04:52.769  1654  1681 W Binder  : 	at android.os.Looper.loop(Looper.java:164)
+11-27 03:04:52.769  1654  1681 W Binder  : 	at android.os.HandlerThread.run(HandlerThread.java:65)
+11-27 03:04:52.790  1654  1681 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-27 03:04:52.790  1654  1681 W Binder  : java.lang.Throwable
+11-27 03:04:52.790  1654  1681 W Binder  : 	at android.os.BinderProxy.transact(Binder.java:736)
+11-27 03:04:52.790  1654  1681 W Binder  : 	at com.android.internal.location.ILocationProvider$Stub$Proxy.getProperties(ILocationProvider.java:232)
+11-27 03:04:52.790  1654  1681 W Binder  : 	at com.android.server.location.LocationProviderProxy$1.run(LocationProviderProxy.java:119)
+11-27 03:04:52.790  1654  1681 W Binder  : 	at android.os.Handler.handleCallback(Handler.java:789)
+11-27 03:04:52.790  1654  1681 W Binder  : 	at android.os.Handler.dispatchMessage(Handler.java:98)
+11-27 03:04:52.790  1654  1681 W Binder  : 	at android.os.Looper.loop(Looper.java:164)
+11-27 03:04:52.790  1654  1681 W Binder  : 	at android.os.HandlerThread.run(HandlerThread.java:65)
+11-27 03:04:53.544  2572  2695 W NamedFutures: Timeout future task has been cancelled: 10000 milliseconds
+11-27 03:04:53.545  2572  2572 E SearchServiceStarter: Task 174 failed or timed out. Client 11313571375218168 disconnecting from SearchService!
+11-27 03:04:53.545  2572  2572 E SearchServiceStarter: java.util.concurrent.CancellationException: Task was cancelled.
+11-27 03:04:53.545  2572  2572 E SearchServiceStarter: 	at com.google.common.util.concurrent.d.ct(SourceFile:75)
+11-27 03:04:53.545  2572  2572 E SearchServiceStarter: 	at com.google.common.util.concurrent.d.get(SourceFile:57)
+11-27 03:04:53.545  2572  2572 E SearchServiceStarter: 	at com.google.common.util.concurrent.cg.n(SourceFile:2)
+11-27 03:04:53.545  2572  2572 E SearchServiceStarter: 	at com.google.common.util.concurrent.av.l(SourceFile:50)
+11-27 03:04:53.545  2572  2572 E SearchServiceStarter: 	at com.google.common.util.concurrent.ax.run(SourceFile:5)
+11-27 03:04:53.545  2572  2572 E SearchServiceStarter: 	at com.google.android.apps.gsa.shared.util.concurrent.a.bc.run(SourceFile:2)
+11-27 03:04:53.545  2572  2572 E SearchServiceStarter: 	at android.os.Handler.handleCallback(Handler.java:789)
+11-27 03:04:53.545  2572  2572 E SearchServiceStarter: 	at android.os.Handler.dispatchMessage(Handler.java:98)
+11-27 03:04:53.545  2572  2572 E SearchServiceStarter: 	at android.os.Looper.loop(Looper.java:164)
+11-27 03:04:53.545  2572  2572 E SearchServiceStarter: 	at android.app.ActivityThread.main(ActivityThread.java:6541)
+11-27 03:04:53.545  2572  2572 E SearchServiceStarter: 	at java.lang.reflect.Method.invoke(Native Method)
+11-27 03:04:53.545  2572  2572 E SearchServiceStarter: 	at com.android.internal.os.Zygote$MethodAndArgsCaller.run(Zygote.java:240)
+11-27 03:04:53.545  2572  2572 E SearchServiceStarter: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:767)
+11-27 03:04:53.548  1654  1681 E memtrack: Couldn't load memtrack module
+11-27 03:04:53.548  1654  1681 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:04:53.558  2178  4295 W MDM     : [270] agll.c: Device admin action is a no-op. Action: true
+11-27 03:04:53.597  2178  4295 E PhenotypeRegOp: Attempting to overwrite config package for com.google.android.gms.car [CONTEXT service_id=231 ]
+11-27 03:04:53.605  2178  4295 E PhenotypeRegOp: Attempting to overwrite config package for com.google.android.gms.games [CONTEXT service_id=231 ]
+11-27 03:04:53.606  2178  4295 E PhenotypeRegOp: Attempting to overwrite config package for com.google.android.gms.mobile_data_plan [CONTEXT service_id=231 ]
+11-27 03:04:53.606  2178  4295 E PhenotypeRegOp: Attempting to overwrite config package for com.google.android.gms.signin [CONTEXT service_id=231 ]
+11-27 03:04:53.606  2178  4295 E PhenotypeRegOp: Attempting to overwrite config package for com.google.android.gms.udc [CONTEXT service_id=231 ]
+--------- beginning of system
+11-27 03:04:53.847  1654  3661 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.auth.key.retrieval.service.START pkg=com.google.android.gms } U=0: not found
+11-27 03:04:53.852  1654  3661 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@cf80237
+11-27 03:04:53.853  2178  2591 E GmsClient: unable to connect to service: com.google.android.gms.auth.key.retrieval.service.START on com.google.android.gms
+11-27 03:04:53.977  2178  3498 W MobileDataHub: [Service] appsupload-periodic periodic task disabled
+11-27 03:04:54.074  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0200ea
+11-27 03:04:54.074  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0c02b0
+11-27 03:04:54.074  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0c02ad
+11-27 03:04:54.074  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0200eb
+11-27 03:04:54.075  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0c02b1
+11-27 03:04:54.075  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0c02ae
+11-27 03:04:54.075  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0200ec
+11-27 03:04:54.075  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0c02b2
+11-27 03:04:54.075  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0c02af
+11-27 03:04:54.139  1654  2452 W ContentService: Found dead observer, removing
+11-27 03:04:54.167  1654  1754 E ConnectivityService: RemoteException caught trying to send a callback msg for NetworkRequest [ LISTEN id=8, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&FOREGROUND] ]
+11-27 03:04:54.197  1654  1683 W Looper  : Dispatch took 125ms on android.ui, h=Handler (com.android.server.am.ActivityManagerService$UiHandler) {cd75a18} cb=null msg=53
+11-27 03:04:54.290  2178  4296 W PrereqChecker: CPU ABIs [x86_64, ] are not supported.
+11-27 03:04:54.306  1775  2339 W zygote64: Long monitor contention with owner netscheduler-queue-handler (3046) at int aqtk.a(aqte, aauy)(:com.google.android.gms@202414023@20.24.14 (040800-319035315):88) waiters=0 in void aqtk.a(aqqo, int) for 149ms
+11-27 03:04:54.328  4338  4338 W zygote  : Unexpected CPU variant for X86 using defaults: x86_64
+11-27 03:04:54.358  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f02034e
+11-27 03:04:54.358  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f1104dc
+11-27 03:04:54.358  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0203e7
+11-27 03:04:54.358  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f110d3d
+11-27 03:04:54.435  1775  1775 E NetworkScheduler.ATC: Called cancelTask for already completed task com.google.android.videos/.service.drm.RefreshLicenseTaskService{u=0 tag="refresh_license_forced" trigger=window{start=0s,end=1s,earliest=0s,latest=0s} requirements=[NET_CONNECTED] attributes=[] scheduled=0s last_run=0s jid=N/A status=PENDING retries=0 client_lib=MANCHEGO_GCM-10400000} :5 [CONTEXT service_id=218 ]
+11-27 03:04:54.456  1775  2339 W NetworkScheduler: Immediate task was not started com.google.android.videos/.service.drm.RefreshLicenseTaskService{u=0 tag="refresh_license_forced" trigger=window{start=0s,end=1s,earliest=0s,latest=0s} requirements=[NET_CONNECTED] attributes=[] scheduled=0s last_run=N/A jid=N/A status=PENDING retries=0 client_lib=MANCHEGO_GCM-10400000}. Rescheduling immediate tasks can cause excessive battery drain.
+11-27 03:04:54.461  1654  2450 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:04:54.462  1654  1682 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:04:54.545  1654  1789 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.auth.key.retrieval.service.START pkg=com.google.android.gms } U=0: not found
+11-27 03:04:54.545  1654  4292 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@798ff5f
+11-27 03:04:54.545  2178  2591 E GmsClient: unable to connect to service: com.google.android.gms.auth.key.retrieval.service.START on com.google.android.gms
+11-27 03:04:54.648  2178  4189 W MobileDataHub: [Service] appsupload-periodic periodic task disabled
+11-27 03:04:54.689  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0203f6
+11-27 03:04:54.689  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f13080c
+11-27 03:04:54.689  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0203f8
+11-27 03:04:54.689  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f13086b
+11-27 03:04:54.689  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f0203fa
+11-27 03:04:54.689  1654  1681 W ResourceType: No known package when getting value for resource number 0x7f1308b0
+11-27 03:04:54.708  2178  2395 W PrereqChecker: CPU ABIs [x86_64, ] are not supported.
+11-27 03:04:54.761  1654  2452 W ActivityManager: Unable to start service Intent { act=com.android.vending.contentfilters.IContentFiltersService.BIND pkg=com.android.vending } U=0: not found
+11-27 03:04:54.819  1654  2448 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:04:54.820  1654  1682 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:04:54.827  1654  2452 W ActivityManager: Background start not allowed: service Intent { cmp=com.google.android.videos/.service.pinning.TransferService (has extras) } to com.google.android.videos/.service.pinning.TransferService from pid=4338 uid=10071 pkg=com.google.android.videos
+11-27 03:04:54.939  1654  4158 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:04:54.940  1654  1682 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:04:54.959  1775  2350 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:04:54.959  1775  2350 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:04:54.959  1775  2350 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:04:55.077  1654  4166 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.didamony.hayati flg=0x4000010 (has extras) } to com.google.android.gms/.games.chimera.GamesSystemBroadcastReceiverProxy
+11-27 03:04:55.078  1654  1682 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.didamony.hayati flg=0x4000010 (has extras) } to com.google.android.gms/.gass.chimera.PackageChangeBroadcastReceiver
+11-27 03:04:55.078  1654  1682 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.didamony.hayati flg=0x4000010 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:04:55.078  1654  1682 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.didamony.hayati flg=0x4000010 (has extras) } to com.google.android.googlequicksearchbox/com.google.android.apps.gsa.googlequicksearchbox.GelStubAppWatcher
+11-27 03:04:55.087  1654  2452 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:04:55.087  1654  1682 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:04:55.211  1775  2350 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:04:55.217  1775  2350 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:04:55.224  1775  2350 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:04:55.541  4398  4398 W zygote64: Unexpected CPU variant for X86 using defaults: x86_64
+11-27 03:04:55.813  1654  2452 W ActivityManager: Unable to start service Intent { act=com.google.android.c2dm.intent.REGISTRATION pkg=com.google.android.apps.maps } U=0: not found
+11-27 03:04:55.864  1775  2533 W aorp    : Committing snapshot for com.google.android.gms.settings.platform failed [CONTEXT service_id=204 ]
+11-27 03:04:55.864  1775  2533 W aorp    : java.util.concurrent.TimeoutException: Timed out waiting for Task
+11-27 03:04:55.864  1775  2533 W aorp    : 	at avmp.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):22)
+11-27 03:04:55.864  1775  2533 W aorp    : 	at aorp.b(:com.google.android.gms@202414023@20.24.14 (040800-319035315):20)
+11-27 03:04:55.864  1775  2533 W aorp    : 	at aorp.b(:com.google.android.gms@202414023@20.24.14 (040800-319035315):18)
+11-27 03:04:55.864  1775  2533 W aorp    : 	at aorp.d(:com.google.android.gms@202414023@20.24.14 (040800-319035315):5)
+11-27 03:04:55.864  1775  2533 W aorp    : 	at aorp.c(:com.google.android.gms@202414023@20.24.14 (040800-319035315):18)
+11-27 03:04:55.864  1775  2533 W aorp    : 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):15)
+11-27 03:04:55.864  1775  2533 W aorp    : 	at com.google.android.gms.platformconfigurator.PhenotypeConfigurationUpdateListener.onHandleIntent(:com.google.android.gms@202414023@20.24.14 (040800-319035315):9)
+11-27 03:04:55.864  1775  2533 W aorp    : 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:04:55.864  1775  2533 W aorp    : 	at qlx.onHandleIntent(:com.google.android.gms@202414023@20.24.14 (040800-319035315):4)
+11-27 03:04:55.864  1775  2533 W aorp    : 	at cuo.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):5)
+11-27 03:04:55.864  1775  2533 W aorp    : 	at cun.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):10)
+11-27 03:04:55.864  1775  2533 W aorp    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+11-27 03:04:55.864  1775  2533 W aorp    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+11-27 03:04:55.864  1775  2533 W aorp    : 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:04:55.909  2178  2394 E MS_DownloadManager: Unsupported Matchstick Download Type: 
+11-27 03:04:55.909  2178  2394 E MS_DownloadManager: Failed to get download uri for unsupported Matchstick download type: 
+11-27 03:04:55.934  4398  4418 W aygd    : copyMemory is missing from platform - proto runtime falling back to safer methods.
+11-27 03:04:56.144  4429  4429 W zygote64: Unexpected CPU variant for X86 using defaults: x86_64
+11-27 03:04:56.201  4429  4448 W YouTube : Fetching the Gservices key 'disable_binder_callback_flush' before the end of the bulk initialization
+11-27 03:04:56.202  4429  4453 W YouTube : Fetching the Gservices key 'failsafe_clear_cache_release_13_02' before the end of the bulk initialization
+11-27 03:04:56.216  4429  4459 W YouTube : Fetching the Gservices key 'disable_native_cronet' before the end of the bulk initialization
+11-27 03:04:56.269  4429  4453 E GEL_DELAYED_EVENT_DEBUG: Failed delayed event dispatch, no dispatchers.
+11-27 03:04:56.326  1654  1682 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:04:56.327  1654  1682 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:04:56.392  4429  4450 W zygote64: Skipping duplicate class check due to unrecognized classloader
+11-27 03:04:56.538  4429  4493 E FirebaseInstanceId: Token retrieval failed: INVALID_SENDER
+11-27 03:04:56.543  4429  4450 W zygote64: Skipping duplicate class check due to unrecognized classloader
+11-27 03:04:56.715  4429  4450 W zygote64: Skipping duplicate class check due to unrecognized classloader
+11-27 03:04:56.804  1654  1681 E memtrack: Couldn't load memtrack module
+11-27 03:04:56.804  1654  1681 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:04:56.931  4558  4558 W zygote64: Unexpected CPU variant for X86 using defaults: x86_64
+11-27 03:04:56.982  4558  4558 W FirebaseApp: Default FirebaseApp failed to initialize because no default options were found. This usually means that com.google.gms:google-services was not applied to your gradle project.
+11-27 03:04:57.084  4558  4558 W didamony.hayati: type=1400 audit(0.0:38): avc: denied { read } for name="max_map_count" dev="proc" ino=35729 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=file permissive=0
+11-27 03:04:57.230  1403  1736 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-27 03:04:57.296  2572  2695 E SQLiteLog: (1) no such table: blob_table
+11-27 03:04:57.308  2572  2695 E ContentStoreEUAS: Failed to commit the deferred actions
+11-27 03:04:57.433  4429  4470 W zygote64: Long monitor contention with owner initCrit2-1 (4450) at void java.lang.Object.wait(long, int)(Object.java:-2) waiters=0 in java.lang.String vhv.c() for 656ms
+11-27 03:04:57.444  1654  1681 E memtrack: Couldn't load memtrack module
+11-27 03:04:57.444  1654  1681 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:04:57.611  4429  4522 E YouTube : Failed to fetch offline library browse
+11-27 03:04:57.611  4429  4522 E YouTube : aahl: java.util.concurrent.ExecutionException: xpy: Precondition check failed.
+11-27 03:04:57.611  4429  4522 E YouTube : 	at aajf.a(SourceFile:25)
+11-27 03:04:57.611  4429  4522 E YouTube : 	at dys.a(SourceFile:11)
+11-27 03:04:57.611  4429  4522 E YouTube : 	at wsr.a(SourceFile:7)
+11-27 03:04:57.611  4429  4522 E YouTube : 	at com.google.android.libraries.youtube.common.gcm.YouTubeGcmTaskService.a(SourceFile:18)
+11-27 03:04:57.611  4429  4522 E YouTube : 	at com.google.android.libraries.youtube.common.gcore.gcoreclient.gcm.impl.GcmTaskServiceDelegator.a(SourceFile:11)
+11-27 03:04:57.611  4429  4522 E YouTube : 	at qbk.run(SourceFile:18)
+11-27 03:04:57.611  4429  4522 E YouTube : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+11-27 03:04:57.611  4429  4522 E YouTube : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+11-27 03:04:57.611  4429  4522 E YouTube : 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:04:57.611  4429  4522 E YouTube : Caused by: java.util.concurrent.ExecutionException: xpy: Precondition check failed.
+11-27 03:04:57.611  4429  4522 E YouTube : 	at anki.b(SourceFile:105)
+11-27 03:04:57.611  4429  4522 E YouTube : 	at anki.get(SourceFile:92)
+11-27 03:04:57.611  4429  4522 E YouTube : 	at aajf.a(SourceFile:24)
+11-27 03:04:57.611  4429  4522 E YouTube : 	... 8 more
+11-27 03:04:57.611  4429  4522 E YouTube : Caused by: xpy: Precondition check failed.
+11-27 03:04:57.611  4429  4522 E YouTube : 	at aagf.a(SourceFile:7)
+11-27 03:04:57.611  4429  4522 E YouTube : 	at xft.a(SourceFile:136)
+11-27 03:04:57.611  4429  4522 E YouTube : 	at xft.a(SourceFile:169)
+11-27 03:04:57.611  4429  4522 E YouTube : 	at xew.run(Unknown Source:1)
+11-27 03:04:57.611  4429  4522 E YouTube : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+11-27 03:04:57.611  4429  4522 E YouTube : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+11-27 03:04:57.611  4429  4522 E YouTube : 	at wvf.run(SourceFile:12)
+11-27 03:04:57.611  4429  4522 E YouTube : 	... 1 more
+11-27 03:04:57.611  4429  4522 E YouTube : Caused by: boa
+11-27 03:04:57.611  4429  4522 E YouTube : 	at xft.a(SourceFile:166)
+11-27 03:04:57.611  4429  4522 E YouTube : 	... 5 more
+11-27 03:04:57.922  1775  2715 W Nearby  : Failed attempt #3 out of 3 for RestoreDeviceName [CONTEXT service_id=49 ]
+11-27 03:04:57.922  1775  2715 W Nearby  : java.lang.IllegalStateException: BluetoothAdapter not ready yet!
+11-27 03:04:57.922  1775  2715 W Nearby  : 	at ajpy.d(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:04:57.922  1775  2715 W Nearby  : 	at ajpx.run(Unknown Source:0)
+11-27 03:04:57.922  1775  2715 W Nearby  : 	at bwuj.call(Unknown Source:0)
+11-27 03:04:57.922  1775  2715 W Nearby  : 	at bwuo.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:04:57.922  1775  2715 W Nearby  : 	at bwuo.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):9)
+11-27 03:04:57.922  1775  2715 W Nearby  : 	at ajpw.run(Unknown Source:0)
+11-27 03:04:57.922  1775  2715 W Nearby  : 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:04:57.922  1775  2715 W Nearby  : 	at sow.run(Unknown Source:0)
+11-27 03:04:57.922  1775  2715 W Nearby  : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+11-27 03:04:57.922  1775  2715 W Nearby  : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+11-27 03:04:57.922  1775  2715 W Nearby  : 	at sux.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:04:57.922  1775  2715 W Nearby  : 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:04:58.018  1775  2339 W NetworkScheduler: Immediate task was not started com.google.android.youtube/com.google.android.libraries.youtube.common.gcore.gcoreclient.gcm.impl.GcmTaskServiceDelegator{u=0 tag="offline_library_browse_fetch" trigger=window{start=0s,end=1s,earliest=-1s,latest=0s} requirements=[NET_CONNECTED] attributes=[PERSISTED] scheduled=-1s last_run=N/A jid=N/A status=PENDING retries=0 client_lib=MANCHEGO_GCM-13280000}. Rescheduling immediate tasks can cause excessive battery drain.
+11-27 03:04:58.837  1654  1682 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:04:58.838  1654  1682 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:04:58.912  1775  2714 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:04:58.912  1775  2714 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:04:58.912  1775  2714 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:04:58.971  1775  2714 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:04:58.971  1775  2714 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:04:58.971  1775  2714 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:04:59.153  1654  4639 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-27 03:04:59.153  1654  4639 W Binder  : java.lang.Throwable
+11-27 03:04:59.153  1654  4639 W Binder  : 	at android.os.BinderProxy.transact(Binder.java:736)
+11-27 03:04:59.153  1654  4639 W Binder  : 	at android.content.ContentProviderProxy.openTypedAssetFile(ContentProviderNative.java:696)
+11-27 03:04:59.153  1654  4639 W Binder  : 	at android.content.ContentResolver.openTypedAssetFileDescriptor(ContentResolver.java:1410)
+11-27 03:04:59.153  1654  4639 W Binder  : 	at android.content.ContentResolver.openAssetFileDescriptor(ContentResolver.java:1247)
+11-27 03:04:59.153  1654  4639 W Binder  : 	at android.content.ContentResolver.openInputStream(ContentResolver.java:967)
+11-27 03:04:59.153  1654  4639 W Binder  : 	at com.android.server.updates.ConfigUpdateInstallReceiver.getAltContent(ConfigUpdateInstallReceiver.java:135)
+11-27 03:04:59.153  1654  4639 W Binder  : 	at com.android.server.updates.ConfigUpdateInstallReceiver.-wrap1(Unknown Source:0)
+11-27 03:04:59.153  1654  4639 W Binder  : 	at com.android.server.updates.ConfigUpdateInstallReceiver$1.run(ConfigUpdateInstallReceiver.java:65)
+11-27 03:04:59.245  1403  1403 W SurfaceFlinger: couldn't log to binary event log: overflow.
+11-27 03:04:59.245  1403  1403 W SurfaceFlinger: couldn't log to binary event log: overflow.
+11-27 03:04:59.370  2572  2572 W SearchService: Abort, client detached.
+11-27 03:04:59.371  2572  2572 W SearchService: Abort, client detached.
+11-27 03:04:59.617  2178  4296 E MDM     : [271] agll.a: No Google accounts; deferring server state update.
+11-27 03:04:59.965  1775  3215 W zygote64: Long monitor contention with owner netscheduler-queue-handler (3046) at int aqtk.a(aqte, aauy)(:com.google.android.gms@202414023@20.24.14 (040800-319035315):88) waiters=0 in void aqtk.a(aqqo, int) for 284ms
+11-27 03:05:00.234  2866  2886 W zygote64: Suspending all threads took: 27.225ms
+11-27 03:05:00.309  1775  2715 W GLSUser : [AppCertManager] Failed to get security token.
+11-27 03:05:00.309  1775  2715 W GLSUser : java.io.IOException: Invalid scope
+11-27 03:05:00.309  1775  2715 W GLSUser : 	at adiw.b(:com.google.android.gms@202414023@20.24.14 (040800-319035315):23)
+11-27 03:05:00.309  1775  2715 W GLSUser : 	at adiw.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):18)
+11-27 03:05:00.309  1775  2715 W GLSUser : 	at adiw.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):11)
+11-27 03:05:00.309  1775  2715 W GLSUser : 	at hwy.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):17)
+11-27 03:05:00.309  1775  2715 W GLSUser : 	at hww.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):45)
+11-27 03:05:00.309  1775  2715 W GLSUser : 	at hwr.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:05:00.309  1775  2715 W GLSUser : 	at hwu.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):10)
+11-27 03:05:00.309  1775  2715 W GLSUser : 	at gbi.call(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:05:00.309  1775  2715 W GLSUser : 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+11-27 03:05:00.309  1775  2715 W GLSUser : 	at soy.b(:com.google.android.gms@202414023@20.24.14 (040800-319035315):12)
+11-27 03:05:00.309  1775  2715 W GLSUser : 	at soy.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):7)
+11-27 03:05:00.309  1775  2715 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+11-27 03:05:00.309  1775  2715 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+11-27 03:05:00.309  1775  2715 W GLSUser : 	at sux.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:05:00.309  1775  2715 W GLSUser : 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:05:00.436  1775  2715 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:05:00.436  1775  2715 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:05:00.436  1775  2715 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:05:00.439  1654  1772 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+11-27 03:05:00.539  1775  2715 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:05:00.539  1775  2715 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:05:00.539  1775  2715 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:05:00.636  1775  2715 W GLSUser : [AppCertManager] IOException while requesting key: 
+11-27 03:05:00.636  1775  2715 W GLSUser : java.io.IOException: Invalid device key response.
+11-27 03:05:00.636  1775  2715 W GLSUser : 	at hwy.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):49)
+11-27 03:05:00.636  1775  2715 W GLSUser : 	at hww.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):45)
+11-27 03:05:00.636  1775  2715 W GLSUser : 	at hwr.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:05:00.636  1775  2715 W GLSUser : 	at hwu.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):10)
+11-27 03:05:00.636  1775  2715 W GLSUser : 	at gbi.call(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:05:00.636  1775  2715 W GLSUser : 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+11-27 03:05:00.636  1775  2715 W GLSUser : 	at soy.b(:com.google.android.gms@202414023@20.24.14 (040800-319035315):12)
+11-27 03:05:00.636  1775  2715 W GLSUser : 	at soy.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):7)
+11-27 03:05:00.636  1775  2715 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+11-27 03:05:00.636  1775  2715 W GLSUser : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+11-27 03:05:00.636  1775  2715 W GLSUser : 	at sux.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:05:00.636  1775  2715 W GLSUser : 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:05:00.783  4429  4653 E YouTube : Failed to fetch offline library browse
+11-27 03:05:00.783  4429  4653 E YouTube : aahl: java.util.concurrent.ExecutionException: xpy: Precondition check failed.
+11-27 03:05:00.783  4429  4653 E YouTube : 	at aajf.a(SourceFile:25)
+11-27 03:05:00.783  4429  4653 E YouTube : 	at dys.a(SourceFile:11)
+11-27 03:05:00.783  4429  4653 E YouTube : 	at wsr.a(SourceFile:7)
+11-27 03:05:00.783  4429  4653 E YouTube : 	at com.google.android.libraries.youtube.common.gcm.YouTubeGcmTaskService.a(SourceFile:18)
+11-27 03:05:00.783  4429  4653 E YouTube : 	at com.google.android.libraries.youtube.common.gcore.gcoreclient.gcm.impl.GcmTaskServiceDelegator.a(SourceFile:11)
+11-27 03:05:00.783  4429  4653 E YouTube : 	at qbk.run(SourceFile:18)
+11-27 03:05:00.783  4429  4653 E YouTube : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+11-27 03:05:00.783  4429  4653 E YouTube : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+11-27 03:05:00.783  4429  4653 E YouTube : 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:05:00.783  4429  4653 E YouTube : Caused by: java.util.concurrent.ExecutionException: xpy: Precondition check failed.
+11-27 03:05:00.783  4429  4653 E YouTube : 	at anki.b(SourceFile:105)
+11-27 03:05:00.783  4429  4653 E YouTube : 	at anki.get(SourceFile:92)
+11-27 03:05:00.783  4429  4653 E YouTube : 	at aajf.a(SourceFile:24)
+11-27 03:05:00.783  4429  4653 E YouTube : 	... 8 more
+11-27 03:05:00.783  4429  4653 E YouTube : Caused by: xpy: Precondition check failed.
+11-27 03:05:00.783  4429  4653 E YouTube : 	at aagf.a(SourceFile:7)
+11-27 03:05:00.783  4429  4653 E YouTube : 	at xft.a(SourceFile:136)
+11-27 03:05:00.783  4429  4653 E YouTube : 	at xft.a(SourceFile:169)
+11-27 03:05:00.783  4429  4653 E YouTube : 	at xew.run(Unknown Source:1)
+11-27 03:05:00.783  4429  4653 E YouTube : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+11-27 03:05:00.783  4429  4653 E YouTube : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+11-27 03:05:00.783  4429  4653 E YouTube : 	at wvf.run(SourceFile:12)
+11-27 03:05:00.783  4429  4653 E YouTube : 	... 1 more
+11-27 03:05:00.783  4429  4653 E YouTube : Caused by: boa
+11-27 03:05:00.783  4429  4653 E YouTube : 	at xft.a(SourceFile:166)
+11-27 03:05:00.783  4429  4653 E YouTube : 	... 5 more
+11-27 03:05:01.317  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.332  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.332  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.333  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.430  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.437  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.478  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.484  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.508  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.514  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.632  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.645  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.665  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.676  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.734  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.741  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.742  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.751  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.806  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.841  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.859  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.875  1654  4292 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.auth.key.retrieval.service.START pkg=com.google.android.gms } U=0: not found
+11-27 03:05:01.878  1654  3661 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@18e8dc8
+11-27 03:05:01.879  2178  2591 E GmsClient: unable to connect to service: com.google.android.gms.auth.key.retrieval.service.START on com.google.android.gms
+11-27 03:05:01.884  2178  4296 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:01.884  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.931  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.950  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.951  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:01.954  2178  4670 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:02.001  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:02.015  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:02.164  2178  4680 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:02.268  2178  4680 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:02.436  1654  2030 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:05:02.437  1654  1682 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:05:02.443  2178  4692 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:02.561  2178  4679 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:02.784  2178  4681 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:02.889  2178  4675 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:02.980  2178  4669 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:02.981  1654  4243 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.auth.key.retrieval.service.START pkg=com.google.android.gms } U=0: not found
+11-27 03:05:02.998  1654  4228 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@4bc8bb3
+11-27 03:05:03.003  2178  2591 E GmsClient: unable to connect to service: com.google.android.gms.auth.key.retrieval.service.START on com.google.android.gms
+11-27 03:05:03.114  2178  4692 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:03.218  2178  4692 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:03.292  2178  4295 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:03.387  2178  4673 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:03.501  2178  4295 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:03.595  2178  4691 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:03.738  1654  1681 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-27 03:05:03.738  1654  1681 W Binder  : java.lang.Throwable
+11-27 03:05:03.738  1654  1681 W Binder  : 	at android.os.BinderProxy.transact(Binder.java:736)
+11-27 03:05:03.738  1654  1681 W Binder  : 	at com.android.internal.location.ILocationProvider$Stub$Proxy.getProperties(ILocationProvider.java:232)
+11-27 03:05:03.738  1654  1681 W Binder  : 	at com.android.server.location.LocationProviderProxy$1.run(LocationProviderProxy.java:119)
+11-27 03:05:03.738  1654  1681 W Binder  : 	at android.os.Handler.handleCallback(Handler.java:789)
+11-27 03:05:03.738  1654  1681 W Binder  : 	at android.os.Handler.dispatchMessage(Handler.java:98)
+11-27 03:05:03.738  1654  1681 W Binder  : 	at android.os.Looper.loop(Looper.java:164)
+11-27 03:05:03.738  1654  1681 W Binder  : 	at android.os.HandlerThread.run(HandlerThread.java:65)
+11-27 03:05:03.741  1654  1681 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-27 03:05:03.741  1654  1681 W Binder  : java.lang.Throwable
+11-27 03:05:03.741  1654  1681 W Binder  : 	at android.os.BinderProxy.transact(Binder.java:736)
+11-27 03:05:03.741  1654  1681 W Binder  : 	at com.android.internal.location.ILocationProvider$Stub$Proxy.getProperties(ILocationProvider.java:232)
+11-27 03:05:03.741  1654  1681 W Binder  : 	at com.android.server.location.LocationProviderProxy$1.run(LocationProviderProxy.java:119)
+11-27 03:05:03.741  1654  1681 W Binder  : 	at android.os.Handler.handleCallback(Handler.java:789)
+11-27 03:05:03.741  1654  1681 W Binder  : 	at android.os.Handler.dispatchMessage(Handler.java:98)
+11-27 03:05:03.741  1654  1681 W Binder  : 	at android.os.Looper.loop(Looper.java:164)
+11-27 03:05:03.741  1654  1681 W Binder  : 	at android.os.HandlerThread.run(HandlerThread.java:65)
+11-27 03:05:03.807  2178  4673 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:03.861  1775  1775 W ExposureNotification: stopTracing called but Scanner failed to stop! [CONTEXT service_id=236 ]
+11-27 03:05:04.090  2178  4295 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:04.199  2178  4691 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:04.316  2178  4673 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:04.340  1403  1736 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-27 03:05:04.370  2178  4676 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:04.469  1654  2444 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.auth.key.retrieval.service.START pkg=com.google.android.gms } U=0: not found
+11-27 03:05:04.477  2178  4295 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:04.489  1654  2447 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@883cfbb
+11-27 03:05:04.490  2178  2591 E GmsClient: unable to connect to service: com.google.android.gms.auth.key.retrieval.service.START on com.google.android.gms
+11-27 03:05:04.656  2178  4691 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:04.796  2178  4676 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:05.008  2178  4691 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:05.045  2178  4693 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:05.151  2178  4691 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:05.282  2178  4681 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:05.388  2178  4685 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:05.458  2178  4685 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:05.566  2178  4691 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:05.644  2178  4667 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:05.753  2178  4682 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:05.762  2178  4677 W MobileDataHub: [Service] appsupload-periodic periodic task disabled
+11-27 03:05:05.881  2178  4694 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:06.005  2178  4668 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:06.139  2178  4673 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:06.153  1654  2444 W AlarmManager: Window length 1152921504606846975ms suspiciously long; limiting to 1 hour
+11-27 03:05:06.261  2178  4681 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:06.414  2178  4673 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:06.523  2178  4691 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:06.533  1654  2452 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.auth.key.retrieval.service.START pkg=com.google.android.gms } U=0: not found
+11-27 03:05:06.539  1654  2447 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@6c82c5f
+11-27 03:05:06.540  2178  2591 E GmsClient: unable to connect to service: com.google.android.gms.auth.key.retrieval.service.START on com.google.android.gms
+11-27 03:05:06.630  2178  4677 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:06.653  2178  4667 W PrereqChecker: CPU ABIs [x86_64, ] are not supported.
+11-27 03:05:06.746  2178  4684 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:06.778  2178  4667 W PayUpdateIntentOperatio: Dropping unexpected action: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=198 ]
+11-27 03:05:06.879  2178  4670 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:06.959  1654  1681 E memtrack: Couldn't load memtrack module
+11-27 03:05:06.959  1654  1681 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:05:07.023  2178  4296 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:07.127  2178  4677 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:07.203  1654  2444 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.auth.key.retrieval.service.START pkg=com.google.android.gms } U=0: not found
+11-27 03:05:07.210  2178  4684 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:07.212  1654  4193 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@5884174
+11-27 03:05:07.213  2178  2591 E GmsClient: unable to connect to service: com.google.android.gms.auth.key.retrieval.service.START on com.google.android.gms
+11-27 03:05:07.305  2178  4684 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:07.399  2178  4677 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:07.480  2178  4681 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:07.561  2178  4676 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:07.658  2178  4676 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:07.678  2178  4692 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:07.794  2178  4296 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:07.824  2178  4679 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:07.897  2178  4667 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:07.940  1654  4282 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.auth.key.retrieval.service.START pkg=com.google.android.gms } U=0: not found
+11-27 03:05:07.942  1654  4282 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@35a310d
+11-27 03:05:07.945  2178  4694 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:07.945  2178  2591 E GmsClient: unable to connect to service: com.google.android.gms.auth.key.retrieval.service.START on com.google.android.gms
+11-27 03:05:08.002  2178  4681 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:08.009  1775  4690 W MagicTether: [MagicTetherInitializer] Invalid account list.
+11-27 03:05:08.086  2178  4685 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:08.174  1654  1681 E memtrack: Couldn't load memtrack module
+11-27 03:05:08.174  1654  1681 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:05:08.200  2178  4295 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:08.228  1775  2626 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+11-27 03:05:08.273  2178  4684 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:08.411  2178  4723 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:08.462  2178  4296 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:08.474  1775  2626 W GLSUser : [AppCertManager] Failed to get security token.
+11-27 03:05:08.474  1775  2626 W GLSUser : java.io.IOException: Invalid scope
+11-27 03:05:08.474  1775  2626 W GLSUser : 	at adiw.b(:com.google.android.gms@202414023@20.24.14 (040800-319035315):23)
+11-27 03:05:08.474  1775  2626 W GLSUser : 	at adiw.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):18)
+11-27 03:05:08.474  1775  2626 W GLSUser : 	at adiw.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):11)
+11-27 03:05:08.474  1775  2626 W GLSUser : 	at hwy.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):17)
+11-27 03:05:08.474  1775  2626 W GLSUser : 	at hww.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):5)
+11-27 03:05:08.474  1775  2626 W GLSUser : 	at hww.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):46)
+11-27 03:05:08.474  1775  2626 W GLSUser : 	at cpc.onTransact(:com.google.android.gms@202414023@20.24.14 (040800-319035315):5)
+11-27 03:05:08.474  1775  2626 W GLSUser : 	at android.os.Binder.transact(Binder.java:604)
+11-27 03:05:08.474  1775  2626 W GLSUser : 	at cta.onTransact(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:05:08.474  1775  2626 W GLSUser : 	at android.os.Binder.transact(Binder.java:604)
+11-27 03:05:08.474  1775  2626 W GLSUser : 	at aaeo.onTransact(:com.google.android.gms@202414023@20.24.14 (040800-319035315):17)
+11-27 03:05:08.474  1775  2626 W GLSUser : 	at android.os.Binder.execTransact(Binder.java:674)
+11-27 03:05:08.520  2178  4295 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:08.529  1775  2626 W GLSUser : [AppCertManager] IOException while requesting key: 
+11-27 03:05:08.529  1775  2626 W GLSUser : java.io.IOException: Invalid device key response.
+11-27 03:05:08.529  1775  2626 W GLSUser : 	at hwy.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):49)
+11-27 03:05:08.529  1775  2626 W GLSUser : 	at hww.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):5)
+11-27 03:05:08.529  1775  2626 W GLSUser : 	at hww.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):46)
+11-27 03:05:08.529  1775  2626 W GLSUser : 	at cpc.onTransact(:com.google.android.gms@202414023@20.24.14 (040800-319035315):5)
+11-27 03:05:08.529  1775  2626 W GLSUser : 	at android.os.Binder.transact(Binder.java:604)
+11-27 03:05:08.529  1775  2626 W GLSUser : 	at cta.onTransact(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:05:08.529  1775  2626 W GLSUser : 	at android.os.Binder.transact(Binder.java:604)
+11-27 03:05:08.529  1775  2626 W GLSUser : 	at aaeo.onTransact(:com.google.android.gms@202414023@20.24.14 (040800-319035315):17)
+11-27 03:05:08.529  1775  2626 W GLSUser : 	at android.os.Binder.execTransact(Binder.java:674)
+11-27 03:05:08.529  1775  2626 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+11-27 03:05:08.571  2178  4681 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:08.590  1654  1681 E memtrack: Couldn't load memtrack module
+11-27 03:05:08.590  1654  1681 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:05:08.641  2178  4694 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:08.699  2178  4694 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:08.749  2178  4673 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:08.800  1775  2841 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+11-27 03:05:08.800  1775  2841 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+11-27 03:05:08.835  2178  4733 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:08.881  2178  4680 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:08.950  2178  4734 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.009  2178  4683 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.060  2178  4679 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.113  2178  4681 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.145  2178  4676 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.195  1654  1999 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.auth.key.retrieval.service.START pkg=com.google.android.gms } U=0: not found
+11-27 03:05:09.198  2178  4680 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.200  1654  2452 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@685615
+11-27 03:05:09.200  2178  2591 E GmsClient: unable to connect to service: com.google.android.gms.auth.key.retrieval.service.START on com.google.android.gms
+11-27 03:05:09.245  2178  4679 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.301  2178  4683 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.346  2178  4683 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.393  2178  4682 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.439  2178  4691 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.487  2178  4668 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.534  2178  4667 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.572  2178  2187 W SQLiteConnectionPool: A SQLiteConnection object for database '/data/user/0/com.google.android.gms/databases/lighter_registration.db' was leaked!  Please fix your application to end transactions in progress properly and to close the database when it is no longer needed.
+11-27 03:05:09.611  2178  4295 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.667  2178  4685 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.713  2178  4668 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.757  2178  4723 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.811  2178  4692 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.861  2178  4692 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.912  2178  4682 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.942  2178  4683 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.965  1654  1666 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.auth.key.retrieval.service.START pkg=com.google.android.gms } U=0: not found
+11-27 03:05:09.968  1654  2452 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@361ee01
+11-27 03:05:09.968  2178  2591 E GmsClient: unable to connect to service: com.google.android.gms.auth.key.retrieval.service.START on com.google.android.gms
+11-27 03:05:09.984  2178  4295 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:09.989  1775  1775 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:05:10.011  1775  4710 W EasyUnlock: [EasyUnlockSupportReporterIntentOperation] Invalid account list.
+11-27 03:05:10.035  2178  4295 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:10.076  2178  4668 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:10.114  2178  4692 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:10.181  2178  4678 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:10.195  2178  4667 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:10.233  2178  4692 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:10.287  2178  4681 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:10.320  2178  4693 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:10.360  1654  1681 E memtrack: Couldn't load memtrack module
+11-27 03:05:10.360  1654  1681 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:05:10.364  2178  4667 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:10.394  2178  4733 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:10.432  2178  4678 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:10.434  2178  4667 W MobileDataHub: [Service] appsupload-periodic periodic task disabled
+11-27 03:05:10.463  2178  4676 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:10.500  2178  4681 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:10.536  2178  2394 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:10.557  2178  4733 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:10.600  2178  4681 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:10.638  2178  4681 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:05:11.292  1654  1685 E BatteryStatsService: modem info is invalid: ModemActivityInfo{ mTimestamp=0 mSleepTimeMs=0 mIdleTimeMs=0 mTxTimeMs[]=[0, 0, 0, 0, 0] mRxTimeMs=0 mEnergyUsed=0}
+11-27 03:05:12.418  1775  2339 W NetworkScheduler.TED: Enforcing binder timeout for ComponentInfo{com.google.android.videos/com.google.android.videos.service.drm.RefreshLicenseTaskService}
+11-27 03:05:12.419  1775  2339 E NetworkScheduler.TED: Dropping task as app's play services SDK version does not support Android O. Either update the SDK or lower your app's target SDK version. Canceling all tasks for the service: ComponentInfo{com.google.android.videos/com.google.android.videos.service.drm.RefreshLicenseTaskService}
+11-27 03:05:13.784  1654  1682 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:05:13.784  1654  1682 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:05:13.970  1654  1681 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-27 03:05:13.970  1654  1681 W Binder  : java.lang.Throwable
+11-27 03:05:13.970  1654  1681 W Binder  : 	at android.os.BinderProxy.transact(Binder.java:736)
+11-27 03:05:13.970  1654  1681 W Binder  : 	at com.android.internal.location.ILocationProvider$Stub$Proxy.getProperties(ILocationProvider.java:232)
+11-27 03:05:13.970  1654  1681 W Binder  : 	at com.android.server.location.LocationProviderProxy$1.run(LocationProviderProxy.java:119)
+11-27 03:05:13.970  1654  1681 W Binder  : 	at android.os.Handler.handleCallback(Handler.java:789)
+11-27 03:05:13.970  1654  1681 W Binder  : 	at android.os.Handler.dispatchMessage(Handler.java:98)
+11-27 03:05:13.970  1654  1681 W Binder  : 	at android.os.Looper.loop(Looper.java:164)
+11-27 03:05:13.970  1654  1681 W Binder  : 	at android.os.HandlerThread.run(HandlerThread.java:65)
+11-27 03:05:13.971  1654  1681 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-27 03:05:13.971  1654  1681 W Binder  : java.lang.Throwable
+11-27 03:05:13.971  1654  1681 W Binder  : 	at android.os.BinderProxy.transact(Binder.java:736)
+11-27 03:05:13.971  1654  1681 W Binder  : 	at com.android.internal.location.ILocationProvider$Stub$Proxy.getProperties(ILocationProvider.java:232)
+11-27 03:05:13.971  1654  1681 W Binder  : 	at com.android.server.location.LocationProviderProxy$1.run(LocationProviderProxy.java:119)
+11-27 03:05:13.971  1654  1681 W Binder  : 	at android.os.Handler.handleCallback(Handler.java:789)
+11-27 03:05:13.971  1654  1681 W Binder  : 	at android.os.Handler.dispatchMessage(Handler.java:98)
+11-27 03:05:13.971  1654  1681 W Binder  : 	at android.os.Looper.loop(Looper.java:164)
+11-27 03:05:13.971  1654  1681 W Binder  : 	at android.os.HandlerThread.run(HandlerThread.java:65)
+11-27 03:05:13.982  2178  3038 W Icing   : No valid account for uploading user actions
+11-27 03:05:14.050  2178  3038 W Icing   : No valid account for uploading user actions
+11-27 03:05:14.879  1403  1429 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-27 03:05:16.674  2178  4692 W Vision  : Request of optional module download of ocr failed.
+11-27 03:05:19.689  1654  1681 E memtrack: Couldn't load memtrack module
+11-27 03:05:19.689  1654  1681 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:05:21.663  1654  1681 E memtrack: Couldn't load memtrack module
+11-27 03:05:21.663  1654  1681 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:05:22.422  1654  1681 E memtrack: Couldn't load memtrack module
+11-27 03:05:22.422  1654  1681 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:05:23.981  1775  2715 W Nearby  : Failed attempt #3 out of 3 for RestoreDeviceName [CONTEXT service_id=49 ]
+11-27 03:05:23.981  1775  2715 W Nearby  : java.lang.IllegalStateException: BluetoothAdapter not ready yet!
+11-27 03:05:23.981  1775  2715 W Nearby  : 	at ajpy.d(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:05:23.981  1775  2715 W Nearby  : 	at ajpx.run(Unknown Source:0)
+11-27 03:05:23.981  1775  2715 W Nearby  : 	at bwuj.call(Unknown Source:0)
+11-27 03:05:23.981  1775  2715 W Nearby  : 	at bwuo.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:05:23.981  1775  2715 W Nearby  : 	at bwuo.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):9)
+11-27 03:05:23.981  1775  2715 W Nearby  : 	at ajpw.run(Unknown Source:0)
+11-27 03:05:23.981  1775  2715 W Nearby  : 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:05:23.981  1775  2715 W Nearby  : 	at sow.run(Unknown Source:0)
+11-27 03:05:23.981  1775  2715 W Nearby  : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+11-27 03:05:23.981  1775  2715 W Nearby  : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+11-27 03:05:23.981  1775  2715 W Nearby  : 	at sux.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:05:23.981  1775  2715 W Nearby  : 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:05:25.629  1654  1681 E memtrack: Couldn't load memtrack module
+11-27 03:05:25.629  1654  1681 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:05:26.542  1654  1681 E memtrack: Couldn't load memtrack module
+11-27 03:05:26.542  1654  1681 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:05:26.577  4429  4493 E FirebaseInstanceId: Token retrieval failed: INVALID_SENDER
+11-27 03:05:27.874  2572  2572 W SearchService: Abort, client detached.
+11-27 03:05:28.608  1654  1681 E memtrack: Couldn't load memtrack module
+11-27 03:05:28.608  1654  1681 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:05:30.099  1403  1429 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property

@@ -1,0 +1,28 @@
+--------- beginning of main
+11-27 03:10:10.185  5849  5918 I flutter : The Dart VM service is listening on http://127.0.0.1:40389/TabgyAapAVA=/
+11-27 03:10:10.205  5849  5905 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(104)] Using the Impeller rendering backend (OpenGLES).
+11-27 03:10:12.715  5849  5849 I flutter : 00:00 +0: tour of the app
+11-27 03:10:14.765  5849  5849 I flutter : hayati: could not schedule prayer-before|fajr|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
+11-27 03:10:14.766  5849  5849 I flutter : hayati: could not schedule prayer-now|fajr|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
+11-27 03:10:42.013  5849  5849 I flutter : Bad state: No element
+11-27 03:10:42.015  5849  5849 I flutter : #0      Iterable.first (dart:core/iterable.dart:663)
+11-27 03:10:42.015  5849  5849 I flutter : #1      _FirstFinderMixin.filter (package:flutter_test/src/finders.dart:1383)
+11-27 03:10:42.015  5849  5849 I flutter : #3      Iterable.single (dart:core/iterable.dart:694)
+11-27 03:10:42.016  5849  5849 I flutter : #4      WidgetController.element (package:flutter_test/src/controller.dart:888)
+11-27 03:10:42.017  5849  5849 I flutter : #5      WidgetController.ensureVisible (package:flutter_test/src/controller.dart:2389)
+11-27 03:10:42.017  5849  5849 I flutter : #6      main.<anonymous closure>.open (file:///home/runner/work/7yaty/7yaty/integration_test/app_test.dart:40)
+11-27 03:10:42.017  5849  5849 I flutter : #7      main.<anonymous closure> (file:///home/runner/work/7yaty/7yaty/integration_test/app_test.dart:68)
+11-27 03:10:42.018  5849  5849 I flutter : <asynchronous suspension>
+11-27 03:10:42.018  5849  5849 I flutter : #8      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192)
+11-27 03:10:42.018  5849  5849 I flutter : <asynchronous suspension>
+11-27 03:10:42.018  5849  5849 I flutter : #9      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953)
+11-27 03:10:42.018  5849  5849 I flutter : <asynchronous suspension>
+11-27 03:10:42.023  5849  5849 I flutter : #10     TestWidgetsFlutterBinding._createTestCompletionHandler.<anonymous closure> (package:flutter_test/src/binding.dart:1707)
+11-27 03:10:42.023  5849  5849 I flutter : <asynchronous suspension>
+11-27 03:10:42.024  5849  5849 I flutter : (elided one frame from dart:async-patch)
+11-27 03:10:42.025  5849  5849 I flutter : 00:29 +0: tour of the app [E]
+11-27 03:10:42.025  5849  5849 I flutter :   Test failed. See exception logs above.
+11-27 03:10:42.025  5849  5849 I flutter :   The test description was: tour of the app
+11-27 03:10:42.026  5849  5849 I flutter :   
+11-27 03:10:42.049  5849  5849 I flutter : 00:29 +0 -1: (tearDownAll)
+11-27 03:10:42.125  5849  5849 I flutter : 00:29 +1 -1: Some tests failed.
