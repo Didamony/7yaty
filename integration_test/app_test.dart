@@ -47,33 +47,24 @@ void main() {
       }
 
       Future<void> open(Finder f) async {
-        final any = find.descendant(
-          of: find.byType(Scaffold).last,
-          matching: f.first,
-          skipOffstage: false,
-        );
-        await until(any);
-        if (any.evaluate().isEmpty) {
+        await until(f);
+        if (f.evaluate().isEmpty) {
           await t.scrollUntilVisible(
-            f.first,
+            f,
             300,
-            scrollable: find.byType(Scrollable).last,
+            scrollable: find.byType(Scrollable).first,
           );
         }
-        await t.ensureVisible(any.first);
+        await t.ensureVisible(f.first);
         await wait(400);
-        await t.tap(any.first);
+        await t.tap(f.first);
         await wait();
       }
 
+      /// Back to the previous screen, as the system back button does.
       Future<void> back() async {
-        final before = find.byType(BackButton).evaluate().length;
-        await t.tap(find.byType(BackButton).last);
-        for (var i = 0; i < 100; i++) {
-          await t.pump(const Duration(milliseconds: 100));
-          if (find.byType(BackButton).evaluate().length < before) break;
-        }
-        await wait(800);
+        await t.state<NavigatorState>(find.byType(Navigator).first).maybePop();
+        await wait(1500);
       }
 
       await wait(6000);

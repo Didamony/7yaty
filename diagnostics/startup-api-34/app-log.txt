@@ -1,7 +1,0 @@
-11-27 03:14:49.992  3471  3471 W didamony.hayati: Unexpected CPU variant for x86: x86_64.
-11-27 03:14:49.992  3471  3471 W didamony.hayati: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, tremont, kabylake, default
-11-27 03:14:50.004  3471  3471 E didamony.hayati: Not starting debugger since process cannot load the jdwp agent.
-11-27 03:14:50.643  3471  3471 W FirebaseApp: Default FirebaseApp failed to initialize because no default options were found. This usually means that com.google.gms:google-services was not applied to your gradle project.
-11-27 03:14:50.871  3471  3471 W didamony.hayati: type=1400 audit(0.0:15): avc:  denied  { read } for  name="max_map_count" dev="proc" ino=55615 scontext=u:r:untrusted_app:s0:c192,c256,c512,c768 tcontext=u:object_r:proc_max_map_count:s0 tclass=file permissive=0 app=com.didamony.hayati
-11-27 03:14:54.468   516  2574 W InputManager-JNI: Input channel object '715b7d9 Splash Screen com.didamony.hayati (client)' was disposed without first being removed with the input manager!
-11-27 03:14:59.283  3771  4057 E FirebaseInstanceId: Topic sync or token retrieval failed on hard failure exceptions: AUTHENTICATION_FAILED. Won't retry the operation.
