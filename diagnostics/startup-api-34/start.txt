@@ -1,7 +1,0 @@
-Starting: Intent { cmp=com.didamony.hayati/.MainActivity }
-Status: ok
-LaunchState: COLD
-Activity: com.didamony.hayati/.MainActivity
-TotalTime: 6901
-WaitTime: 7072
-Complete
