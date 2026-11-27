@@ -1,0 +1,7 @@
+Starting: Intent { cmp=com.didamony.hayati/.MainActivity }
+Status: ok
+Activity: com.didamony.hayati/.MainActivity
+ThisTime: 2030
+TotalTime: 2030
+WaitTime: 2065
+Complete

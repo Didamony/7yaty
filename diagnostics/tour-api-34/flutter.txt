@@ -1,0 +1,15 @@
+--------- beginning of main
+11-27 04:23:48.477  6182  6259 I flutter : The Dart VM service is listening on http://127.0.0.1:34383/RTDyThB9ReQ=/
+11-27 04:23:48.508  6182  6252 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(104)] Using the Impeller rendering backend (OpenGLES).
+11-27 04:23:52.514  6182  6182 I flutter : 00:00 +0: tour of the app
+11-27 04:23:54.573  6182  6182 I flutter : hayati: could not schedule prayer-before|fajr|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
+11-27 04:23:54.573  6182  6182 I flutter : hayati: could not schedule prayer-now|fajr|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
+11-27 04:23:55.410  6182  6182 I flutter : hayati: could not schedule adhkar|morning|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
+11-27 04:24:59.665  6182  6182 I flutter : hayati: could not schedule prayer-before|fajr|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
+11-27 04:24:59.665  6182  6182 I flutter : hayati: could not schedule prayer-now|fajr|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
+11-27 04:24:59.708  6182  6182 I flutter : hayati: could not schedule adhkar|morning|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
+11-27 04:25:15.681  6182  6182 I flutter : hayati: could not schedule prayer-before|fajr|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
+11-27 04:25:15.682  6182  6182 I flutter : hayati: could not schedule prayer-now|fajr|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
+11-27 04:25:15.744  6182  6182 I flutter : hayati: could not schedule adhkar|morning|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
+11-27 04:25:27.776  6182  6182 I flutter : 01:35 +1: (tearDownAll)
+11-27 04:25:28.073  6182  6182 I flutter : 01:35 +2: All tests passed!
