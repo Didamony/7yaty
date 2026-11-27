@@ -49,11 +49,15 @@ void main() {
       Future<void> open(Finder f) async {
         await until(f);
         if (f.evaluate().isEmpty) {
-          await t.scrollUntilVisible(
-            f,
-            300,
-            scrollable: find.byType(Scrollable).first,
-          );
+          final shown = find
+              .byType(Text)
+              .evaluate()
+              .map((e) => (e.widget as Text).data)
+              .whereType<String>()
+              .take(40)
+              .join(' | ');
+          await binding.takeScreenshot('missing-${++shot}');
+          fail('Not on screen: $f\nShown: $shown');
         }
         await t.ensureVisible(f.first);
         await wait(400);

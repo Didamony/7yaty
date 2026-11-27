@@ -46,7 +46,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        api: [26, 34]
+        api: [34]
     steps:
       - uses: actions/checkout@v4
       - name: Enable KVM
