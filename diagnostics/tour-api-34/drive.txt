@@ -1,0 +1,371 @@
+Resolving dependencies...
+Downloading packages...
+  _flutterfire_internals 1.3.78 (1.4.0 available)
+  android_file_picker 2.1.1 (2.2.1 available)
+  archive 3.6.1 (4.7.1 available)
+  cloud_firestore 7.0.0 (7.2.0 available)
+  cloud_firestore_platform_interface 8.0.8 (8.2.0 available)
+  cloud_firestore_web 5.7.4 (5.9.0 available)
+  code_assets 1.2.1 (2.2.0 available)
+  cross_file 0.3.5+5 (0.4.0 available)
+  crypto 3.0.7 (3.0.8 available)
+  cupertino_icons 1.0.9 (2.0.0 available)
+  dbus 0.8.0 (0.8.1 available)
+  file_picker 13.1.0 (13.4.1 available)
+  file_picker_darwin 2.3.2 (2.5.2 available)
+  file_picker_linux 2.0.2 (2.0.5 available)
+  file_picker_platform_interface 4.2.0 (4.3.0 available)
+  file_picker_web 4.2.0 (4.2.2 available)
+  file_selector_macos 0.9.5+1 (0.9.5+2 available)
+  firebase_auth 7.0.0 (7.1.0 available)
+  firebase_auth_platform_interface 9.1.1 (9.2.0 available)
+  firebase_auth_web 6.3.1 (6.4.0 available)
+  firebase_core 5.0.0 (5.2.0 available)
+  firebase_core_platform_interface 8.1.1 (8.2.0 available)
+  firebase_core_web 4.0.0 (4.2.0 available)
+  firebase_storage 14.0.0 (14.1.0 available)
+  firebase_storage_platform_interface 6.0.8 (6.1.0 available)
+  firebase_storage_web 3.11.14 (3.12.0 available)
+  flutter_local_notifications 22.3.2 (23.0.4 available)
+  flutter_local_notifications_linux 8.0.2 (9.0.0 available)
+  flutter_local_notifications_platform_interface 12.2.0 (13.0.0 available)
+  flutter_local_notifications_web 1.0.0 (2.0.0 available)
+  flutter_local_notifications_windows 3.1.1 (4.0.1 available)
+  hooks 2.0.2 (2.2.0 available)
+  idb_shim 2.10.1+1 (2.11.3 available)
+  image 3.3.0 (4.13.1 available)
+  image_picker_ios 0.8.13+12 (0.8.13+16 available)
+  jni_flutter 1.0.4+1 (1.1.0 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.3 (1.19.0 available)
+  objective_c 9.5.0 (9.6.4 available)
+  petitparser 7.0.2 (7.1.0 available)
+  record 7.1.2 (7.2.0 available)
+  record_android 2.2.0 (2.3.0 available)
+  record_linux 2.1.3 (2.2.0 available)
+  record_platform_interface 2.1.0 (2.2.0 available)
+  record_use 0.6.0 (1.1.1 available)
+  record_web 2.1.3 (2.2.0 available)
+  record_windows 2.3.0 (2.4.0 available)
+  sembast 3.9.0 (3.10.1 available)
+  shared_preferences_foundation 2.5.7 (2.6.2 available)
+  synchronized 3.5.0 (3.6.1+1 available)
+  test_api 0.7.12 (0.7.15 available)
+  url_launcher_android 6.3.33 (6.3.35 available)
+  vector_math 2.4.0 (2.4.4 available)
+  web 1.1.1 (1.1.2 available)
+  windows_file_picker 2.0.1 (2.0.2 available)
+  xml 6.6.1 (7.1.0 available)
+Got dependencies!
+56 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+Running Gradle task 'assembleProfile'...                        
+Loading package information...                                                  
+Loading local repository...                                                     
+[                                       ] 3% Loading local repository...        
+[                                       ] 3% Fetch remote repository...         
+[=                                      ] 3% Fetch remote repository...         
+[=                                      ] 4% Fetch remote repository...         
+[=                                      ] 5% Fetch remote repository...         
+[==                                     ] 5% Fetch remote repository...         
+[==                                     ] 6% Fetch remote repository...         
+[==                                     ] 7% Fetch remote repository...         
+[==                                     ] 7% Computing updates...               
+[===                                    ] 8% Computing updates...               
+[===                                    ] 10% Computing updates...              
+[===                                    ] 10% Installing NDK (Side by side) 28.2
+[===                                    ] 10% Downloading android-ndk-r28c-linux
+[====                                   ] 10% Downloading android-ndk-r28c-linux
+[====                                   ] 11% Downloading android-ndk-r28c-linux
+[====                                   ] 12% Downloading android-ndk-r28c-linux
+[=====                                  ] 13% Downloading android-ndk-r28c-linux
+[=====                                  ] 14% Downloading android-ndk-r28c-linux
+[=====                                  ] 15% Downloading android-ndk-r28c-linux
+[======                                 ] 15% Downloading android-ndk-r28c-linux
+[======                                 ] 16% Downloading android-ndk-r28c-linux
+[======                                 ] 17% Downloading android-ndk-r28c-linux
+[=======                                ] 18% Downloading android-ndk-r28c-linux
+[=======                                ] 19% Downloading android-ndk-r28c-linux
+[=======                                ] 20% Downloading android-ndk-r28c-linux
+[========                               ] 20% Downloading android-ndk-r28c-linux
+[========                               ] 21% Downloading android-ndk-r28c-linux
+[========                               ] 22% Downloading android-ndk-r28c-linux
+[=========                              ] 23% Downloading android-ndk-r28c-linux
+[=========                              ] 24% Downloading android-ndk-r28c-linux
+[=========                              ] 25% Downloading android-ndk-r28c-linux
+[==========                             ] 25% Downloading android-ndk-r28c-linux
+[==========                             ] 26% Downloading android-ndk-r28c-linux
+[==========                             ] 27% Downloading android-ndk-r28c-linux
+[===========                            ] 28% Downloading android-ndk-r28c-linux
+[===========                            ] 29% Downloading android-ndk-r28c-linux
+[===========                            ] 30% Downloading android-ndk-r28c-linux
+[============                           ] 30% Downloading android-ndk-r28c-linux
+[============                           ] 31% Downloading android-ndk-r28c-linux
+[============                           ] 32% Downloading android-ndk-r28c-linux
+[============                           ] 33% Downloading android-ndk-r28c-linux
+[============                           ] 33% Unzipping...                      
+[============                           ] 33% Unzipping... android-ndk-r28c/    
+[============                           ] 33% Unzipping... android-ndk-r28c/READ
+[=============                          ] 33% Unzipping... android-ndk-r28c/READ
+[=============                          ] 33% Unzipping... android-ndk-r28c/meta
+[=============                          ] 33% Unzipping... android-ndk-r28c/shad
+[=============                          ] 33% Unzipping... android-ndk-r28c/ndk-
+[=============                          ] 33% Unzipping... android-ndk-r28c/wrap
+[=============                          ] 33% Unzipping... android-ndk-r28c/ndk-
+[=============                          ] 33% Unzipping... android-ndk-r28c/tool
+[=============                          ] 34% Unzipping... android-ndk-r28c/tool
+[=============                          ] 35% Unzipping... android-ndk-r28c/tool
+[==============                         ] 35% Unzipping... android-ndk-r28c/tool
+[==============                         ] 36% Unzipping... android-ndk-r28c/tool
+[==============                         ] 37% Unzipping... android-ndk-r28c/tool
+[===============                        ] 38% Unzipping... android-ndk-r28c/tool
+[===============                        ] 39% Unzipping... android-ndk-r28c/tool
+[===============                        ] 40% Unzipping... android-ndk-r28c/tool
+[================                       ] 40% Unzipping... android-ndk-r28c/tool
+[================                       ] 41% Unzipping... android-ndk-r28c/tool
+[================                       ] 42% Unzipping... android-ndk-r28c/tool
+[=================                      ] 43% Unzipping... android-ndk-r28c/tool
+[=================                      ] 44% Unzipping... android-ndk-r28c/tool
+[=================                      ] 45% Unzipping... android-ndk-r28c/tool
+[==================                     ] 45% Unzipping... android-ndk-r28c/tool
+[==================                     ] 46% Unzipping... android-ndk-r28c/tool
+[==================                     ] 47% Unzipping... android-ndk-r28c/tool
+[===================                    ] 48% Unzipping... android-ndk-r28c/tool
+[===================                    ] 49% Unzipping... android-ndk-r28c/tool
+[===================                    ] 50% Unzipping... android-ndk-r28c/tool
+[====================                   ] 50% Unzipping... android-ndk-r28c/tool
+[====================                   ] 51% Unzipping... android-ndk-r28c/tool
+[====================                   ] 52% Unzipping... android-ndk-r28c/tool
+[=====================                  ] 53% Unzipping... android-ndk-r28c/tool
+[=====================                  ] 54% Unzipping... android-ndk-r28c/tool
+[=====================                  ] 54% Unzipping... android-ndk-r28c/buil
+[=====================                  ] 54% Unzipping... android-ndk-r28c/sour
+[=====================                  ] 54% Unzipping... android-ndk-r28c/NOTI
+[=====================                  ] 54% Unzipping... android-ndk-r28c/ndk-
+[=====================                  ] 54% Unzipping... android-ndk-r28c/NOTI
+[=====================                  ] 54% Unzipping... android-ndk-r28c/pyth
+[=====================                  ] 54% Unzipping... android-ndk-r28c/preb
+[=====================                  ] 54% Unzipping... android-ndk-r28c/ndk-
+[=====================                  ] 54% Unzipping... android-ndk-r28c/sour
+[=====================                  ] 54% Unzipping... android-ndk-r28c/simp
+[=====================                  ] 55% Unzipping... android-ndk-r28c/simp
+[=====================                  ] 55% Unzipping... android-ndk-r28c/CHAN
+[=======================================] 100% Unzipping... android-ndk-r28c/CHA
+
+WARNING: Your app uses the following plugins that apply Kotlin Gradle Plugin (KGP): firebase_auth, firebase_core, firebase_storage, pdfx
+Future versions of Flutter will fail to build if your app uses plugins that apply KGP.
+
+Please check the changelogs of these plugins and upgrade to a version that supports Built-in Kotlin.
+If no such version exists, report the issue to the plugin. If necessary, here is a guide on filing
+an issue against a plugin: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-app-developers#report-incompatible-kotlin-gradle-plugin-usage-to-plugin-authors
+
+If you are a plugin author, please migrate your plugin to Built-in Kotlin using this guide: https://docs.flutter.dev/release/breaking-changes/migrate-to-built-in-kotlin/for-plugin-authors
+Note: /home/runner/.pub-cache/hosted/pub.dev/cloud_firestore-7.0.0/android/src/main/java/io/flutter/plugins/firebase/firestore/utils/PipelineStageHandlers.java uses unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+Checking the license for package CMake 3.22.1 in /usr/local/lib/android/sdk/licenses
+License for package CMake 3.22.1 accepted.
+Preparing "Install CMake 3.22.1 v.3.22.1".
+"Install CMake 3.22.1 v.3.22.1" ready.
+Installing CMake 3.22.1 in /usr/local/lib/android/sdk/cmake/3.22.1
+"Install CMake 3.22.1 v.3.22.1" complete.
+"Install CMake 3.22.1 v.3.22.1" finished.
+Running Gradle task 'assembleProfile'...                          332.3s
+✓ Built build/app/outputs/flutter-apk/app-profile.apk (49.3MB)
+Installing build/app/outputs/flutter-apk/app-profile.apk...        393ms
+W/OpenGLRenderer( 5774): Failed to initialize 101010-2 format, error = EGL_SUCCESS
+I/Gralloc4( 5774): mapper 4.x is not supported
+I/Choreographer( 5774): Skipped 43 frames!  The application may be doing too much work on its main thread.
+VMServiceFlutterDriver: Connecting to Flutter application at http://127.0.0.1:42697/cEhxWgQS5Pw=/
+VMServiceFlutterDriver: Isolate found with number: 7064988630719427
+VMServiceFlutterDriver: Isolate 7064988630719427 is runnable.
+VMServiceFlutterDriver: Isolate is paused at start.
+VMServiceFlutterDriver: Attempting to resume isolate
+I/flutter ( 5774): 00:00 +0: tour of the app
+VMServiceFlutterDriver: Connected to Flutter application.
+D/EGL_emulation( 5774): app_time_stats: avg=212.01ms min=119.59ms max=401.19ms count=7
+I/flutter ( 5774): hayati: could not schedule prayer-before|fajr|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
+I/flutter ( 5774): hayati: could not schedule prayer-now|fajr|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
+D/CompatibilityChangeReporter( 5774): Compat change id reported: 160794467; UID 10192; state: ENABLED
+I/flutter ( 5774): hayati: could not schedule adhkar|morning|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
+D/EGL_emulation( 5774): app_time_stats: avg=166.98ms min=143.45ms max=217.73ms count=6
+D/ProfileInstaller( 5774): Installing profile for com.didamony.hayati
+D/EGL_emulation( 5774): app_time_stats: avg=196.98ms min=165.95ms max=225.03ms count=6
+I/didamony.hayati( 5774): Background young concurrent copying GC freed 54544(2287KB) AllocSpace objects, 17(1832KB) LOS objects, 46% free, 4986KB/9301KB, paused 7.325ms,10us total 23.508ms
+D/EGL_emulation( 5774): app_time_stats: avg=231.92ms min=206.41ms max=260.31ms count=5
+VMServiceFlutterDriver: request_data message is taking a long time to complete...
+D/EGL_emulation( 5774): app_time_stats: avg=122.48ms min=110.85ms max=172.41ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.80ms min=111.93ms max=120.13ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.58ms min=106.64ms max=127.96ms count=9
+D/CompatibilityChangeReporter( 5774): Compat change id reported: 236825255; UID 10192; state: ENABLED
+D/EGL_emulation( 5774): app_time_stats: avg=116.58ms min=107.89ms max=124.36ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=115.40ms min=106.35ms max=120.85ms count=10
+D/EGL_emulation( 5774): app_time_stats: avg=116.64ms min=111.93ms max=122.70ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=5620.71ms min=2515.59ms max=8725.83ms count=2
+D/EGL_emulation( 5774): app_time_stats: avg=139.05ms min=29.39ms max=434.07ms count=8
+D/EGL_emulation( 5774): app_time_stats: avg=116.61ms min=112.27ms max=120.87ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=2719.57ms min=2719.57ms max=2719.57ms count=1
+D/EGL_emulation( 5774): app_time_stats: avg=145.32ms min=114.28ms max=308.02ms count=7
+W/WindowOnBackDispatcher( 5774): OnBackInvokedCallback is not enabled for the application.
+W/WindowOnBackDispatcher( 5774): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+D/EGL_emulation( 5774): app_time_stats: avg=104.89ms min=33.05ms max=119.01ms count=10
+D/EGL_emulation( 5774): app_time_stats: avg=116.77ms min=115.67ms max=117.73ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=3095.43ms min=3095.43ms max=3095.43ms count=1
+D/EGL_emulation( 5774): app_time_stats: avg=137.16ms min=106.14ms max=291.87ms count=8
+D/EGL_emulation( 5774): app_time_stats: avg=116.55ms min=115.22ms max=118.28ms count=9
+W/WindowOnBackDispatcher( 5774): OnBackInvokedCallback is not enabled for the application.
+W/WindowOnBackDispatcher( 5774): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+D/EGL_emulation( 5774): app_time_stats: avg=106.15ms min=34.36ms max=121.14ms count=10
+D/EGL_emulation( 5774): app_time_stats: avg=115.56ms min=106.67ms max=125.76ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.65ms min=112.47ms max=121.00ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=4837.61ms min=4837.61ms max=4837.61ms count=1
+D/EGL_emulation( 5774): app_time_stats: avg=140.01ms min=112.62ms max=302.71ms count=8
+D/EGL_emulation( 5774): app_time_stats: avg=115.97ms min=109.87ms max=122.02ms count=9
+W/WindowOnBackDispatcher( 5774): OnBackInvokedCallback is not enabled for the application.
+W/WindowOnBackDispatcher( 5774): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+D/EGL_emulation( 5774): app_time_stats: avg=117.84ms min=35.11ms max=402.68ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.40ms min=114.40ms max=117.86ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=4977.83ms min=4977.83ms max=4977.83ms count=1
+D/EGL_emulation( 5774): app_time_stats: avg=139.42ms min=114.31ms max=317.60ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=114.64ms min=100.14ms max=119.91ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.15ms min=111.31ms max=122.28ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.67ms min=107.12ms max=120.22ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.65ms min=111.80ms max=122.36ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.44ms min=115.33ms max=117.43ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.90ms min=113.33ms max=119.16ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.95ms min=114.98ms max=120.70ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.24ms min=111.78ms max=120.28ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.34ms min=110.64ms max=121.90ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.73ms min=112.53ms max=121.97ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.38ms min=111.13ms max=121.37ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.66ms min=113.49ms max=120.95ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.59ms min=113.91ms max=119.63ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.93ms min=113.89ms max=118.51ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.24ms min=111.74ms max=120.58ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.60ms min=110.16ms max=123.60ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.47ms min=111.91ms max=121.06ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.74ms min=93.59ms max=141.87ms count=9
+W/WindowOnBackDispatcher( 5774): OnBackInvokedCallback is not enabled for the application.
+W/WindowOnBackDispatcher( 5774): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+D/EGL_emulation( 5774): app_time_stats: avg=111.91ms min=30.57ms max=334.37ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=111.15ms min=69.64ms max=122.06ms count=10
+D/EGL_emulation( 5774): app_time_stats: avg=115.94ms min=110.06ms max=121.17ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=22601.63ms min=22601.63ms max=22601.63ms count=1
+D/EGL_emulation( 5774): app_time_stats: avg=137.81ms min=115.11ms max=285.62ms count=8
+D/EGL_emulation( 5774): app_time_stats: avg=117.57ms min=113.45ms max=127.49ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=103.97ms min=40.45ms max=121.54ms count=10
+D/EGL_emulation( 5774): app_time_stats: avg=116.18ms min=113.48ms max=117.21ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=4363.54ms min=4363.54ms max=4363.54ms count=1
+D/EGL_emulation( 5774): app_time_stats: avg=122.52ms min=83.54ms max=199.09ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.24ms min=112.72ms max=118.42ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=2616.44ms min=2616.44ms max=2616.44ms count=1
+D/EGL_emulation( 5774): app_time_stats: avg=140.19ms min=114.94ms max=298.73ms count=8
+W/WindowOnBackDispatcher( 5774): OnBackInvokedCallback is not enabled for the application.
+W/WindowOnBackDispatcher( 5774): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+D/EGL_emulation( 5774): app_time_stats: avg=104.94ms min=36.03ms max=121.55ms count=10
+D/EGL_emulation( 5774): app_time_stats: avg=116.77ms min=110.91ms max=121.45ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=108.14ms min=34.90ms max=126.72ms count=10
+D/EGL_emulation( 5774): app_time_stats: avg=116.21ms min=110.42ms max=120.01ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=152.29ms min=114.62ms max=209.47ms count=7
+D/EGL_emulation( 5774): app_time_stats: avg=5597.37ms min=5597.37ms max=5597.37ms count=1
+I/flutter ( 5774): hayati: could not schedule prayer-before|fajr|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
+I/flutter ( 5774): hayati: could not schedule prayer-now|fajr|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
+I/flutter ( 5774): hayati: could not schedule adhkar|morning|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
+D/EGL_emulation( 5774): app_time_stats: avg=172.98ms min=122.37ms max=332.33ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=120.77ms min=97.10ms max=176.26ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.32ms min=110.73ms max=120.74ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=116.41ms min=114.15ms max=119.48ms count=9
+W/WindowOnBackDispatcher( 5774): OnBackInvokedCallback is not enabled for the application.
+W/WindowOnBackDispatcher( 5774): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+D/EGL_emulation( 5774): app_time_stats: avg=105.24ms min=34.69ms max=119.62ms count=10
+D/EGL_emulation( 5774): app_time_stats: avg=117.00ms min=113.15ms max=120.84ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=6808.38ms min=6808.38ms max=6808.38ms count=1
+D/EGL_emulation( 5774): app_time_stats: avg=138.27ms min=106.03ms max=304.39ms count=8
+D/EGL_emulation( 5774): app_time_stats: avg=116.81ms min=112.40ms max=118.57ms count=9
+W/WindowOnBackDispatcher( 5774): OnBackInvokedCallback is not enabled for the application.
+W/WindowOnBackDispatcher( 5774): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+D/EGL_emulation( 5774): app_time_stats: avg=105.15ms min=29.85ms max=176.07ms count=10
+D/EGL_emulation( 5774): app_time_stats: avg=117.13ms min=115.72ms max=119.46ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=104.88ms min=31.85ms max=121.92ms count=10
+D/EGL_emulation( 5774): app_time_stats: avg=116.34ms min=113.26ms max=124.00ms count=9
+D/EGL_emulation( 5774): app_time_stats: avg=6616.32ms min=6616.32ms max=6616.32ms count=1
+D/EGL_emulation( 5774): app_time_stats: avg=146.15ms min=115.82ms max=295.23ms count=7
+D/EGL_emulation( 5774): app_time_stats: avg=115.56ms min=109.13ms max=119.37ms count=9
+I/flutter ( 5774): hayati: could not schedule prayer-before|fajr|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
+I/flutter ( 5774): hayati: could not schedule prayer-now|fajr|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
+I/flutter ( 5774): hayati: could not schedule adhkar|morning|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
+D/EGL_emulation( 5774): app_time_stats: avg=270.76ms min=115.34ms max=941.32ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=184.81ms min=180.96ms max=200.19ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=187.34ms min=182.70ms max=198.06ms count=6
+I/ImeTracker( 5774): com.didamony.hayati:ff8d650: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+I/ImeTracker( 5774): com.didamony.hayati:ff8d650: onFailed at PHASE_CLIENT_VIEW_SERVED
+W/InputMethodManager( 5774): Ignoring showSoftInput() as view=io.flutter.embedding.android.FlutterView{64a4084 VFE...... .F....ID 0,0-1080,2337 #1} is not served.
+D/EGL_emulation( 5774): app_time_stats: avg=195.70ms min=181.02ms max=205.97ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=6376.93ms min=6376.93ms max=6376.93ms count=1
+D/EGL_emulation( 5774): app_time_stats: avg=222.78ms min=185.22ms max=281.99ms count=5
+D/EGL_emulation( 5774): app_time_stats: avg=191.84ms min=184.99ms max=211.00ms count=6
+I/ImeTracker( 5774): com.didamony.hayati:499d39ef: onRequestShow at ORIGIN_CLIENT_SHOW_SOFT_INPUT reason SHOW_SOFT_INPUT
+I/ImeTracker( 5774): com.didamony.hayati:499d39ef: onFailed at PHASE_CLIENT_VIEW_SERVED
+W/InputMethodManager( 5774): Ignoring showSoftInput() as view=io.flutter.embedding.android.FlutterView{64a4084 VFE...... .F...... 0,0-1080,2337 #1} is not served.
+D/EGL_emulation( 5774): app_time_stats: avg=193.78ms min=186.12ms max=211.17ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=191.98ms min=188.59ms max=204.44ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=194.91ms min=187.71ms max=212.90ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=190.50ms min=185.11ms max=198.60ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=192.99ms min=187.18ms max=200.05ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=190.89ms min=188.06ms max=198.89ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=190.84ms min=185.32ms max=204.68ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=190.49ms min=186.35ms max=193.52ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=193.06ms min=185.77ms max=207.14ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=197.21ms min=187.16ms max=210.32ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=194.24ms min=187.96ms max=204.91ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=195.98ms min=187.50ms max=215.82ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=215.81ms min=191.75ms max=267.65ms count=5
+D/EGL_emulation( 5774): app_time_stats: avg=192.86ms min=185.90ms max=201.42ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=194.36ms min=185.72ms max=225.97ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=189.28ms min=184.34ms max=194.36ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=191.22ms min=183.16ms max=209.66ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=191.49ms min=187.08ms max=199.68ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=193.77ms min=188.79ms max=206.25ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=192.28ms min=187.26ms max=211.35ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=192.72ms min=186.20ms max=208.98ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=193.51ms min=185.59ms max=210.14ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=194.99ms min=187.98ms max=202.04ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=196.52ms min=186.77ms max=217.08ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=192.37ms min=185.39ms max=195.80ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=193.69ms min=185.60ms max=210.22ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=189.70ms min=182.84ms max=203.50ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=191.80ms min=185.94ms max=199.86ms count=6
+I/ImeTracker( 5774): com.didamony.hayati:65a19f72: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+I/ImeTracker( 5774): com.didamony.hayati:65a19f72: onFailed at PHASE_CLIENT_VIEW_SERVED
+D/EGL_emulation( 5774): app_time_stats: avg=193.85ms min=186.70ms max=206.19ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=173.41ms min=168.26ms max=177.83ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=171.21ms min=166.34ms max=175.06ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=206.67ms min=174.03ms max=275.37ms count=5
+D/EGL_emulation( 5774): app_time_stats: avg=172.39ms min=167.17ms max=179.60ms count=6
+D/EGL_emulation( 5774): app_time_stats: avg=40627.12ms min=40627.12ms max=40627.12ms count=1
+I/flutter ( 5774): Not on screen: Found 0 widgets with text "حفظ": []
+I/flutter ( 5774): Shown: يومياتي | الجمعة، ٢٧ نوفمبر | ٥:٢٠ ص | الفجر في الجامع، والجو كان حلو. | ٦:٤٥ م | النهارده خلصت التقرير بدري، ومشيت بعد العصر. حاسس إن الأسبوع ده أحسن من اللي فات، بس لازم أنام بدري عشان الفجر. | ريكوردات اليوم | ٨:١٠ م | ١:٢٤ | أيام سابقة | الخميس، ٢٦ نوفمبر | ١ كتابة | اليوم | أهدافي | عباداتي | المواعيد | يومياتي
+I/flutter ( 5774): #0      fail (package:matcher/src/expect/expect.dart:187)
+I/flutter ( 5774): #1      main.<anonymous closure>.open (file:///home/runner/work/7yaty/7yaty/integration_test/app_test.dart:76)
+I/flutter ( 5774): <asynchronous suspension>
+I/flutter ( 5774): #2      main.<anonymous closure> (file:///home/runner/work/7yaty/7yaty/integration_test/app_test.dart:138)
+I/flutter ( 5774): <asynchronous suspension>
+I/flutter ( 5774): #3      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192)
+I/flutter ( 5774): <asynchronous suspension>
+I/flutter ( 5774): #4      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1953)
+I/flutter ( 5774): <asynchronous suspension>
+I/flutter ( 5774): #5      TestWidgetsFlutterBinding._createTestCompletionHandler.<anonymous closure> (package:flutter_test/src/binding.dart:1707)
+I/flutter ( 5774): <asynchronous suspension>
+I/flutter ( 5774): 02:03 +0: tour of the app [E]
+I/flutter ( 5774):   Test failed. See exception logs above.
+I/flutter ( 5774):   The test description was: tour of the app
+I/flutter ( 5774):   
+I/flutter ( 5774): 02:03 +0 -1: (tearDownAll)
+I/flutter ( 5774): 02:03 +1 -1: Some tests failed.
+Failure Details:
+Failure in method: tour of the app
+Instance of 'FlutterErrorDetails'
+end of failure 1
+
+
+
+exit 1
