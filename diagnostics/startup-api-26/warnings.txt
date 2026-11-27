@@ -1,0 +1,870 @@
+--------- beginning of main
+11-27 03:14:14.293  1770  1770 W ExposureNotification: stopTracing called but Scanner failed to stop! [CONTEXT service_id=236 ]
+11-27 03:14:14.299  2146  2303 W Icing   : No valid account for uploading user actions
+11-27 03:14:14.317  3431  3561 W SystemServiceRegistry: No service published for: persistent_data_block
+11-27 03:14:14.319  3431  3596 W SystemServiceRegistry: No service published for: persistent_data_block
+11-27 03:14:14.115  3431  3431 W IntentService[D: type=1400 audit(0.0:54): avc: denied { read } for name="modules" dev="proc" ino=4026532034 scontext=u:r:priv_app:s0:c512,c768 tcontext=u:object_r:proc_modules:s0 tclass=file permissive=0
+11-27 03:14:14.380  2146  2303 W Icing   : No valid account for uploading user actions
+11-27 03:14:14.498  1635  1733 W zygote64: Long monitor contention with owner PackageManager (1674) at void com.android.server.pm.PackageManagerService.updateSettingsInternalLI(android.content.pm.PackageParser$Package, java.lang.String, int[], int[], com.android.server.pm.PackageManagerService$PackageInstalledInfo, android.os.UserHandle, int)(PackageManagerService.java:17792) waiters=2 in boolean com.android.server.pm.PackageManagerService.isProtectedBroadcast(java.lang.String) for 108ms
+11-27 03:14:14.502  1770  2801 W zygote64: Long monitor contention with owner [com.google.android.gms.chimera.PersistentIntentOperationService$ChimeraService-Executor] processing qlx for action com.google.android.gms.netrec.scoring.receiver.BOOT_COMPLETED (2898) at android.content.IContentProvider android.app.ActivityThread.acquireExistingProvider(android.content.Context, java.lang.String, int, boolean)(ActivityThread.java:5969) waiters=1 in android.content.IContentProvider android.app.ActivityThread.acquireExistingProvider(android.content.Context, java.lang.String, int, boolean) for 110ms
+11-27 03:14:14.503  1635  2621 W zygote64: Long monitor contention with owner WifiStateMachine (1733) at int com.android.server.am.ActivityManagerService.broadcastIntent(android.app.IApplicationThread, android.content.Intent, java.lang.String, android.content.IIntentReceiver, int, java.lang.String, android.os.Bundle, java.lang.String[], int, android.os.Bundle, boolean, boolean, int)(ActivityManagerService.java:19705) waiters=3 in android.content.ComponentName com.android.server.am.ActivityManagerService.startService(android.app.IApplicationThread, android.content.Intent, java.lang.String, boolean, java.lang.String, int) for 110ms
+11-27 03:14:14.514  1635  1733 E WifiStateMachine: Did not find remoteAddress {192.168.232.1} in /proc/net/arp
+11-27 03:14:14.514  2146  3790 W MDM     : [142] agll.c: Device admin action is a no-op. Action: true
+11-27 03:14:14.514  1635  1733 E WifiStateMachine: Did not find remoteAddress {192.168.232.1} in /proc/net/arp
+11-27 03:14:14.547  1635  1733 E WifiVendorHal: stopRssiMonitoring(l.2115) failed {.code = ERROR_NOT_AVAILABLE, .description = }
+11-27 03:14:14.617  1498  2428 E         : Couldn't opendir /data/app/vmdl164706720.tmp: No such file or directory
+11-27 03:14:14.617  1498  2428 E installd: Failed to delete /data/app/vmdl164706720.tmp: No such file or directory
+11-27 03:14:14.678  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0203f6
+11-27 03:14:14.678  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f13080c
+11-27 03:14:14.678  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0203f8
+11-27 03:14:14.678  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f13086b
+11-27 03:14:14.678  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0203fa
+11-27 03:14:14.678  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f1308b0
+--------- beginning of system
+11-27 03:14:14.869  1635  1635 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-27 03:14:14.869  1635  1635 W Binder  : java.lang.Throwable
+11-27 03:14:14.869  1635  1635 W Binder  : 	at android.os.BinderProxy.transact(Binder.java:736)
+11-27 03:14:14.869  1635  1635 W Binder  : 	at com.android.internal.backup.IBackupTransport$Stub$Proxy.name(IBackupTransport.java:369)
+11-27 03:14:14.869  1635  1635 W Binder  : 	at com.android.server.backup.TransportManager$TransportConnection.onServiceConnected(TransportManager.java:339)
+11-27 03:14:14.869  1635  1635 W Binder  : 	at android.app.LoadedApk$ServiceDispatcher.doConnected(LoadedApk.java:1634)
+11-27 03:14:14.869  1635  1635 W Binder  : 	at android.app.LoadedApk$ServiceDispatcher$RunConnection.run(LoadedApk.java:1663)
+11-27 03:14:14.869  1635  1635 W Binder  : 	at android.os.Handler.handleCallback(Handler.java:789)
+11-27 03:14:14.869  1635  1635 W Binder  : 	at android.os.Handler.dispatchMessage(Handler.java:98)
+11-27 03:14:14.869  1635  1635 W Binder  : 	at android.os.Looper.loop(Looper.java:164)
+11-27 03:14:14.869  1635  1635 W Binder  : 	at com.android.server.SystemServer.run(SystemServer.java:421)
+11-27 03:14:14.869  1635  1635 W Binder  : 	at com.android.server.SystemServer.main(SystemServer.java:260)
+11-27 03:14:14.869  1635  1635 W Binder  : 	at java.lang.reflect.Method.invoke(Native Method)
+11-27 03:14:14.869  1635  1635 W Binder  : 	at com.android.internal.os.Zygote$MethodAndArgsCaller.run(Zygote.java:240)
+11-27 03:14:14.869  1635  1635 W Binder  : 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:767)
+11-27 03:14:14.889  2146  2807 E WakeLock: DG:service ** IS FORCE-RELEASED ON TIMEOUT **
+11-27 03:14:15.112  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f02011d
+11-27 03:14:15.112  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f12032d
+11-27 03:14:15.112  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f12032d
+11-27 03:14:15.112  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f12032c
+11-27 03:14:15.121  2146  2303 W Icing   : No valid account for uploading user actions
+11-27 03:14:15.197  1770  2750 W GCM     : Unexpected forwarded intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.didamony.hayati flg=0x4000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) }
+11-27 03:14:15.199  1770  2900 W GCM     : Unexpected forwarded intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.didamony.hayati flg=0x4000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) }
+11-27 03:14:15.213  2146  2323 W MobileDataHub: [Service] appsupload-periodic periodic task disabled
+11-27 03:14:15.222  1635  1786 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.auth.key.retrieval.service.START pkg=com.google.android.gms } U=0: not found
+11-27 03:14:15.222  1635  1786 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@626a4ed
+11-27 03:14:15.222  2146  2593 E GmsClient: unable to connect to service: com.google.android.gms.auth.key.retrieval.service.START on com.google.android.gms
+11-27 03:14:15.250  2146  2303 W zygote64: Long monitor contention with owner highpool[0] (2626) at boolean android.app.ActivityThread.releaseProvider(android.content.IContentProvider, boolean)(ActivityThread.java:6003) waiters=3 in android.content.IContentProvider android.app.ActivityThread.acquireExistingProvider(android.content.Context, java.lang.String, int, boolean) for 106ms
+11-27 03:14:15.332  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f020078
+11-27 03:14:15.332  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f100262
+11-27 03:14:15.377  1504  1621 E Netd    : Error adding route ::/0 -> fe80::ff:fe00:100 wlan0 to table 1003: File exists
+11-27 03:14:15.443  2146  3341 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:14:15.471  2146  3341 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:15.471  2146  3341 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:15.536  2146  3341 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:14:15.536  2146  3341 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:15.536  2146  3341 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:15.538  3431  3596 W SystemServiceRegistry: No service published for: persistent_data_block
+11-27 03:14:15.568  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0200ea
+11-27 03:14:15.568  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0c02b0
+11-27 03:14:15.568  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0c02ad
+11-27 03:14:15.568  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0200eb
+11-27 03:14:15.568  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0c02b1
+11-27 03:14:15.568  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0c02ae
+11-27 03:14:15.568  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0200ec
+11-27 03:14:15.568  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0c02b2
+11-27 03:14:15.568  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0c02af
+11-27 03:14:15.600  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f02014c
+11-27 03:14:15.600  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f110426
+11-27 03:14:15.600  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f110427
+11-27 03:14:15.600  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f02014d
+11-27 03:14:15.600  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f110428
+11-27 03:14:15.600  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f110429
+11-27 03:14:15.646  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f080128
+11-27 03:14:15.646  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f120dcc
+11-27 03:14:15.646  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f080127
+11-27 03:14:15.646  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f1203c5
+11-27 03:14:15.646  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f080126
+11-27 03:14:15.646  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f12084e
+11-27 03:14:15.691  2146  3997 W Backup  : [ComponentEnablerUtil] Unable to set component 'com.google.android.gms.backup.component.D2dMigrateFlowActivity' to enabled=false
+11-27 03:14:15.700  2146  2303 W Icing   : No valid account for uploading user actions
+11-27 03:14:15.701  1770  3054 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+11-27 03:14:15.708  1770  3054 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+11-27 03:14:15.708  1770  2187 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:14:15.708  1770  2187 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:15.708  1770  2187 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:15.710  1770  3262 W ProximityAuth: [GetMyPublicKey] Failed to fetch public key.
+11-27 03:14:15.711  1770  3262 E bsfg    : RuntimeException while executing runnable bsfs{jda@78f4349} with executor MoreExecutors.directExecutor()
+11-27 03:14:15.711  1770  3262 E bsfg    : java.lang.NullPointerException: Attempt to get length of null array
+11-27 03:14:15.711  1770  3262 E bsfg    : 	at android.util.Base64.encode(Base64.java:494)
+11-27 03:14:15.711  1770  3262 E bsfg    : 	at android.util.Base64.encodeToString(Base64.java:456)
+11-27 03:14:15.711  1770  3262 E bsfg    : 	at com.google.android.gms.auth.proximity.RemoteDevice.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):1)
+11-27 03:14:15.711  1770  3262 E bsfg    : 	at jda.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:15.711  1770  3262 E bsfg    : 	at bsfs.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):6)
+11-27 03:14:15.711  1770  3262 E bsfg    : 	at bsfd.execute(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:15.711  1770  3262 E bsfg    : 	at bsfg.b(:com.google.android.gms@202414023@20.24.14 (040800-319035315):1)
+11-27 03:14:15.711  1770  3262 E bsfg    : 	at bsfg.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):4)
+11-27 03:14:15.711  1770  3262 E bsfg    : 	at spd.done(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:15.711  1770  3262 E bsfg    : 	at java.util.concurrent.FutureTask.finishCompletion(FutureTask.java:383)
+11-27 03:14:15.711  1770  3262 E bsfg    : 	at java.util.concurrent.FutureTask.set(FutureTask.java:234)
+11-27 03:14:15.711  1770  3262 E bsfg    : 	at java.util.concurrent.FutureTask.run(FutureTask.java:274)
+11-27 03:14:15.711  1770  3262 E bsfg    : 	at soy.b(:com.google.android.gms@202414023@20.24.14 (040800-319035315):12)
+11-27 03:14:15.711  1770  3262 E bsfg    : 	at soy.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):7)
+11-27 03:14:15.711  1770  3262 E bsfg    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+11-27 03:14:15.711  1770  3262 E bsfg    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+11-27 03:14:15.711  1770  3262 E bsfg    : 	at sux.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:15.711  1770  3262 E bsfg    : 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:14:15.739  2146  2303 W Icing   : No valid account for uploading user actions
+11-27 03:14:15.781  2146  3341 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:14:15.781  2146  3341 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:15.781  2146  3341 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:15.788  1770  2187 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:14:15.788  1770  2187 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:15.788  1770  2187 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:15.790  1635  1661 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-27 03:14:15.790  1635  1661 W Binder  : java.lang.Throwable
+11-27 03:14:15.790  1635  1661 W Binder  : 	at android.os.BinderProxy.transact(Binder.java:736)
+11-27 03:14:15.790  1635  1661 W Binder  : 	at com.android.internal.location.ILocationProvider$Stub$Proxy.getProperties(ILocationProvider.java:232)
+11-27 03:14:15.790  1635  1661 W Binder  : 	at com.android.server.location.LocationProviderProxy$1.run(LocationProviderProxy.java:119)
+11-27 03:14:15.790  1635  1661 W Binder  : 	at android.os.Handler.handleCallback(Handler.java:789)
+11-27 03:14:15.790  1635  1661 W Binder  : 	at android.os.Handler.dispatchMessage(Handler.java:98)
+11-27 03:14:15.790  1635  1661 W Binder  : 	at android.os.Looper.loop(Looper.java:164)
+11-27 03:14:15.790  1635  1661 W Binder  : 	at android.os.HandlerThread.run(HandlerThread.java:65)
+11-27 03:14:15.796  1635  1661 E memtrack: Couldn't load memtrack module
+11-27 03:14:15.796  1635  1661 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:14:15.795  3431  3431 W IntentService[D: type=1400 audit(0.0:55): avc: denied { read } for name="modules" dev="proc" ino=4026532034 scontext=u:r:priv_app:s0:c512,c768 tcontext=u:object_r:proc_modules:s0 tclass=file permissive=0
+11-27 03:14:15.816  2146  3341 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:14:15.816  2146  3341 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:15.816  2146  3341 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:15.852  1635  1661 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-27 03:14:15.852  1635  1661 W Binder  : java.lang.Throwable
+11-27 03:14:15.852  1635  1661 W Binder  : 	at android.os.BinderProxy.transact(Binder.java:736)
+11-27 03:14:15.852  1635  1661 W Binder  : 	at com.android.internal.location.ILocationProvider$Stub$Proxy.getProperties(ILocationProvider.java:232)
+11-27 03:14:15.852  1635  1661 W Binder  : 	at com.android.server.location.LocationProviderProxy$1.run(LocationProviderProxy.java:119)
+11-27 03:14:15.852  1635  1661 W Binder  : 	at android.os.Handler.handleCallback(Handler.java:789)
+11-27 03:14:15.852  1635  1661 W Binder  : 	at android.os.Handler.dispatchMessage(Handler.java:98)
+11-27 03:14:15.852  1635  1661 W Binder  : 	at android.os.Looper.loop(Looper.java:164)
+11-27 03:14:15.852  1635  1661 W Binder  : 	at android.os.HandlerThread.run(HandlerThread.java:65)
+11-27 03:14:15.891  3431  3561 W SystemServiceRegistry: No service published for: persistent_data_block
+11-27 03:14:15.956  2146  3667 E constellation: [rpc_manager] GetConsent failed with status: ckdq{code=INVALID_ARGUMENT, description=device_id.device_android_id is required., cause=null}
+11-27 03:14:15.956  2146  3667 E constellation: Exception: 
+11-27 03:14:15.956  2146  3667 E constellation: ckdr: INVALID_ARGUMENT: device_id.device_android_id is required.
+11-27 03:14:15.956  2146  3667 E constellation: 	at ckdq.c(:com.google.android.gms@202414023@20.24.14 (040800-319035315):3)
+11-27 03:14:15.956  2146  3667 E constellation: 	at sjo.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):48)
+11-27 03:14:15.956  2146  3667 E constellation: 	at szt.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):479)
+11-27 03:14:15.956  2146  3667 E constellation: 	at szt.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):553)
+11-27 03:14:15.956  2146  3667 E constellation: 	at syy.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):141)
+11-27 03:14:15.956  2146  3667 E constellation: 	at com.google.android.gms.constellation.EventManager.onHandleIntent(:com.google.android.gms@202414023@20.24.14 (040800-319035315):240)
+11-27 03:14:15.956  2146  3667 E constellation: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:15.956  2146  3667 E constellation: 	at qlx.onHandleIntent(:com.google.android.gms@202414023@20.24.14 (040800-319035315):4)
+11-27 03:14:15.956  2146  3667 E constellation: 	at cuo.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):5)
+11-27 03:14:15.956  2146  3667 E constellation: 	at cun.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):10)
+11-27 03:14:15.956  2146  3667 E constellation: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+11-27 03:14:15.956  2146  3667 E constellation: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+11-27 03:14:15.956  2146  3667 E constellation: 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:14:15.960  2146  3109 E constellation: [periodic_consent_checker] Couldn't sync with the server due to 
+11-27 03:14:15.960  2146  3109 E constellation: tej: getConsent
+11-27 03:14:15.960  2146  3109 E constellation: 	at szt.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):531)
+11-27 03:14:15.960  2146  3109 E constellation: 	at szt.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):553)
+11-27 03:14:15.960  2146  3109 E constellation: 	at syy.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):141)
+11-27 03:14:15.960  2146  3109 E constellation: 	at com.google.android.gms.constellation.EventManager.onHandleIntent(:com.google.android.gms@202414023@20.24.14 (040800-319035315):240)
+11-27 03:14:15.960  2146  3109 E constellation: 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:15.960  2146  3109 E constellation: 	at qlx.onHandleIntent(:com.google.android.gms@202414023@20.24.14 (040800-319035315):4)
+11-27 03:14:15.960  2146  3109 E constellation: 	at cuo.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):5)
+11-27 03:14:15.960  2146  3109 E constellation: 	at cun.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):10)
+11-27 03:14:15.960  2146  3109 E constellation: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+11-27 03:14:15.960  2146  3109 E constellation: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+11-27 03:14:15.960  2146  3109 E constellation: 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:14:16.016  2444  3317 W MediaScanner: Error opening directory '/oem/media/', skipping: No such file or directory.
+11-27 03:14:16.018  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ui; assuming invalid
+11-27 03:14:16.020  2444  3317 W MediaProvider: Missing volume for /system/media/bootanimation.zip; assuming invalid
+11-27 03:14:16.023  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Aquila.ogg; assuming invalid
+11-27 03:14:16.028  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/ArgoNavis.ogg; assuming invalid
+11-27 03:14:16.034  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Atria.ogg; assuming invalid
+11-27 03:14:16.037  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/BOOTES.ogg; assuming invalid
+11-27 03:14:16.047  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Backroad.ogg; assuming invalid
+11-27 03:14:16.055  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/BeatPlucker.ogg; assuming invalid
+11-27 03:14:16.055  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/BentleyDubs.ogg; assuming invalid
+11-27 03:14:16.055  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Big_Easy.ogg; assuming invalid
+11-27 03:14:16.056  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/BirdLoop.ogg; assuming invalid
+11-27 03:14:16.057  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Bollywood.ogg; assuming invalid
+11-27 03:14:16.057  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/BussaMove.ogg; assuming invalid
+11-27 03:14:16.057  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/CANISMAJOR.ogg; assuming invalid
+11-27 03:14:16.058  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/CASSIOPEIA.ogg; assuming invalid
+11-27 03:14:16.058  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Cairo.ogg; assuming invalid
+11-27 03:14:16.059  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Calypso_Steel.ogg; assuming invalid
+11-27 03:14:16.059  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/CanisMajor.ogg; assuming invalid
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: Error inserting title_key=-)C9MA);EK parent=71 is_music=false title=Canis Major _size=31133 duration=3498 bucket_id=293500348 is_alarm=false album_artist=null media_type=2 storage_id=0 is_notification=false track=0 bucket_display_name=ringtones _data=/system/media/audio/ringtones/CanisMajor.ogg is_drm=false _display_name=CanisMajor.ogg composer=null format=47362 is_ringtone=true artist_id=1 is_podcast=false date_added=1795749256 date_modified=1596717027 mime_type=application/ogg album_id=4
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: android.database.sqlite.SQLiteConstraintException: UNIQUE constraint failed: files._data (code 2067)
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteConnection.nativeExecuteForLastInsertedRowId(Native Method)
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteConnection.executeForLastInsertedRowId(SQLiteConnection.java:782)
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteSession.executeForLastInsertedRowId(SQLiteSession.java:788)
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteStatement.executeInsert(SQLiteStatement.java:86)
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteDatabase.insertWithOnConflict(SQLiteDatabase.java:1474)
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteDatabase.insert(SQLiteDatabase.java:1343)
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.insertFile(MediaProvider.java:2261)
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.insertInternal(MediaProvider.java:2494)
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.bulkInsert(MediaProvider.java:1867)
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: 	at android.content.ContentProvider$Transport.bulkInsert(ContentProvider.java:282)
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: 	at android.content.ContentProviderClient.bulkInsert(ContentProviderClient.java:290)
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: 	at android.media.MediaInserter.flush(MediaInserter.java:91)
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: 	at android.media.MediaInserter.flushAll(MediaInserter.java:74)
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: 	at android.media.MediaScanner.scanDirectories(MediaScanner.java:1356)
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService.scan(MediaScannerService.java:82)
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService.-wrap1(Unknown Source:0)
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService$ServiceHandler.handleMessage(MediaScannerService.java:252)
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: 	at android.os.Handler.dispatchMessage(Handler.java:105)
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: 	at android.os.Looper.loop(Looper.java:164)
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService.run(MediaScannerService.java:161)
+11-27 03:14:16.059  2444  3317 E SQLiteDatabase: 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:14:16.060  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/CaribbeanIce.ogg; assuming invalid
+11-27 03:14:16.061  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Carina.ogg; assuming invalid
+11-27 03:14:16.062  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Centaurus.ogg; assuming invalid
+11-27 03:14:16.063  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Champagne_Edition.ogg; assuming invalid
+11-27 03:14:16.064  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Club_Cubano.ogg; assuming invalid
+11-27 03:14:16.064  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/CrayonRock.ogg; assuming invalid
+11-27 03:14:16.065  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/CrazyDream.ogg; assuming invalid
+11-27 03:14:16.065  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/CurveBall.ogg; assuming invalid
+11-27 03:14:16.066  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Cygnus.ogg; assuming invalid
+11-27 03:14:16.066  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/DancinFool.ogg; assuming invalid
+11-27 03:14:16.067  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Ding.ogg; assuming invalid
+11-27 03:14:16.067  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/DonMessWivIt.ogg; assuming invalid
+11-27 03:14:16.070  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Draco.ogg; assuming invalid
+11-27 03:14:16.071  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/DreamTheme.ogg; assuming invalid
+11-27 03:14:16.072  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Eastern_Sky.ogg; assuming invalid
+11-27 03:14:16.073  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Enter_the_Nexus.ogg; assuming invalid
+11-27 03:14:16.074  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Eridani.ogg; assuming invalid
+11-27 03:14:16.075  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/EtherShake.ogg; assuming invalid
+11-27 03:14:16.075  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/FreeFlight.ogg; assuming invalid
+11-27 03:14:16.076  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/FriendlyGhost.ogg; assuming invalid
+11-27 03:14:16.077  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Funk_Yall.ogg; assuming invalid
+11-27 03:14:16.078  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/GameOverGuitar.ogg; assuming invalid
+11-27 03:14:16.078  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Gimme_Mo_Town.ogg; assuming invalid
+11-27 03:14:16.079  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Girtab.ogg; assuming invalid
+11-27 03:14:16.080  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Glacial_Groove.ogg; assuming invalid
+11-27 03:14:16.080  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Growl.ogg; assuming invalid
+11-27 03:14:16.080  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/HalfwayHome.ogg; assuming invalid
+11-27 03:14:16.081  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Hydra.ogg; assuming invalid
+11-27 03:14:16.081  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/InsertCoin.ogg; assuming invalid
+11-27 03:14:16.081  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Kuma.ogg; assuming invalid
+11-27 03:14:16.082  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/LoopyLounge.ogg; assuming invalid
+11-27 03:14:16.082  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/LoveFlute.ogg; assuming invalid
+11-27 03:14:16.082  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Lyra.ogg; assuming invalid
+11-27 03:14:16.083  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Machina.ogg; assuming invalid
+11-27 03:14:16.083  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/MidEvilJaunt.ogg; assuming invalid
+11-27 03:14:16.083  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/MildlyAlarming.ogg; assuming invalid
+11-27 03:14:16.084  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Nairobi.ogg; assuming invalid
+11-27 03:14:16.084  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Nassau.ogg; assuming invalid
+11-27 03:14:16.084  2146  2303 W Icing   : No valid account for uploading user actions
+11-27 03:14:16.084  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/NewPlayer.ogg; assuming invalid
+11-27 03:14:16.085  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/No_Limits.ogg; assuming invalid
+11-27 03:14:16.085  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Noises1.ogg; assuming invalid
+11-27 03:14:16.085  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Noises2.ogg; assuming invalid
+11-27 03:14:16.085  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Noises3.ogg; assuming invalid
+11-27 03:14:16.086  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/OrganDub.ogg; assuming invalid
+11-27 03:14:16.087  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Orion.ogg; assuming invalid
+11-27 03:14:16.092  2146  2303 W Icing   : No valid account for uploading user actions
+11-27 03:14:16.094  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/PERSEUS.ogg; assuming invalid
+11-27 03:14:16.095  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Paradise_Island.ogg; assuming invalid
+11-27 03:14:16.096  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Pegasus.ogg; assuming invalid
+11-27 03:14:16.097  1503  3886 E MetadataRetrieverClient: failed to extract an album art
+11-27 03:14:16.098  2146  2303 W Icing   : No valid account for uploading user actions
+11-27 03:14:16.099  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Perseus.ogg; assuming invalid
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: Error inserting title_key=G1KM1QM parent=71 is_music=false title=Perseus _size=236343 duration=10170 bucket_id=293500348 is_alarm=false album_artist=null media_type=2 storage_id=0 is_notification=false track=0 bucket_display_name=ringtones _data=/system/media/audio/ringtones/Perseus.ogg is_drm=false _display_name=Perseus.ogg composer=null format=47362 is_ringtone=true artist_id=1 is_podcast=false date_added=1795749256 date_modified=1596717027 mime_type=application/ogg album_id=4
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: android.database.sqlite.SQLiteConstraintException: UNIQUE constraint failed: files._data (code 2067)
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteConnection.nativeExecuteForLastInsertedRowId(Native Method)
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteConnection.executeForLastInsertedRowId(SQLiteConnection.java:782)
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteSession.executeForLastInsertedRowId(SQLiteSession.java:788)
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteStatement.executeInsert(SQLiteStatement.java:86)
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteDatabase.insertWithOnConflict(SQLiteDatabase.java:1474)
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteDatabase.insert(SQLiteDatabase.java:1343)
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.insertFile(MediaProvider.java:2261)
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.insertInternal(MediaProvider.java:2494)
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.bulkInsert(MediaProvider.java:1867)
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: 	at android.content.ContentProvider$Transport.bulkInsert(ContentProvider.java:282)
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: 	at android.content.ContentProviderClient.bulkInsert(ContentProviderClient.java:290)
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: 	at android.media.MediaInserter.flush(MediaInserter.java:91)
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: 	at android.media.MediaInserter.flushAll(MediaInserter.java:74)
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: 	at android.media.MediaScanner.scanDirectories(MediaScanner.java:1356)
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService.scan(MediaScannerService.java:82)
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService.-wrap1(Unknown Source:0)
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService$ServiceHandler.handleMessage(MediaScannerService.java:252)
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: 	at android.os.Handler.dispatchMessage(Handler.java:105)
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: 	at android.os.Looper.loop(Looper.java:164)
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService.run(MediaScannerService.java:161)
+11-27 03:14:16.100  2444  3317 E SQLiteDatabase: 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:14:16.101  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Playa.ogg; assuming invalid
+11-27 03:14:16.102  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Pyxis.ogg; assuming invalid
+11-27 03:14:16.102  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Rasalas.ogg; assuming invalid
+11-27 03:14:16.103  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Revelation.ogg; assuming invalid
+11-27 03:14:16.103  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Rigel.ogg; assuming invalid
+11-27 03:14:16.103  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Ring_Classic_02.ogg; assuming invalid
+11-27 03:14:16.104  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Ring_Digital_02.ogg; assuming invalid
+11-27 03:14:16.104  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Ring_Synth_02.ogg; assuming invalid
+11-27 03:14:16.106  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Ring_Synth_04.ogg; assuming invalid
+11-27 03:14:16.107  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Road_Trip.ogg; assuming invalid
+11-27 03:14:16.107  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/RomancingTheTone.ogg; assuming invalid
+11-27 03:14:16.107  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Safari.ogg; assuming invalid
+11-27 03:14:16.108  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Savannah.ogg; assuming invalid
+11-27 03:14:16.108  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Scarabaeus.ogg; assuming invalid
+11-27 03:14:16.109  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Sceptrum.ogg; assuming invalid
+11-27 03:14:16.109  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Seville.ogg; assuming invalid
+11-27 03:14:16.109  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Shes_All_That.ogg; assuming invalid
+11-27 03:14:16.111  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/SilkyWay.ogg; assuming invalid
+11-27 03:14:16.111  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/SitarVsSitar.ogg; assuming invalid
+11-27 03:14:16.115  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Solarium.ogg; assuming invalid
+11-27 03:14:16.115  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/SpringyJalopy.ogg; assuming invalid
+11-27 03:14:16.116  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Steppin_Out.ogg; assuming invalid
+11-27 03:14:16.117  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Terminated.ogg; assuming invalid
+11-27 03:14:16.117  2146  2303 W Icing   : No valid account for uploading user actions
+11-27 03:14:16.118  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Testudo.ogg; assuming invalid
+11-27 03:14:16.120  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Themos.ogg; assuming invalid
+11-27 03:14:16.120  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Third_Eye.ogg; assuming invalid
+11-27 03:14:16.121  2146  2303 W Icing   : No valid account for uploading user actions
+11-27 03:14:16.122  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Thunderfoot.ogg; assuming invalid
+11-27 03:14:16.123  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/TwirlAway.ogg; assuming invalid
+11-27 03:14:16.125  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/URSAMINOR.ogg; assuming invalid
+11-27 03:14:16.125  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/UrsaMinor.ogg; assuming invalid
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: Error inserting title_key=QKM)A9CEK parent=71 is_music=false title=UrsaMinor _size=185005 duration=12800 bucket_id=293500348 is_alarm=false album_artist=null media_type=2 storage_id=0 is_notification=false track=0 bucket_display_name=ringtones _data=/system/media/audio/ringtones/UrsaMinor.ogg is_drm=false _display_name=UrsaMinor.ogg composer=null format=47362 is_ringtone=true artist_id=1 is_podcast=false date_added=1795749256 date_modified=1596717027 mime_type=application/ogg album_id=4
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: android.database.sqlite.SQLiteConstraintException: UNIQUE constraint failed: files._data (code 2067)
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteConnection.nativeExecuteForLastInsertedRowId(Native Method)
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteConnection.executeForLastInsertedRowId(SQLiteConnection.java:782)
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteSession.executeForLastInsertedRowId(SQLiteSession.java:788)
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteStatement.executeInsert(SQLiteStatement.java:86)
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteDatabase.insertWithOnConflict(SQLiteDatabase.java:1474)
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteDatabase.insert(SQLiteDatabase.java:1343)
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.insertFile(MediaProvider.java:2261)
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.insertInternal(MediaProvider.java:2494)
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.bulkInsert(MediaProvider.java:1867)
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: 	at android.content.ContentProvider$Transport.bulkInsert(ContentProvider.java:282)
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: 	at android.content.ContentProviderClient.bulkInsert(ContentProviderClient.java:290)
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: 	at android.media.MediaInserter.flush(MediaInserter.java:91)
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: 	at android.media.MediaInserter.flushAll(MediaInserter.java:74)
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: 	at android.media.MediaScanner.scanDirectories(MediaScanner.java:1356)
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService.scan(MediaScannerService.java:82)
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService.-wrap1(Unknown Source:0)
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService$ServiceHandler.handleMessage(MediaScannerService.java:252)
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: 	at android.os.Handler.dispatchMessage(Handler.java:105)
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: 	at android.os.Looper.loop(Looper.java:164)
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService.run(MediaScannerService.java:161)
+11-27 03:14:16.126  2444  3317 E SQLiteDatabase: 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:14:16.126  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/VeryAlarmed.ogg; assuming invalid
+11-27 03:14:16.127  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Vespa.ogg; assuming invalid
+11-27 03:14:16.128  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/World.ogg; assuming invalid
+11-27 03:14:16.128  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/Zeta.ogg; assuming invalid
+11-27 03:14:16.129  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ringtones/hydra.ogg; assuming invalid
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: Error inserting title_key=7Y/K) parent=71 is_music=false title=Hydra _size=22962 duration=5000 bucket_id=293500348 is_alarm=false album_artist=null media_type=2 storage_id=0 is_notification=false track=2 bucket_display_name=ringtones _data=/system/media/audio/ringtones/hydra.ogg is_drm=false _display_name=hydra.ogg composer=null format=47362 is_ringtone=true artist_id=2 is_podcast=false date_added=1795749256 date_modified=1596717027 mime_type=application/ogg album_id=4
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: android.database.sqlite.SQLiteConstraintException: UNIQUE constraint failed: files._data (code 2067)
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteConnection.nativeExecuteForLastInsertedRowId(Native Method)
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteConnection.executeForLastInsertedRowId(SQLiteConnection.java:782)
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteSession.executeForLastInsertedRowId(SQLiteSession.java:788)
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteStatement.executeInsert(SQLiteStatement.java:86)
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteDatabase.insertWithOnConflict(SQLiteDatabase.java:1474)
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: 	at android.database.sqlite.SQLiteDatabase.insert(SQLiteDatabase.java:1343)
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.insertFile(MediaProvider.java:2261)
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.insertInternal(MediaProvider.java:2494)
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaProvider.bulkInsert(MediaProvider.java:1867)
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: 	at android.content.ContentProvider$Transport.bulkInsert(ContentProvider.java:282)
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: 	at android.content.ContentProviderClient.bulkInsert(ContentProviderClient.java:290)
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: 	at android.media.MediaInserter.flush(MediaInserter.java:91)
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: 	at android.media.MediaInserter.flushAll(MediaInserter.java:74)
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: 	at android.media.MediaScanner.scanDirectories(MediaScanner.java:1356)
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService.scan(MediaScannerService.java:82)
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService.-wrap1(Unknown Source:0)
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService$ServiceHandler.handleMessage(MediaScannerService.java:252)
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: 	at android.os.Handler.dispatchMessage(Handler.java:105)
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: 	at android.os.Looper.loop(Looper.java:164)
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: 	at com.android.providers.media.MediaScannerService.run(MediaScannerService.java:161)
+11-27 03:14:16.129  2444  3317 E SQLiteDatabase: 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:14:16.131  1503  3886 E MetadataRetrieverClient: failed to extract an album art
+11-27 03:14:16.134  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ui/Dock.ogg; assuming invalid
+11-27 03:14:16.135  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ui/Effect_Tick.ogg; assuming invalid
+11-27 03:14:16.136  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ui/KeypressDelete.ogg; assuming invalid
+11-27 03:14:16.136  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ui/KeypressInvalid.ogg; assuming invalid
+11-27 03:14:16.136  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ui/KeypressReturn.ogg; assuming invalid
+11-27 03:14:16.137  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ui/KeypressSpacebar.ogg; assuming invalid
+11-27 03:14:16.137  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ui/KeypressStandard.ogg; assuming invalid
+11-27 03:14:16.137  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ui/Lock.ogg; assuming invalid
+11-27 03:14:16.138  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ui/LowBattery.ogg; assuming invalid
+11-27 03:14:16.138  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ui/Trusted.ogg; assuming invalid
+11-27 03:14:16.139  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ui/Undock.ogg; assuming invalid
+11-27 03:14:16.145  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ui/Unlock.ogg; assuming invalid
+11-27 03:14:16.147  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ui/VideoRecord.ogg; assuming invalid
+11-27 03:14:16.148  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ui/VideoStop.ogg; assuming invalid
+11-27 03:14:16.148  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ui/WirelessChargingStarted.ogg; assuming invalid
+11-27 03:14:16.149  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ui/camera_click.ogg; assuming invalid
+11-27 03:14:16.150  2444  3317 W MediaProvider: Missing volume for /system/media/audio/ui/camera_focus.ogg; assuming invalid
+11-27 03:14:16.157  1770  1770 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:14:16.158  1770  1770 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:14:16.159  1770  1770 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:14:16.160  2146  2303 E Icing   : Aborting indexing of corpus suggest_query
+11-27 03:14:16.162  2146  2303 E Icing   : Aborting indexing of corpus movies
+11-27 03:14:16.162  2146  2303 E Icing   : Aborting indexing of corpus shows
+11-27 03:14:16.162  1770  1770 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:14:16.166  1770  1770 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:14:16.167  1770  1770 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:14:16.195  1770  1770 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:14:16.196  1770  1770 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:14:16.196  1770  1770 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:14:16.209  1770  1770 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:14:16.674  2146  3028 E WakeLock: DG:service ** IS FORCE-RELEASED ON TIMEOUT **
+11-27 03:14:17.714  2595  2751 E ActivityThread: Failed to find provider info for com.google.android.apps.gsa.testing.ui.audio.recorded
+11-27 03:14:17.714  2595  2794 W SpeechLevelGenerator: Really low audio levels detected. The audio input may have issues.
+11-27 03:14:17.717  2595  2794 W ErrorReporter: reportError [type: 211, code: 524300]: Error reading from input stream
+11-27 03:14:17.717  2595  2794 W ErrorProcessor: onFatalError, processing error from engine(4)
+11-27 03:14:17.717  2595  2794 W ErrorProcessor: com.google.android.apps.gsa.shared.speech.b.g: Error reading from input stream
+11-27 03:14:17.717  2595  2794 W ErrorProcessor: 	at com.google.android.apps.gsa.staticplugins.recognizer.j.a.a(SourceFile:28)
+11-27 03:14:17.717  2595  2794 W ErrorProcessor: 	at com.google.android.apps.gsa.staticplugins.recognizer.j.b.run(SourceFile:15)
+11-27 03:14:17.717  2595  2794 W ErrorProcessor: 	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:457)
+11-27 03:14:17.717  2595  2794 W ErrorProcessor: 	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+11-27 03:14:17.717  2595  2794 W ErrorProcessor: 	at com.google.android.apps.gsa.shared.util.concurrent.a.ax.run(SourceFile:14)
+11-27 03:14:17.717  2595  2794 W ErrorProcessor: 	at com.google.android.apps.gsa.shared.util.concurrent.a.bl.run(SourceFile:4)
+11-27 03:14:17.717  2595  2794 W ErrorProcessor: 	at com.google.android.apps.gsa.shared.util.concurrent.a.bl.run(SourceFile:4)
+11-27 03:14:17.717  2595  2794 W ErrorProcessor: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+11-27 03:14:17.717  2595  2794 W ErrorProcessor: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+11-27 03:14:17.717  2595  2794 W ErrorProcessor: 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:14:17.717  2595  2794 W ErrorProcessor: 	at com.google.android.apps.gsa.shared.util.concurrent.a.ai.run(SourceFile:6)
+11-27 03:14:17.717  2595  2794 W ErrorProcessor: Caused by: com.google.android.apps.gsa.shared.exception.GsaIOException: Error code: 393238 | Buffer overflow, no available space.
+11-27 03:14:17.717  2595  2794 W ErrorProcessor: 	at com.google.android.apps.gsa.speech.audio.Tee.f(SourceFile:103)
+11-27 03:14:17.717  2595  2794 W ErrorProcessor: 	at com.google.android.apps.gsa.speech.audio.au.read(SourceFile:2)
+11-27 03:14:17.717  2595  2794 W ErrorProcessor: 	at java.io.InputStream.read(InputStream.java:101)
+11-27 03:14:17.717  2595  2794 W ErrorProcessor: 	at com.google.android.apps.gsa.speech.audio.ao.run(SourceFile:18)
+11-27 03:14:17.717  2595  2794 W ErrorProcessor: 	at com.google.android.apps.gsa.speech.audio.an.run(SourceFile:2)
+11-27 03:14:17.717  2595  2794 W ErrorProcessor: 	... 9 more
+11-27 03:14:20.686  2146  2681 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:14:20.686  2146  2681 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:20.686  2146  2681 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:20.703  4294  4294 W zygote64: Unexpected CPU variant for X86 using defaults: x86_64
+11-27 03:14:20.705  2146  2681 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:14:20.705  2146  2681 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:20.705  2146  2681 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:20.740  4294  4294 W FirebaseApp: Default FirebaseApp failed to initialize because no default options were found. This usually means that com.google.gms:google-services was not applied to your gradle project.
+11-27 03:14:20.755  4294  4294 W didamony.hayati: type=1400 audit(0.0:56): avc: denied { read } for name="max_map_count" dev="proc" ino=35866 scontext=u:r:untrusted_app:s0:c512,c768 tcontext=u:object_r:proc:s0 tclass=file permissive=0
+11-27 03:14:20.877  1402  1421 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-27 03:14:21.037  1770  1770 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:14:21.049  2595  2751 E SQLiteLog: (1) no such table: blob_table
+11-27 03:14:21.053  2595  2751 E ContentStoreEUAS: Failed to commit the deferred actions
+11-27 03:14:21.575  3431  3596 W SystemServiceRegistry: No service published for: persistent_data_block
+11-27 03:14:21.646  2146  3813 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:14:21.646  2146  3813 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:21.646  2146  3813 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:21.665  2146  3813 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:14:21.665  2146  3813 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:21.665  2146  3813 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:22.138  1402  1402 W SurfaceFlinger: couldn't log to binary event log: overflow.
+11-27 03:14:22.138  1402  1402 W SurfaceFlinger: couldn't log to binary event log: overflow.
+11-27 03:14:22.237  2595  2595 W SearchService: Abort, client detached.
+11-27 03:14:22.237  2595  2595 W SearchService: Abort, client detached.
+11-27 03:14:22.318  2595  2751 W NamedFutures: Timeout future task has been cancelled: 10000 milliseconds
+11-27 03:14:22.318  2595  2595 E SearchServiceStarter: Task 174 failed or timed out. Client 11414726445560380 disconnecting from SearchService!
+11-27 03:14:22.318  2595  2595 E SearchServiceStarter: java.util.concurrent.CancellationException: Task was cancelled.
+11-27 03:14:22.318  2595  2595 E SearchServiceStarter: 	at com.google.common.util.concurrent.d.ct(SourceFile:75)
+11-27 03:14:22.318  2595  2595 E SearchServiceStarter: 	at com.google.common.util.concurrent.d.get(SourceFile:57)
+11-27 03:14:22.318  2595  2595 E SearchServiceStarter: 	at com.google.common.util.concurrent.cg.n(SourceFile:2)
+11-27 03:14:22.318  2595  2595 E SearchServiceStarter: 	at com.google.common.util.concurrent.av.l(SourceFile:50)
+11-27 03:14:22.318  2595  2595 E SearchServiceStarter: 	at com.google.common.util.concurrent.ax.run(SourceFile:5)
+11-27 03:14:22.318  2595  2595 E SearchServiceStarter: 	at com.google.android.apps.gsa.shared.util.concurrent.a.bc.run(SourceFile:2)
+11-27 03:14:22.318  2595  2595 E SearchServiceStarter: 	at android.os.Handler.handleCallback(Handler.java:789)
+11-27 03:14:22.318  2595  2595 E SearchServiceStarter: 	at android.os.Handler.dispatchMessage(Handler.java:98)
+11-27 03:14:22.318  2595  2595 E SearchServiceStarter: 	at android.os.Looper.loop(Looper.java:164)
+11-27 03:14:22.318  2595  2595 E SearchServiceStarter: 	at android.app.ActivityThread.main(ActivityThread.java:6541)
+11-27 03:14:22.318  2595  2595 E SearchServiceStarter: 	at java.lang.reflect.Method.invoke(Native Method)
+11-27 03:14:22.318  2595  2595 E SearchServiceStarter: 	at com.android.internal.os.Zygote$MethodAndArgsCaller.run(Zygote.java:240)
+11-27 03:14:22.318  2595  2595 E SearchServiceStarter: 	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:767)
+11-27 03:14:22.319  2595  2595 W SearchService: Abort, client detached.
+11-27 03:14:22.319  2595  2595 W SearchService: Abort, client detached.
+11-27 03:14:22.344  1635  4131 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:14:22.344  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:14:22.352  2146  3667 W MDM     : [135] agll.c: Device admin action is a no-op. Action: true
+11-27 03:14:22.361  1635  1935 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:14:22.361  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:14:22.388  1635  1661 E memtrack: Couldn't load memtrack module
+11-27 03:14:22.389  1635  1661 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:14:22.498  2595  2798 E DownloadManagerWrapper: Can't find downloadId=2
+11-27 03:14:22.507  1635  2628 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:14:22.507  2595  2794 W LanguagePackUpdateContr: Querying download manager failed for ID : 2
+11-27 03:14:22.507  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:14:22.511  1635  1935 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:14:22.511  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:14:22.515  1635  2622 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:14:22.515  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:14:22.535  2146  2608 W Icing   : No valid account for uploading user actions
+11-27 03:14:22.636  2595  2794 E DownloadManagerWrapper: Can't find downloadId=1
+11-27 03:14:22.637  2595  2798 W LanguagePackUpdateContr: Querying download manager failed for ID : 1
+11-27 03:14:22.645  1635  2628 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:14:22.646  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:14:22.649  1635  2622 W BroadcastQueue: Background execution not allowed: receiving Intent { act=com.google.android.gms.location.reporting.SETTINGS_CHANGED flg=0x10 } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentInternalReceiver
+11-27 03:14:22.649  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=com.google.android.gms.location.reporting.SETTINGS_CHANGED flg=0x10 } to com.google.android.googlequicksearchbox/com.google.android.apps.gsa.search.core.udc.UdcSettingBroadcastReceiver
+11-27 03:14:22.670  1635  2628 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.auth.key.retrieval.service.START pkg=com.google.android.gms } U=0: not found
+11-27 03:14:22.674  1635  4131 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@1c1e199
+11-27 03:14:22.674  2146  2593 E GmsClient: unable to connect to service: com.google.android.gms.auth.key.retrieval.service.START on com.google.android.gms
+11-27 03:14:22.680  3722  4367 E YouTube : Failed to fetch offline library browse
+11-27 03:14:22.680  3722  4367 E YouTube : aahl: java.util.concurrent.ExecutionException: xpy: Precondition check failed.
+11-27 03:14:22.680  3722  4367 E YouTube : 	at aajf.a(SourceFile:25)
+11-27 03:14:22.680  3722  4367 E YouTube : 	at dys.a(SourceFile:11)
+11-27 03:14:22.680  3722  4367 E YouTube : 	at wsr.a(SourceFile:7)
+11-27 03:14:22.680  3722  4367 E YouTube : 	at com.google.android.libraries.youtube.common.gcm.YouTubeGcmTaskService.a(SourceFile:18)
+11-27 03:14:22.680  3722  4367 E YouTube : 	at com.google.android.libraries.youtube.common.gcore.gcoreclient.gcm.impl.GcmTaskServiceDelegator.a(SourceFile:11)
+11-27 03:14:22.680  3722  4367 E YouTube : 	at qbk.run(SourceFile:18)
+11-27 03:14:22.680  3722  4367 E YouTube : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+11-27 03:14:22.680  3722  4367 E YouTube : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+11-27 03:14:22.680  3722  4367 E YouTube : 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:14:22.680  3722  4367 E YouTube : Caused by: java.util.concurrent.ExecutionException: xpy: Precondition check failed.
+11-27 03:14:22.680  3722  4367 E YouTube : 	at anki.b(SourceFile:105)
+11-27 03:14:22.680  3722  4367 E YouTube : 	at anki.get(SourceFile:92)
+11-27 03:14:22.680  3722  4367 E YouTube : 	at aajf.a(SourceFile:24)
+11-27 03:14:22.680  3722  4367 E YouTube : 	... 8 more
+11-27 03:14:22.680  3722  4367 E YouTube : Caused by: xpy: Precondition check failed.
+11-27 03:14:22.680  3722  4367 E YouTube : 	at aagf.a(SourceFile:7)
+11-27 03:14:22.680  3722  4367 E YouTube : 	at xft.a(SourceFile:136)
+11-27 03:14:22.680  3722  4367 E YouTube : 	at xft.a(SourceFile:169)
+11-27 03:14:22.680  3722  4367 E YouTube : 	at xew.run(Unknown Source:1)
+11-27 03:14:22.680  3722  4367 E YouTube : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+11-27 03:14:22.680  3722  4367 E YouTube : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+11-27 03:14:22.680  3722  4367 E YouTube : 	at wvf.run(SourceFile:12)
+11-27 03:14:22.680  3722  4367 E YouTube : 	... 1 more
+11-27 03:14:22.680  3722  4367 E YouTube : Caused by: boa
+11-27 03:14:22.680  3722  4367 E YouTube : 	at xft.a(SourceFile:166)
+11-27 03:14:22.680  3722  4367 E YouTube : 	... 5 more
+11-27 03:14:22.723  1635  1674 W ActivityManager: Scheduling restart of crashed service com.google.android.youtube/com.google.android.libraries.youtube.common.gcore.gcoreclient.gcm.impl.GcmTaskServiceDelegator in 1000ms
+11-27 03:14:22.753  1635  2993 W ContentService: Found dead observer, removing
+11-27 03:14:22.793  1635  1737 E ConnectivityService: RemoteException caught trying to send a callback msg for NetworkRequest [ LISTEN id=8, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&FOREGROUND] ]
+11-27 03:14:22.798  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0200ea
+11-27 03:14:22.798  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0c02b0
+11-27 03:14:22.798  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0c02ad
+11-27 03:14:22.799  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0200eb
+11-27 03:14:22.799  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0c02b1
+11-27 03:14:22.799  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0c02ae
+11-27 03:14:22.799  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0200ec
+11-27 03:14:22.799  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0c02b2
+11-27 03:14:22.799  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0c02af
+11-27 03:14:22.810  2146  4379 W MobileDataHub: [Service] appsupload-periodic periodic task disabled
+11-27 03:14:22.819  1635  2011 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:14:22.819  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:14:22.878  1635  2011 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:14:22.878  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:14:22.898  1635  2622 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:14:22.898  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:14:22.906  2146  4375 E MDM     : [281] agll.a: No Google accounts; deferring server state update.
+11-27 03:14:22.915  1635  1947 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.didamony.hayati flg=0x4000010 (has extras) } to com.google.android.gms/.games.chimera.GamesSystemBroadcastReceiverProxy
+11-27 03:14:22.915  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.didamony.hayati flg=0x4000010 (has extras) } to com.google.android.gms/.gass.chimera.PackageChangeBroadcastReceiver
+11-27 03:14:22.915  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.didamony.hayati flg=0x4000010 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:14:22.915  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:com.didamony.hayati flg=0x4000010 (has extras) } to com.google.android.googlequicksearchbox/com.google.android.apps.gsa.googlequicksearchbox.GelStubAppWatcher
+11-27 03:14:22.917  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:14:22.917  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:14:22.920  1635  2622 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:14:22.920  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:14:22.921  1635  2622 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:14:22.921  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:14:22.953  2146  4388 W PrereqChecker: CPU ABIs [x86_64, ] are not supported.
+11-27 03:14:23.002  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f02034e
+11-27 03:14:23.002  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f1104dc
+11-27 03:14:23.002  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0203e7
+11-27 03:14:23.002  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f110d3d
+11-27 03:14:23.022  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0203f6
+11-27 03:14:23.022  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f13080c
+11-27 03:14:23.022  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0203f8
+11-27 03:14:23.022  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f13086b
+11-27 03:14:23.022  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f0203fa
+11-27 03:14:23.022  1635  1661 W ResourceType: No known package when getting value for resource number 0x7f1308b0
+11-27 03:14:28.016  1635  1647 W AlarmManagerService: Unable to set rtc to 1795749268: No such device
+11-27 03:14:28.138  1635  4131 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:14:28.138  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:14:28.183  1770  3262 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:14:28.183  1770  3262 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:28.183  1770  3262 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:28.217  1770  3262 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:14:28.217  1770  3262 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:28.217  1770  3262 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:28.258  2146  4385 W MobileDataHub: [Service] appsupload-periodic periodic task disabled
+11-27 03:14:28.265  2146  4383 W PrereqChecker: CPU ABIs [x86_64, ] are not supported.
+11-27 03:14:28.307  1770  3049 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:14:28.312  1770  3049 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:28.312  1770  3049 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:28.330  1770  3049 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:14:28.330  1770  3049 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:28.330  1770  3049 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:28.834  2146  4379 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:28.835  1635  4131 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.auth.key.retrieval.service.START pkg=com.google.android.gms } U=0: not found
+11-27 03:14:28.835  1635  1935 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@6b1db9c
+11-27 03:14:28.835  2146  2593 E GmsClient: unable to connect to service: com.google.android.gms.auth.key.retrieval.service.START on com.google.android.gms
+11-27 03:14:28.850  4429  4429 W zygote64: Unexpected CPU variant for X86 using defaults: x86_64
+11-27 03:14:28.859  2146  4380 E MS_DownloadManager: Unsupported Matchstick Download Type: 
+11-27 03:14:28.859  2146  4380 E MS_DownloadManager: Failed to get download uri for unsupported Matchstick download type: 
+11-27 03:14:28.873  2146  4383 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:28.948  1635  3837 W ActivityManager: Unable to start service Intent { act=com.google.android.c2dm.intent.REGISTRATION pkg=com.google.android.apps.maps } U=0: not found
+11-27 03:14:28.958  2146  4386 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:28.980  4429  4456 W aygd    : copyMemory is missing from platform - proto runtime falling back to safer methods.
+11-27 03:14:28.995  2146  4468 E MDM     : [303] agll.a: No Google accounts; deferring server state update.
+11-27 03:14:29.020  2146  4448 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.038  1635  1755 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+11-27 03:14:29.043  2146  4468 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.063  2146  4468 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.091  2146  3667 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.099  2146  4379 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.100  2146  4466 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.101  2146  4465 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.102  2146  4469 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.104  2146  4386 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.147  2146  4384 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.199  2146  4379 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.207  2146  4387 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.230  2146  4446 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.257  1770  1770 W ExposureNotification: stopTracing called but Scanner failed to stop! [CONTEXT service_id=236 ]
+11-27 03:14:29.276  2146  4476 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.298  2146  4475 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.321  2146  4475 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.350  2146  4379 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.365  2146  3667 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.385  2146  4380 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.430  2146  4466 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.456  2146  4474 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.481  2146  4381 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.500  2146  4477 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.516  2146  4384 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.522  1635  1661 E memtrack: Couldn't load memtrack module
+11-27 03:14:29.522  1635  1661 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:14:29.530  2146  4476 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.622  1635  1661 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-27 03:14:29.622  1635  1661 W Binder  : java.lang.Throwable
+11-27 03:14:29.622  1635  1661 W Binder  : 	at android.os.BinderProxy.transact(Binder.java:736)
+11-27 03:14:29.622  1635  1661 W Binder  : 	at com.android.internal.location.ILocationProvider$Stub$Proxy.getProperties(ILocationProvider.java:232)
+11-27 03:14:29.622  1635  1661 W Binder  : 	at com.android.server.location.LocationProviderProxy$1.run(LocationProviderProxy.java:119)
+11-27 03:14:29.622  1635  1661 W Binder  : 	at android.os.Handler.handleCallback(Handler.java:789)
+11-27 03:14:29.622  1635  1661 W Binder  : 	at android.os.Handler.dispatchMessage(Handler.java:98)
+11-27 03:14:29.622  1635  1661 W Binder  : 	at android.os.Looper.loop(Looper.java:164)
+11-27 03:14:29.622  1635  1661 W Binder  : 	at android.os.HandlerThread.run(HandlerThread.java:65)
+11-27 03:14:29.622  1635  1661 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-27 03:14:29.622  1635  1661 W Binder  : java.lang.Throwable
+11-27 03:14:29.622  1635  1661 W Binder  : 	at android.os.BinderProxy.transact(Binder.java:736)
+11-27 03:14:29.622  1635  1661 W Binder  : 	at com.android.internal.location.ILocationProvider$Stub$Proxy.getProperties(ILocationProvider.java:232)
+11-27 03:14:29.622  1635  1661 W Binder  : 	at com.android.server.location.LocationProviderProxy$1.run(LocationProviderProxy.java:119)
+11-27 03:14:29.622  1635  1661 W Binder  : 	at android.os.Handler.handleCallback(Handler.java:789)
+11-27 03:14:29.622  1635  1661 W Binder  : 	at android.os.Handler.dispatchMessage(Handler.java:98)
+11-27 03:14:29.622  1635  1661 W Binder  : 	at android.os.Looper.loop(Looper.java:164)
+11-27 03:14:29.622  1635  1661 W Binder  : 	at android.os.HandlerThread.run(HandlerThread.java:65)
+11-27 03:14:29.629  2146  4387 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.650  1635  1661 E memtrack: Couldn't load memtrack module
+11-27 03:14:29.650  1635  1661 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:14:29.654  2146  4379 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.673  3431  3452 W SystemServiceRegistry: No service published for: persistent_data_block
+11-27 03:14:29.709  2146  4427 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.756  2146  4476 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.756  2146  3667 W MobileDataHub: [Service] appsupload-periodic periodic task disabled
+11-27 03:14:29.766  2146  4467 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.820  2146  4388 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.853  2146  3667 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.880  2146  4379 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.929  2146  4446 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.941  2146  4446 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:29.943  2146  3936 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:14:29.943  2146  3936 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:29.943  2146  3936 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:29.982  2146  3936 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:14:29.982  2146  3936 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:29.982  2146  3936 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:30.017  2146  4476 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.018  2146  4448 W PrereqChecker: CPU ABIs [x86_64, ] are not supported.
+11-27 03:14:30.026  2146  4427 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.032  2146  4380 W PayUpdateIntentOperatio: Dropping unexpected action: com.google.android.gms.phenotype.COMMITTED [CONTEXT service_id=198 ]
+11-27 03:14:30.050  2146  4448 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.071  2146  4388 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.090  2146  4383 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.172  2146  4465 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.201  2146  4475 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.211  1770  3262 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:14:30.211  1770  3262 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:30.211  1770  3262 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:30.219  2146  4383 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.234  1770  3262 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:14:30.234  1770  3262 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:30.235  1770  3262 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:30.247  2146  4465 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.262  2146  4383 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.279  2146  4384 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.291  2146  4427 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.304  2146  4466 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.315  2146  4386 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.329  2146  4387 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.411  1635  3135 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.auth.key.retrieval.service.START pkg=com.google.android.gms } U=0: not found
+11-27 03:14:30.413  2146  4427 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.413  1635  4481 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@93eb2a4
+11-27 03:14:30.414  2146  2593 E GmsClient: unable to connect to service: com.google.android.gms.auth.key.retrieval.service.START on com.google.android.gms
+11-27 03:14:30.415  1770  4452 W MagicTether: [MagicTetherInitializer] Invalid account list.
+11-27 03:14:30.429  2146  3667 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.472  2146  4467 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.497  2146  4477 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.507  2146  4466 E cklt    : *~*~*~ Channel {0} was not shutdown properly!!! ~*~*~*
+11-27 03:14:30.507  2146  4466 E cklt    :     Make sure to call shutdown()/shutdownNow() and wait until awaitTermination() returns true.
+11-27 03:14:30.507  2146  4466 E cklt    : java.lang.RuntimeException: ManagedChannel allocation site
+11-27 03:14:30.507  2146  4466 E cklt    : 	at ckls.<init>(:com.google.android.gms@202414023@20.24.14 (040800-319035315):3)
+11-27 03:14:30.507  2146  4466 E cklt    : 	at cklt.<init>(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:30.507  2146  4466 E cklt    : 	at ckfk.b(:com.google.android.gms@202414023@20.24.14 (040800-319035315):21)
+11-27 03:14:30.507  2146  4466 E cklt    : 	at sjo.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):29)
+11-27 03:14:30.507  2146  4466 E cklt    : 	at sjo.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):31)
+11-27 03:14:30.507  2146  4466 E cklt    : 	at szt.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):479)
+11-27 03:14:30.507  2146  4466 E cklt    : 	at szt.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):553)
+11-27 03:14:30.507  2146  4466 E cklt    : 	at syy.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):141)
+11-27 03:14:30.507  2146  4466 E cklt    : 	at com.google.android.gms.constellation.EventManager.onHandleIntent(:com.google.android.gms@202414023@20.24.14 (040800-319035315):240)
+11-27 03:14:30.507  2146  4466 E cklt    : 	at com.google.android.chimera.IntentOperation.onHandleIntent(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:30.507  2146  4466 E cklt    : 	at qlx.onHandleIntent(:com.google.android.gms@202414023@20.24.14 (040800-319035315):4)
+11-27 03:14:30.507  2146  4466 E cklt    : 	at cuo.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):5)
+11-27 03:14:30.507  2146  4466 E cklt    : 	at cun.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):10)
+11-27 03:14:30.507  2146  4466 E cklt    : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+11-27 03:14:30.507  2146  4466 E cklt    : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+11-27 03:14:30.507  2146  4466 E cklt    : 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:14:30.515  1770  2854 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+11-27 03:14:30.515  1770  2854 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+11-27 03:14:30.518  1770  1770 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:14:30.519  1770  1770 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:14:30.578  2146  4465 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.647  2146  4375 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.647  1635  1647 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.auth.key.retrieval.service.START pkg=com.google.android.gms } U=0: not found
+11-27 03:14:30.648  1635  2628 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@24b2221
+11-27 03:14:30.651  2146  2593 E GmsClient: unable to connect to service: com.google.android.gms.auth.key.retrieval.service.START on com.google.android.gms
+11-27 03:14:30.668  2146  4465 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.681  2146  4467 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.692  2146  4476 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.702  2146  4387 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.721  2146  4427 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.746  2146  4427 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.764  2146  4445 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.776  2146  4474 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.788  2146  4383 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.798  2146  4446 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.807  2146  4380 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.819  2146  4381 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.839  2146  4477 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.861  2146  4477 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.870  2146  4448 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.886  2146  4384 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.916  2146  4384 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.926  2146  4467 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.953  2146  4445 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.984  2146  4469 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:30.989  1770  2953 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+11-27 03:14:30.990  1770  2953 W GLSUser : [DeviceKeyStore] Cannot load key: Device key file not found.
+11-27 03:14:30.995  2146  4446 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.022  2146  4468 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.039  2146  4475 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.072  2146  4387 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.082  2146  4474 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.107  2146  4384 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.124  2146  4387 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.137  2146  4465 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.159  2146  4447 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.170  2146  4465 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.186  2146  4379 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.191  1770  1770 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:14:31.194  2146  4445 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.204  1770  4502 W EasyUnlock: [EasyUnlockSupportReporterIntentOperation] Invalid account list.
+11-27 03:14:31.236  2146  4447 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.262  2146  4383 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.288  2146  4379 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.301  2146  4379 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.313  2146  4383 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.325  2146  4387 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.339  2146  4383 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.360  2146  4427 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.386  2146  4448 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.396  2146  3667 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.399  2146  4380 W MobileDataHub: [Service] appsupload-periodic periodic task disabled
+11-27 03:14:31.411  2146  4379 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.418  2146  4379 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.427  2146  4386 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.433  2146  4448 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.440  2146  4468 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:31.754  2146  2155 W SQLiteConnectionPool: A SQLiteConnection object for database '/data/user/0/com.google.android.gms/databases/lighter_registration.db' was leaked!  Please fix your application to end transactions in progress properly and to close the database when it is no longer needed.
+11-27 03:14:31.783  1635  1661 E memtrack: Couldn't load memtrack module
+11-27 03:14:31.783  1635  1661 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:14:31.962  1402  1708 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-27 03:14:32.063  1635  1733 W AlarmManager: Unrecognized alarm listener com.android.server.wifi.WifiConfigStore$1@6ed5c0c
+11-27 03:14:32.487  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:14:32.487  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:14:32.615  1770  2187 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:14:32.615  1770  2187 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:32.615  1770  2187 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:32.632  1770  2187 W Conscrypt: Could not set socket write timeout: java.net.SocketException: Socket closed
+11-27 03:14:32.633  1770  2187 W Conscrypt: 	at com.google.android.gms.org.conscrypt.Platform.setSocketWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:32.633  1770  2187 W Conscrypt: 	at com.google.android.gms.org.conscrypt.ConscryptFileDescriptorSocket.setSoWriteTimeout(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:32.760  1770  1770 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:14:32.766  1770  1770 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:14:32.772  1770  1770 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:14:32.772  1770  1770 E BluetoothAdapter: Bluetooth binder is null
+11-27 03:14:32.830  2146  4386 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:32.831  1635  2622 W ActivityManager: Unable to start service Intent { act=com.google.android.gms.auth.key.retrieval.service.START pkg=com.google.android.gms } U=0: not found
+11-27 03:14:32.832  1635  2993 W ActivityManager: Unbind failed: could not find connection for android.os.BinderProxy@dfaa266
+11-27 03:14:32.832  2146  2593 E GmsClient: unable to connect to service: com.google.android.gms.auth.key.retrieval.service.START on com.google.android.gms
+11-27 03:14:32.841  2146  4388 W ModuleInitIntentOp: Dropping unexpected action com.google.android.gms.phenotype.COMMITTED
+11-27 03:14:34.609  1635  1661 E memtrack: Couldn't load memtrack module
+11-27 03:14:34.609  1635  1661 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:14:34.966  1770  2802 W Nearby  : Failed attempt #3 out of 3 for RestoreDeviceName [CONTEXT service_id=49 ]
+11-27 03:14:34.966  1770  2802 W Nearby  : java.lang.IllegalStateException: BluetoothAdapter not ready yet!
+11-27 03:14:34.966  1770  2802 W Nearby  : 	at ajpy.d(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:34.966  1770  2802 W Nearby  : 	at ajpx.run(Unknown Source:0)
+11-27 03:14:34.966  1770  2802 W Nearby  : 	at bwuj.call(Unknown Source:0)
+11-27 03:14:34.966  1770  2802 W Nearby  : 	at bwuo.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:34.966  1770  2802 W Nearby  : 	at bwuo.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):9)
+11-27 03:14:34.966  1770  2802 W Nearby  : 	at ajpw.run(Unknown Source:0)
+11-27 03:14:34.966  1770  2802 W Nearby  : 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:14:34.966  1770  2802 W Nearby  : 	at sow.run(Unknown Source:0)
+11-27 03:14:34.966  1770  2802 W Nearby  : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+11-27 03:14:34.966  1770  2802 W Nearby  : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+11-27 03:14:34.966  1770  2802 W Nearby  : 	at sux.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:34.966  1770  2802 W Nearby  : 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:14:35.540  1635  1661 E memtrack: Couldn't load memtrack module
+11-27 03:14:35.540  1635  1661 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:14:36.178  1635  4556 W Binder  : Outgoing transactions from this process must be FLAG_ONEWAY
+11-27 03:14:36.178  1635  4556 W Binder  : java.lang.Throwable
+11-27 03:14:36.178  1635  4556 W Binder  : 	at android.os.BinderProxy.transact(Binder.java:736)
+11-27 03:14:36.178  1635  4556 W Binder  : 	at android.content.ContentProviderProxy.openTypedAssetFile(ContentProviderNative.java:696)
+11-27 03:14:36.178  1635  4556 W Binder  : 	at android.content.ContentResolver.openTypedAssetFileDescriptor(ContentResolver.java:1410)
+11-27 03:14:36.178  1635  4556 W Binder  : 	at android.content.ContentResolver.openAssetFileDescriptor(ContentResolver.java:1247)
+11-27 03:14:36.178  1635  4556 W Binder  : 	at android.content.ContentResolver.openInputStream(ContentResolver.java:967)
+11-27 03:14:36.178  1635  4556 W Binder  : 	at com.android.server.updates.ConfigUpdateInstallReceiver.getAltContent(ConfigUpdateInstallReceiver.java:135)
+11-27 03:14:36.178  1635  4556 W Binder  : 	at com.android.server.updates.ConfigUpdateInstallReceiver.-wrap1(Unknown Source:0)
+11-27 03:14:36.178  1635  4556 W Binder  : 	at com.android.server.updates.ConfigUpdateInstallReceiver$1.run(ConfigUpdateInstallReceiver.java:65)
+11-27 03:14:36.902  1635  1661 E memtrack: Couldn't load memtrack module
+11-27 03:14:36.902  1635  1661 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:14:37.647  1635  1665 E BatteryStatsService: modem info is invalid: ModemActivityInfo{ mTimestamp=0 mSleepTimeMs=0 mIdleTimeMs=0 mTxTimeMs[]=[0, 0, 0, 0, 0] mRxTimeMs=0 mEnergyUsed=0}
+11-27 03:14:38.074  4568  4568 W zygote64: Unexpected CPU variant for X86 using defaults: x86_64
+11-27 03:14:38.871  1635  1661 E memtrack: Couldn't load memtrack module
+11-27 03:14:38.871  1635  1661 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:14:40.745  1635  1661 E memtrack: Couldn't load memtrack module
+11-27 03:14:40.745  1635  1661 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:14:40.863  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.stats.service.DropBoxEntryAddedReceiver
+11-27 03:14:40.863  1635  1662 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.DROPBOX_ENTRY_ADDED flg=0x10 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+11-27 03:14:42.158  1402  2057 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
+11-27 03:14:46.010  1635  1661 E memtrack: Couldn't load memtrack module
+11-27 03:14:46.010  1635  1661 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:14:46.014  1635  1661 E memtrack: Couldn't load memtrack module
+11-27 03:14:46.014  1635  1661 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:14:47.013  1635  1661 E memtrack: Couldn't load memtrack module
+11-27 03:14:47.013  1635  1661 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:14:47.018  1635  1661 E memtrack: Couldn't load memtrack module
+11-27 03:14:47.018  1635  1661 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:14:49.245  1770  4419 W Nearby  : Failed attempt #3 out of 3 for RestoreDeviceName [CONTEXT service_id=49 ]
+11-27 03:14:49.245  1770  4419 W Nearby  : java.lang.IllegalStateException: BluetoothAdapter not ready yet!
+11-27 03:14:49.245  1770  4419 W Nearby  : 	at ajpy.d(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:49.245  1770  4419 W Nearby  : 	at ajpx.run(Unknown Source:0)
+11-27 03:14:49.245  1770  4419 W Nearby  : 	at bwuj.call(Unknown Source:0)
+11-27 03:14:49.245  1770  4419 W Nearby  : 	at bwuo.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):2)
+11-27 03:14:49.245  1770  4419 W Nearby  : 	at bwuo.a(:com.google.android.gms@202414023@20.24.14 (040800-319035315):9)
+11-27 03:14:49.245  1770  4419 W Nearby  : 	at ajpw.run(Unknown Source:0)
+11-27 03:14:49.245  1770  4419 W Nearby  : 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:14:49.245  1770  4419 W Nearby  : 	at sow.run(Unknown Source:0)
+11-27 03:14:49.245  1770  4419 W Nearby  : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+11-27 03:14:49.245  1770  4419 W Nearby  : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+11-27 03:14:49.245  1770  4419 W Nearby  : 	at sux.run(:com.google.android.gms@202414023@20.24.14 (040800-319035315):0)
+11-27 03:14:49.245  1770  4419 W Nearby  : 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:14:49.443  2256  3320 W faq     : Failed closing connection
+11-27 03:14:49.443  2256  3320 W faq     : javax.net.ssl.SSLException: Write error: ssl=0x79a2bd81bf00: I/O error during system call, Broken pipe
+11-27 03:14:49.443  2256  3320 W faq     : 	at com.android.org.conscrypt.NativeCrypto.SSL_write(Native Method)
+11-27 03:14:49.443  2256  3320 W faq     : 	at com.android.org.conscrypt.OpenSSLSocketImpl$SSLOutputStream.write(OpenSSLSocketImpl.java:807)
+11-27 03:14:49.443  2256  3320 W faq     : 	at fgg.a_(PG:7)
+11-27 03:14:49.443  2256  3320 W faq     : 	at ffy.a_(PG:13)
+11-27 03:14:49.443  2256  3320 W faq     : 	at fgj.close(PG:44)
+11-27 03:14:49.443  2256  3320 W faq     : 	at fbs.close(PG:116)
+11-27 03:14:49.443  2256  3320 W faq     : 	at faa.run(PG:7)
+11-27 03:14:49.443  2256  3320 W faq     : 	at io.grpc.internal.dp.run(PG:19)
+11-27 03:14:49.443  2256  3320 W faq     : 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1162)
+11-27 03:14:49.443  2256  3320 W faq     : 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:636)
+11-27 03:14:49.443  2256  3320 W faq     : 	at java.lang.Thread.run(Thread.java:764)
+11-27 03:14:50.029  2146  4604 W Vision  : Request of optional module download of ocr failed.
+11-27 03:14:55.895  1635  1661 E memtrack: Couldn't load memtrack module
+11-27 03:14:55.895  1635  1661 W android.os.Debug: failed to get memory consumption info: -1
+11-27 03:14:57.304  1402  2057 E SurfaceFlinger: ro.sf.lcd_density must be defined as a build property
