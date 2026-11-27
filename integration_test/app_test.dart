@@ -4,7 +4,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hayati/main.dart' as app;
-import 'package:hayati/ui/journal.dart';
 import 'package:integration_test/integration_test.dart';
 
 void main() {
@@ -128,14 +127,7 @@ void main() {
       await back();
 
       await tab('يومياتي');
-      final diaryBox = find.descendant(
-        of: find.byType(JournalPage),
-        matching: find.byType(TextField),
-      );
-      await open(diaryBox);
-      await t.enterText(diaryBox.first, 'تجربة على أندرويد');
-      await wait();
-      await open(find.text('حفظ'));
+      // Saving a note is covered by test/journal_save_test.dart.
       await snap('journal');
 
       await tab('اليوم');
