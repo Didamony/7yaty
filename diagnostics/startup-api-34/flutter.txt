@@ -1,0 +1,5 @@
+--------- beginning of main
+11-27 03:26:52.491  2932  3137 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(104)] Using the Impeller rendering backend (OpenGLES).
+11-27 03:26:53.658  2932  3300 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(104)] Using the Impeller rendering backend (OpenGLES).
+11-27 03:26:57.578  2932  2932 I flutter : hayati: could not schedule prayer-before|fajr|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
+11-27 03:26:57.578  2932  2932 I flutter : hayati: could not schedule prayer-now|fajr|2026-11-27: Invalid argument (scheduledDate): Must be a date in the future: Instance of 'TZDateTime'
