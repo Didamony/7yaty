@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/7yaty/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="حياتي — أهدافك ومواعيدك ويومياتك">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="حياتي">
+  <meta name="theme-color" content="#0F5257">
+  <link rel="apple-touch-icon" href="icons/Icon-512.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>حياتي</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    /* First-visit guide: one link for everyone; Android gets the app,
+       iPhone learns to add the web app to the home screen. */
+    #welcome { position: fixed; inset: 0; z-index: 9999; display: none;
+      overflow-y: auto; background: #EEF2F7; color: #24313F;
+      font-family: -apple-system, "Segoe UI", Tahoma, sans-serif; }
+    #welcome * { box-sizing: border-box; }
+    #welcome .box { max-width: 420px; margin: 0 auto; padding: 24px 20px 40px; }
+    #welcome .logo { background: #3F6A93; border-radius: 22px; padding: 22px;
+      text-align: center; }
+    #welcome .logo img { height: 96px; }
+    #welcome .card { background: #fff; border-radius: 20px; margin-top: 16px;
+      padding: 22px 20px; border: 1px solid #DDE4EC; }
+    #welcome h1 { font-size: 22px; margin: 0 0 8px; color: #8E3F5E;
+      text-align: center; }
+    #welcome p { line-height: 1.8; margin: 6px 0; }
+    #welcome ol { padding-inline-start: 22px; line-height: 2; margin: 10px 0; }
+    #welcome .btn { display: block; text-align: center; text-decoration: none;
+      background: #3F6A93; color: #fff; border: 0; border-radius: 14px;
+      padding: 15px; font-size: 17px; font-weight: 700; width: 100%;
+      margin-top: 14px; font-family: inherit; cursor: pointer; }
+    #welcome .link { background: none; color: #3F6A93; font-weight: 600; }
+    #welcome .muted { color: #6B7785; font-size: 14px; }
+    #welcome svg { vertical-align: middle; }
+    /* Shown at once while the app engine downloads, until its first frame. */
+    #splash { position: fixed; inset: 0; z-index: 9998; display: flex;
+      flex-direction: column; align-items: center; justify-content: center;
+      background: #EEF2F7; transition: opacity .35s; }
+    #splash img { width: 150px; height: 150px; border-radius: 34px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.18); }
+    #splash .bar { width: 160px; height: 4px; border-radius: 4px; margin-top: 34px;
+      background: rgba(63,106,147,.18); overflow: hidden; }
+    #splash .bar i { display: block; width: 40%; height: 100%; border-radius: 4px;
+      background: #3F6A93; animation: slide 1.1s ease-in-out infinite; }
+    #splash p { margin-top: 14px; color: #6B7785;
+      font-family: -apple-system, "Segoe UI", Tahoma, sans-serif; font-size: 14px; }
+    @keyframes slide { 0% { transform: translateX(260%); } 100% { transform: translateX(-110%); } }
+    @media (prefers-color-scheme: dark) {
+      #splash { background: #0E0D0B; }
+      #splash .bar { background: rgba(212,176,58,.2); }
+      #splash .bar i { background: #D4B03A; }
+      #splash p { color: #A69E8C; }
+    }
+  </style>
+</head>
+<body>
+  <div id="splash">
+    <img src="icons/Icon-192.png" alt="حياتي">
+    <div class="bar"><i></i></div>
+    <p>ثواني وحياتي تفتح…</p>
+  </div>
+  <script>
+    window.addEventListener('flutter-first-frame', function () {
+      var s = document.getElementById('splash');
+      if (!s) return;
+      s.style.opacity = '0';
+      setTimeout(function () { s.remove(); }, 400);
+      // The PDF reader is only needed for books: load it after the app.
+      var m = document.createElement('script');
+      m.type = 'module';
+      m.src = 'pdfjs/pdf.min.mjs';
+      m.onload = function () {
+        var lib = globalThis.pdfjsLib;
+        if (!lib) return;
+        lib.GlobalWorkerOptions.workerSrc =
+          new URL('pdfjs/pdf.worker.min.mjs', document.baseURI).href;
+        globalThis.pdfRenderOptions = {
+          cMapUrl: new URL('pdfjs/cmaps/', document.baseURI).href,
+          cMapPacked: true,
+        };
+      };
+      document.body.appendChild(m);
+    });
+  </script>
+  <div id="welcome">
+    <div class="box">
+      <div class="logo"><img src="assets/assets/logo/logo_word.png" alt="حياتي"></div>
+      <div class="card" id="w-android" hidden>
+        <h1>نزّل حياتي على موبايلك</h1>
+        <p>أهدافك ومواعيدك ومواقيت الصلاة ويومياتك في مكان واحد، وكمان التنبيهات في ميعادها.</p>
+        <a class="btn" id="w-apk" href="#">نزّل التطبيق</a>
+        <p class="muted">بعد التنزيل افتح الملف. لو الموبايل سأل عن التسطيب من مصدر غير معروف، وافق.</p>
+        <button class="btn link" onclick="hayatiWelcomeDone()">أو استخدمه من المتصفح</button>
+      </div>
+      <div class="card" id="w-ios" hidden>
+        <h1>حط حياتي على الشاشة الرئيسية</h1>
+        <p>عشان يفتح زي أي تطبيق، من <b>Safari</b>:</p>
+        <ol>
+          <li>دوس على زرار المشاركة
+            <svg width="20" height="24" viewBox="0 0 20 24" fill="none" stroke="#3F6A93" stroke-width="2"><path d="M10 15V2M5 7l5-5 5 5M4 10H2v12h16V10h-2"/></svg>
+            اللي تحت.</li>
+          <li>انزل واختار <b>إضافة إلى الشاشة الرئيسية</b> (Add to Home Screen).</li>
+          <li>دوس <b>إضافة</b>، وافتح حياتي من الأيقونة.</li>
+        </ol>
+        <p class="muted">لو فاتح اللينك من واتساب أو فيسبوك، افتحه في Safari الأول.</p>
+        <button class="btn" onclick="hayatiWelcomeDone()">تمام، كمّل</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var ua = navigator.userAgent;
+      var android = /Android/i.test(ua);
+      var ios = /iPhone|iPad|iPod/i.test(ua) ||
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      var installed = navigator.standalone ||
+        window.matchMedia('(display-mode: standalone)').matches;
+      var seen = false;
+      try { seen = localStorage.getItem('hayati.welcomed') === '1'; } catch (e) {}
+      window.hayatiWelcomeDone = function () {
+        try { localStorage.setItem('hayati.welcomed', '1'); } catch (e) {}
+        document.getElementById('welcome').style.display = 'none';
+      };
+      // The download link (?get) always shows the guide, to anyone.
+      var forced = /[?&#]get\b/.test(location.search + location.hash);
+      if (installed || (!forced && (seen || !(android || ios)))) return;
+      // The app is published next to this page's repository.
+      var repo = location.pathname.indexOf('/hayati-app') === 0 ? 'hayati-app' : '7yaty';
+      document.getElementById('w-apk').href =
+        'https://github.com/Didamony/' + repo + '/releases/latest/download/hayati.apk';
+      if (android || !ios) document.getElementById('w-android').hidden = false;
+      if (ios || !android) document.getElementById('w-ios').hidden = false;
+      document.getElementById('welcome').style.display = 'block';
+    })();
+  </script>
+  <!-- pdf.js (Apache-2.0, legacy build for older Safari) is bundled so books
+       open without a CDN; it loads after the app's first frame (above). -->
+  <!--
+    You can customize the "flutter_bootstrap.js" script.
+    This is useful to provide a custom configuration to the Flutter loader
+    or to give the user feedback during the initialization process.
+
+    For more details:
+    * https://docs.flutter.dev/platform-integration/web/initialization
+  -->
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>
