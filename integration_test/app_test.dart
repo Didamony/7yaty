@@ -48,6 +48,21 @@ void main() {
 
       Future<void> open(Finder f) async {
         await until(f);
+        // Off screen in a scrolled list: look up, then down.
+        final list = find.byWidgetPredicate(
+          (w) => w is Scrollable && w.axisDirection == AxisDirection.down,
+        );
+        for (final dy in [-400.0, 400.0]) {
+          if (f.evaluate().isNotEmpty || list.evaluate().isEmpty) break;
+          try {
+            await t.scrollUntilVisible(
+              f,
+              dy,
+              scrollable: list.first,
+              maxScrolls: 15,
+            );
+          } catch (_) {}
+        }
         if (f.evaluate().isEmpty) {
           final shown = find
               .byType(Text)
