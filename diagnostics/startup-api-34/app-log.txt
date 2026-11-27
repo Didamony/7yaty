@@ -1,0 +1,11 @@
+11-27 03:39:35.609  3716  3716 W didamony.hayati: Unexpected CPU variant for x86: x86_64.
+11-27 03:39:35.609  3716  3716 W didamony.hayati: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, tremont, kabylake, default
+11-27 03:39:35.622  3716  3716 E didamony.hayati: Not starting debugger since process cannot load the jdwp agent.
+11-27 03:39:36.014  3716  3716 W FirebaseApp: Default FirebaseApp failed to initialize because no default options were found. This usually means that com.google.gms:google-services was not applied to your gradle project.
+11-27 03:39:36.323  3716  3716 W didamony.hayati: type=1400 audit(0.0:15): avc:  denied  { read } for  name="max_map_count" dev="proc" ino=64808 scontext=u:r:untrusted_app:s0:c192,c256,c512,c768 tcontext=u:object_r:proc_max_map_count:s0 tclass=file permissive=0 app=com.didamony.hayati
+11-27 03:39:37.816  1729  2473 E FirebaseInstanceId: Topic sync or token retrieval failed on hard failure exceptions: AUTHENTICATION_FAILED. Won't retry the operation.
+11-27 03:39:37.818  1742  2733 E FirebaseInstanceId: Topic sync or token retrieval failed on hard failure exceptions: AUTHENTICATION_FAILED. Won't retry the operation.
+11-27 03:39:37.924  2474  3138 E FirebaseInstanceId: Topic sync or token retrieval failed on hard failure exceptions: AUTHENTICATION_FAILED. Won't retry the operation.
+11-27 03:39:40.401   520  2456 W InputManager-JNI: Input channel object '916e512 Splash Screen com.didamony.hayati (client)' was disposed without first being removed with the input manager!
+11-27 03:39:44.923  3958  4299 E FirebaseInstanceId: Topic sync or token retrieval failed on hard failure exceptions: AUTHENTICATION_FAILED. Won't retry the operation.
+11-27 03:40:04.899  1488  1782 W gle.android.gms: Long monitor contention with owner highpool[3] (2945) at java.lang.Object arhz.a()(:com.google.android.gms@231818047@23.18.18 (190800-535401451):21) waiters=0 in com.google.firebase.appindexing.internal.CallStatus dnec.n(dljf, aavk, com.google.firebase.appindexing.internal.MutateRequest, boolean, long) for 166ms
