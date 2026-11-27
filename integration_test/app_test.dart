@@ -9,94 +9,123 @@ import 'package:integration_test/integration_test.dart';
 void main() {
   final binding = IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
-  testWidgets('tour of the app', (t) async {
-    app.main();
-    // The app has running timers and animations, so don't wait to settle.
-    Future<void> wait([int ms = 1500]) async {
-      for (var i = 0; i < ms ~/ 100; i++) {
-        await t.pump(const Duration(milliseconds: 100));
+  testWidgets(
+    'tour of the app',
+    timeout: const Timeout(Duration(minutes: 10)),
+    (t) async {
+      app.main();
+      // The app has running timers and animations, so don't wait to settle.
+      Future<void> wait([int ms = 1500]) async {
+        for (var i = 0; i < ms ~/ 100; i++) {
+          await t.pump(const Duration(milliseconds: 100));
+        }
       }
-    }
 
-    var shot = 0;
-    Future<void> snap(String name) async {
-      await wait(600);
-      await binding.takeScreenshot(
-        '${(++shot).toString().padLeft(2, '0')}-$name',
-      );
-    }
+      var shot = 0;
+      Future<void> snap(String name) async {
+        await wait(600);
+        await binding.takeScreenshot(
+          '${(++shot).toString().padLeft(2, '0')}-$name',
+        );
+      }
 
-    Future<void> tab(String label) async {
-      await t.tap(
-        find.descendant(
-          of: find.byType(NavigationBar),
-          matching: find.text(label),
-        ),
-      );
+      Future<void> tab(String label) async {
+        await t.tap(
+          find.descendant(
+            of: find.byType(NavigationBar),
+            matching: find.text(label),
+          ),
+        );
+        await wait();
+      }
+
+      /// Waits up to 15 s for [f] to be on screen (the device is slow).
+      Future<void> until(Finder f) async {
+        for (var i = 0; i < 150 && f.evaluate().isEmpty; i++) {
+          await t.pump(const Duration(milliseconds: 100));
+        }
+      }
+
+      Future<void> open(Finder f) async {
+        final any = find.descendant(
+          of: find.byType(Scaffold).last,
+          matching: f.first,
+          skipOffstage: false,
+        );
+        await until(any);
+        if (any.evaluate().isEmpty) {
+          await t.scrollUntilVisible(
+            f.first,
+            300,
+            scrollable: find.byType(Scrollable).last,
+          );
+        }
+        await t.ensureVisible(any.first);
+        await wait(400);
+        await t.tap(any.first);
+        await wait();
+      }
+
+      Future<void> back() async {
+        final before = find.byType(BackButton).evaluate().length;
+        await t.tap(find.byType(BackButton).last);
+        for (var i = 0; i < 100; i++) {
+          await t.pump(const Duration(milliseconds: 100));
+          if (find.byType(BackButton).evaluate().length < before) break;
+        }
+        await wait(800);
+      }
+
+      await wait(6000);
+      await binding.convertFlutterSurfaceToImage();
       await wait();
-    }
+      expect(find.byType(NavigationBar), findsOneWidget);
+      await snap('today');
 
-    Future<void> open(Finder f) async {
-      await t.ensureVisible(f.first);
-      await wait(400);
-      await t.tap(f.first);
+      await tab('أهدافي');
+      await snap('goals');
+      await open(find.text('الرسم البياني'));
+      await snap('charts');
+      await back();
+      await open(find.text('جدول السنة'));
+      await snap('year-plan');
+      await back();
+      await open(find.text('الشيت الشهري'));
+      await snap('sheet');
+      await back();
+      await open(find.text('كتبي'));
+      await snap('books');
+      await back();
+
+      await tab('المواعيد');
+      await snap('appointments');
+
+      await tab('عباداتي');
+      await snap('worship');
+      await open(find.text('المصحف'));
+      await open(find.text('سورة الفاتحة'));
+      await snap('quran');
+      await back();
+      await back();
+      await open(find.text('أذكار الصباح'));
+      await snap('adhkar');
+      await back();
+      await open(find.text('السبحة'));
+      await t.tapAt(t.getCenter(find.byType(Scaffold).last));
       await wait();
-    }
+      await snap('tasbih');
+      await back();
 
-    Future<void> back() async {
-      await t.tap(find.byType(BackButton).last);
+      await tab('يومياتي');
+      await t.enterText(find.byType(TextField).first, 'تجربة على أندرويد');
       await wait();
-    }
+      await open(find.text('حفظ'));
+      await snap('journal');
 
-    await wait(6000);
-    await binding.convertFlutterSurfaceToImage();
-    await wait();
-    expect(find.byType(NavigationBar), findsOneWidget);
-    await snap('today');
-
-    await tab('أهدافي');
-    await snap('goals');
-    await open(find.text('الرسم البياني'));
-    await snap('charts');
-    await back();
-    await open(find.text('جدول السنة'));
-    await snap('year-plan');
-    await back();
-    await open(find.text('الشيت الشهري'));
-    await snap('sheet');
-    await back();
-    await open(find.text('كتبي'));
-    await snap('books');
-    await back();
-
-    await tab('المواعيد');
-    await snap('appointments');
-
-    await tab('عباداتي');
-    await snap('worship');
-    await open(find.text('المصحف'));
-    await open(find.text('سورة الفاتحة'));
-    await snap('quran');
-    await back();
-    await back();
-    await open(find.text('أذكار الصباح'));
-    await snap('adhkar');
-    await back();
-    await open(find.text('السبحة'));
-    await t.tapAt(t.getCenter(find.byType(Scaffold).last));
-    await wait();
-    await snap('tasbih');
-    await back();
-
-    await tab('يومياتي');
-    await t.enterText(find.byType(TextField).first, 'تجربة على أندرويد');
-    await wait();
-    await open(find.text('حفظ'));
-    await snap('journal');
-
-    await tab('اليوم');
-    await open(find.byTooltip('الإعدادات'));
-    await snap('settings');
-    await back();
-  });
+      await tab('اليوم');
+      await open(find.byTooltip('الإعدادات'));
+      await snap('settings');
+      await back();
+    },
+  );
 }
